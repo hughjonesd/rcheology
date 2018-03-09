@@ -8,15 +8,20 @@ function install_remove {
   APT_PACKAGE="r-base-core=$1"
   echo "==============="
   echo "Installing $APT_PACKAGE:"
-  apt-get install -y -qq $APT_PACKAGE
-
+  DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y -qq $APT_PACKAGE
+  if [[ $? > 0 ]]
+  then
+    echo "apt-get install failed. Stopping."
+    exit
+  fi
+  
   echo "==============="
   echo "Running list-objects.R:"
   Rscript list-objects.R 2> docker-data/stderr-$1.out
   
   echo "==============="
   echo "Removing r-base-core:"
-  apt-get remove -y -qq r-base-core
+  DEBIAN_FRONTEND=noninteractive apt-get remove -y -qq r-base-core
   if [[ $? > 0 ]]
   then
     echo "apt-get remove failed. Stopping."

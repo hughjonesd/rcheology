@@ -8,7 +8,7 @@ pkg_data <- data.frame(
         name     = character(0), 
         type     = character(0),
         class    = character(0),
-        S3method = character(0),
+       # S3method = character(0),
         generic  = character(0),
         package  = character(0),
         Rversion = character(0)
@@ -24,20 +24,19 @@ for (pkg in ip) {
       break
     }
     ns_name <- paste0("package:", pkg)
-    pkg_obj_names <- ls(ns_name, sort = TRUE) 
+    pkg_obj_names <- ls(ns_name) 
+    pkg_obj_names <- sort(pkg_obj_names)
     pkg_objs      <- lapply(pkg_obj_names, get, ns_name)
     types         <- sapply(pkg_objs, typeof)
     classes       <- sapply(pkg_objs, function (x) paste(class(x), collapse = "/"))
-    S3methods     <- sapply(pkg_obj_names, utils::isS3method)
+  #  S3methods     <- sapply(pkg_obj_names, utils::isS3method)
     generics      <- sapply(pkg_obj_names, methods::isGeneric)
-    # generic_names <- getGenerics(ns_name)
-    # pkg_obj_names <- c(pkg_obj_names, generic_names@.Data)
     
     this_pkg_data <- data.frame(
             name     = pkg_obj_names,
             type     = types,
             class    = classes,
-            S3method = S3methods,
+     #       S3method = S3methods,
             generic  = generics,
             package  = pkg,
             Rversion = short_rversion
