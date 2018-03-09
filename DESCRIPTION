@@ -6,6 +6,7 @@ Authors@R: person("David", "Hugh-Jones", , "davidhughjones@gmail.com", c("aut", 
 License: CC0 + File LICENSE
 URL: https://github.com/hughjonesd/rcheology
 BugReports: https://github.com/hughjonesd/rcheology/issues
+Depends: R(>= 2.10)
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true

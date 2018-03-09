@@ -5,3 +5,4 @@
 ^install-versions.sh$
 ^.*R$
 ^Dockerfile$
+^r-base-versions.txt$

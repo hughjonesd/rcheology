@@ -14,4 +14,6 @@
 #' 
 #' @format A data frame with 38433 rows and 7 columns.
 #' @source http://github.com/hughjonesd/rcheology
+#' @docType data
+#' @keywords datasets
 "rcheology"
