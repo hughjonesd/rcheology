@@ -8,11 +8,13 @@ A data frame with every function (and other object) in versions
 of R from 3.0.1 to 3.4.3. Variables are:
 }
 \details{
-* `name`: name of the object
-* `type`: Result of calling [typeof()] on the object
-* `class`: [class()] of the object, separated by slashes if there are multiple classes.
-* `S3method`: `TRUE` if the object is an S3 method.
-* `generic`: `TRUE` if the object is a generic according to [methods::isGeneric()]
-* `package`: package the object comes from
-* `Rversion`: version of R as major.minor.patch
+\itemize{
+\item \code{name}: name of the object
+\item \code{type}: Result of calling \code{\link[=typeof]{typeof()}} on the object
+\item \code{class}: \code{\link[=class]{class()}} of the object, separated by slashes if there are multiple classes.
+\item \code{S3method}: \code{TRUE} if the object is an S3 method.
+\item \code{generic}: \code{TRUE} if the object is a generic according to \code{\link[methods:isGeneric]{methods::isGeneric()}}
+\item \code{package}: package the object comes from
+\item \code{Rversion}: version of R as major.minor.patch
+}
 }
