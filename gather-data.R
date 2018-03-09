@@ -8,4 +8,4 @@ result <- list.files(pattern="*.csv", path = "shared-data", full.names = TRUE) %
             ))
 
 rcheology <- as.data.frame(result)
-usethis::use_data(rcheology)
+usethis::use_data(rcheology, overwrite = TRUE)
