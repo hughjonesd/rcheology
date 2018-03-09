@@ -1,5 +1,5 @@
 # from:
-# apt-cache madison r-base-core | cut -d"|" -f 2 | sed -e 's/^ //' > /shared-data/r-base-versions.txt
+# apt-cache madison r-base-core | cut -d"|" -f 2 | sed -e 's/^ //' > r-base-versions.txt
 # with old versions edited out
 3.4.3-1trusty0 
 3.4.2-2trusty 

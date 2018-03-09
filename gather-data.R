@@ -1,6 +1,6 @@
 
 container <- readline("Enter the name of the container: ")
-system2("docker", c("cp", paste0(container, ":", "/rcheology/shared-data/."), "shared-data"))
+system2("docker", c("cp", paste0(container, ":", "/rcheology/docker-data/."), "docker-data"))
   
 result <- list.files(pattern="*.csv", path = "shared-data", full.names = TRUE) %>% 
       purrr::map_df(~readr::read_csv(., na="n/a", 
@@ -8,5 +8,5 @@ result <- list.files(pattern="*.csv", path = "shared-data", full.names = TRUE) %
             ))
 readr::write_csv(result, path = "pkg_data_all.csv")
 
-result <- as.data.frame(result)
-usethis::use_data(result)
+rcheology <- as.data.frame(result)
+usethis::use_data(rcheology)

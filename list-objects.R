@@ -47,7 +47,7 @@ for (pkg in ip) {
 }
 
 write.csv(pkg_data, 
-        file = file.path("shared-data", paste("pkg_data-R-", short_rversion, ".csv", sep = "")),
+        file = file.path("docker-data", paste("pkg_data-R-", short_rversion, ".csv", sep = "")),
         row.names = FALSE, 
         na = "N/A"
       )

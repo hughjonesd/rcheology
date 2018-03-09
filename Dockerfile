@@ -1,8 +1,8 @@
 FROM ubuntu:trusty
 
 WORKDIR /rcheology
-RUN mkdir shared-data
-VOLUME /rcheology/shared-data
+RUN mkdir docker-data
+VOLUME /rcheology/docker-data
 
 RUN apt-get -y update
 RUN apt-get install -y apt-transport-https

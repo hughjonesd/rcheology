@@ -12,7 +12,7 @@ function install_remove {
 
   echo "==============="
   echo "Running list-objects.R:"
-  Rscript list-objects.R 2> shared-data/stderr-$1.out
+  Rscript list-objects.R 2> docker-data/stderr-$1.out
   
   echo "==============="
   echo "Removing r-base-core:"
