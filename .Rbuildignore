@@ -1,3 +1,7 @@
 ^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^docker-data$
+^install-versions.sh$
+^.*R$
+^Dockerfile$
