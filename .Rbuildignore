@@ -7,3 +7,4 @@
 ^install-versions.sh$
 ^Dockerfile$
 ^r-base-versions.txt$
+^README\.Rmd$
