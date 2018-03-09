@@ -12,8 +12,6 @@
 #' * `package`: package the object comes from
 #' * `Rversion`: version of R as major.minor.patch
 #' 
-#' @format A data frame with 38433 rows and 7 columns.
-#' @source http://github.com/hughjonesd/rcheology
-#' @docType data
-#' @keywords datasets
-"rcheology"
+#' @name rcheology 
+NULL
+
