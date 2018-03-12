@@ -9,6 +9,7 @@ RUN apt-get install -y apt-transport-https
 RUN echo "deb https://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 RUN apt-get -y update
+RUN apt-get install -y -q -d r-base-core
 
 COPY install-versions.sh .
 RUN chmod a+x install-versions.sh

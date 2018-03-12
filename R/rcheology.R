@@ -7,8 +7,8 @@
 #' * `name`: name of the object
 #' * `type`: Result of calling [typeof()] on the object
 #' * `class`: [class()] of the object, separated by slashes if there are multiple classes.
-#' * `S3method`: `TRUE` if the object is an S3 method.
-#' * `generic`: `TRUE` if the object is a generic according to [methods::isGeneric()]
+#' * `generic`: `TRUE` if the object is an (S4) generic according to [methods::isGeneric()]
+#' * `args`: the arguments of the function, or NA for non-functions
 #' * `package`: package the object comes from
 #' * `Rversion`: version of R as major.minor.patch
 #' 

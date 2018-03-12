@@ -23,20 +23,6 @@ install.packages("remotes") # if you need to
 remotes::install_github("hughjonesd/rcheology")
 ```
 
-## The data
-
-```{r}
-library(rcheology)
-data("rcheology")
-
-head(rcheology)
-```
-
-Packages over time
-```{r}
-xtabs(~ Rversion + package, data = rcheology)
-
-```
 
 ## Running it yourself
 
@@ -46,4 +32,59 @@ xtabs(~ Rversion + package, data = rcheology)
 * It will download and install multiple versions of R on the container.
 * Check the container name with `docker container ls` (or `ls -a` after the process is finished).
 * Source `gather-data.R` to get data out of the container and into a CSV file.
+
+## The data
+
+```{r}
+library(rcheology)
+data("rcheology")
+
+head(rcheology)
+```
+
+Package functions over time:
+
+```{r}
+xtabs(~ Rversion + package, data = rcheology)
+
+```
+
+
+New functions in each version:
+
+```{r}
+rvs <- as.character(sort(as.package_version(unique(rcheology$Rversion))))
+
+fullname <- paste(rcheology$package, rcheology$name, sep = ":")
+
+wrap <- function (char) paste(char, collapse = "\n")
+
+for (i in seq(2, length(rvs))) {
+  old <- fullname[rcheology$Rversion == rvs[i-1]]
+  new <- fullname[rcheology$Rversion == rvs[i]]
+  introduced <- setdiff(new, old)
+  if (length(introduced) > 0) cat("New in ", rvs[i], ":\n", wrap(introduced), "\n")
+  removed <- setdiff(old, new)
+  if (length(removed) > 0) cat("Removed in ", rvs[i], ":\n", wrap(removed), "\n\n")
+}
+
+```
+
+Argument changes:
+
+```{r}
+library(dplyr)
+
+for (i in seq(2, length(rvs))) {
+  old <- rcheology %>% filter(Rversion == rvs[i-1])
+  new <- rcheology %>% filter(Rversion == rvs[i])
+  combined <- inner_join(old, new, by = c("name", "package"), suffix = c("_old", "_new"))
+  args_changed <- combined %>% filter(args_old != args_new)
+  if (nrow(args_changed) > 0){
+    cat("Arguments changed in ", rvs[i], ":\n", wrap(args_changed$name), "\n\n")
+  }
+}
+
+```
+
 
