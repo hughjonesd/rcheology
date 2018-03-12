@@ -43,55 +43,19 @@ head(rcheology)
 Package functions over time:
 
 ``` r
-xtabs(~ Rversion + package, data = rcheology)
-#>         package
-#> Rversion base compiler datasets graphics grDevices grid methods parallel
-#>    3.0.2 1166        9      103       87       106  188     216       32
-#>    3.1.0 1177        9      103       87       106  198     216       32
-#>    3.1.1 1177        9      103       87       106  198     216       32
-#>    3.1.2 1180        9      103       87       106  198     216       32
-#>    3.1.3 1182        9      103       87       106  198     216       32
-#>    3.2.0 1203        9      104       87       107  198     216       32
-#>    3.2.1 1203        9      104       87       107  198     216       32
-#>    3.2.2 1203        9      104       87       107  198     216       32
-#>    3.2.3 1203        9      104       87       107  198     216       32
-#>    3.2.4 1203        9      104       87       107  198     216       32
-#>    3.2.5 1203        9      104       87       107  198     216       32
-#>    3.3.0 1212        9      104       87       107  198     217       32
-#>    3.3.1 1213        9      104       87       107  198     217       32
-#>    3.3.2 1214        9      104       87       107  198     217       32
-#>    3.3.3 1214        9      104       87       107  198     217       32
-#>    3.4.0 1217        9      104       87       107  198     218       32
-#>    3.4.1 1217        9      104       87       107  198     218       32
-#>    3.4.2 1217        9      104       87       107  198     218       32
-#>    3.4.3 1217        9      104       87       107  198     218       32
-#>         package
-#> Rversion splines stats stats4 tcltk tools utils
-#>    3.0.2      13   493     13   253    97   198
-#>    3.1.0      13   446     13   253    99   201
-#>    3.1.1      13   446     13   253    99   202
-#>    3.1.2      13   446     13   253    99   202
-#>    3.1.3      13   446     13   253    99   202
-#>    3.2.0      13   446     13   254   103   205
-#>    3.2.1      13   446     13   254   103   205
-#>    3.2.2      13   446     13   259   103   205
-#>    3.2.3      13   446     13   259   103   205
-#>    3.2.4      13   446     13   259   103   205
-#>    3.2.5      13   446     13   259   103   205
-#>    3.3.0      13   447     13   259   108   206
-#>    3.3.1      13   447     13   259   108   206
-#>    3.3.2      13   447     13   259   108   206
-#>    3.3.3      13   447     13   259   108   206
-#>    3.4.0      13   447     13   259   115   211
-#>    3.4.1      13   447     13   259   116   211
-#>    3.4.2      13   447     13   259   116   211
-#>    3.4.3      13   447     13   259   116   211
+
+rvs <- as.character(sort(as.package_version(unique(rcheology$Rversion))))
+
+palette(rainbow(7))
+barplot(xtabs(~ Rversion + package, data = rcheology), beside = TRUE, las=2, border = NA, col = heat.colors(length(rvs)))
 ```
+
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 New functions in each version:
 
 ``` r
-rvs <- as.character(sort(as.package_version(unique(rcheology$Rversion))))
+
 
 fullname <- paste(rcheology$package, rcheology$name, sep = ":")
 

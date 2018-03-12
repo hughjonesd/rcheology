@@ -45,15 +45,18 @@ head(rcheology)
 Package functions over time:
 
 ```{r}
-xtabs(~ Rversion + package, data = rcheology)
 
+rvs <- as.character(sort(as.package_version(unique(rcheology$Rversion))))
+
+palette(rainbow(7))
+barplot(xtabs(~ Rversion + package, data = rcheology), beside = TRUE, las=2, border = NA, col = heat.colors(length(rvs)))
 ```
 
 
 New functions in each version:
 
 ```{r}
-rvs <- as.character(sort(as.package_version(unique(rcheology$Rversion))))
+
 
 fullname <- paste(rcheology$package, rcheology$name, sep = ":")
 
