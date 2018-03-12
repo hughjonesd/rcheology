@@ -12,8 +12,8 @@ of R from 3.0.1 to 3.4.3. Variables are:
 \item \code{name}: name of the object
 \item \code{type}: Result of calling \code{\link[=typeof]{typeof()}} on the object
 \item \code{class}: \code{\link[=class]{class()}} of the object, separated by slashes if there are multiple classes.
-\item \code{S3method}: \code{TRUE} if the object is an S3 method.
-\item \code{generic}: \code{TRUE} if the object is a generic according to \code{\link[methods:isGeneric]{methods::isGeneric()}}
+\item \code{generic}: \code{TRUE} if the object is an (S4) generic according to \code{\link[methods:isGeneric]{methods::isGeneric()}}
+\item \code{args}: the arguments of the function, or NA for non-functions
 \item \code{package}: package the object comes from
 \item \code{Rversion}: version of R as major.minor.patch
 }
