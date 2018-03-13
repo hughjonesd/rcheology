@@ -3,4 +3,4 @@
 .RData
 .Ruserdata
 docker-data/**
-app/rsconnect/**/*
+app/rsconnect/**
