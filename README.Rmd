@@ -33,7 +33,13 @@ remotes::install_github("hughjonesd/rcheology")
 * Check the container name with `docker container ls` (or `ls -a` after the process is finished).
 * Source `gather-data.R` to get data out of the container and into a CSV file.
 
+
+## Shiny app
+
+
 ## The data
+
+You can view the data online in a [Shiny app](https://hughjonesd.shinyapps.io/rcheology/).
 
 ```{r}
 library(rcheology)
@@ -42,52 +48,20 @@ data("rcheology")
 head(rcheology)
 ```
 
-Package functions over time:
+Base functions over time:
 
 ```{r}
 
-rvs <- as.character(sort(as.package_version(unique(rcheology$Rversion))))
+rvs <- unique(rcheology$Rversion)
 
 palette(rainbow(7))
-barplot(xtabs(~ Rversion + package, data = rcheology), beside = TRUE, las=2, border = NA, col = heat.colors(length(rvs)))
+barplot(xtabs(~ Rversion + package, data = rcheology), 
+        beside = TRUE, 
+        las    = 2, 
+        border = NA, 
+        col    = heat.colors(length(rvs)),
+        xlab   = "Package",
+        ylab   = "Number of objects"
+      )
 ```
-
-
-New functions in each version:
-
-```{r}
-
-
-fullname <- paste(rcheology$package, rcheology$name, sep = ":")
-
-wrap <- function (char) paste(char, collapse = "\n")
-
-for (i in seq(2, length(rvs))) {
-  old <- fullname[rcheology$Rversion == rvs[i-1]]
-  new <- fullname[rcheology$Rversion == rvs[i]]
-  introduced <- setdiff(new, old)
-  if (length(introduced) > 0) cat("New in ", rvs[i], ":\n", wrap(introduced), "\n")
-  removed <- setdiff(old, new)
-  if (length(removed) > 0) cat("Removed in ", rvs[i], ":\n", wrap(removed), "\n\n")
-}
-
-```
-
-Argument changes:
-
-```{r}
-library(dplyr)
-
-for (i in seq(2, length(rvs))) {
-  old <- rcheology %>% filter(Rversion == rvs[i-1])
-  new <- rcheology %>% filter(Rversion == rvs[i])
-  combined <- inner_join(old, new, by = c("name", "package"), suffix = c("_old", "_new"))
-  args_changed <- combined %>% filter(args_old != args_new)
-  if (nrow(args_changed) > 0){
-    cat("Arguments changed in ", rvs[i], ":\n", wrap(args_changed$name), "\n\n")
-  }
-}
-
-```
-
 

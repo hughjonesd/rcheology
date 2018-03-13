@@ -14,4 +14,3 @@
 #' 
 #' @name rcheology 
 NULL
-
