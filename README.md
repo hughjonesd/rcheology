@@ -16,15 +16,11 @@ remotes::install_github("hughjonesd/rcheology")
 Running it yourself
 -------------------
 
--   Install docker
--   Build the image from `Dockerfile` with `docker build -t rcheology .`
--   Run the image with `docker run rcheology`.
--   It will download and install multiple versions of R on the container.
--   Check the container name with `docker container ls` (or `ls -a` after the process is finished).
--   Source `gather-data.R` to get data out of the container and into a CSV file.
-
-Shiny app
----------
+-   Install docker.
+-   Source `gather-data.R` to:
+    -   build the image
+    -   run the container
+    -   get data out of the container
 
 The data
 --------
@@ -36,13 +32,13 @@ library(rcheology)
 data("rcheology")
 
 head(rcheology)
-#>        name    type    class               args package Rversion
-#> 1         ! builtin function       function (x)    base    3.0.2
-#> 2 !.hexmode closure function       function (a)    base    3.0.2
-#> 3 !.octmode closure function       function (a)    base    3.0.2
-#> 4        != builtin function  function (e1, e2)    base    3.0.2
-#> 5         $ special function               NULL    base    3.0.2
-#> 6 $.DLLInfo closure function function (x, name)    base    3.0.2
+#>        name    type    class generic               args package Rversion
+#> 1         ! builtin function   FALSE       function (x)    base    3.0.2
+#> 2 !.hexmode closure function   FALSE       function (a)    base    3.0.2
+#> 3 !.octmode closure function   FALSE       function (a)    base    3.0.2
+#> 4        != builtin function    TRUE  function (e1, e2)    base    3.0.2
+#> 5         $ special function    TRUE               <NA>    base    3.0.2
+#> 6 $.DLLInfo closure function   FALSE function (x, name)    base    3.0.2
 ```
 
 Base functions over time:
@@ -57,7 +53,6 @@ barplot(xtabs(~ Rversion + package, data = rcheology),
         las    = 2, 
         border = NA, 
         col    = heat.colors(length(rvs)),
-        xlab   = "Package",
         ylab   = "Number of objects"
       )
 ```

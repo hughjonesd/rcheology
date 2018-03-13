@@ -23,19 +23,13 @@ install.packages("remotes") # if you need to
 remotes::install_github("hughjonesd/rcheology")
 ```
 
-
 ## Running it yourself
 
-* Install docker
-* Build the image from `Dockerfile` with `docker build -t rcheology .`
-* Run the image with `docker run rcheology`.
-* It will download and install multiple versions of R on the container.
-* Check the container name with `docker container ls` (or `ls -a` after the process is finished).
-* Source `gather-data.R` to get data out of the container and into a CSV file.
-
-
-## Shiny app
-
+* Install docker.
+* Source `gather-data.R` to:
+    - build the image
+    - run the container
+    - get data out of the container
 
 ## The data
 
@@ -60,7 +54,6 @@ barplot(xtabs(~ Rversion + package, data = rcheology),
         las    = 2, 
         border = NA, 
         col    = heat.colors(length(rvs)),
-        xlab   = "Package",
         ylab   = "Number of objects"
       )
 ```
