@@ -5,8 +5,8 @@ account: hughjonesd
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 297801
-bundleId: 1264428
+bundleId: 1266636
 url: https://hughjonesd.shinyapps.io/rcheology/
-when: 1520863548.77197
+when: 1520962117.92074
 asMultiple: FALSE
 asStatic: FALSE
