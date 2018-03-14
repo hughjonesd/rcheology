@@ -26,8 +26,8 @@ kw_opts <- list(
         columns = c("^order$", "base", rep("", ncol_rchs - 2))
       ),
       hasName = list(
-        global = "hasName", 
-        columns = rep("", ncol_rchs)
+        global = "", 
+        columns = c("hasName", rep("", ncol_rchs - 1))
       ),
       `debugonce@3.2.5` = list(
         global = "",
