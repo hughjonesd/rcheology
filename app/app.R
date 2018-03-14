@@ -13,11 +13,12 @@ library(dplyr)
 
 load("rcheology-app-data.RData")
 
-ncol_rchs <- ncol(rch_summary)
+
 rch_summary <- rch_summary %>% 
       rename(`Ever changed?` = "ever_changed", `Args changed?` = "args_changed") %>% 
       select(- type, - class, - generic) %>% 
       mutate(args = sub("^function ", "", args))
+ncol_rchs <- ncol(rch_summary)
 
 kw_opts <- list(
       debug  = list(
@@ -32,9 +33,9 @@ kw_opts <- list(
         global = "hasName", 
         columns = rep("", ncol_rchs)
       ),
-      `debugonce@3.4.0` = list(
+      `debugonce@3.2.5` = list(
         global = "",
-        columns = c("debugonce", rep("", ncol_rchs - 4), "3.4.0", "", "")
+        columns = c("debugonce", rep("", ncol_rchs - 4), "3.2.5", "", "")
       )
 )
 keywords <- names(kw_opts)
