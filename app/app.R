@@ -12,18 +12,23 @@ library(DT)
 
 load("rcheology-app-data.RData")
 
+ncol_rchs <- ncol(rch_summary)
 kw_opts <- list(
       debug  = list(
         global = "", 
-        columns = c("debug", "base", rep("", ncol(rch_summary) - 2))
+        columns = c("debug", "base", rep("", ncol_rchs - 2))
       ),
       order  = list(
         global = "",
-        columns = c("order", "base", rep("", ncol(rch_summary) - 2))
+        columns = c("order", "base", rep("", ncol_rchs - 2))
       ),
       hasName = list(
         global = "hasName", 
-        columns = rep("", ncol(rch_summary))
+        columns = rep("", ncol_rchs)
+      ),
+      `debugonce@3.4.0` = list(
+        global = "",
+        columns = c("debugonce", rep("", ncol_rchs - 2), "3.4.0")
       )
 )
 keywords <- names(kw_opts)
@@ -47,6 +52,7 @@ server <- function(input, output) {
         rch_summary, 
         rownames = FALSE,
         filter   = "top",
+        escape   = setdiff(names(rch_summary), "versions"),
         options  = list(
           pageLength = 10,
           search     = list(regex = TRUE, caseInsensitive = FALSE),

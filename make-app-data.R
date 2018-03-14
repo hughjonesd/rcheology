@@ -20,6 +20,8 @@ make_range <- function (versions) {
 
 rch_summary <- rcheology %>% 
       group_by(name, package, args) %>% 
-      summarize(versions = make_range(Rversion))
+      summarize(
+        versions = paste0(make_range(Rversion), "<!--", paste(Rversion, collapse = " ") ,"-->")
+      )
 
 save(rcheology, rch_summary, file = file.path("app", "rcheology-app-data.RData"))
