@@ -57,6 +57,7 @@ server <- function(input, output) {
         filter   = "top",
         escape   = setdiff(names(rch_summary), "versions"),
         options  = list(
+          dom        = 't', # no global search box
           pageLength = 10,
           search     = list(regex = TRUE, caseInsensitive = FALSE),
           order      = c(0, "asc")
