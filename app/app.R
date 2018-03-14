@@ -50,7 +50,7 @@ ui <- fluidPage(
 )
 
 server <- function(input, output) {
-   output$rcheology_DT <- DT::renderDataTable(
+  summary_dt <- DT::datatable(
         rch_summary, 
         rownames = FALSE,
         filter   = "top",
@@ -60,8 +60,10 @@ server <- function(input, output) {
           search     = list(regex = TRUE, caseInsensitive = FALSE),
           order      = c(0, "asc")
         ))
-   
-   dt_proxy <- DT::dataTableProxy("rcheology_DT")
+  summary_dt <- DT::formatStyle(summary_dt, c("name", "args"), `font-family` = "courier, monospace")
+  
+  output$rcheology_DT <- DT::renderDataTable(summary_dt)
+  dt_proxy <- DT::dataTableProxy("rcheology_DT")
    
    lapply(keywords, function (kw) {
      observeEvent(input[[kw]], {
