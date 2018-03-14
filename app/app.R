@@ -9,10 +9,16 @@
 
 library(shiny)
 library(DT)
+library(dplyr)
 
 load("rcheology-app-data.RData")
 
 ncol_rchs <- ncol(rch_summary)
+rch_summary <- rch_summary %>% 
+      rename(`Ever changed?` = "ever_changed", `Args changed?` = "args_changed") %>% 
+      select(- type, - class, - generic) %>% 
+      mutate(args = sub("^function ", "", args))
+
 kw_opts <- list(
       debug  = list(
         global = "", 
@@ -28,23 +34,21 @@ kw_opts <- list(
       ),
       `debugonce@3.4.0` = list(
         global = "",
-        columns = c("debugonce", rep("", ncol_rchs - 2), "3.4.0")
+        columns = c("debugonce", rep("", ncol_rchs - 4), "3.4.0", "", "")
       )
 )
 keywords <- names(kw_opts)
 
+frc <- function (...) fluidRow(column(10, ..., offset = 1))
 ui <- fluidPage(
   titlePanel("Base R Functions from 3.0.1 to 3.4.3"),
-  sidebarLayout(
-    sidebarPanel(
-      "Created using the ", a(href = "https://github.com/hughjonesd/rcheology", "rcheology"), 
-      " package.", " Try: ", lapply(keywords, function (kw) actionLink(kw, kw))
-    ),
-      
-    mainPanel(
-      dataTableOutput("rcheology_DT")
-    )
-  )
+  frc(
+    "Created using the ", a(href = "https://github.com/hughjonesd/rcheology", "rcheology"), " package."), 
+  frc(" Try: ", lapply(keywords, function (kw) actionLink(kw, kw))),
+  frc(code("Ever changed?"), " is true if a function was introduced or removed."),
+  frc(code("Args changed?"), " is true if a function's arguments changed."),
+  frc(HTML("<br/>")),
+  frc(dataTableOutput("rcheology_DT"))
 )
 
 server <- function(input, output) {
