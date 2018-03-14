@@ -32,7 +32,7 @@ for (pkg in ip) {
       break
     }
     
-    ns_name <- paste0("package:", pkg)
+    ns_name <- paste("package:", pkg, sep = "")
     pkg_obj_names <- ls(ns_name) 
     pkg_obj_names <- sort(pkg_obj_names)
     pkg_objs      <- lapply(pkg_obj_names, get, ns_name)

@@ -1,0 +1,13 @@
+FROM yamamuteki/ubuntu-lucid-i386
+
+WORKDIR /rcheology
+RUN mkdir docker-data
+VOLUME /rcheology/docker-data
+
+COPY lucid.sources.list /etc/apt/sources.list
+RUN apt-get -y update
+RUN apt-get install -y -q -d r-base-dev
+RUN apt-get install -y -q -d libxt-dev
+
+COPY list-objects.R .
+
