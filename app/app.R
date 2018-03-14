@@ -23,7 +23,7 @@ kw_opts <- list(
       ),
       order  = list(
         global = "",
-        columns = c("order", "base", rep("", ncol_rchs - 2))
+        columns = c("^order$", "base", rep("", ncol_rchs - 2))
       ),
       hasName = list(
         global = "hasName", 
@@ -43,6 +43,7 @@ ui <- fluidPage(
     "Created using the ", a(href = "https://github.com/hughjonesd/rcheology", "rcheology"), " package."), 
   frc(code("Ever changed?"), " is true if a function was introduced or removed."),
   frc(code("Args changed?"), " is true if a function's arguments changed."),
+  frc("Regexes work in filters.")
   frc(HTML("Links go to <a href='https://rdocumentation.org'>rdocumentation.org</a> and may not always work.")),
   frc(" Try: ", lapply(keywords, function (kw) actionLink(kw, kw))),
   frc(HTML("<br/>")),
