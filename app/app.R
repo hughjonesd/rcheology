@@ -14,10 +14,6 @@ library(dplyr)
 load("rcheology-app-data.RData")
 
 
-rch_summary <- rch_summary %>% 
-      rename(`Ever changed?` = "ever_changed", `Args changed?` = "args_changed") %>% 
-      select(- type, - class, - generic) %>% 
-      mutate(args = sub("^function ", "", args))
 ncol_rchs <- ncol(rch_summary)
 
 kw_opts <- list(
@@ -45,9 +41,10 @@ ui <- fluidPage(
   titlePanel("Base R Functions from 3.0.1 to 3.4.3"),
   frc(
     "Created using the ", a(href = "https://github.com/hughjonesd/rcheology", "rcheology"), " package."), 
-  frc(" Try: ", lapply(keywords, function (kw) actionLink(kw, kw))),
   frc(code("Ever changed?"), " is true if a function was introduced or removed."),
   frc(code("Args changed?"), " is true if a function's arguments changed."),
+  frc(HTML("Links go to <a href='https://rdocumentation.org'>rdocumentation.org</a> and may not always work.")),
+  frc(" Try: ", lapply(keywords, function (kw) actionLink(kw, kw))),
   frc(HTML("<br/>")),
   frc(dataTableOutput("rcheology_DT"))
 )

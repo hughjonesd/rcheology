@@ -17,6 +17,13 @@ pkg_data <- data.frame(
 rv <- R.Version()
 short_rversion <- paste(rv$major, rv$minor, sep = ".")
 
+get_args <- function (fn) {
+  a <- deparse(args(fn))
+  res <- paste(a[-length(a)], collapse = "")
+  res <- sub("^function ", "", res)
+  
+  res
+}
 
 for (pkg in ip) {
   try({
@@ -26,10 +33,6 @@ for (pkg in ip) {
     }
     
     ns_name <- paste0("package:", pkg)
-    get_args <- function (fn) {
-      a <- deparse(args(fn))
-      paste(a[-length(a)], collapse = "")
-    }
     pkg_obj_names <- ls(ns_name) 
     pkg_obj_names <- sort(pkg_obj_names)
     pkg_objs      <- lapply(pkg_obj_names, get, ns_name)
