@@ -18,19 +18,19 @@ ncol_rchs <- ncol(rch_summary)
 
 kw_opts <- list(
       debug  = list(
-        global = "", 
+        global  = "", 
         columns = c("debug", "base", rep("", ncol_rchs - 2))
       ),
-      order  = list(
-        global = "",
-        columns = c("^order$", "base", rep("", ncol_rchs - 2))
+      `order (exact)`  = list(
+        global  = "",
+        columns = c("^order$", "", rep("", ncol_rchs - 2))
       ),
-      hasName = list(
-        global = "", 
-        columns = c("hasName", rep("", ncol_rchs - 1))
+      `parallel package` = list(
+        global  = "",
+        columns = c("", "parallel", rep("", ncol_rchs - 2))
       ),
-      `debugonce@3.2.5` = list(
-        global = "",
+      `debugonce (R 3.2.5)` = list(
+        global  = "",
         columns = c("debugonce", rep("", ncol_rchs - 4), "3.2.5", "", "")
       )
 )
@@ -38,14 +38,14 @@ keywords <- names(kw_opts)
 
 frc <- function (...) fluidRow(column(10, ..., offset = 1))
 ui <- fluidPage(
-  titlePanel("Base R Functions from 3.0.1 to 3.4.3"),
+  titlePanel("Base R Functions from 3.0.2 to 3.4.3"),
   frc(
     "Created using the ", a(href = "https://github.com/hughjonesd/rcheology", "rcheology"), " package."), 
   frc(code("Ever changed?"), " is true if a function was introduced or removed."),
   frc(code("Args changed?"), " is true if a function's arguments changed."),
   frc("Regexes work in filters."),
   frc(HTML("Links go to <a href='https://rdocumentation.org'>rdocumentation.org</a> and may not always work.")),
-  frc(" Try: ", lapply(keywords, function (kw) actionLink(kw, kw))),
+  frc(" Try: ", lapply(keywords, function (kw) list(HTML("&nbsp;"), actionLink(kw, kw)))),
   frc(HTML("<br/>")),
   frc(dataTableOutput("rcheology_DT"))
 )
