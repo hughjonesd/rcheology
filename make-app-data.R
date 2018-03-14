@@ -18,10 +18,10 @@ make_range <- function (versions) {
   ranges
 }
 
-n_versions <- length(unique(rcheology$Rversion))
+n_all_versions <- length(unique(rcheology$Rversion))
 rch_summary <- rcheology %>% 
       group_by(name, package) %>% 
-      mutate(ever_changed = length(Rversion) < n_versions) %>% 
+      mutate(ever_changed = length(Rversion) < n_all_versions, n_versions = length(Rversion)) %>% 
       group_by(name, package, args) %>% 
       summarize(
         type         = type[1],
@@ -29,7 +29,7 @@ rch_summary <- rcheology %>%
         generic      = generic[1],
         versions     = paste0(make_range(Rversion), "<!--", paste(Rversion, collapse = " ") ,"-->"),
         ever_changed = ever_changed[1],
-        args_changed = length(Rversion) < n_versions
+        args_changed = length(Rversion) < n_versions[1]
       )
 
 save(rcheology, rch_summary, file = file.path("app", "rcheology-app-data.RData"))
