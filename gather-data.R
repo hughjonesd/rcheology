@@ -7,7 +7,6 @@ system2("docker", c("run", "--name", container, image))
 
 
 # get data
-container <- readline("Enter the name of the container: ")
 file.remove(list.files("docker-data", full.names = TRUE))
 system2("docker", c("cp", paste0(container, ":", "/rcheology/docker-data/."), "docker-data"))
   
