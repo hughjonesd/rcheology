@@ -1,7 +1,6 @@
 #!/bin/bash
 
-
-function download_compile {
+function download {
   TARFILE="$1.tar.gz"
   echo "==============="
   echo "Downloading $TARFILE:"
@@ -17,13 +16,15 @@ function download_compile {
     echo "untar failed. Stopping."
     exit
   fi
-  
+}
+
+function compile {
   echo "==============="
   echo "Compiling $1:"
   cd $1
   # these speed up configuration but don't remove any functions from ls()
   # tcltk must be enabled though; and x, to avoid obscure 2.8.0 bug
-  CFLAGS=-O0 FFLAGS=-O0 ./configure --with-recommended-packages=no \
+  CFLAGS="-O0 -pipe" FFLAGS=-O0 ./configure --with-recommended-packages=no \
       --with-libpng=no --with-libjpeg=no \
       --with-tcl-config=/usr/lib/tcl8.4/tclConfig.sh \
       --with-tk-config=/usr/lib/tk8.4/tkConfig.sh --with-tcl-tk=yes
@@ -50,6 +51,11 @@ function run_list_objects {
 
 while read VERSION; do
   if [[ $VERSION == x* ]]; then continue; fi
-  download_compile $VERSION
+  download  $VERSION
+done <R-2.x-source-versions.txt
+
+while read VERSION; do
+  if [[ $VERSION == x* ]]; then continue; fi
+  compile  $VERSION
   run_list_objects $VERSION
 done <R-2.x-source-versions.txt
