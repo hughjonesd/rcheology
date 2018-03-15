@@ -1,3 +1,6 @@
+# build like `docker build -t rcheology .`
+# run like `docker run  --name rcheology_container rcheology`
+
 FROM ubuntu:trusty
 
 WORKDIR /rcheology

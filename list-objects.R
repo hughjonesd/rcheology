@@ -54,7 +54,12 @@ for (pkg in ip) {
   })
 }
 
-write.csv(pkg_data, 
+# simulate write.csv for older Rs
+write.table(pkg_data, 
         file = file.path("docker-data", paste("pkg_data-R-", short_rversion, ".csv", sep = "")),
-        row.names = FALSE
+        row.names = FALSE,
+        dec       = ".",
+        sep       = ",",
+        qmethod   = "double",
+        col.names = TRUE
       )
