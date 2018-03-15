@@ -54,8 +54,14 @@ while read VERSION; do
   download  $VERSION
 done <R-2.x-source-versions.txt
 
+wget --quiet "https://cran.r-project.org/src/base/R-3/R-3.0.0.tar.gz"
+tar -zxf R-3.0.0.tar.gz
+
 while read VERSION; do
   if [[ $VERSION == x* ]]; then continue; fi
   compile  $VERSION
   run_list_objects $VERSION
 done <R-2.x-source-versions.txt
+
+compile R-3.0.0
+run_list_objects R-3.0.0

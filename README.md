@@ -13,8 +13,19 @@ install.packages("remotes") # if you need to
 remotes::install_github("hughjonesd/rcheology")
 ```
 
-Running it yourself
--------------------
+Where the data comes from
+-------------------------
+
+Versions 3.0.1 and up are installed from the [CRAN apt repositories for Ubuntu Trusty Tahr](https://cran.r-project.org/bin/linux/ubuntu/trusty/).
+
+Versions 2.5.1 to 3.0.0 are built from source on [Ubuntu Lucid Lynx](https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/).
+
+Versions 2.0.0 to 2.4.1 are built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
+
+Results are found from running `ls` on all installed packages from a minimal installation. Recommended packages are not included.
+
+Do it yourself
+--------------
 
 -   Install docker
 -   `./control build` builds the images
@@ -52,15 +63,7 @@ Base functions over time:
 
 ``` r
 library(ggplot2)
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+suppressPackageStartupMessages(library(dplyr))
 
 rvs <- rcheology$Rversion     %>% 
       unique()                %>% 
