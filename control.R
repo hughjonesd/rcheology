@@ -1,0 +1,71 @@
+#!/usr/local/bin/Rscript
+
+library(magrittr)
+
+myargs = commandArgs(trailingOnly=TRUE)
+if (length(myargs) == 0) myargs <- c("build", "run", "gather", "write")
+
+CONTAINERS <- list(rcheology = "rch_c", rch_r2 = "rch_r2_c", rch_r2s = "rch_r2s_c")
+
+# build images
+build <- function(containers = CONTAINERS) {
+  for (image in names(containers)) {
+    system2("docker", c("build", "-t", image, "."))
+  }
+}
+
+# run images
+run <- function(containers = CONTAINERS) {
+  for (image in names(containers)) {
+    system2("docker", c("run", "--name", containers[[image]], image))
+  }
+}
+
+# get data out
+gather <- function (containers = CONTAINERS) {
+  file.remove(list.files("docker-data", full.names = TRUE))
+  for (cont in containers) {
+    system2("docker", c("cp", paste0(cont, ":", "/rcheology/docker-data/."), "docker-data"))
+  }  
+}
+
+# write R file
+write <- function (to_package = FALSE) {
+  rcheology <- list.files(pattern="*.csv", path = "docker-data", full.names = TRUE) %>% 
+    purrr::map_df(~readr::read_csv(., col_types = "ccclccc")) 
+  
+  rcheology <- as.data.frame(rcheology)
+  cat("Dimensions:", dim(rcheology), "\n")
+  cat("First rows:\n")
+  head(rcheology)
+  if (to_package) usethis::use_data(rcheology, overwrite = TRUE)
+}
+
+
+if (any(names(CONTAINERS) %in% myargs)) {
+  containers <- CONTAINERS[ intersect(myargs, names(CONTAINERS)) ]
+} else {
+  containers <- CONTAINERS
+}
+
+if ("--help" %in% myargs) {
+  cat("\nUSAGE: control.R [CMD] [IMAGES]\n\n",
+          "CMD:\n",
+          "build: build Dockerfiles to images\n",
+          "run: run images to install R versions and list objects\n",
+          "gather: gather csv files from containers\n",
+          "write: write csv to package\n\n",
+          "IMAGES:\n",
+          paste(names(containers), collapse = "\n "),
+          "\n\n Default: all of them\n\n"
+        )
+  quit("no")
+}
+
+myargs <- intersect(myargs, c("build", "run", "gather", "write"))
+if (length(myargs) != 1) stop("Please specify exactly one of build/run/gather/write")
+if ("build"  %in% myargs) build(containers)
+if ("run"    %in% myargs) run(containers)
+if ("gather" %in% myargs) gather(containers)
+if ("write"  %in% myargs) write(to_package = TRUE)
+

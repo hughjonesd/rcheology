@@ -1,23 +1,22 @@
 # build like `docker build -t rch_r2 -f Dockerfile-R2 .`
 # run like `docker run --name rch_r2_c rch_r2`
 
-FROM yamamuteki/ubuntu-lucid-i386
+FROM debian/eol:sarge
 
 WORKDIR /rcheology
 RUN mkdir docker-data
 VOLUME /rcheology/docker-data
 
-COPY lucid.sources.list /etc/apt/sources.list
 RUN apt-get -y update
 # this seems to install much less than `apt-get build-dep r-base-core`
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q r-base-dev tclx8.4-dev tk8.4-dev xvfb xbase-clients x-window-system-core
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q wget 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q vim  
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q vim
 
 COPY install-R-2.x-versions.sh .
 RUN chmod a+x install-R-2.x-versions.sh
 COPY list-objects.R .
-COPY R-2.x-source-versions.txt .
+COPY R-2.x-early-versions.txt ./R-2.x-source-versions.txt
 
 CMD ["./install-R-2.x-versions.sh"]
 
