@@ -25,6 +25,11 @@ get_args <- function (fn) {
   res
 }
 
+safely_test_generic <- function (fname, ns) {
+  if (is.primitive(get(fname, ns))) return(NA)
+  return(methods::isGeneric(fname))
+}
+
 for (pkg in ip) {
   try({
     if (! require(pkg, character.only = TRUE)) {
@@ -38,8 +43,8 @@ for (pkg in ip) {
     pkg_objs      <- lapply(pkg_obj_names, get, ns_name)
     types         <- sapply(pkg_objs, typeof)
     classes       <- sapply(pkg_objs, function (x) paste(class(x), collapse = "/"))
-    generics      <- sapply(pkg_obj_names, methods::isGeneric)
-    args          <- sapply(pkg_objs, function (x) if (is.function(x)) get_args(x) else NA) 
+    generics      <- sapply(pkg_obj_names, safely_test_generic, ns_name)
+    args          <- sapply(pkg_objs, function (x) if (is.function(x)) get_args(x) else NA)
     
     this_pkg_data <- data.frame(
             name     = pkg_obj_names,
