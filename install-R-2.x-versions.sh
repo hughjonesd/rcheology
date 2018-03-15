@@ -27,7 +27,7 @@ function download_compile {
       --with-libpng=no --with-libjpeg=no \
       --with-tcl-config=/usr/lib/tcl8.4/tclConfig.sh \
       --with-tk-config=/usr/lib/tk8.4/tkConfig.sh --with-tcl-tk=yes
-  make
+  make -j4
   if [[ $? > 0 ]]
   then
     echo "make failed. Stopping."
