@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: inline
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -14,7 +16,7 @@ knitr::opts_chunk$set(
 ```
 # rcheology
 
-A data package which lists every command in base R packages since R version 3.0.2.
+A data package which lists every command in base R packages since R version 2.0.0.
 
 ## Installing
 
@@ -25,11 +27,11 @@ remotes::install_github("hughjonesd/rcheology")
 
 ## Running it yourself
 
-* Install docker.
-* Source `gather-data.R` to:
-    - build the image
-    - run the container
-    - get data out of the container
+* Install docker
+* `./control build` builds the images
+* `./control run` runs the images to build/install R and extract data
+* `./control gather` gets CSV files from the containers
+* `./control write` puts CSV files into a data frame and stores it in the package
 
 ## The data
 
@@ -45,16 +47,22 @@ head(rcheology)
 Base functions over time:
 
 ```{r}
+library(ggplot2)
+library(dplyr)
 
-rvs <- unique(rcheology$Rversion)
+rvs <- rcheology$Rversion     %>% 
+      unique()                %>% 
+      as.package_version()    %>% 
+      sort() %>% 
+      as.character()
 
-palette(rainbow(7))
-barplot(xtabs(~ Rversion + package, data = rcheology), 
-        beside = TRUE, 
-        las    = 2, 
-        border = NA, 
-        col    = heat.colors(length(rvs)),
-        ylab   = "Number of objects"
-      )
+major_rvs <- grep(".0$", rvs, value = TRUE)
+      
+ggplot(rcheology, aes(Rversion, group = package, fill= package), colour = NA) + 
+      stat_count(geom = "area") + 
+      theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8)) + 
+      ggthemes::scale_fill_gdocs() +
+      scale_x_discrete(limits  = rvs, breaks = major_rvs)
+   
 ```
 
