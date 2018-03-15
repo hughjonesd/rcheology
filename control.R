@@ -36,7 +36,6 @@ run <- function(containers = CONTAINERS) {
 
 # get data out
 gather <- function (containers = CONTAINERS) {
-  file.remove(list.files("docker-data", full.names = TRUE))
   for (cont in containers) {
     system2("docker", c("cp", paste0(cont, ":", "/rcheology/docker-data/."), "docker-data"))
   }  
@@ -77,9 +76,9 @@ if ("--help" %in% myargs) {
           "CMD:\n",
           "build: build Dockerfiles to images\n",
           "run: run images to install R versions and list objects\n",
-          "gather: gather csv files from containers (NB deletes docker-date contents!)\n",
+          "gather: gather csv files from containers\n",
           "write: write csv to package\n",
-          "clean: clean containers\n\n",
+          "clean: delete containers\n\n",
           "IMAGES:\n",
           paste(names(containers), collapse = "\n "),
           "\n\n Default: all of them\n\n"
