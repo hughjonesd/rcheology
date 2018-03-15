@@ -5,14 +5,26 @@ library(magrittr)
 myargs = commandArgs(trailingOnly=TRUE)
 if (length(myargs) == 0) myargs <- c("build", "run", "gather", "write")
 
-CONTAINERS <- list(rcheology = "rch_c", rch_r2 = "rch_r2_c", rch_r2s = "rch_r2s_c")
+CONTAINERS  <- list(
+        rcheology = "rch_c", 
+        rch_r2    = "rch_r2_c", 
+        rch_r2s   = "rch_r2s_c"
+      )
+DOCKERFILES <- list(
+        rcheology = "Dockerfile", 
+        rch_r2    = "Dockerfile-R2", 
+        rch_r2s   = "Dockerfile-R2-sarge"
+      )
+
 
 # build images
 build <- function(containers = CONTAINERS) {
   for (image in names(containers)) {
-    system2("docker", c("build", "-t", image, "."))
+    dockerfile <- DOCKERFILES[[image]]
+    system2("docker", c("build", "-t", image, "-f", dockerfile, "."))
   }
 }
+
 
 # run images
 run <- function(containers = CONTAINERS) {
@@ -21,6 +33,7 @@ run <- function(containers = CONTAINERS) {
   }
 }
 
+
 # get data out
 gather <- function (containers = CONTAINERS) {
   file.remove(list.files("docker-data", full.names = TRUE))
@@ -28,6 +41,7 @@ gather <- function (containers = CONTAINERS) {
     system2("docker", c("cp", paste0(cont, ":", "/rcheology/docker-data/."), "docker-data"))
   }  
 }
+
 
 # write R file
 write <- function (to_package = FALSE) {
@@ -42,6 +56,16 @@ write <- function (to_package = FALSE) {
 }
 
 
+# clean up containers
+clean <- function(containers = CONTAINERS) {
+  for (cont in containers) {
+    system2("docker", c("container", "rm", cont))
+  }
+}
+
+
+# main:
+
 if (any(names(CONTAINERS) %in% myargs)) {
   containers <- CONTAINERS[ intersect(myargs, names(CONTAINERS)) ]
 } else {
@@ -53,8 +77,9 @@ if ("--help" %in% myargs) {
           "CMD:\n",
           "build: build Dockerfiles to images\n",
           "run: run images to install R versions and list objects\n",
-          "gather: gather csv files from containers\n",
-          "write: write csv to package\n\n",
+          "gather: gather csv files from containers (NB deletes docker-date contents!)\n",
+          "write: write csv to package\n",
+          "clean: clean containers\n\n",
           "IMAGES:\n",
           paste(names(containers), collapse = "\n "),
           "\n\n Default: all of them\n\n"
@@ -62,10 +87,11 @@ if ("--help" %in% myargs) {
   quit("no")
 }
 
-myargs <- intersect(myargs, c("build", "run", "gather", "write"))
+myargs <- intersect(myargs, c("build", "run", "gather", "write", "clean"))
 if (length(myargs) != 1) stop("Please specify exactly one of build/run/gather/write")
 if ("build"  %in% myargs) build(containers)
 if ("run"    %in% myargs) run(containers)
 if ("gather" %in% myargs) gather(containers)
 if ("write"  %in% myargs) write(to_package = TRUE)
+if ("clean"  %in% myargs) clean(containers)
 
