@@ -15,6 +15,24 @@
 #' @name rcheology 
 NULL
 
+
+
+#' Previous R versions with dates
+#' 
+#' A data frame with 2 variables:
+#' 
+#' * `Rversion`: version of R as major.minor.patch
+#' * `date`: date of release
+#' 
+#' This goes back to 0.x releases. Some version 1's are "recommended";
+#' I don't know what these are. For 2.15.1-w, see 
+#' https://cran.r-project.org/src/base/R-2/README-2.15.1-w
+#' 
+#' @name Rversions 
+NULL
+
+
+
 #' Check if a core R function changed between R versions
 #'
 #' @param fn Character name of a function in a core R package.

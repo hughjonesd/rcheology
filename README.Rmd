@@ -36,6 +36,8 @@ Versions 2.0.0 to 2.4.1 are built from source on [Debian Sarge](https://hub.dock
 Results are found from running `ls` on all installed packages from a minimal installation.
 Recommended packages are not included.
 
+The `Rversions` data frame lists versions of R and release dates.
+
 ## Do it yourself
 
 * Install docker
@@ -68,12 +70,15 @@ rvs <- rcheology$Rversion     %>%
       as.character()
 
 major_rvs <- grep(".0$", rvs, value = TRUE)
-      
-ggplot(rcheology, aes(Rversion, group = package, fill= package), colour = NA) + 
+major_rv_dates <- Rversions$date[Rversions$Rversion %in% major_rvs]
+
+rch_dates <- rcheology %>% left_join(Rversions, by = "Rversion")
+ggplot(rch_dates, aes(date, group = package, fill= package), colour = NA) + 
       stat_count(geom = "area") + 
       theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8)) + 
       ggthemes::scale_fill_gdocs() +
-      scale_x_discrete(limits  = rvs, breaks = major_rvs)
+      scale_x_date(breaks  = major_rv_dates, labels = major_rvs) + 
+      xlab("Version") + ylab("Function count")
    
 ```
 
