@@ -1,14 +1,14 @@
 ^LICENSE\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^gather-data.R$
-^list-objects.R$
-^Rversions\.R$
+^[A-Za-z-]+\.R$
+^lucid.sources.list$
 ^docker-data$
 ^app$
 ^control$
 ^.*\.sh$
 ^Dockerfile.*$
+^\.dockerignore$
 ^.*.txt$
 ^README\.Rmd$
 ^\.travis\.yml$

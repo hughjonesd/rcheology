@@ -50,10 +50,12 @@ NULL
 #' fun_changed("debugonce", "3.4.0", "3.4.3")
 #' fun_changed("debugonce", "3.3.0", "3.4.3")
 fun_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
-  vns <- as.package_version(rcheology$Rversion)
-  relevant_vns <- unique(vns)
-  range <- rcheology$name == fn
-  if (! is.null(package)) range <- range & rcheology$package == package
+  rch <- rcheology::rcheology
+  vns <- as.package_version(rch$Rversion) 
+  # unique.character MUCH faster than unique.package_version:
+  relevant_vns <- as.package_version(unique(rch$Rversion))
+  range <- rch$name == fn
+  if (! is.null(package)) range <- range & rch$package == package
   if (! is.null(from))    {
     from <- as.package_version(from)
     range <- range & vns >= from
@@ -64,7 +66,7 @@ fun_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
     range <- range & vns <= to
     relevant_vns <- relevant_vns[relevant_vns <= to]
   }
-  fns <- rcheology[range, , drop = FALSE]
+  fns <- rch[range, , drop = FALSE]
   args <- fns$args
   if (length(unique(fns$package)) > 1) stop("Multiple functions found with that name")
   if (nrow(fns) == 0) stop("Couldn't find function of those versions")
