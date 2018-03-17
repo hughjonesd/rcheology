@@ -17,6 +17,7 @@ RUN apt-get install -y -q -d r-base-core
 COPY install-versions.sh .
 RUN chmod a+x install-versions.sh
 COPY list-objects.R .
-COPY r-base-versions.txt .
+# the perl script comments out older versions
+RUN apt-cache madison r-base-core | cut -d"|" -f 2 | perl -pe '$x = $_; $x =~ s/-.*//; s/^ //; $_ = "# $_" if $seen{$x}++;' > r-base-versions.txt
 
 CMD ["./install-versions.sh"]
