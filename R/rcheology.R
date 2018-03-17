@@ -2,7 +2,7 @@
 #' Data on functions from current and previous versions of R
 #' 
 #' A data frame with every function (and other object) in versions
-#' of R from 3.0.1 to 3.4.3. Variables are:
+#' of R from 2.0.0 to 3.4.3. Variables are:
 #' 
 #' * `name`: name of the object
 #' * `type`: Result of calling [typeof()] on the object
@@ -46,10 +46,10 @@ NULL
 #' @export
 #'
 #' @examples
-#' fn_changed("debugonce")
-#' fn_changed("debugonce", "3.4.0", "3.4.3")
-#' fn_changed("debugonce", "3.3.0", "3.4.3")
-fn_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
+#' fun_changed("debugonce")
+#' fun_changed("debugonce", "3.4.0", "3.4.3")
+#' fun_changed("debugonce", "3.3.0", "3.4.3")
+fun_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
   vns <- as.package_version(rcheology$Rversion)
   relevant_vns <- unique(vns)
   range <- rcheology$name == fn
