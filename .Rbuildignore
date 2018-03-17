@@ -3,10 +3,14 @@
 ^\.Rproj\.user$
 ^gather-data.R$
 ^list-objects.R$
+^Rversions\.R$
 ^docker-data$
-^install-versions.sh$
-^Dockerfile$
-^r-base-versions.txt$
+^app$
+^control$
+^.*\.sh$
+^Dockerfile.*$
+^.*.txt$
 ^README\.Rmd$
 ^\.travis\.yml$
 ^appveyor\.yml$
+
