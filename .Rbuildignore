@@ -8,3 +8,4 @@
 ^Dockerfile$
 ^r-base-versions.txt$
 ^README\.Rmd$
+^\.travis\.yml$

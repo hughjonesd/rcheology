@@ -14,7 +14,10 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
 # rcheology
+
+[![Travis build status](https://travis-ci.org/hughjonesd/rcheology.svg?branch=master)](https://travis-ci.org/hughjonesd/rcheology)
 
 A data package which lists every command in base R packages since R version 2.0.0.
 
