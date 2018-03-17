@@ -3,7 +3,7 @@
 rcheology
 =========
 
-[![Travis build status](https://travis-ci.org/hughjonesd/rcheology.svg?branch=master)](https://travis-ci.org/hughjonesd/rcheology)
+[![Travis build status](https://travis-ci.org/hughjonesd/rcheology.svg?branch=master)](https://travis-ci.org/hughjonesd/rcheology) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/hughjonesd/rcheology?branch=master&svg=true)](https://ci.appveyor.com/project/hughjonesd/rcheology)
 
 A data package which lists every command in base R packages since R version 2.0.0.
 

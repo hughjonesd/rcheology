@@ -9,3 +9,4 @@
 ^r-base-versions.txt$
 ^README\.Rmd$
 ^\.travis\.yml$
+^appveyor\.yml$
