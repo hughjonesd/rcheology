@@ -2,8 +2,6 @@
 
 library(magrittr)
 
-myargs = commandArgs(trailingOnly=TRUE)
-if (length(myargs) == 0) myargs <- c("build", "run", "gather", "write")
 
 CONTAINERS  <- list(
         rcheology = "rch_c", 
@@ -27,9 +25,13 @@ build <- function(containers = CONTAINERS, no_cache = FALSE) {
 
 
 # run images
-run <- function(containers = CONTAINERS) {
+run <- function(containers = CONTAINERS, versions) {
   for (image in names(containers)) {
-    system2("docker", c("run", "--name", containers[[image]], image))
+    args <- c("run", "--name", containers[[image]])
+    if (! missing(versions) && ! is.null(versions)) args <- c(args, "-e", paste0("MYVERSIONS=", versions))
+    args <- c(args, image)
+    cat(args)
+    system2("docker", args)
   }
 }
 
@@ -65,6 +67,12 @@ clean <- function(containers = CONTAINERS) {
 
 # main:
 
+myargs = commandArgs(trailingOnly=TRUE)
+if (length(myargs) == 0) myargs <- c("build", "run", "gather", "write")
+no_cache <- "--no-cache" %in% myargs
+has_versions <- match("--versions", myargs)
+versions <- if (! is.na(has_versions)) strsplit(myargs[has_versions + 1], ",", fixed = TRUE)[[1]]
+
 if (any(names(CONTAINERS) %in% myargs)) {
   containers <- CONTAINERS[ intersect(myargs, names(CONTAINERS)) ]
 } else {
@@ -72,8 +80,9 @@ if (any(names(CONTAINERS) %in% myargs)) {
 }
 
 if ("--help" %in% myargs) {
-  cat("\nUSAGE: control --no-cache [CMD] [IMAGES]\n\n",
+  cat("\nUSAGE: control [--no-cache] [--versions x,y,z] [CMD] [IMAGES]\n\n",
           "--no-cache: passed to docker build\n",
+          "--versions: passed to docker run to determine which R versions to test\n",
           "CMD:\n",
           "build: build Dockerfiles to images\n",
           "run: run images to install R versions and list objects\n",
@@ -87,11 +96,10 @@ if ("--help" %in% myargs) {
   quit("no")
 }
 
-no_cache <- "--no-cache" %in% myargs
 myargs <- intersect(myargs, c("build", "run", "gather", "write", "clean"))
 if (length(myargs) != 1) stop("Please specify exactly one of build/run/gather/write")
 if ("build"  %in% myargs) build(containers, no_cache)
-if ("run"    %in% myargs) run(containers)
+if ("run"    %in% myargs) run(containers, versions)
 if ("gather" %in% myargs) gather(containers)
 if ("write"  %in% myargs) write(to_package = TRUE)
 if ("clean"  %in% myargs) clean(containers)

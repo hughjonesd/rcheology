@@ -49,9 +49,29 @@ function run_list_objects {
   fi
 }
 
+
+HAS_MYV=0
+
+if [[ -n $MYVERSIONS ]] ; then
+  OIFS=$IFS
+  IFS=','
+  read -r -a MYV_ARRAY <<< "$MYVERSIONS"
+  IFS=$OIFS
+  HAS_MYV=1
+fi
+
 while read VERSION; do
   if [[ $VERSION == x* ]]; then continue; fi
-  download  $VERSION
+   if [[ $HAS_MYV==1 ]]; then
+    for MYV in "${MYV_ARRAY[@]}" 
+    do
+      if [[ $VERSION =~ "$MYV" ]] ; then 
+        download $VERSION
+      fi
+    done
+  else
+    download $VERSION
+  fi
 done <R-2.x-source-versions.txt
 
 wget --quiet "https://cran.r-project.org/src/base/R-3/R-3.0.0.tar.gz"
@@ -59,8 +79,18 @@ tar -zxf R-3.0.0.tar.gz
 
 while read VERSION; do
   if [[ $VERSION == x* ]]; then continue; fi
-  compile  $VERSION
-  run_list_objects $VERSION
+  if [[ $HAS_MYV==1 ]]; then
+    for MYV in "${MYV_ARRAY[@]}" 
+    do
+      if [[ $VERSION =~ "$MYV" ]] ; then 
+        compile $VERSION
+        run_list_objects $VERSION
+      fi
+    done
+  else
+    compile $VERSION
+    run_list_objects $VERSION
+  fi
 done <R-2.x-source-versions.txt
 
 compile R-3.0.0
