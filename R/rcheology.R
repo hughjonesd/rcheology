@@ -2,7 +2,7 @@
 #' Data on functions from current and previous versions of R
 #' 
 #' A data frame with every function (and other object) in versions
-#' of R from 2.0.0 to 3.4.3. Variables are:
+#' of R from 2.0.0 onwards. Variables are:
 #' 
 #' * `name`: name of the object
 #' * `type`: Result of calling [typeof()] on the object
@@ -20,13 +20,12 @@ NULL
 #' Previous R versions with dates
 #' 
 #' A data frame with 2 variables:
-#' 
 #' * `Rversion`: version of R as major.minor.patch
 #' * `date`: date of release
 #' 
 #' This goes back to 0.x releases. Some version 1's are "recommended";
 #' I don't know what these are. For 2.15.1-w, see 
-#' https://cran.r-project.org/src/base/R-2/README-2.15.1-w
+#' [here](https://cran.r-project.org/src/base/R-2/README-2.15.1-w).
 #' 
 #' @name Rversions 
 NULL

@@ -5,7 +5,7 @@
 \title{Data on functions from current and previous versions of R}
 \description{
 A data frame with every function (and other object) in versions
-of R from 2.0.0 to 3.4.3. Variables are:
+of R from 2.0.0 onwards. Variables are:
 }
 \details{
 \itemize{
