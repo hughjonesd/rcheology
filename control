@@ -18,10 +18,10 @@ DOCKERFILES <- list(
 
 
 # build images
-build <- function(containers = CONTAINERS) {
+build <- function(containers = CONTAINERS, no_cache = FALSE) {
   for (image in names(containers)) {
     dockerfile <- DOCKERFILES[[image]]
-    system2("docker", c("build", "-t", image, "-f", dockerfile, "."))
+    system2("docker", c("build", if (no_cache) "--no-cache" else NULL,  "-t", image, "-f", dockerfile, "."))
   }
 }
 
@@ -72,7 +72,8 @@ if (any(names(CONTAINERS) %in% myargs)) {
 }
 
 if ("--help" %in% myargs) {
-  cat("\nUSAGE: control.R [CMD] [IMAGES]\n\n",
+  cat("\nUSAGE: control --no-cache [CMD] [IMAGES]\n\n",
+          "--no-cache: passed to docker build\n",
           "CMD:\n",
           "build: build Dockerfiles to images\n",
           "run: run images to install R versions and list objects\n",
@@ -86,9 +87,10 @@ if ("--help" %in% myargs) {
   quit("no")
 }
 
+no_cache <- "--no-cache" %in% myargs
 myargs <- intersect(myargs, c("build", "run", "gather", "write", "clean"))
 if (length(myargs) != 1) stop("Please specify exactly one of build/run/gather/write")
-if ("build"  %in% myargs) build(containers)
+if ("build"  %in% myargs) build(containers, no_cache)
 if ("run"    %in% myargs) run(containers)
 if ("gather" %in% myargs) gather(containers)
 if ("write"  %in% myargs) write(to_package = TRUE)
