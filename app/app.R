@@ -38,7 +38,7 @@ keywords <- names(kw_opts)
 
 frc <- function (...) fluidRow(column(10, ..., offset = 1))
 ui <- fluidPage(
-  titlePanel("Base R Functions from 2.0.0 to 3.4.3"),
+  titlePanel("Base R Functions from 2.0.0 onwards"),
   frc(
     "Created using the ", a(href = "https://github.com/hughjonesd/rcheology", "rcheology"), " package."), 
   frc(code("Ever changed?"), " is true if a function was introduced or removed."),
