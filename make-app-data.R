@@ -1,5 +1,6 @@
 
 library(rcheology)
+library(dplyr)
 all_versions <- sort(as.package_version(unique(rcheology$Rversion)))
 
 
