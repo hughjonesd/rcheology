@@ -49,6 +49,8 @@ ui <- fluidPage(
   frc("This is on the shinyapps free plan; if it runs out of credit, visit ", 
     a(href = "https://github.com/hughjonesd/rcheology", "github.com/hughjonesd/rcheology"), 
     " to download the data and a copy of this app."),
+  frc("For a more general solution, try ", 
+    a(href = "https://github.com/hughjonesd/apicheck", "apicheck"), "."),
   frc(HTML("<br/>")),
   frc(dataTableOutput("rcheology_DT"))
 )
