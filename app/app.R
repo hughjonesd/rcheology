@@ -46,6 +46,9 @@ ui <- fluidPage(
   frc("Regexes work in filters."),
   frc(HTML("Links go to <a href='https://rdocumentation.org'>rdocumentation.org</a> and may not always work.")),
   frc(" Try: ", lapply(keywords, function (kw) list(HTML("&nbsp;"), actionLink(kw, kw)))),
+  frc("This is on the shinyapps free plan; if it runs out of credit, visit ", 
+    a(href = "https://github.com/hughjonesd/rcheology", "github.com/hughjonesd/rcheology"), 
+    " to download the data and a copy of this app."),
   frc(HTML("<br/>")),
   frc(dataTableOutput("rcheology_DT"))
 )
