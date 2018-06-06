@@ -18,7 +18,7 @@ remotes::install_github("hughjonesd/rcheology")
 Where the data comes from
 -------------------------
 
-Versions 3.0.1 and up are installed from the [CRAN apt repositories for Ubuntu Trusty Tahr](https://cran.r-project.org/bin/linux/ubuntu/trusty/).
+Versions 3.0.1 and up are installed from the [CRAN apt repositories for Ubuntu Trusty Tahr](https://cran.r-project.org/bin/linux/ubuntu/trusty/). Note that version 3.5.0 has yet to arrive.
 
 Versions 2.5.1 to 3.0.0 are built from source on [Ubuntu Lucid Lynx](https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/).
 
