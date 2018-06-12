@@ -6,12 +6,14 @@ library(magrittr)
 CONTAINERS  <- list(
         rcheology = "rch_c", 
         rch_r2    = "rch_r2_c", 
-        rch_r2s   = "rch_r2s_c"
+        rch_r2s   = "rch_r2s_c",
+        rch_r3.5  = "rch_r3.5_c"
       )
 DOCKERFILES <- list(
         rcheology = "Dockerfile", 
         rch_r2    = "Dockerfile-R2", 
-        rch_r2s   = "Dockerfile-R2-sarge"
+        rch_r2s   = "Dockerfile-R2-sarge",
+        rch_r3.5  = "Dockerfile-R3.5"
       )
 
 
