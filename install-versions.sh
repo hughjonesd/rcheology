@@ -46,7 +46,7 @@ NVERSIONS=${#VERSIONS[@]}
 for (( i=0; i<$NVERSIONS; i++ ))
 do
   if [[ ${VERSIONS[$i]} =~ "#" ]] ; then continue; fi
-  if [[ $HAS_MYV==1 ]]; then
+  if [[ $HAS_MYV == 1 ]]; then
     for MYV in "${MYV_ARRAY[@]}" 
     do
       if [[ ${VERSIONS[$i]} =~ "$MYV" ]] ; then 
