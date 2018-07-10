@@ -1,5 +1,36 @@
 
-#' Data on functions from current and previous versions of R
+#' Data on base packages from current and previous versions of R
+#' 
+#' rcheology is a data package providing two data frames: 
+#' 
+#' * [rcheology] lists objects in all versions of R from 2.0.0 onwards.
+#' * [Rversions] lists R versions and their release dates.
+#' 
+#' The version of the rcheology package reflects the latest R version to be included in the data, 
+#' e.g. 3.5.1.x contains data up to and including R 3.5.1.
+#' 
+#' An online app for data exploration is available at <https://hughjonesd.shinyapps.io/rcheology/>.
+#' 
+#' @section How the data is created:
+#' 
+#' Previous R versions are downloaded and installed on a Docker image. Objects in 
+#' all base packages are then listed. (Note that recommended packages, like `nnet` or `MASS`,
+#' are not installed.) For functions, the [formals()] of the function are recorded.
+#' 
+#' Versions 3.0.1 and up are installed from the 
+#' [CRAN apt repositories for Ubuntu Trusty Tahr](https://cran.r-project.org/bin/linux/ubuntu/trusty/).
+#'  Version 3.5.0 and up use a 
+#' [special repository](https://cran.r-project.org/bin/linux/ubuntu/trusty-cran35/).
+#' 
+#' Versions 2.5.1 to 3.0.0 are built from source on [Ubuntu Lucid Lynx](https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/).
+#' 
+#' Versions 2.0.0 to 2.4.1 are built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
+#' 
+#' @docType package
+#' @name rcheology-package
+NULL
+
+#' Data on objects from current and previous versions of R
 #' 
 #' A data frame with every function (and other object) in versions
 #' of R from 2.0.0 onwards. Variables are:

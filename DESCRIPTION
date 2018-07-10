@@ -1,6 +1,6 @@
 Package: rcheology
-Version: 0.0.0.9000
-Title: Data on Base Packages for Previous Versions of R
+Version: 3.5.1.0
+Title: Data on Base Packages for Current and Previous Versions of R
 Description: Provides a dataset of functions in all base packages of R versions 2.0.0 onwards.
 Authors@R: person("David", "Hugh-Jones", , "davidhughjones@gmail.com", c("aut", "cre"))
 License: CC0
@@ -11,6 +11,6 @@ Suggests: apicheck
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 Roxygen: list(markdown = TRUE)
 Remotes: hughjonesd/apicheck

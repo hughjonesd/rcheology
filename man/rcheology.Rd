@@ -2,7 +2,7 @@
 % Please edit documentation in R/rcheology.R
 \name{rcheology}
 \alias{rcheology}
-\title{Data on functions from current and previous versions of R}
+\title{Data on objects from current and previous versions of R}
 \description{
 A data frame with every function (and other object) in versions
 of R from 2.0.0 onwards. Variables are:
