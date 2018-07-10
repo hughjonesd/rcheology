@@ -7,7 +7,7 @@ rcheology
 
 A data package which lists every command in base R packages since R version 2.0.0.
 
-*Now with R 3.5.0 goodness!*
+The latest R version covered is 3.5.1.
 
 Installing
 ----------
