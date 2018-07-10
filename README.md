@@ -70,6 +70,7 @@ Base functions over time:
 ``` r
 library(ggplot2)
 suppressPackageStartupMessages(library(dplyr))
+#> Warning: package 'dplyr' was built under R version 3.5.1
 
 rvs <- rcheology$Rversion     %>% 
       unique()                %>% 
