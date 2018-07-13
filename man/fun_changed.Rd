@@ -25,6 +25,8 @@ Check if a core R function changed between R versions
 }
 \examples{
 fun_changed("debugonce")
+\donttest{
 fun_changed("debugonce", "3.4.0", "3.4.3")
 fun_changed("debugonce", "3.3.0", "3.4.3")
+}
 }

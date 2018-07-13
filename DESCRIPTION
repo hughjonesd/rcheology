@@ -7,10 +7,8 @@ License: CC0
 URL: https://github.com/hughjonesd/rcheology
 BugReports: https://github.com/hughjonesd/rcheology/issues
 Depends: R(>= 2.10)
-Suggests: apicheck
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 RoxygenNote: 6.0.1.9000
 Roxygen: list(markdown = TRUE)
-Remotes: hughjonesd/apicheck
