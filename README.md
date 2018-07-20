@@ -5,7 +5,7 @@ rcheology
 
 [![Travis build status](https://travis-ci.org/hughjonesd/rcheology.svg?branch=master)](https://travis-ci.org/hughjonesd/rcheology) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/hughjonesd/rcheology?branch=master&svg=true)](https://ci.appveyor.com/project/hughjonesd/rcheology) [![CRAN status](https://www.r-pkg.org/badges/version/rcheology)](https://cran.r-project.org/package=rcheology)
 
-A data package which lists every command in base R packages since R version 1.2.3.
+A data package which lists every command in base R packages since R version 1.0.1.
 
 The latest R version covered is 3.5.1.
 
@@ -97,7 +97,7 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
       scale_x_date(breaks  = major_rv_dates, labels = major_rvs) + 
       theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8)) + 
       xlab("Version") + ylab("Function count") + 
-      facet_wrap(~package, scales = "free_y", ncol = 3) +
+      facet_wrap(~package, scales = "free_y", ncol = 2) +
       theme(legend.position = "none") 
 ```
 
