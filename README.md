@@ -50,12 +50,12 @@ data("rcheology")
 
 head(rcheology)
 #>   name    type class generic args package Rversion
-#> 1    ! builtin  <NA>      NA <NA>    base    1.2.3
-#> 2   != builtin  <NA>      NA <NA>    base    1.2.3
-#> 3    $ special  <NA>      NA <NA>    base    1.2.3
-#> 4  $<- special  <NA>      NA <NA>    base    1.2.3
-#> 5   %% builtin  <NA>      NA <NA>    base    1.2.3
-#> 6  %*% builtin  <NA>      NA <NA>    base    1.2.3
+#> 1    ! builtin  <NA>      NA <NA>    base    1.0.1
+#> 2   != builtin  <NA>      NA <NA>    base    1.0.1
+#> 3    $ special  <NA>      NA <NA>    base    1.0.1
+#> 4  $<- special  <NA>      NA <NA>    base    1.0.1
+#> 5   %% builtin  <NA>      NA <NA>    base    1.0.1
+#> 6  %*% builtin  <NA>      NA <NA>    base    1.0.1
 ```
 
 Base functions over time:

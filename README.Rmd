@@ -95,7 +95,7 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
 
 An alternative view:
 
-```{r, fig.height=6}
+```{r}
 
 
 ggplot(rch_dates, aes(date, fill = "orange")) + 
