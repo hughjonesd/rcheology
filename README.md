@@ -5,7 +5,7 @@ rcheology
 
 [![Travis build status](https://travis-ci.org/hughjonesd/rcheology.svg?branch=master)](https://travis-ci.org/hughjonesd/rcheology) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/hughjonesd/rcheology?branch=master&svg=true)](https://ci.appveyor.com/project/hughjonesd/rcheology) [![CRAN status](https://www.r-pkg.org/badges/version/rcheology)](https://cran.r-project.org/package=rcheology)
 
-A data package which lists every command in base R packages since R version 2.0.0.
+A data package which lists every command in base R packages since R version 1.2.3.
 
 The latest R version covered is 3.5.1.
 
@@ -24,7 +24,7 @@ Versions 3.0.1 and up are installed from the [CRAN apt repositories for Ubuntu T
 
 Versions 2.5.1 to 3.0.0 are built from source on [Ubuntu Lucid Lynx](https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/).
 
-Versions 2.0.0 to 2.4.1 are built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
+Versions 1.2.3 to 2.4.1 are built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
 
 Results are found from running `ls` on all installed packages from a minimal installation. Recommended packages are not included.
 
@@ -49,20 +49,13 @@ library(rcheology)
 data("rcheology")
 
 head(rcheology)
-#>                name    type    class generic          args package
-#> 1                 ! builtin function   FALSE          <NA>    base
-#> 2                != builtin function   FALSE          <NA>    base
-#> 3                 $ special function   FALSE          <NA>    base
-#> 4 $.package_version closure function   FALSE     (x, name)    base
-#> 5               $<- special function   FALSE          <NA>    base
-#> 6    $<-.data.frame closure function   FALSE (x, i, value)    base
-#>   Rversion
-#> 1    2.0.0
-#> 2    2.0.0
-#> 3    2.0.0
-#> 4    2.0.0
-#> 5    2.0.0
-#> 6    2.0.0
+#>   name    type class generic args package Rversion
+#> 1    ! builtin  <NA>      NA <NA>    base    1.2.3
+#> 2   != builtin  <NA>      NA <NA>    base    1.2.3
+#> 3    $ special  <NA>      NA <NA>    base    1.2.3
+#> 4  $<- special  <NA>      NA <NA>    base    1.2.3
+#> 5   %% builtin  <NA>      NA <NA>    base    1.2.3
+#> 6  %*% builtin  <NA>      NA <NA>    base    1.2.3
 ```
 
 Base functions over time:
@@ -80,14 +73,32 @@ rvs <- rcheology$Rversion     %>%
 
 major_rvs <- grep(".0$", rvs, value = TRUE)
 major_rv_dates <- Rversions$date[Rversions$Rversion %in% major_rvs]
+major_rvs <- gsub("\\.0$", "", major_rvs)
 
 rch_dates <- rcheology %>% left_join(Rversions, by = "Rversion")
-ggplot(rch_dates, aes(date, group = package, fill= package), colour = NA) + 
+ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) + 
       stat_count(geom = "area") + 
       theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8)) + 
-      ggthemes::scale_fill_gdocs() +
+      # ggthemes::scale_fill_gdocs() +
       scale_x_date(breaks  = major_rv_dates, labels = major_rvs) + 
-      xlab("Version") + ylab("Function count")
+      xlab("Version") + ylab("Function count") + 
+      theme(legend.position = "top")
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+An alternative view:
+
+``` r
+
+
+ggplot(rch_dates, aes(date, fill = "orange")) + 
+      stat_count(geom = "area") + 
+      scale_x_date(breaks  = major_rv_dates, labels = major_rvs) + 
+      theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8)) + 
+      xlab("Version") + ylab("Function count") + 
+      facet_wrap(~package, scales = "free_y", ncol = 3) +
+      theme(legend.position = "none") 
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
