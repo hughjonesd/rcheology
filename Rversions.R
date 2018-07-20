@@ -14,4 +14,5 @@ scrape_version_dates <- function () {
 }
 
 Rversions <- scrape_version_dates()
+Rversions <- Rversions[! grepl("recommended", Rversions$Rversion), ]
 usethis::use_data(Rversions, overwrite = TRUE)
