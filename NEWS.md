@@ -1,7 +1,7 @@
-# rcheology 3.5.1.1
+# rcheology 3.5.1.0.9000
 
-* Include R functions from R 1.2.3 onwards
-  - R 1.7.0 and 1.7.1 don't compile on Debian Sarge
+* Include R functions from R 1.0.1 onwards. Compiled on Debian Woody and Sarge.
+* Removed releases of "recommended" packages from the Rversions data frame.
 
 # rcheology 3.5.1.0
 
