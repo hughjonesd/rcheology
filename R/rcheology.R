@@ -24,7 +24,12 @@
 #' 
 #' Versions 2.5.1 to 3.0.0 are built from source on [Ubuntu Lucid Lynx](https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/).
 #' 
-#' Versions 2.0.0 to 2.4.1 are built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
+#' Versions 1.2.3 to 2.4.1 are built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
+#' 
+#' @section Limitations:
+#' 
+#' * Versions 1.7.0 and 1.7.1 are not currently included as they can't compile on Sarge.
+#' * Functions not built on the relevant platform - e.g. Windows functions - are not included.
 #' 
 #' @docType package
 #' @name rcheology-package
@@ -54,8 +59,7 @@ NULL
 #' * `Rversion`: version of R as major.minor.patch
 #' * `date`: date of release
 #' 
-#' This goes back to 0.x releases. Some version 1's are "recommended";
-#' I don't know what these are. For 2.15.1-w, see 
+#' This goes back to 0.x releases. For 2.15.1-w, see 
 #' [here](https://cran.r-project.org/src/base/R-2/README-2.15.1-w).
 #' 
 #' @name Rversions 

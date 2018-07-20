@@ -11,7 +11,6 @@ A data frame with 2 variables:
 }
 }
 \details{
-This goes back to 0.x releases. Some version 1's are "recommended";
-I don't know what these are. For 2.15.1-w, see
+This goes back to 0.x releases. For 2.15.1-w, see
 \href{https://cran.r-project.org/src/base/R-2/README-2.15.1-w}{here}.
 }
