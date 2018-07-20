@@ -4,16 +4,16 @@ library(magrittr)
 
 
 CONTAINERS  <- list(
-        rcheology = "rch_c", 
-        rch_r2    = "rch_r2_c", 
-        rch_r2s   = "rch_r2s_c",
-        rch_r3.5  = "rch_r3.5_c"
+        trusty     = "trusty", 
+        lucid      = "lucid", 
+        sarge      = "sarge",
+        trusty3.5  = "trusty3.5"
       )
 DOCKERFILES <- list(
-        rcheology = "Dockerfile", 
-        rch_r2    = "Dockerfile-R2", 
-        rch_r2s   = "Dockerfile-R2-sarge",
-        rch_r3.5  = "Dockerfile-R3.5"
+        trusty = "Dockerfile-trusty", 
+        lucid    = "Dockerfile-lucid", 
+        sarge   = "Dockerfile-sarge",
+        trusty3.5  = "Dockerfile-trusty3.5"
       )
 
 

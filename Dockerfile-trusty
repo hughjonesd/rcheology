@@ -1,5 +1,5 @@
-# build like `docker build -t rcheology .`
-# run like `docker run  --name rcheology_container rcheology`
+# build like `docker build -t trusty -f Dockerfile-trusty`
+# run like `docker run  --name trusty trusty`
 
 FROM ubuntu:trusty
 
