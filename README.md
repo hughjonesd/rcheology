@@ -101,4 +101,4 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
       theme(legend.position = "none") 
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" height="1000px" />
