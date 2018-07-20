@@ -4,16 +4,18 @@ library(magrittr)
 
 
 CONTAINERS  <- list(
+        trusty3.5  = "trusty3.5",
         trusty     = "trusty", 
         lucid      = "lucid", 
         sarge      = "sarge",
-        trusty3.5  = "trusty3.5"
+        woody     = "woody"
       )
 DOCKERFILES <- list(
-        trusty = "Dockerfile-trusty", 
-        lucid    = "Dockerfile-lucid", 
-        sarge   = "Dockerfile-sarge",
-        trusty3.5  = "Dockerfile-trusty3.5"
+        trusty3.5  = "Dockerfile-trusty3.5",
+        trusty     = "Dockerfile-trusty", 
+        lucid      = "Dockerfile-lucid", 
+        sarge      = "Dockerfile-sarge",
+        woody     = "Dockerfile-woody"
       )
 
 
@@ -84,7 +86,7 @@ if (any(names(CONTAINERS) %in% myargs)) {
 if ("--help" %in% myargs) {
   cat("\nUSAGE: control [--no-cache] [--versions x,y,z] [CMD] [IMAGES]\n\n",
           "--no-cache: passed to docker build\n",
-          "--versions: passed to docker run to determine which R versions to test\n",
+          "--versions: passed to docker run to determine which R versions to test\n\n",
           "CMD:\n",
           "build: build Dockerfiles to images\n",
           "run: run images to install R versions and list objects\n",

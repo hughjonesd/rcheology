@@ -74,11 +74,21 @@ for (pkg in ip) {
 }
 
 # simulate write.csv for older Rs
-write.table(pkgData, 
-        file = file.path("docker-data", paste("pkg_data-R-", shortRversion, ".csv", sep = "")),
-        row.names = FALSE,
-        dec       = ".",
-        sep       = ",",
-        qmethod   = "double",
-        col.names = TRUE
-      )
+if (rv$major == 1 && rv$minor <= "2.0") {
+  write.table(pkgData, 
+    file = file.path("docker-data", paste("pkg_data-R-", shortRversion, ".csv", sep = "")),
+    row.names = FALSE,
+    sep       = ",",
+    col.names = TRUE,
+    # quote = TRUE only gets applied to character cols in early R
+    quote     = seq(1, ncol(pkgData)) 
+  )
+} else {
+  write.table(pkgData, 
+          file = file.path("docker-data", paste("pkg_data-R-", shortRversion, ".csv", sep = "")),
+          row.names = FALSE,
+          sep       = ",",
+          qmethod   = "double",
+          col.names = TRUE
+        )
+}

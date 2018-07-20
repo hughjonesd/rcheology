@@ -17,7 +17,7 @@ R-1.5.1
 R-1.6.0
 R-1.6.1
 R-1.6.2
-x R-1.7.0 x Don't compile
+x R-1.7.0 x Don't compile on sarge
 x R-1.7.1
 R-1.8.0
 R-1.8.1
