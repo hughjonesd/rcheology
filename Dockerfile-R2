@@ -14,10 +14,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q r-base-dev tclx8.4-dev 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q wget 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q vim  
 
-COPY install-R-2.x-versions.sh .
-RUN chmod a+x install-R-2.x-versions.sh
+COPY install-R-source-versions.sh .
+RUN chmod a+x install-R-source-versions.sh
 COPY list-objects.R .
-COPY R-2.x-source-versions.txt .
+COPY R-versions-lucid.txt ./R-versions.txt
 
-CMD ["./install-R-2.x-versions.sh"]
+CMD ["./install-R-source-versions.sh"]
 

@@ -1,10 +1,28 @@
 #!/bin/bash
 
+# to run for a specific version, do:
+# MYVERSIONS=1.3,1.4 ./install-R-source-versions.sh
+# MYVERSIONS will be turned into an array then matched as an extended pattern
+
+
 function download {
-  TARFILE="$1.tar.gz"
+  if [[ -d "$1" ]]; then
+    echo "Directory $1 already on disk. Skipping download."
+    return 0
+  fi
+  if grep -Eq '^R-1' <<<"$1"; then
+    DOWNLOAD_DIR="R-1"
+    TARFILE="$1.tgz"
+  elif grep -Eq '^R-2' <<<"$1"; then
+    DOWNLOAD_DIR="R-2"
+    TARFILE="$1.tar.gz"
+  else
+    DOWNLOAD_DIR="R-3"
+    TARFILE="$1.tar.gz"
+  fi
   echo "==============="
   echo "Downloading $TARFILE:"
-  wget --quiet "https://cran.r-project.org/src/base/R-2/$TARFILE"
+  wget --quiet "https://cran.r-project.org/src/base/$DOWNLOAD_DIR/$TARFILE"
   if [[ $? > 0 ]]
   then
     echo "wget failed. Stopping."
@@ -28,7 +46,12 @@ function compile {
       --with-libpng=no --with-libjpeg=no \
       --with-tcl-config=/usr/lib/tcl8.4/tclConfig.sh \
       --with-tk-config=/usr/lib/tk8.4/tkConfig.sh --with-tcl-tk=yes
-  make -j4
+  if grep -Eq 'R-1.[123456]' <<< $1; then
+    make
+  else
+    make -j4
+  fi
+  
   if [[ $? > 0 ]]
   then
     echo "make failed. Stopping."
@@ -52,7 +75,7 @@ function run_list_objects {
 
 HAS_MYV=0
 
-if [[ -n $MYVERSIONS ]] ; then
+if [[ -n "$MYVERSIONS" ]] ; then
   OIFS=$IFS
   IFS=','
   read -r -a MYV_ARRAY <<< "$MYVERSIONS"
@@ -62,27 +85,24 @@ fi
 
 while read VERSION; do
   if [[ $VERSION == x* ]]; then continue; fi
-   if [[ $HAS_MYV==1 ]]; then
+   if [[ $HAS_MYV == 1 ]]; then
     for MYV in "${MYV_ARRAY[@]}" 
     do
-      if [[ $VERSION =~ "$MYV" ]] ; then 
+      if grep -Eq "$MYV" <<< $VERSION; then
         download $VERSION
       fi
     done
   else
     download $VERSION
   fi
-done <R-2.x-source-versions.txt
-
-wget --quiet "https://cran.r-project.org/src/base/R-3/R-3.0.0.tar.gz"
-tar -zxf R-3.0.0.tar.gz
+done <R-versions.txt
 
 while read VERSION; do
   if [[ $VERSION == x* ]]; then continue; fi
-  if [[ $HAS_MYV==1 ]]; then
+  if [[ $HAS_MYV == 1 ]]; then
     for MYV in "${MYV_ARRAY[@]}" 
     do
-      if [[ $VERSION =~ "$MYV" ]] ; then 
+      if grep -Eq "$MYV" <<< $VERSION; then
         compile $VERSION
         run_list_objects $VERSION
       fi
@@ -91,7 +111,5 @@ while read VERSION; do
     compile $VERSION
     run_list_objects $VERSION
   fi
-done <R-2.x-source-versions.txt
+done <R-versions.txt
 
-compile R-3.0.0
-run_list_objects R-3.0.0

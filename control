@@ -92,7 +92,7 @@ if ("--help" %in% myargs) {
           "write: write csv to package\n",
           "clean: delete containers\n\n",
           "IMAGES:\n",
-          paste(names(containers), collapse = "\n "),
+          paste(names(CONTAINERS), collapse = "\n "),
           "\n\n Default: all of them\n\n"
         )
   quit("no")

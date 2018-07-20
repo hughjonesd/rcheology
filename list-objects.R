@@ -1,10 +1,10 @@
 #! Rscript
 #
 
-options(error = traceback)
+try(options(error = traceback))
 
-ip <- rownames(installed.packages())
-pkg_data <- data.frame(
+ip <- installed.packages()[, "Package"]
+pkgData <- data.frame(
         name     = character(0), 
         type     = character(0),
         class    = character(0),
@@ -15,9 +15,10 @@ pkg_data <- data.frame(
         Rversion = character(0)
       )
 rv <- R.Version()
-short_rversion <- paste(rv$major, rv$minor, sep = ".")
+shortRversion <- paste(rv$major, rv$minor, sep = ".")
+S4exists <- rv$major > 1 || (rv$major == 1 && rv$minor >= "4.0") # think doing string comparisons OK
 
-get_args <- function (fn) {
+funArgs <- function (fn) {
   a <- deparse(args(fn))
   res <- paste(a[-length(a)], collapse = "")
   res <- sub("^function ", "", res)
@@ -25,43 +26,48 @@ get_args <- function (fn) {
   res
 }
 
-safely_test_generic <- function (fname, ns) {
+# backported
+is.primitive <- function (x) switch(typeof(x), special = , builtin = TRUE, FALSE)
+
+safelyTestGeneric <- function (fname, ns) {
   if (is.primitive(get(fname, ns))) return(NA)
-  return(methods::isGeneric(fname))
+  if (! S4exists) return(FALSE)
+  return(isGeneric(fname)) # can't use namespacing for early R
 }
+
 
 for (pkg in ip) {
   try({
-    if (! require(pkg, character.only = TRUE)) {
-      warning(sprintf("Could not load %s", pkg))
+    if (! library(pkg, character.only = TRUE, logical.return = TRUE)) {
+      warning(paste("Could not load", pkg))
       break
     }
     
-    ns_name <- paste("package:", pkg, sep = "")
-    pkg_obj_names <- ls(ns_name) 
-    pkg_obj_names <- sort(pkg_obj_names)
-    pkg_objs      <- lapply(pkg_obj_names, get, ns_name)
-    types         <- sapply(pkg_objs, typeof)
-    classes       <- sapply(pkg_objs, function (x) paste(class(x), collapse = "/"))
-    generics      <- sapply(pkg_obj_names, safely_test_generic, ns_name)
-    args          <- sapply(pkg_objs, function (x) if (is.function(x)) get_args(x) else NA)
+    nsName <- paste("package:", pkg, sep = "")
+    pkgObjNames <- do.call("ls", list(nsName)) # NSE weirdness in early R
+    pkgObjNames <- sort(pkgObjNames)
+    pkgObjs      <- lapply(pkgObjNames, get, nsName)
+    types         <- sapply(pkgObjs, typeof)
+    classes       <- sapply(pkgObjs, function (x) paste(class(x), collapse = "/"))
+    generics      <- sapply(pkgObjNames, safelyTestGeneric, nsName)
+    args          <- sapply(pkgObjs, function (x) if (is.function(x)) funArgs(x) else NA)
     
-    this_pkg_data <- data.frame(
-            name     = pkg_obj_names,
+    thisPkgData <- data.frame(
+            name     = pkgObjNames,
             type     = types,
             class    = classes,
             generic  = generics,
             args     = args,
-            package  = pkg,
-            Rversion = short_rversion
+            package  = rep(pkg, length(pkgObjNames)),
+            Rversion = rep(shortRversion, length(pkgObjNames)) # necessary for old R
           )
-    pkg_data <- rbind(pkg_data, this_pkg_data)
+    pkgData <- rbind(pkgData, thisPkgData)
   })
 }
 
 # simulate write.csv for older Rs
-write.table(pkg_data, 
-        file = file.path("docker-data", paste("pkg_data-R-", short_rversion, ".csv", sep = "")),
+write.table(pkgData, 
+        file = file.path("docker-data", paste("pkg_data-R-", shortRversion, ".csv", sep = "")),
         row.names = FALSE,
         dec       = ".",
         sep       = ",",
