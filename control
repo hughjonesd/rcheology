@@ -54,7 +54,7 @@ write <- function (to_package = FALSE) {
   rcheology <- as.data.frame(rcheology)
   cat("Dimensions:", dim(rcheology), "\n")
   cat("First rows:\n")
-  head(rcheology)
+  print(head(rcheology))
   if (to_package) usethis::use_data(rcheology, overwrite = TRUE)
 }
 
