@@ -8,6 +8,9 @@ shortRversion <- paste(rv$major, rv$minor, sep = ".")
 S4exists <- rv$major > 1 || (rv$major == 1 && rv$minor >= "4.0") # think doing string comparisons OK
 if (S4exists) library(methods)
 
+source("write-table-backport.R")
+
+
 funArgs <- function (fn) {
   a <- deparse(args(fn))
   res <- paste(a[-length(a)], collapse = "")
@@ -73,22 +76,16 @@ for (pkg in ip) {
   })
 }
 
-# simulate write.csv for older Rs
-if (rv$major == 1 && rv$minor <= "2.0") {
-  write.table(pkgData, 
-    file = file.path("docker-data", paste("pkg_data-R-", shortRversion, ".csv", sep = "")),
-    row.names = FALSE,
-    sep       = ",",
-    col.names = TRUE,
-    # quote = TRUE only gets applied to character cols in early R
-    quote     = seq(1, ncol(pkgData)) 
-  )
-} else {
-  write.table(pkgData, 
-          file = file.path("docker-data", paste("pkg_data-R-", shortRversion, ".csv", sep = "")),
-          row.names = FALSE,
-          sep       = ",",
-          qmethod   = "double",
-          col.names = TRUE
-        )
+
+if (rv$major == 1 && rv$minor < "2.0") {
+  source("write-table-backport.R")
 }
+# simulate write.csv for older Rs
+write.table(pkgData, 
+        file = file.path("docker-data", paste("pkg_data-R-", shortRversion, ".csv", sep = "")),
+        row.names = FALSE,
+        sep       = ",",
+        qmethod   = "double",
+        col.names = TRUE
+      )
+

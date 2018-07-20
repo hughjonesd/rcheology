@@ -17,6 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q man
 COPY install-R-source-earlybash.sh .
 RUN chmod a+x install-R-source-earlybash.sh
 COPY list-objects.R .
+COPY write-table-backport.R .
 COPY R-versions-woody.txt ./R-versions.txt
 
 CMD ["./install-R-source-earlybash.sh"]
