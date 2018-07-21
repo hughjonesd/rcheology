@@ -24,22 +24,23 @@ An online app for data exploration is available at \url{https://hughjonesd.shiny
 Previous R versions are downloaded and installed on a Docker image. Objects in
 all base packages are then listed. (Note that recommended packages, like \code{nnet} or \code{MASS},
 are not installed.) For functions, the \code{\link[=formals]{formals()}} of the function are recorded.
-
-Versions 3.0.1 and up are installed from the
-\href{https://cran.r-project.org/bin/linux/ubuntu/trusty/}{CRAN apt repositories for Ubuntu Trusty Tahr}.
-Version 3.5.0 and up use a
+\itemize{
+\item Versions 3.0.1 and up are installed from the
+\href{https://cran.r-project.org/bin/linux/ubuntu/trusty/}{CRAN apt repositories for Ubuntu Trusty Tahr}. Version 3.5.0 and up use a
 \href{https://cran.r-project.org/bin/linux/ubuntu/trusty-cran35/}{special repository}.
-
-Versions 2.5.1 to 3.0.0 are built from source on \href{https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/}{Ubuntu Lucid Lynx}.
-
-Versions 1.2.3 to 2.4.1 are built from source on \href{https://hub.docker.com/r/debian/eol/}{Debian Sarge}.
+\item Versions 2.5.1 to 3.0.0 are built from source on \href{https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/}{Ubuntu Lucid Lynx}.
+\item Versions 1.2.3 to 2.4.1 are built from source on \href{https://hub.docker.com/r/debian/eol/}{Debian Sarge}.
+\item Versions 1.0.1 to 1.2.2, and versions 1.7.0 and 1.7.1, are built from source on \href{https://hub.docker.com/r/debian/eol/}{Debian Woody}.
+}
 }
 
 \section{Limitations}{
 
 \itemize{
-\item Versions 1.7.0 and 1.7.1 are not currently included as they can't compile on Sarge.
 \item Functions not built on the relevant platform - e.g. Windows functions - are not included.
+\item Because data is collected using the original R version, it is subject to changes in the way
+R works. For example, before 2.5.0, \code{\link[=args]{args()}} didn't work on \code{Primitive} functions, so
+those functions have no value in the \code{args} column.
 }
 }
 

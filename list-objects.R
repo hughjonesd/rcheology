@@ -26,7 +26,7 @@ safelyTestGeneric <- function (fname, ns) {
   if (is.primitive(get(fname, ns))) return(NA)
   if (! S4exists) return(FALSE)
   
-  return(isGeneric(fname)) # can't use namespacing for early R
+  return(isGeneric(fname)) # can't use namespacing for early R, so no methods::
 }
 
 makeData <- function (pkg) {
