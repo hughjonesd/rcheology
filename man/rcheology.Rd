@@ -6,15 +6,13 @@
 \description{
 A data frame with every function (and other object) in versions
 of R from 2.0.0 onwards. Variables are:
-}
-\details{
 \itemize{
+\item \code{package}: package the object comes from
 \item \code{name}: name of the object
+\item \code{Rversion}: version of R as major.minor.patch
 \item \code{type}: Result of calling \code{\link[=typeof]{typeof()}} on the object
 \item \code{class}: \code{\link[=class]{class()}} of the object, separated by slashes if there are multiple classes.
 \item \code{generic}: \code{TRUE} if the object is an (S4) generic according to \code{\link[methods:isGeneric]{methods::isGeneric()}}
 \item \code{args}: the arguments of the function, or NA for non-functions
-\item \code{package}: package the object comes from
-\item \code{Rversion}: version of R as major.minor.patch
 }
 }
