@@ -12,6 +12,14 @@ The latest R version covered is 3.5.1.
 Installing
 ----------
 
+From CRAN:
+
+``` r
+install.packages('rcheology')
+```
+
+From Github:
+
 ``` r
 install.packages("remotes") # if you need to
 remotes::install_github("hughjonesd/rcheology")
@@ -49,13 +57,13 @@ library(rcheology)
 data("rcheology")
 
 head(rcheology)
-#>   name    type class generic args package Rversion
-#> 1    ! builtin  <NA>      NA <NA>    base    1.0.1
-#> 2   != builtin  <NA>      NA <NA>    base    1.0.1
-#> 3    $ special  <NA>      NA <NA>    base    1.0.1
-#> 4  $<- special  <NA>      NA <NA>    base    1.0.1
-#> 5   %% builtin  <NA>      NA <NA>    base    1.0.1
-#> 6  %*% builtin  <NA>      NA <NA>    base    1.0.1
+#>      package name Rversion    type class generic args
+#> 16      base    -    1.0.1 builtin  <NA>      NA <NA>
+#> 1464    base    -    1.1.0 builtin  <NA>      NA <NA>
+#> 2683    base    -    1.1.1 builtin  <NA>      NA <NA>
+#> 3904    base    -    1.2.0 builtin  <NA>      NA <NA>
+#> 5519    base    -    1.2.1 builtin  <NA>      NA <NA>
+#> 7145    base    -    1.2.2 builtin  <NA>      NA <NA>
 ```
 
 Base functions over time:
@@ -85,7 +93,7 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
       theme(legend.position = "top")
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 An alternative view:
 
@@ -101,4 +109,4 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
       theme(legend.position = "none") 
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" height="1000px" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" height="1000px" />

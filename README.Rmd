@@ -27,6 +27,14 @@ The latest R version covered is `r max(package_version(unique(rcheology::rcheolo
 
 ## Installing
 
+From CRAN:
+
+```{r, eval = FALSE}
+install.packages('rcheology')
+```
+
+From Github:
+
 ```{r, eval = FALSE}
 install.packages("remotes") # if you need to
 remotes::install_github("hughjonesd/rcheology")
