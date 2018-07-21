@@ -54,6 +54,8 @@ write <- function (to_package = FALSE) {
     purrr::map_df(~readr::read_csv(., col_types = "ccclccc")) 
   
   rcheology <- as.data.frame(rcheology)
+  rcheology <- rcheology[, c('package', 'name', 'Rversion', 'type', 'class', 'generic', 'args')]
+  rcheology <- rcheology[order(rcheology$package, rcheology$name, as.package_version(rcheology$Rversion)), ]
   cat("Dimensions:", dim(rcheology), "\n")
   cat("First rows:\n")
   print(head(rcheology))
