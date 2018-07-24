@@ -47,7 +47,9 @@ Versions 3.0.1 and up are installed from the [CRAN apt repositories for Ubuntu T
 
 Versions 2.5.1 to 3.0.0 are built from source on [Ubuntu Lucid Lynx](https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/).
 
-Versions 1.2.3 to 2.4.1 are built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
+Versions 1.2.3 to 2.4.1 are mostly built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
+
+Versions 1.0.1 to 1.2.2 (and a couple of later versions) are built from source on [Debian Woody](https://hub.docker.com/r/debian/eol/).
 
 Results are found from running `ls` on all installed packages from a minimal installation.
 Recommended packages are not included.
@@ -56,7 +58,7 @@ The `Rversions` data frame lists versions of R and release dates.
 
 ## Do it yourself
 
-* Install docker
+* Install docker.
 * `./control build` builds the images. Or get them from https://hub.docker.com/r/dash2/rcheology/.
 * `./control run` runs the images to build/install R and extract data
 * `./control gather` gets CSV files from the containers
