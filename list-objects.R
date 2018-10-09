@@ -29,12 +29,23 @@ safelyTestGeneric <- function (fname, ns) {
   return(isGeneric(fname)) # can't use namespacing for early R, so no methods::
 }
 
+
+checkExported <- function(objName, pkg) {
+  if (pkg == "base") return(TRUE)
+  if (rv$major > 1 || (rv$major == 1 && rv$minor >= "7.0")) {
+    return(objName %in% getNamespaceExports(pkg))
+  } else {
+    return(TRUE)
+  }
+}
+
 makeData <- function (pkg) {
   nsName <- paste("package:", pkg, sep = "")
-  pkgObjNames  <- do.call("ls", list(nsName)) # NSE weirdness in early R
+  pkgObjNames  <- do.call("ls", list(nsName, all.names = TRUE)) # NSE weirdness in early R
   pkgObjNames  <- sort(pkgObjNames)
-  pkgObjs      <- lapply(pkgObjNames, get, nsName)
+  pkgObjs      <- lapply(pkgObjNames, get, pos = nsName, inherits = FALSE)
   types        <- sapply(pkgObjs, typeof)
+  isExported   <- sapply(pkgObjNames, checkExported, pkg)
   classes      <- sapply(pkgObjs, function (x) paste(class(x), collapse = "/"))
   generics     <- sapply(pkgObjNames, safelyTestGeneric, nsName)
   args         <- sapply(pkgObjs, function (x) if (is.function(x)) funArgs(x) else NA)
@@ -42,6 +53,7 @@ makeData <- function (pkg) {
   thisPkgData <- data.frame(
     name     = pkgObjNames,
     type     = types,
+    exported = isExported,
     class    = classes,
     generic  = generics,
     args     = args,
@@ -58,6 +70,7 @@ pkgData <- data.frame(
         name     = character(0), 
         type     = character(0),
         class    = character(0),
+        exported = logical(0),
        # S3method = character(0),
         generic  = logical(0),
         args     = character(0),
