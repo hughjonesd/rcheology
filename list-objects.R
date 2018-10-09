@@ -8,8 +8,6 @@ shortRversion <- paste(rv$major, rv$minor, sep = ".")
 S4exists <- rv$major > 1 || (rv$major == 1 && rv$minor >= "4.0") # think doing string comparisons OK
 if (S4exists) library(methods)
 
-source("write-table-backport.R")
-
 
 funArgs <- function (fn) {
   a <- deparse(args(fn))

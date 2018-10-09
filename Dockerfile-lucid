@@ -17,6 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q vim
 COPY install-R-source-versions.sh .
 RUN chmod a+x install-R-source-versions.sh
 COPY list-objects.R .
+COPY write-table-backport.R .
 COPY R-versions-lucid.txt ./R-versions.txt
 
 CMD ["./install-R-source-versions.sh"]

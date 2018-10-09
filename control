@@ -15,7 +15,7 @@ DOCKERFILES <- list(
         trusty     = "Dockerfile-trusty", 
         lucid      = "Dockerfile-lucid", 
         sarge      = "Dockerfile-sarge",
-        woody     = "Dockerfile-woody"
+        woody      = "Dockerfile-woody"
       )
 
 
@@ -42,6 +42,7 @@ run <- function(containers = CONTAINERS, versions) {
 
 # get data out
 gather <- function (containers = CONTAINERS) {
+  
   for (cont in containers) {
     system2("docker", c("cp", paste0(cont, ":", "/rcheology/docker-data/."), "docker-data"))
   }  
