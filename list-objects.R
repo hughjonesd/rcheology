@@ -51,8 +51,8 @@ makeData <- function (pkg) {
   thisPkgData <- data.frame(
     name     = pkgObjNames,
     type     = types,
-    exported = isExported,
     class    = classes,
+    exported = isExported,
     generic  = generics,
     args     = args,
     package  = rep(pkg, length(pkgObjNames)),

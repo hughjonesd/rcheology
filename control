@@ -8,7 +8,7 @@ CONTAINERS  <- list(
         trusty     = "trusty", 
         lucid      = "lucid", 
         sarge      = "sarge",
-        woody     = "woody"
+        woody      = "woody"
       )
 DOCKERFILES <- list(
         trusty3.5  = "Dockerfile-trusty3.5",
@@ -17,7 +17,7 @@ DOCKERFILES <- list(
         sarge      = "Dockerfile-sarge",
         woody      = "Dockerfile-woody"
       )
-
+COMMANDS <- c("build", "run", "gather", "write", "clean")
 
 # build images
 build <- function(containers = CONTAINERS, no_cache = FALSE) {
@@ -29,7 +29,7 @@ build <- function(containers = CONTAINERS, no_cache = FALSE) {
 
 
 # run images
-run <- function(containers = CONTAINERS, versions) {
+run <- function(containers = CONTAINERS, versions = NULL) {
   for (image in names(containers)) {
     args <- c("run", "--name", containers[[image]])
     if (! missing(versions) && ! is.null(versions)) args <- c(args, "-e", paste0("MYVERSIONS=", versions))
@@ -52,7 +52,7 @@ gather <- function (containers = CONTAINERS) {
 # write R file
 write <- function (to_package = FALSE) {
   rcheology <- list.files(pattern="*.csv", path = "docker-data", full.names = TRUE) %>% 
-    purrr::map_df(~readr::read_csv(., col_types = "cclclccc")) 
+    purrr::map_df(~readr::read_csv(., col_types = "cccllccc")) 
   
   rcheology <- as.data.frame(rcheology)
   rcheology <- rcheology[, c('package', 'name', 'Rversion', 'type', 'exported', 'class', 'generic', 'args')]
@@ -72,6 +72,21 @@ clean <- function(containers = CONTAINERS) {
   }
 }
 
+usage <- function () {
+  cat("\nUSAGE: control [--no-cache] [--versions x,y,z] [CMD] [IMAGES]\n\n",
+    "--no-cache: passed to docker build\n",
+    "--versions: passed to docker run to determine which R versions to test\n\n",
+    "CMD:\n",
+    "build: build Dockerfiles to images\n",
+    "run: run images to install R versions and list objects\n",
+    "gather: gather csv files from containers\n",
+    "write: write csv to package\n",
+    "clean: delete containers\n\n",
+    "IMAGES:\n",
+    paste(names(CONTAINERS), collapse = "\n "),
+    "\n\n Default: all of them\n\n"
+  )
+}
 
 # main:
 
@@ -79,7 +94,13 @@ myargs = commandArgs(trailingOnly=TRUE)
 if (length(myargs) == 0) myargs <- c("build", "run", "gather", "write")
 no_cache <- "--no-cache" %in% myargs
 has_versions <- match("--versions", myargs)
-versions <- if (! is.na(has_versions)) strsplit(myargs[has_versions + 1], ",", fixed = TRUE)[[1]]
+
+if (! is.na(has_versions)) {
+  versions <- strsplit(myargs[has_versions + 1], ",", fixed = TRUE)[[1]]
+  myargs <- myargs[-(has_versions + 1)]
+} else {
+  versions <- NULL
+}
 
 if (any(names(CONTAINERS) %in% myargs)) {
   containers <- CONTAINERS[ intersect(myargs, names(CONTAINERS)) ]
@@ -88,23 +109,17 @@ if (any(names(CONTAINERS) %in% myargs)) {
 }
 
 if ("--help" %in% myargs) {
-  cat("\nUSAGE: control [--no-cache] [--versions x,y,z] [CMD] [IMAGES]\n\n",
-          "--no-cache: passed to docker build\n",
-          "--versions: passed to docker run to determine which R versions to test\n\n",
-          "CMD:\n",
-          "build: build Dockerfiles to images\n",
-          "run: run images to install R versions and list objects\n",
-          "gather: gather csv files from containers\n",
-          "write: write csv to package\n",
-          "clean: delete containers\n\n",
-          "IMAGES:\n",
-          paste(names(CONTAINERS), collapse = "\n "),
-          "\n\n Default: all of them\n\n"
-        )
+  usage()
   quit("no")
 }
 
-myargs <- intersect(myargs, c("build", "run", "gather", "write", "clean"))
+if (! all(myargs %in% c("--versions", "--no-cache", names(CONTAINERS), COMMANDS))) {
+  cat("Unrecognized argument.\n\n")
+  usage()
+  quit("no")
+}
+
+myargs <- intersect(myargs, COMMANDS)
 if (length(myargs) != 1) stop("Please specify exactly one of build/run/gather/write")
 if ("build"  %in% myargs) build(containers, no_cache)
 if ("run"    %in% myargs) run(containers, versions)
