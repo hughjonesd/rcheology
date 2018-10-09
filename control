@@ -52,10 +52,10 @@ gather <- function (containers = CONTAINERS) {
 # write R file
 write <- function (to_package = FALSE) {
   rcheology <- list.files(pattern="*.csv", path = "docker-data", full.names = TRUE) %>% 
-    purrr::map_df(~readr::read_csv(., col_types = "ccclccc")) 
+    purrr::map_df(~readr::read_csv(., col_types = "cclclccc")) 
   
   rcheology <- as.data.frame(rcheology)
-  rcheology <- rcheology[, c('package', 'name', 'Rversion', 'type', 'class', 'generic', 'args')]
+  rcheology <- rcheology[, c('package', 'name', 'Rversion', 'type', 'exported', 'class', 'generic', 'args')]
   rcheology <- rcheology[order(rcheology$package, rcheology$name, as.package_version(rcheology$Rversion)), ]
   rownames(rcheology) <- NULL
   cat("Dimensions:", dim(rcheology), "\n")
