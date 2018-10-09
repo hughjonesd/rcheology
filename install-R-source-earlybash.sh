@@ -43,10 +43,7 @@ function compile {
   # these speed up configuration but don't remove any functions from ls()
   # tcltk must be enabled though; and x, to avoid obscure 2.8.0 bug
   # readline disabled for versions before 1.2.3
-  CFLAGS="-O0 -pipe" FFLAGS=-O0 \
-  TCLTK_LIBS='-L/usr/lib/tcl8.3 -L/usr/lib/tk8.3 -L/usr/lib -ltk8.3 -ltcl8.3 -pthread -lX11 -lXft' \
-  TCLTK_CPPFLAGS='-I/usr/include/tcl8.3 -pthread' \
-  ./configure --with-recommended-packages=no \
+  CFLAGS="-O0 -pipe" FFLAGS=-O0 ./configure --with-recommended-packages=no \
       --with-libpng=no --with-libjpeg=no --with-readline=no\
       --with-tcl-config=/usr/lib/tcl8.3/tclConfig.sh \
       --with-tk-config=/usr/lib/tk8.3/tkConfig.sh --with-tcl-tk=yes
