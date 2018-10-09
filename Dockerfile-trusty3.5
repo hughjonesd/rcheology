@@ -1,7 +1,7 @@
 # build like `docker build -t rch_r3.5 .`
 # run like `docker run  --name rch_r3.5_c rch_r3.5`
 
-FROM rcheology
+FROM trusty
 
 RUN rm r-base-versions.txt
 RUN apt-get remove -y -q -d r-base-core
