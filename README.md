@@ -1,5 +1,5 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd.  Please edit that file -->
 rcheology
 =========
 
@@ -59,13 +59,13 @@ library(rcheology)
 data("rcheology")
 
 head(rcheology)
-#>      package name Rversion    type class generic args
-#> 16      base    -    1.0.1 builtin  <NA>      NA <NA>
-#> 1464    base    -    1.1.0 builtin  <NA>      NA <NA>
-#> 2683    base    -    1.1.1 builtin  <NA>      NA <NA>
-#> 3904    base    -    1.2.0 builtin  <NA>      NA <NA>
-#> 5519    base    -    1.2.1 builtin  <NA>      NA <NA>
-#> 7145    base    -    1.2.2 builtin  <NA>      NA <NA>
+#>   package name Rversion    type exported class generic args
+#> 1    base    -    1.0.1 builtin     TRUE  <NA>      NA <NA>
+#> 2    base    -    1.1.0 builtin     TRUE  <NA>      NA <NA>
+#> 3    base    -    1.1.1 builtin     TRUE  <NA>      NA <NA>
+#> 4    base    -    1.2.0 builtin     TRUE  <NA>      NA <NA>
+#> 5    base    -    1.2.1 builtin     TRUE  <NA>      NA <NA>
+#> 6    base    -    1.2.2 builtin     TRUE  <NA>      NA <NA>
 ```
 
 Base functions over time:
@@ -73,7 +73,6 @@ Base functions over time:
 ``` r
 library(ggplot2)
 suppressPackageStartupMessages(library(dplyr))
-#> Warning: package 'dplyr' was built under R version 3.5.1
 
 rvs <- rcheology$Rversion     %>% 
       unique()                %>% 
