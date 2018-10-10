@@ -30,8 +30,12 @@ safelyTestGeneric <- function (fname, ns) {
 
 checkExported <- function(objName, pkg) {
   if (pkg == "base") return(TRUE)
+  
   if (rv$major > 1 || (rv$major == 1 && rv$minor >= "7.0")) {
-    return(objName %in% getNamespaceExports(pkg))
+  # some packages used not to have a namespace. In this case we return NA
+    cond <- try(objName %in% getNamespaceExports(pkg))
+    if (inherits(cond, "try-error")) return(NA)
+    return(cond)
   } else {
     return(TRUE)
   }
