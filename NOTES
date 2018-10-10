@@ -1,0 +1,13 @@
+NOTES TO SELF
+
+To list containers:
+
+docker container ls -a
+
+To get rid of all stopped containers:
+
+docker container prune
+
+To login to a built image:
+
+docker exec -it <image> /bin/bash
