@@ -46,14 +46,14 @@ rch_summary <- rcheology %>%
         n_versions   = length(Rversion),
         args         = sub("^function ", "", args)
       ) %>% 
-      group_by(name, package, args) %>% 
+      group_by(name, package, args, exported) %>% 
       summarize(
         versions     = paste0(
           make_range(name[1], package[1], Rversion), 
           "<!--", paste(Rversion, collapse = " ") ,"-->"
         ),
         `Ever changed?` = ever_changed[1],
-        `Args changed?` = length(Rversion) < n_versions[1],
+        `Args changed?` = length(Rversion) < n_versions[1]
       )
 
 save(rcheology, rch_summary, file = file.path("app", "rcheology-app-data.RData"))
