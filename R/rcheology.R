@@ -33,6 +33,8 @@
 #' * Because data is collected using the original R version, it is subject to changes in the way
 #'   R works. For example, before 2.5.0, [args()] didn't work on `Primitive` functions, so
 #'   those functions have no value in the `args` column.
+#' * I have failed to build tcltk on R versions 1.0.1-1.4.1 and 1.7.0/1, so there's no
+#'   tcltk data for these versions. If you can help, get in touch.
 #' 
 #' @docType package
 #' @name rcheology-package
@@ -41,14 +43,16 @@ NULL
 #' Data on objects from current and previous versions of R
 #' 
 #' A data frame with every function (and other object) in versions
-#' of R from 2.0.0 onwards. Variables are:
+#' of R from 1.0.1 onwards. Variables are:
 
 #' * `package`: package the object comes from
 #' * `name`: name of the object
 #' * `Rversion`: version of R as major.minor.patch
 #' * `type`: Result of calling [typeof()] on the object
 #' * `class`: [class()] of the object, separated by slashes if there are multiple classes.
-#' * `exported`: `TRUE` if the object name was found in [getNamespaceExports()]
+#' * `exported`: `TRUE` if the object name was found in [getNamespaceExports()]. True for 
+#'    anything in the "base" package. `NA` if the package does not have a namespace 
+#'    (e.g. "datasets" in early versions).
 #' * `generic`: `TRUE` if the object is an (S4) generic according to [methods::isGeneric()]
 #' * `args`: the arguments of the function, or NA for non-functions
 #' 
