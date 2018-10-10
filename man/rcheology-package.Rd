@@ -9,7 +9,7 @@ rcheology is a data package providing two data frames:
 }
 \details{
 \itemize{
-\item \link{rcheology} lists objects in all versions of R from 2.0.0 onwards.
+\item \link{rcheology} lists objects in all versions of R from 1.0.1 onwards.
 \item \link{Rversions} lists R versions and their release dates.
 }
 

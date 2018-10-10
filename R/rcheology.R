@@ -3,7 +3,7 @@
 #' 
 #' rcheology is a data package providing two data frames: 
 #' 
-#' * [rcheology] lists objects in all versions of R from 2.0.0 onwards.
+#' * [rcheology] lists objects in all versions of R from 1.0.1 onwards.
 #' * [Rversions] lists R versions and their release dates.
 #' 
 #' The version of the rcheology package reflects the latest R version to be included in the data, 
