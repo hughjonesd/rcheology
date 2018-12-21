@@ -43,7 +43,7 @@ function compile {
   # these speed up configuration but don't remove any functions from ls()
   # tcltk must be enabled though; and x, to avoid obscure 2.8.0 bug
   CFLAGS="-O0 -pipe" FFLAGS=-O0 ./configure --with-recommended-packages=no \
-      --with-libpng=no --with-libjpeg=no \
+      --with-libpng=no --with-libjpeg=no --disable-byte-compiled-packages \
       --with-tcl-config=/usr/lib/tcl8.4/tclConfig.sh \
       --with-tk-config=/usr/lib/tk8.4/tkConfig.sh --with-tcl-tk=yes
   if echo "$1" | grep -Eq 'R-1.[123456]' ; then
