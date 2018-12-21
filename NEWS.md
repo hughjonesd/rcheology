@@ -1,4 +1,8 @@
-# rcheology 3.5.1.0.9000
+# rcheology 3.5.2.0
+
+* New data for R 3.5.2
+
+# rcheology 3.5.1.1
 
 * Include R functions from R 1.0.1 onwards. Compiled on Debian Woody and Sarge.
 * Removed releases of "recommended" packages from the Rversions data frame.
