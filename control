@@ -120,7 +120,7 @@ if (! all(myargs %in% c("--versions", "--no-cache", names(CONTAINERS), COMMANDS)
 }
 
 myargs <- intersect(myargs, COMMANDS)
-if (length(myargs) != 1) stop("Please specify exactly one of build/run/gather/write")
+if (length(myargs) != 1) stop("Please specify exactly one of build/run/gather/write/clean")
 if ("build"  %in% myargs) build(containers, no_cache)
 if ("run"    %in% myargs) run(containers, versions)
 if ("gather" %in% myargs) gather(containers)
