@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+r_latest <- max(package_version(unique(rcheology::rcheology$Rversion)))
 ```
 
 # rcheology
@@ -23,7 +25,9 @@ knitr::opts_chunk$set(
 
 A data package which lists every command in base R packages since R version `r min(package_version(unique(rcheology::rcheology$Rversion)))`.
 
-The latest R version covered is `r max(package_version(unique(rcheology::rcheology$Rversion)))`.
+The latest R version covered is `r r_latest`.
+
+You can view the data online in a [Shiny app](https://hughjonesd.shinyapps.io/rcheology/).
 
 ## Installing
 
@@ -66,7 +70,6 @@ The `Rversions` data frame lists versions of R and release dates.
 
 ## The data
 
-You can view the data online in a [Shiny app](https://hughjonesd.shinyapps.io/rcheology/).
 
 ```{r}
 library(rcheology)
@@ -75,11 +78,28 @@ data("rcheology")
 head(rcheology)
 ```
 
+Latest changes:
+
+```{r}
+
+suppressPackageStartupMessages(library(dplyr))
+
+r_penultimate <- sort(package_version(unique(rcheology::rcheology$Rversion)), 
+      decreasing = TRUE)
+r_penultimate <- r_penultimate[2]
+
+r_latest_obj <- rcheology %>% filter(Rversion == r_latest)
+r_penult_obj <- rcheology %>% filter(Rversion == r_penultimate)
+
+r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
+
+r_introduced
+```
+
 Base functions over time:
 
 ```{r}
 library(ggplot2)
-suppressPackageStartupMessages(library(dplyr))
 
 rvs <- rcheology$Rversion     %>% 
       unique()                %>% 

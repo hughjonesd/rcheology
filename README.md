@@ -15,6 +15,9 @@ version 1.0.1.
 
 The latest R version covered is 3.5.3.
 
+You can view the data online in a [Shiny
+app](https://hughjonesd.shinyapps.io/rcheology/).
+
 ## Installing
 
 From CRAN:
@@ -64,9 +67,6 @@ The `Rversions` data frame lists versions of R and release dates.
 
 ## The data
 
-You can view the data online in a [Shiny
-app](https://hughjonesd.shinyapps.io/rcheology/).
-
 ``` r
 library(rcheology)
 data("rcheology")
@@ -81,11 +81,30 @@ head(rcheology)
 #> 6    base    -    1.2.2 builtin     TRUE  <NA>      NA <NA>
 ```
 
+Latest changes:
+
+``` r
+
+suppressPackageStartupMessages(library(dplyr))
+
+r_penultimate <- sort(package_version(unique(rcheology::rcheology$Rversion)), 
+      decreasing = TRUE)
+r_penultimate <- r_penultimate[2]
+
+r_latest_obj <- rcheology %>% filter(Rversion == r_latest)
+r_penult_obj <- rcheology %>% filter(Rversion == r_penultimate)
+
+r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
+
+r_introduced
+#> [1] package  name     Rversion type     exported class    generic  args    
+#> <0 rows> (or 0-length row.names)
+```
+
 Base functions over time:
 
 ``` r
 library(ggplot2)
-suppressPackageStartupMessages(library(dplyr))
 
 rvs <- rcheology$Rversion     %>% 
       unique()                %>% 
@@ -107,7 +126,7 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
       theme(legend.position = "top")
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 An alternative view:
 
@@ -123,4 +142,4 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
       theme(legend.position = "none") 
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" height="1000px" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" height="1000px" />
