@@ -22,8 +22,9 @@ UPDATE PROCEDURE
    source("Rversions.R")
    usethis::bump_version() # or update manually
    # knit README.Rmd
+   # push to github
    source("make-app-data.R")
    # run app locally, make sure it looks OK
    # publish to shinyapps.io
-   # push to github
+   # check it's passed travis and appveyor
    # build source package for CRAN
