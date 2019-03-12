@@ -1,5 +1,5 @@
 
-<!-- README.md is generated from README.Rmd.  Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # rcheology
 
@@ -13,7 +13,7 @@ status](https://www.r-pkg.org/badges/version/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 1.0.1.
 
-The latest R version covered is 3.5.2.
+The latest R version covered is 3.5.3.
 
 ## Installing
 
@@ -105,7 +105,6 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
       scale_x_date(breaks  = major_rv_dates, labels = major_rvs) + 
       xlab("Version") + ylab("Function count") + 
       theme(legend.position = "top")
-#> Warning: Removed 3363 rows containing non-finite values (stat_count).
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
@@ -122,7 +121,6 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
       xlab("Version") + ylab("Function count") + 
       facet_wrap(~package, scales = "free_y", ncol = 2) +
       theme(legend.position = "none") 
-#> Warning: Removed 3363 rows containing non-finite values (stat_count).
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" height="1000px" />

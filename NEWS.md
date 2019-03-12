@@ -1,3 +1,8 @@
+# rcheology 3.5.3.0
+
+* New data for R 3.5.3
+* Update `Rversions` data
+
 # rcheology 3.5.2.0
 
 * New data for R 3.5.2
