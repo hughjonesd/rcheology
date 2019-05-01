@@ -10,7 +10,7 @@ status](https://ci.appveyor.com/api/projects/status/github/hughjonesd/rcheology?
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rcheology)](https://cran.r-project.org/package=rcheology)
 [![CRAN
-downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.rstudio.com/web/packages/rcheology/index.html)
+downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.org/package=rcheology)
 
 A data package which lists every command in base R packages since R
 version 1.0.1.
