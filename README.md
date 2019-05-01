@@ -15,7 +15,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.rstudio.co
 A data package which lists every command in base R packages since R
 version 1.0.1.
 
-The latest R version covered is 3.5.3.
+The latest R version covered is 3.6.0.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -99,8 +99,84 @@ r_penult_obj <- rcheology %>% filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#> [1] package  name     Rversion type     exported class    generic  args    
-#> <0 rows> (or 0-length row.names)
+#>      package                 name Rversion      type exported
+#> 1       base         [[<-.POSIXlt    3.6.0   closure     TRUE
+#> 2       base               asplit    3.6.0   closure     TRUE
+#> 3       base        conflictRules    3.6.0   closure     TRUE
+#> 4       base       errorCondition    3.6.0   closure     TRUE
+#> 5       base         mem.maxNSize    3.6.0   closure     TRUE
+#> 6       base         mem.maxVSize    3.6.0   closure     TRUE
+#> 7       base             nullfile    3.6.0   closure     TRUE
+#> 8       base packageNotFoundError    3.6.0   closure     TRUE
+#> 9       base       str2expression    3.6.0   closure     TRUE
+#> 10      base             str2lang    3.6.0   closure     TRUE
+#> 11      base     warningCondition    3.6.0   closure     TRUE
+#> 12 grDevices           hcl.colors    3.6.0   closure     TRUE
+#> 13 grDevices             hcl.pals    3.6.0   closure     TRUE
+#> 14      grid            delayGrob    3.6.0   closure     TRUE
+#> 15      grid            deviceDim    3.6.0   closure     TRUE
+#> 16      grid            deviceLoc    3.6.0   closure     TRUE
+#> 17      grid          emptyCoords    3.6.0      list     TRUE
+#> 18      grid           grobCoords    3.6.0   closure     TRUE
+#> 19      grid           grobPoints    3.6.0   closure     TRUE
+#> 20      grid        isEmptyCoords    3.6.0   closure     TRUE
+#> 21   methods         .__C__double    3.6.0        S4     TRUE
+#> 22     stats           DF2formula    3.6.0   closure     TRUE
+#> 23     tools      update_PACKAGES    3.6.0   closure     TRUE
+#> 24     tools         vignetteInfo    3.6.0   closure     TRUE
+#> 25     utils            osVersion    3.6.0 character     TRUE
+#>                  class generic
+#> 1             function   FALSE
+#> 2             function   FALSE
+#> 3             function   FALSE
+#> 4             function   FALSE
+#> 5             function   FALSE
+#> 6             function   FALSE
+#> 7             function   FALSE
+#> 8             function   FALSE
+#> 9             function   FALSE
+#> 10            function   FALSE
+#> 11            function   FALSE
+#> 12            function   FALSE
+#> 13            function   FALSE
+#> 14            function   FALSE
+#> 15            function   FALSE
+#> 16            function   FALSE
+#> 17                list   FALSE
+#> 18            function   FALSE
+#> 19            function   FALSE
+#> 20            function   FALSE
+#> 21 classRepresentation   FALSE
+#> 22            function   FALSE
+#> 23            function   FALSE
+#> 24            function   FALSE
+#> 25           character   FALSE
+#>                                                                                                                                                                                                               args
+#> 1                                                                                                                                                                                                    (x, i, value)
+#> 2                                                                                                                                                                                                      (x, MARGIN)
+#> 3                                                                                                                                                                            (pkg, mask.ok = NULL, exclude = NULL)
+#> 4                                                                                                                                                                        (message, ..., class = NULL, call = NULL)
+#> 5                                                                                                                                                                                                      (nsize = 0)
+#> 6                                                                                                                                                                                                      (vsize = 0)
+#> 7                                                                                                                                                                                                               ()
+#> 8                                                                                                                                                                                  (package, lib.loc, call = NULL)
+#> 9                                                                                                                                                                                                           (text)
+#> 10                                                                                                                                                                                                             (s)
+#> 11                                                                                                                                                                       (message, ..., class = NULL, call = NULL)
+#> 12                                                                                                                                           (n, palette = "viridis", alpha = NULL, rev = FALSE,     fixup = TRUE)
+#> 13                                                                                                                                                                                                   (type = NULL)
+#> 14                                                                                                                                                                 (expr, list, name = NULL, gp = NULL, vp = NULL)
+#> 15                                                                                                                                                                                       (w, h, valueOnly = FALSE)
+#> 16                                                                                                                                                                                       (x, y, valueOnly = FALSE)
+#> 17                                                                                                                                                                                                            <NA>
+#> 18                                                                                                                                                                                                (x, closed, ...)
+#> 19                                                                                                                                                                                                (x, closed, ...)
+#> 20                                                                                                                                                                                                        (coords)
+#> 21                                                                                                                                                                                                            <NA>
+#> 22                                                                                                                                                                                       (x, env = parent.frame())
+#> 23 (dir = ".", fields = NULL, type = c("source", "mac.binary",     "win.binary"), verbose.level = as.integer(dryrun), latestOnly = TRUE,     addFiles = FALSE, rds_compress = "xz", strict = TRUE, dryrun = FALSE)
+#> 24                                                                                                                                                                                                          (file)
+#> 25                                                                                                                                                                                                            <NA>
 ```
 
 Base functions over time:

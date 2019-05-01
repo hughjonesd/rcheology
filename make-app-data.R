@@ -12,7 +12,7 @@ make_doc_anchors <- function (name, package, versions) {
         package, rdoc_versions, name))
   versions <- as.character(versions)
   anchors <- ifelse(versions >= v3.1.1, 
-        paste0("<a href='", url, "'  target='_blank'>", versions, "</a>"), 
+        paste0("<a href='", url, "' target='_blank'>", versions, "</a>"), 
         versions)
         
   anchors

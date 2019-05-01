@@ -96,7 +96,7 @@ r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
 ```
-
+ 
 Base functions over time:
 
 ```{r}

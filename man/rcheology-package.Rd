@@ -10,7 +10,9 @@ rcheology is a data package providing two data frames:
 \details{
 \itemize{
 \item \link{rcheology} lists objects in all versions of R from 1.0.1 onwards.
-\item \link{Rversions} lists R versions and their release dates.
+\item \link{Rversions} lists R versions and their release dates. NB: For a more complete
+and "canonical" solution, see the
+\href{https://cran.r-project.org/package=rversions}{rversions} package.
 }
 
 The version of the rcheology package reflects the latest R version to be included in the data,

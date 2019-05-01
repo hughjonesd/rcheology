@@ -13,8 +13,9 @@ To login to a built image:
 docker exec -it <image> /bin/bash
 
 UPDATE PROCEDURE
-
+  # start docker running
   ./control --no-cache build trusty3.5
+  # maybe "docker container rm trusty3.5"
   ./control --versions x.y.z run trusty3.5
   ./control --versions x.y.z gather
   ./control write
