@@ -12,7 +12,7 @@ function install_remove {
   if [[ $? > 0 ]]
   then
     echo "apt-get install failed. Stopping."
-    exit
+    exit 1
   fi
   
   echo "==============="
@@ -25,10 +25,14 @@ function install_remove {
   if [[ $? > 0 ]]
   then
     echo "apt-get remove failed. Stopping."
-    exit
+    exit 1
   fi
   # apt-get -y -qq autoremove
 }
+
+
+echo "" # newline
+echo "Running install-versions.sh"
 
 HAS_MYV=0
 
@@ -40,21 +44,31 @@ if [[ -n $MYVERSIONS ]] ; then
   HAS_MYV=1
 fi
 
-
+DIDSOMETHING=0
 mapfile -t VERSIONS < r-base-versions.txt
 NVERSIONS=${#VERSIONS[@]}
+
+
 for (( i=0; i<$NVERSIONS; i++ ))
 do
   if [[ ${VERSIONS[$i]} =~ "#" ]] ; then continue; fi
   if [[ $HAS_MYV == 1 ]]; then
     for MYV in "${MYV_ARRAY[@]}" 
     do
-      if [[ ${VERSIONS[$i]} =~ "$MYV" ]] ; then 
+      if [[ ${VERSIONS[$i]} =~ "$MYV" ]] ; then
+        DIDSOMETHING=1
         install_remove ${VERSIONS[$i]}
       fi
     done
   else
+    DIDSOMETHING=1
     install_remove ${VERSIONS[$i]}
   fi
 done 
 
+if [[ $DIDSOMETHING < 1 ]] ; then
+  echo "Failed to install any versions."
+  exit 1
+fi
+
+exit 0

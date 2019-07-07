@@ -8,9 +8,9 @@ To get rid of all stopped containers:
 
 docker container prune
 
-To login to a built image:
+To login to a built container:
 
-docker exec -it <image> /bin/bash
+docker exec -it <container> /bin/bash
 
 UPDATE PROCEDURE
   # start docker running
@@ -19,10 +19,12 @@ UPDATE PROCEDURE
   ./control --versions x.y.z run trusty3.5
   ./control --versions x.y.z gather
   ./control write
-   # rebuild package, check new data
    source("Rversions.R")
-   usethis::bump_version() # or update manually
-   # knit README.Rmd
+   # rebuild package, check new data
+   
+   # update version number in DESCRIPTION
+   # update NEWS.md
+   rmarkdown::render("README.Rmd")
    # push to github
    source("make-app-data.R")
    # run app locally, make sure it looks OK

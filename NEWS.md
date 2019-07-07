@@ -1,3 +1,7 @@
+# rcheology 3.6.1.0
+
+* New data for R 3.6.1
+
 # rcheology 3.6.0.0
 
 * New data for R 3.6.0
