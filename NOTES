@@ -34,6 +34,7 @@ UPDATE PROCEDURE
    # do some or all of:
    devtools::check_win_devel()
    devtools::check_win_release()
-   rhub::check_for_cran()
-   # and release:
+   rhc <- rhub::check_for_cran()
+   rdc <- revdepcheck::revdep_check()
+
    devtools::release()
