@@ -29,6 +29,11 @@ UPDATE PROCEDURE
    source("make-app-data.R")
    # run app locally, make sure it looks OK
    # publish to shinyapps.io
+   
    # check it's passed travis and appveyor
+   # do some or all of:
    devtools::check_win_devel()
    devtools::check_win_release()
+   rhub::check_for_cran()
+   # and release:
+   devtools::release()
