@@ -23,11 +23,12 @@ UPDATE PROCEDURE
    # rebuild package, check new data
    
    # update version number in DESCRIPTION
-   # update NEWS.md
+   # update NEWS.md and cran-comments.md
    rmarkdown::render("README.Rmd")
    # push to github
    source("make-app-data.R")
    # run app locally, make sure it looks OK
    # publish to shinyapps.io
    # check it's passed travis and appveyor
-   # build source package for CRAN
+   devtools::check_win_devel()
+   devtools::check_win_release()
