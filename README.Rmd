@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%"
-)
+) 
 
 r_latest <- max(package_version(unique(rcheology::rcheology$Rversion)))
 ```
