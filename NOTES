@@ -38,4 +38,5 @@ UPDATE PROCEDURE
    rhc <- rhub::check_for_cran()
    rdc <- revdepcheck::revdep_check()
 
+   # update cran-comments.md appropriately
    devtools::release()
