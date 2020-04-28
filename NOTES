@@ -14,9 +14,9 @@ docker exec -it <container> /bin/bash
 
 UPDATE PROCEDURE
   # start docker running
-  ./control --no-cache build trusty3.5
-  # maybe "docker container rm trusty3.5"
-  ./control --versions x.y.z run trusty3.5
+  ./control --no-cache build bionic
+  # maybe "docker container rm bionic"
+  ./control --versions x.y.z run bionic
   ./control --versions x.y.z gather
   ./control write
    source("Rversions.R")
