@@ -17,7 +17,8 @@ UPDATE PROCEDURE
   ./control --no-cache build bionic
   # maybe "docker container rm bionic"
   ./control --versions x.y.z run bionic
-  ./control --versions x.y.z gather
+  # note that gather will collect data from all R versions run in a given container
+  ./control gather bionic
   ./control write
    source("Rversions.R")
    # rebuild package, check new data

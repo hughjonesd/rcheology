@@ -1,3 +1,8 @@
+# rcheology 4.0.0.0
+
+* New data for R 4.0.0
+* Congratulations to the R Core Team, and everyone who made R what it is today!
+
 # rcheology 3.6.3.0
 
 * New data for R 3.6.3

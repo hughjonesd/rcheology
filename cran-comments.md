@@ -1,4 +1,4 @@
-Update for R 3.6.3
+Update for R 4.0.0
 
 ## Test environments
 * local OS X install, R 3.6.2
