@@ -4,6 +4,7 @@ library(magrittr)
 
 
 CONTAINERS  <- list(
+        bionic     = "bionic",
         trusty3.5  = "trusty3.5",
         trusty     = "trusty", 
         lucid      = "lucid", 
@@ -11,6 +12,7 @@ CONTAINERS  <- list(
         woody      = "woody"
       )
 DOCKERFILES <- list(
+        bionic     = "Dockerfile-bionic",
         trusty3.5  = "Dockerfile-trusty3.5",
         trusty     = "Dockerfile-trusty", 
         lucid      = "Dockerfile-lucid", 
