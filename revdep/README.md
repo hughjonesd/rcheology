@@ -10,19 +10,13 @@
 |collate  |en_GB.UTF-8                  |
 |ctype    |en_GB.UTF-8                  |
 |tz       |Europe/London                |
-|date     |2020-03-01                   |
+|date     |2020-04-28                   |
 
 # Dependencies
 
 |package   |old     |new     |Δ  |
 |:---------|:-------|:-------|:--|
-|rcheology |3.6.2.0 |3.6.3.0 |*  |
+|rcheology |3.6.3.0 |4.0.0.0 |*  |
 
 # Revdeps
-
-## Failed to check (1)
-
-|package |version |error |warning |note |
-|:-------|:-------|:-----|:-------|:----|
-|hutils  |?       |      |        |     |
 
