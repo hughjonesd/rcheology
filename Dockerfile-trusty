@@ -1,4 +1,4 @@
-# build like `docker build -t trusty -f Dockerfile-trusty`
+# build like `docker build -t trusty -f Dockerfile-trusty .`
 # run like `docker run  --name trusty trusty`
 
 FROM ubuntu:trusty
