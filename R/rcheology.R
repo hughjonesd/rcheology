@@ -13,21 +13,7 @@
 #' 
 #' An online app for data exploration is available at <https://hughjonesd.shinyapps.io/rcheology/>.
 #' 
-#' @section How the data is created:
-#' 
-#' Previous R versions are downloaded and installed on a Docker image. Objects in 
-#' all base packages are then listed. (Note that recommended packages, like `nnet` or `MASS`,
-#' are not installed.) For functions, the [formals()] of the function are recorded.
-#' 
-#' * Versions 3.0.1 and up are installed from the 
-#' [CRAN apt repositories for Ubuntu Trusty Tahr](https://cran.r-project.org/bin/linux/ubuntu/trusty/). Version 3.5.0 and up use a 
-#' [special repository](https://cran.r-project.org/bin/linux/ubuntu/trusty-cran35/).
-#' 
-#' * Versions 2.5.1 to 3.0.0 are built from source on [Ubuntu Lucid Lynx](https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/).
-#' 
-#' * Versions 1.2.3 to 2.4.1 are built from source on [Debian Sarge](https://hub.docker.com/r/debian/eol/).
-#' 
-#' * Versions 1.0.1 to 1.2.2, and versions 1.7.0 and 1.7.1, are built from source on [Debian Woody](https://hub.docker.com/r/debian/eol/).
+#' @includeRmd data-where-from.Rmd
 #' 
 #' @section Limitations:
 #' 
