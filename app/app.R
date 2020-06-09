@@ -60,6 +60,7 @@ server <- function(input, output) {
   summary_dt <- DT::datatable(
         rch_summary, 
         rownames = FALSE,
+        class    = "compact",
         filter   = "top",
         escape   = setdiff(names(rch_summary), "versions"),
         options  = list(
@@ -71,7 +72,7 @@ server <- function(input, output) {
   summary_dt <- DT::formatStyle(summary_dt, c("name", "args"), 
                                 `font-family` = "courier, monospace")
   summary_dt <- DT::formatStyle(summary_dt, c("args"), 
-                                `font-size` = 8)
+                                `font-size` = "8pt")
   output$rcheology_DT <- DT::renderDataTable(summary_dt)
   dt_proxy <- DT::dataTableProxy("rcheology_DT")
    
