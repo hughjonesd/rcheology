@@ -20,6 +20,10 @@ e.g. 3.5.1.x contains data up to and including R 3.5.1.
 
 An online app for data exploration is available at \url{https://hughjonesd.shinyapps.io/rcheology/}.
 
+\if{html}{\out{
+<!-- this is .Rmd so it can be easily included by README.Rmd -->
+}}
+
 \subsection{Where the data comes from}{
 
 Versions 4.0.0 and up are installed from the \href{https://cran.r-project.org/bin/linux/ubuntu/bionic-cran40/}{CRAN apt repositories for Ubuntu Bionic}.
