@@ -34,7 +34,10 @@ build <- function(containers = CONTAINERS, no_cache = FALSE) {
 run <- function(containers = CONTAINERS, versions = NULL) {
   for (image in names(containers)) {
     args <- c("run", "--name", containers[[image]])
-    if (! missing(versions) && ! is.null(versions)) args <- c(args, "-e", paste0("MYVERSIONS=", versions))
+    if (! missing(versions) && ! is.null(versions)) {
+      args <- c(args, "-e", 
+                paste0("MYVERSIONS=", paste0(versions, collapse=","))) 
+    }
     args <- c(args, image)
     cat(args)
     system2("docker", args)
@@ -63,6 +66,8 @@ write <- function (to_package = FALSE) {
   cat("Dimensions:", dim(rcheology), "\n")
   cat("First rows:\n")
   print(head(rcheology))
+  cat("Versions:\n")
+  print(table(rcheology$Rversion))
   if (to_package) usethis::use_data(rcheology, overwrite = TRUE)
 }
 
@@ -75,7 +80,7 @@ clean <- function(containers = CONTAINERS) {
 }
 
 usage <- function () {
-  cat("\nUSAGE: control [--no-cache] [--versions x,y,z] [CMD] [IMAGES]\n\n",
+  cat("\nUSAGE: control [--no-cache] [--versions x.y.z,...] [CMD] [IMAGES]\n\n",
     "--no-cache: passed to docker build\n",
     "--versions: passed to docker run to determine which R versions to test\n\n",
     "CMD:\n",

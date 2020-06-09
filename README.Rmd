@@ -58,7 +58,7 @@ data("rcheology")
 
 head(rcheology)
 ```
-
+ 
 Latest changes:
 
 ```{r}

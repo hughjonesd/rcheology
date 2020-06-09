@@ -19,10 +19,12 @@ UPDATE PROCEDURE
   ./control --versions x.y.z run bionic
   # note that gather will collect data from all R versions run in a given container
   ./control gather bionic
+  # check docker-data/stdout-R-x.y.z and pkg_data-R-x.y.z.csv. E.g.:
+  wc -l docker-data/pkg*
   ./control write
    source("Rversions.R")
-   # rebuild package, check new data
-   
+   # rebuild package, check new data, e.g.
+   Rscript -e 'library(rcheology); print(table(rcheology$Rversion))'
    # update version number in DESCRIPTION
    # update NEWS.md and cran-comments.md
    rmarkdown::render("README.Rmd")

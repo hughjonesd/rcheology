@@ -10,6 +10,7 @@
 ^Dockerfile.*$
 ^\.dockerignore$
 ^.*.txt$
+^data-where-from.Rmd$
 ^README.*\.Rmd$
 ^\.travis\.yml$
 ^appveyor\.yml$

@@ -15,7 +15,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 1.0.1.
 
-The latest R version covered is 4.0.0.
+The latest R version covered is 4.0.1.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -27,6 +27,8 @@ From CRAN:
 ``` r
 install.packages('rcheology')
 ```
+
+<!-- this is .Rmd so it can be easily included by README.Rmd -->
 
 ## Where the data comes from
 
@@ -96,84 +98,8 @@ r_penult_obj <- rcheology %>% filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#>      package                  name Rversion        type exported       class
-#> 1       base               .class2    4.0.0     builtin     TRUE    function
-#> 2       base             .S3method    4.0.0     closure     TRUE    function
-#> 3       base activeBindingFunction    4.0.0     closure     TRUE    function
-#> 4       base      anyNA.data.frame    4.0.0     closure     TRUE    function
-#> 5       base      as.list.difftime    4.0.0     closure     TRUE    function
-#> 6       base              deparse1    4.0.0     closure     TRUE    function
-#> 7       base globalCallingHandlers    4.0.0     closure     TRUE    function
-#> 8       base               infoRDS    4.0.0     closure     TRUE    function
-#> 9       base               list2DF    4.0.0     closure     TRUE    function
-#> 10      base            marginSums    4.0.0     closure     TRUE    function
-#> 11      base                  plot    4.0.0     closure     TRUE    function
-#> 12      base           proportions    4.0.0     closure     TRUE    function
-#> 13      base      sequence.default    4.0.0     closure     TRUE    function
-#> 14      base          serverSocket    4.0.0     closure     TRUE    function
-#> 15      base          socketAccept    4.0.0     closure     TRUE    function
-#> 16      base         socketTimeout    4.0.0     closure     TRUE    function
-#> 17      base      tryInvokeRestart    4.0.0     closure     TRUE    function
-#> 18 grDevices       cairoSymbolFont    4.0.0     closure     TRUE    function
-#> 19 grDevices        palette.colors    4.0.0     closure     TRUE    function
-#> 20 grDevices          palette.pals    4.0.0     closure     TRUE    function
-#> 21      grid             unit.psum    4.0.0     closure     TRUE    function
-#> 22      grid              unitType    4.0.0     closure     TRUE    function
-#> 23     stats                  Pair    4.0.0     closure     TRUE    function
-#> 24    stats4       .__T__plot:base    4.0.0 environment     TRUE environment
-#> 25     tools            R_user_dir    4.0.0     closure     TRUE    function
-#>    generic
-#> 1       NA
-#> 2    FALSE
-#> 3    FALSE
-#> 4    FALSE
-#> 5    FALSE
-#> 6    FALSE
-#> 7    FALSE
-#> 8    FALSE
-#> 9    FALSE
-#> 10   FALSE
-#> 11   FALSE
-#> 12   FALSE
-#> 13   FALSE
-#> 14   FALSE
-#> 15   FALSE
-#> 16   FALSE
-#> 17   FALSE
-#> 18   FALSE
-#> 19   FALSE
-#> 20   FALSE
-#> 21   FALSE
-#> 22   FALSE
-#> 23   FALSE
-#> 24   FALSE
-#> 25   FALSE
-#>                                                                                                             args
-#> 1                                                                                                            (x)
-#> 2                                                                                       (generic, class, method)
-#> 3                                                                                                     (sym, env)
-#> 4                                                                                         (x, recursive = FALSE)
-#> 5                                                                                                       (x, ...)
-#> 6                                                               (expr, collapse = " ", width.cutoff = 500L, ...)
-#> 7                                                                                                          (...)
-#> 8                                                                                                         (file)
-#> 9                                                                                      (x = list(), nrow = NULL)
-#> 10                                                                                            (x, margin = NULL)
-#> 11                                                                                                   (x, y, ...)
-#> 12                                                                                            (x, margin = NULL)
-#> 13                                                                               (nvec, from = 1L, by = 1L, ...)
-#> 14                                                                                                        (port)
-#> 15 (socket, blocking = FALSE, open = "a+", encoding = getOption("encoding"),     timeout = getOption("timeout"))
-#> 16                                                                                        (socket, timeout = -1)
-#> 17                                                                                                      (r, ...)
-#> 18                                                                                       (family, usePUA = TRUE)
-#> 19                                                     (n = NULL, palette = "Okabe-Ito", alpha, recycle = FALSE)
-#> 20                                                                                                            ()
-#> 21                                                                                                         (...)
-#> 22                                                                                          (x, recurse = FALSE)
-#> 23                                                                                                        (x, y)
-#> 24                                                                                                          <NA>
-#> 25                                                               (package, which = c("data", "config", "cache"))
+#> [1] package  name     Rversion type     exported class    generic  args    
+#> <0 rows> (or 0-length row.names)
 ```
 
 Base functions over time:

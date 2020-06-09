@@ -1,4 +1,6 @@
 
+<!-- this is .Rmd so it can be easily included by README.Rmd -->
+
 ## Where the data comes from
 
 Versions 4.0.0 and up are installed from the 
