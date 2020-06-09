@@ -48,6 +48,8 @@ rch_summary <- rcheology %>%
       ) %>% 
       group_by(name, package, args, exported) %>% 
       summarize(
+        `First Version` = Rversion[1],
+        `Last Version`  = Rversion[length(Rversion)],
         versions     = paste0(
           make_range(name[1], package[1], Rversion), 
           "<!--", paste(Rversion, collapse = " ") ,"-->"

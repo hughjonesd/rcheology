@@ -44,7 +44,7 @@ ui <- fluidPage(
     "Created using the ", a(href = "https://github.com/hughjonesd/rcheology", "rcheology"), " package."), 
   frc(code("Ever changed?"), " is true if a function was introduced or removed."),
   frc(code("Args changed?"), " is true if a function's arguments changed."),
-  frc("Regexes work in filters."),
+  frc("Regexes work in filters. You can search for all versions in ", code("Versions"), "."),
   frc(HTML("Links go to <a href='https://rdocumentation.org'>rdocumentation.org</a> and may not always work.")),
   frc(" Try: ", lapply(keywords, function (kw) list(HTML("&nbsp;"), actionLink(kw, kw)))),
   frc("This is on the shinyapps free plan; if it runs out of credit, visit ", 
@@ -68,8 +68,10 @@ server <- function(input, output) {
           search     = list(regex = TRUE, caseInsensitive = FALSE),
           order      = c(0, "asc")
         ))
-  summary_dt <- DT::formatStyle(summary_dt, c("name", "args"), `font-family` = "courier, monospace")
-  
+  summary_dt <- DT::formatStyle(summary_dt, c("name", "args"), 
+                                `font-family` = "courier, monospace")
+  summary_dt <- DT::formatStyle(summary_dt, c("args"), 
+                                `font-size` = 8)
   output$rcheology_DT <- DT::renderDataTable(summary_dt)
   dt_proxy <- DT::dataTableProxy("rcheology_DT")
    
