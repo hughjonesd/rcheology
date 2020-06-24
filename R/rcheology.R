@@ -42,7 +42,7 @@ NULL
 #'    anything in the "base" package. `NA` if the package does not have a namespace 
 #'    (e.g. "datasets" in early versions).
 #' * `generic`: `TRUE` if the object is an S4 generic according to 
-#'   [`methods::isGeneric()`][methods::genericFunctions]
+#'   [`methods::isGeneric()`][methods::GenericFunctions]
 #' * `args`: the arguments of the function, or NA for non-functions
 #' 
 #' @name rcheology 

@@ -16,7 +16,7 @@ of R from 1.0.1 onwards. Variables are:
 anything in the "base" package. \code{NA} if the package does not have a namespace
 (e.g. "datasets" in early versions).
 \item \code{generic}: \code{TRUE} if the object is an S4 generic according to
-\code{\link[methods:genericFunctions]{methods::isGeneric()}}
+\code{\link[methods:GenericFunctions]{methods::isGeneric()}}
 \item \code{args}: the arguments of the function, or NA for non-functions
 }
 }
