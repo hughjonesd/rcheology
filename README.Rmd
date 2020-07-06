@@ -56,7 +56,7 @@ install.packages('rcheology')
 library(rcheology)
 data("rcheology")
 
-head(rcheology)
+rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
 ```
  
 Latest changes:
