@@ -43,3 +43,6 @@ UPDATE PROCEDURE
 
    # update cran-comments.md appropriately
    devtools::release()
+   
+   # when it's accepted, tag release
+   git tag vX.Y.Z.0
