@@ -40,7 +40,7 @@ install.packages('rcheology')
 
 ```{r, child = "data-where-from.Rmd"}
 ```
-
+ 
 ## Do it yourself
 
 * Install docker.

@@ -16,8 +16,9 @@ UPDATE PROCEDURE
   # start docker running
   ./control --no-cache build bionic
   # maybe "docker container rm bionic"
+  # you can use a comma-separated list of versions if you want:
   ./control --versions x.y.z run bionic
-  # note that gather will collect data from all R versions run in a given container
+  # gather will collect data from all R versions run in a given container:
   ./control gather bionic
   # check docker-data/stdout-R-x.y.z and pkg_data-R-x.y.z.csv. E.g.:
   wc -l docker-data/pkg*
