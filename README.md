@@ -15,7 +15,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 1.0.1.
 
-The latest R version covered is 4.0.3.
+The latest R version covered is 4.0.4.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -58,12 +58,12 @@ The `Rversions` data frame lists versions of R and release dates.
 
 ## Do it yourself
 
-  - Install docker.
-  - `./control build` builds the images. Or get them from
+-   Install docker.
+-   `./control build` builds the images. Or get them from
     <https://hub.docker.com/r/dash2/rcheology/>.
-  - `./control run` runs the images to build/install R and extract data
-  - `./control gather` gets CSV files from the containers
-  - `./control write` puts CSV files into a data frame and stores it in
+-   `./control run` runs the images to build/install R and extract data
+-   `./control gather` gets CSV files from the containers
+-   `./control write` puts CSV files into a data frame and stores it in
     the package
 
 ## The data
@@ -74,25 +74,24 @@ data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
 #>        package   name Rversion    type exported    class generic
-#> 189154     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
-#> 207263   stats kmeans    1.9.0 closure     TRUE function   FALSE
-#> 207267   stats kmeans    2.1.0 closure     TRUE function   FALSE
-#> 207306   stats kmeans    3.0.2 closure     TRUE function   FALSE
-#> 207311   stats kmeans    3.2.0 closure     TRUE function   FALSE
-#> 207336   stats kmeans    4.0.2 closure     TRUE function   FALSE
+#> 191405     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
+#> 209743   stats kmeans    1.9.0 closure     TRUE function   FALSE
+#> 209747   stats kmeans    2.1.0 closure     TRUE function   FALSE
+#> 209786   stats kmeans    3.0.2 closure     TRUE function   FALSE
+#> 209791   stats kmeans    3.2.0 closure     TRUE function   FALSE
+#> 209816   stats kmeans    4.0.2 closure     TRUE function   FALSE
 #>                                                                                                                              args
-#> 189154                                                                                                (x, centers, iter.max = 10)
-#> 207263                                                                                                (x, centers, iter.max = 10)
-#> 207267                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 207306   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 207311 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 207336 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 191405                                                                                                (x, centers, iter.max = 10)
+#> 209743                                                                                                (x, centers, iter.max = 10)
+#> 209747                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 209786   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 209791 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 209816 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:
 
 ``` r
-
 suppressPackageStartupMessages(library(dplyr))
 
 r_penultimate <- sort(package_version(unique(rcheology::rcheology$Rversion)), 
@@ -139,7 +138,6 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
 An alternative view:
 
 ``` r
-
 
 ggplot(rch_dates, aes(date, fill = "orange")) + 
       stat_count(geom = "area") + 

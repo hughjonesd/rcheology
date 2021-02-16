@@ -23,11 +23,12 @@ UPDATE PROCEDURE
   # check docker-data/stdout-R-x.y.z and pkg_data-R-x.y.z.csv. E.g.:
   wc -l docker-data/pkg*
   ./control write
-   source("Rversions.R")
-   # rebuild package, check new data, e.g.
+   Rscript -e 'source("Rversions.R")'
+   # rebuild package
+   # check new data, e.g.
    Rscript -e 'library(rcheology); print(table(rcheology$Rversion))'
    # update version number in DESCRIPTION
-   # update NEWS.md and cran-comments.md
+   # update NEWS.md
    rmarkdown::render("README.Rmd")
    # push to github
    source("make-app-data.R")
@@ -46,3 +47,6 @@ UPDATE PROCEDURE
    
    # when it's accepted, tag release
    git tag vX.Y.Z.0
+   git push --tags
+   # reset revdepcheck
+   revdepcheck::revdep_reset()
