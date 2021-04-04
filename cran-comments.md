@@ -1,4 +1,4 @@
-Update for R 4.0.4
+Update for R 4.0.5
 
 ## Test environments
 * local OS X install, R 4.0.3

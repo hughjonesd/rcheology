@@ -30,6 +30,7 @@ UPDATE PROCEDURE
    # update version number in DESCRIPTION
    # update NEWS.md
    rmarkdown::render("README.Rmd")
+   git commit --no-verify
    # push to github
    source("make-app-data.R")
    # run app locally, make sure it looks OK
