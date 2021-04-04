@@ -4,3 +4,4 @@
 .Ruserdata
 docker-data/**
 app/rsconnect/**
+.DS_Store
