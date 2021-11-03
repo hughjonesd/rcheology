@@ -26,10 +26,10 @@ UPDATE PROCEDURE
    Rscript -e 'source("Rversions.R")'
    # rebuild package
    # check new data, e.g.
-   Rscript -e 'library(rcheology); print(table(rcheology$Rversion))'
+   print(table(rcheology$Rversion))
    # update version number in DESCRIPTION
    # update NEWS.md
-   Rscript -e 'rmarkdown::render("README.Rmd")'
+   rmarkdown::render("README.Rmd")
    git commit -a --no-verify
    # push to github
    source("make-app-data.R") # seems not to work via Rscript?

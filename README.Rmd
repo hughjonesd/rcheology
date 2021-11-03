@@ -68,8 +68,8 @@ r_penultimate <- sort(package_version(unique(rcheology::rcheology$Rversion)),
       decreasing = TRUE)
 r_penultimate <- r_penultimate[2]
 
-r_latest_obj <- rcheology %>% filter(Rversion == r_latest)
-r_penult_obj <- rcheology %>% filter(Rversion == r_penultimate)
+r_latest_obj <- rcheology %>% dplyr::filter(Rversion == r_latest)
+r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
