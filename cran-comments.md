@@ -1,5 +1,5 @@
 
-Update for R 4.1.1. 
+Update for R 4.1.2. 
 
 ## Test environments
 * local OS X install, R 4.1.0
