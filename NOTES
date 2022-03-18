@@ -41,7 +41,7 @@ UPDATE PROCEDURE
    # do some or all of:
    devtools::check_win_devel()
    devtools::check_win_release()
-   rhc <- rhub::check_for_cran()
+   # rhc <- rhub::check_for_cran()
    rdc <- revdepcheck::revdep_check()
 
    # update cran-comments.md appropriately
