@@ -36,7 +36,7 @@ UPDATE PROCEDURE
    # run app locally, make sure it looks OK
    # publish to shinyapps.io
    
-   # check it's passed travis and appveyor
+   # check it's passed appveyor
    # run check locally
    # do some or all of:
    devtools::check_win_devel()
