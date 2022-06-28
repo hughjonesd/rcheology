@@ -3,7 +3,10 @@
 
 ## Where the data comes from
 
-Versions 4.0.0 and up are installed from the 
+Versions 4.2.1 and up are installed from the 
+[CRAN apt repositories for Ubuntu Focal](https://cran.r-project.org/bin/linux/ubuntu/focal-cran40/).
+
+Versions 4.0.0 to 4.2.0 are installed from the 
 [CRAN apt repositories for Ubuntu Bionic](https://cran.r-project.org/bin/linux/ubuntu/bionic-cran40/).
 
 Versions 3.0.1 to 3.6.3 are installed from the [CRAN apt repositories for Ubuntu Trusty Tahr](https://cran.r-project.org/bin/linux/ubuntu/trusty/). Version 3.5.0 and up use a 
