@@ -14,12 +14,12 @@ docker exec -it <container> /bin/bash
 
 UPDATE PROCEDURE
   # start docker running
-  ./control --no-cache build bionic
-  # maybe "docker container rm bionic"
+  ./control --no-cache build focal
+  # maybe "docker container rm focal"
   # you can use a comma-separated list of versions if you want:
-  ./control --versions x.y.z run bionic
+  ./control --versions x.y.z run focal
   # gather will collect data from all R versions run in a given container:
-  ./control gather bionic
+  ./control gather focal
   # check docker-data/stdout-R-x.y.z and pkg_data-R-x.y.z.csv. E.g.:
   wc -l docker-data/pkg*
   ./control write

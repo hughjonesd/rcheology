@@ -1,5 +1,10 @@
 
 
+# rcheology 4.2.1.0
+
+* New data for R 4.2.1
+* Build using focal not bionic
+
 # rcheology 4.2.0.0
 
 * New data for R 4.2.0
