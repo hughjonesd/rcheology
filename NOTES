@@ -53,7 +53,8 @@ UPDATE PROCEDURE
    devtools::release()
    
    # when it's accepted, tag release
-   git tag -a vX.Y.Z.0
+   rm CRAN-SUBMISSION
+   git tag -m "Version X.Y.Z.0 on CRAN" -a vX.Y.Z.0
    git push --tags
    # reset revdepcheck
-   revdepcheck::revdep_reset()
+   Rscript -e 'revdepcheck::revdep_reset()'
