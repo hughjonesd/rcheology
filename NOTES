@@ -36,17 +36,19 @@ UPDATE PROCEDURE
    git commit -a --no-verify
    git push
    source("make-app-data.R") # seems not to work via Rscript?
-   # run app locally, make sure it looks OK
+   # run app.R locally, make sure it looks OK
    # publish to shinyapps.io
    
    # check it's passed appveyor
-   # run check locally
-   # do some or all of:
+   # run checks:
+   Rscript -e 'devtools::check()'
+   # can we do this from command line??
    devtools::check_win_devel()
    devtools::check_win_release()
    # rhc <- rhub::check_for_cran()
    rdc <- revdepcheck::revdep_check()
-
+   # check CRAN for previous check failures to fix:
+   # https://cran.r-project.org/web/checks/check_results_rcheology.html
    # update cran-comments.md appropriately
    devtools::release()
    
