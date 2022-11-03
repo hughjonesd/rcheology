@@ -13,7 +13,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 1.0.1.
 
-The latest R version covered is 4.2.1.
+The latest R version covered is 4.2.2.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -76,24 +76,25 @@ data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
 #>        package   name Rversion    type exported    class generic
-#> 207386     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
-#> 227327   stats kmeans    1.9.0 closure     TRUE function   FALSE
-#> 227331   stats kmeans    2.1.0 closure     TRUE function   FALSE
-#> 227370   stats kmeans    3.0.2 closure     TRUE function   FALSE
-#> 227375   stats kmeans    3.2.0 closure     TRUE function   FALSE
-#> 227400   stats kmeans    4.0.2 closure     TRUE function   FALSE
+#> 209705     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
+#> 229875   stats kmeans    1.9.0 closure     TRUE function   FALSE
+#> 229879   stats kmeans    2.1.0 closure     TRUE function   FALSE
+#> 229918   stats kmeans    3.0.2 closure     TRUE function   FALSE
+#> 229923   stats kmeans    3.2.0 closure     TRUE function   FALSE
+#> 229948   stats kmeans    4.0.2 closure     TRUE function   FALSE
 #>                                                                                                                              args
-#> 207386                                                                                                (x, centers, iter.max = 10)
-#> 227327                                                                                                (x, centers, iter.max = 10)
-#> 227331                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 227370   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 227375 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 227400 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 209705                                                                                                (x, centers, iter.max = 10)
+#> 229875                                                                                                (x, centers, iter.max = 10)
+#> 229879                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 229918   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 229923 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 229948 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:
 
 ``` r
+
 suppressPackageStartupMessages(library(dplyr))
 
 r_penultimate <- sort(package_version(unique(rcheology::rcheology$Rversion)), 
@@ -106,8 +107,8 @@ r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#>   package           name Rversion    type exported    class generic                     args
-#> 1   utils findCRANmirror    4.2.1 closure     TRUE function   FALSE (type = c("src", "web"))
+#> [1] package  name     Rversion type     exported class    generic  args    
+#> <0 rows> (or 0-length row.names)
 ```
 
 Base functions over time:
@@ -140,6 +141,7 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
 An alternative view:
 
 ``` r
+
 
 ggplot(rch_dates, aes(date, fill = "orange")) + 
       stat_count(geom = "area") + 
