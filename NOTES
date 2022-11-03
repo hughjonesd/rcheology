@@ -31,10 +31,10 @@ UPDATE PROCEDURE
    # update version number in DESCRIPTION
 
    # update NEWS.md
-   rmarkdown::render("README.Rmd")
+   Rscript -e 'rmarkdown::render("README.Rmd")'
    rm README.html
    git commit -a --no-verify
-   # push to github
+   git push
    source("make-app-data.R") # seems not to work via Rscript?
    # run app locally, make sure it looks OK
    # publish to shinyapps.io
