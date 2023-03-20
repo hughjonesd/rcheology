@@ -13,7 +13,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 1.0.1.
 
-The latest R version covered is 4.2.2.
+The latest R version covered is 4.2.3.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -60,12 +60,12 @@ The `Rversions` data frame lists versions of R and release dates.
 
 ## Do it yourself
 
--   Install docker.
--   `./control build` builds the images. Or get them from
+  - Install docker.
+  - `./control build` builds the images. Or get them from
     <https://hub.docker.com/r/dash2/rcheology/>.
--   `./control run` runs the images to build/install R and extract data
--   `./control gather` gets CSV files from the containers
--   `./control write` puts CSV files into a data frame and stores it in
+  - `./control run` runs the images to build/install R and extract data
+  - `./control gather` gets CSV files from the containers
+  - `./control write` puts CSV files into a data frame and stores it in
     the package
 
 ## The data
@@ -76,19 +76,19 @@ data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
 #>        package   name Rversion    type exported    class generic
-#> 209705     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
-#> 229875   stats kmeans    1.9.0 closure     TRUE function   FALSE
-#> 229879   stats kmeans    2.1.0 closure     TRUE function   FALSE
-#> 229918   stats kmeans    3.0.2 closure     TRUE function   FALSE
-#> 229923   stats kmeans    3.2.0 closure     TRUE function   FALSE
-#> 229948   stats kmeans    4.0.2 closure     TRUE function   FALSE
+#> 212024     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
+#> 232423   stats kmeans    1.9.0 closure     TRUE function   FALSE
+#> 232427   stats kmeans    2.1.0 closure     TRUE function   FALSE
+#> 232466   stats kmeans    3.0.2 closure     TRUE function   FALSE
+#> 232471   stats kmeans    3.2.0 closure     TRUE function   FALSE
+#> 232496   stats kmeans    4.0.2 closure     TRUE function   FALSE
 #>                                                                                                                              args
-#> 209705                                                                                                (x, centers, iter.max = 10)
-#> 229875                                                                                                (x, centers, iter.max = 10)
-#> 229879                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 229918   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 229923 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 229948 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 212024                                                                                                (x, centers, iter.max = 10)
+#> 232423                                                                                                (x, centers, iter.max = 10)
+#> 232427                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 232466   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 232471 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 232496 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:

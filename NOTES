@@ -27,7 +27,7 @@ UPDATE PROCEDURE
    # rebuild package
    Rscript -e 'devtools::install()'
    # check new data, e.g.
-   Rscript -e 'print(table(rcheology$Rversion))'
+   Rscript -e 'print(table(rcheology::rcheology$Rversion))'
    # update version number in DESCRIPTION
 
    # update NEWS.md
