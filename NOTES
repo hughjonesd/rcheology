@@ -35,7 +35,7 @@ UPDATE PROCEDURE
    rm README.html
    git commit -a --no-verify
    git push
-   source("make-app-data.R") # seems not to work via Rscript?
+   Rscript -e 'source("make-app-data.R")'
    # run app.R locally, make sure it looks OK
    # publish to shinyapps.io
    
@@ -45,6 +45,7 @@ UPDATE PROCEDURE
    # can we do this from command line??
    devtools::check_win_devel()
    devtools::check_win_release()
+   devtools::check_mac_release()
    # rhc <- rhub::check_for_cran()
    rdc <- revdepcheck::revdep_check()
    # check CRAN for previous check failures to fix:

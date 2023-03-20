@@ -1,11 +1,11 @@
 
-Update for R 4.2.2. 
+Update for R 4.2.3. 
 
 ## Test environments
 
 * OS X (local), R 4.2.0
-* windows (on appveyor), R 4.2.2-patched
-* windows (on win-builder), R-devel and R-release
+* windows (on appveyor), R 4.2.3-patched
+* mac (on mac-builder), R-release
 
 ## R CMD check results
 
