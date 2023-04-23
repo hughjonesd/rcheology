@@ -4,7 +4,7 @@ Update for R 4.3.0.
 ## Test environments
 
 * OS X (local), R 4.2.0
-* windows (on appveyor), R 4.2.3-patched
+* windows (on appveyor), R 4.3.0-patched
 * windows (on win-builder), R-devel & R-release
 * mac (on mac-builder), R-release
 
