@@ -13,7 +13,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 1.0.1.
 
-The latest R version covered is 4.2.3.
+The latest R version covered is 4.3.0.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -76,19 +76,19 @@ data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
 #>        package   name Rversion    type exported    class generic
-#> 212024     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
-#> 232423   stats kmeans    1.9.0 closure     TRUE function   FALSE
-#> 232427   stats kmeans    2.1.0 closure     TRUE function   FALSE
-#> 232466   stats kmeans    3.0.2 closure     TRUE function   FALSE
-#> 232471   stats kmeans    3.2.0 closure     TRUE function   FALSE
-#> 232496   stats kmeans    4.0.2 closure     TRUE function   FALSE
+#> 214365     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
+#> 234993   stats kmeans    1.9.0 closure     TRUE function   FALSE
+#> 234997   stats kmeans    2.1.0 closure     TRUE function   FALSE
+#> 235036   stats kmeans    3.0.2 closure     TRUE function   FALSE
+#> 235041   stats kmeans    3.2.0 closure     TRUE function   FALSE
+#> 235066   stats kmeans    4.0.2 closure     TRUE function   FALSE
 #>                                                                                                                              args
-#> 212024                                                                                                (x, centers, iter.max = 10)
-#> 232423                                                                                                (x, centers, iter.max = 10)
-#> 232427                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 232466   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 232471 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 232496 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 214365                                                                                                (x, centers, iter.max = 10)
+#> 234993                                                                                                (x, centers, iter.max = 10)
+#> 234997                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 235036   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 235041 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 235066 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:
@@ -107,8 +107,74 @@ r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#> [1] package  name     Rversion type     exported class    generic  args    
-#> <0 rows> (or 0-length row.names)
+#>      package                    name Rversion    type exported    class generic
+#> 1       base           .check_tzones    4.3.0 closure     TRUE function   FALSE
+#> 2       base        .formula2varlist    4.3.0 closure     TRUE function   FALSE
+#> 3       base             $<-.POSIXlt    4.3.0 closure     TRUE function   FALSE
+#> 4       base                array2DF    4.3.0 closure     TRUE function   FALSE
+#> 5       base          balancePOSIXlt    4.3.0 closure     TRUE function   FALSE
+#> 6       base         chooseOpsMethod    4.3.0 closure     TRUE function   FALSE
+#> 7       base chooseOpsMethod.default    4.3.0 closure     TRUE function   FALSE
+#> 8       base       is.finite.POSIXlt    4.3.0 closure     TRUE function   FALSE
+#> 9       base     is.infinite.POSIXlt    4.3.0 closure     TRUE function   FALSE
+#> 10      base          is.nan.POSIXlt    4.3.0 closure     TRUE function   FALSE
+#> 11      base             nameOfClass    4.3.0 closure     TRUE function   FALSE
+#> 12      base     nameOfClass.default    4.3.0 closure     TRUE function   FALSE
+#> 13      base           R_compiled_by    4.3.0 closure     TRUE function   FALSE
+#> 14      base          unCfillPOSIXlt    4.3.0 builtin     TRUE function      NA
+#> 15 grDevices             embedGlyphs    4.3.0 closure     TRUE function   FALSE
+#> 16 grDevices             glyphAnchor    4.3.0 closure     TRUE function   FALSE
+#> 17 grDevices               glyphFont    4.3.0 closure     TRUE function   FALSE
+#> 18 grDevices           glyphFontList    4.3.0 closure     TRUE function   FALSE
+#> 19 grDevices             glyphHeight    4.3.0 closure     TRUE function   FALSE
+#> 20 grDevices       glyphHeightBottom    4.3.0 closure     TRUE function   FALSE
+#> 21 grDevices               glyphInfo    4.3.0 closure     TRUE function   FALSE
+#> 22 grDevices               glyphJust    4.3.0 closure     TRUE function   FALSE
+#> 23 grDevices              glyphWidth    4.3.0 closure     TRUE function   FALSE
+#> 24 grDevices          glyphWidthLeft    4.3.0 closure     TRUE function   FALSE
+#> 25      grid               glyphGrob    4.3.0 closure     TRUE function   FALSE
+#> 26      grid              grid.glyph    4.3.0 closure     TRUE function   FALSE
+#> 27      grid                isClosed    4.3.0 closure     TRUE function   FALSE
+#> 28     stats               toeplitz2    4.3.0 closure     TRUE function   FALSE
+#> 29     tools         as.Rconcordance    4.3.0 closure     TRUE function   FALSE
+#> 30     tools       followConcordance    4.3.0 closure     TRUE function   FALSE
+#> 31     tools        matchConcordance    4.3.0 closure     TRUE function   FALSE
+#> 32     utils                .AtNames    4.3.0 closure     TRUE function   FALSE
+#> 33     utils             findMatches    4.3.0 closure     TRUE function   FALSE
+#>                                                                                                                                     args
+#> 1                                                                                                                                  (...)
+#> 2                                                                                   (formula, data, warnLHS = TRUE, ignoreLHS = warnLHS)
+#> 3                                                                                                                       (x, name, value)
+#> 4                                     (x, responseName = "Value", sep = "", base = list(LETTERS),     simplify = TRUE, allowLong = TRUE)
+#> 5                                                                                                 (x, fill.only = FALSE, classed = TRUE)
+#> 6                                                                                                            (x, y, mx, my, cl, reverse)
+#> 7                                                                                                            (x, y, mx, my, cl, reverse)
+#> 8                                                                                                                                    (x)
+#> 9                                                                                                                                    (x)
+#> 10                                                                                                                                   (x)
+#> 11                                                                                                                                   (x)
+#> 12                                                                                                                                   (x)
+#> 13                                                                                                                                    ()
+#> 14                                                                                                                                   (x)
+#> 15                                                                              (file, glyphInfo, outfile = file, options = character())
+#> 16                                                                                                                        (value, label)
+#> 17                                                                                     (file, index, family, weight, style, PSname = NA)
+#> 18                                                                                                                                 (...)
+#> 19                                                                                              (h, label = "height", bottom = "bottom")
+#> 20                                                                                                                            (h, label)
+#> 21                                                       (id, x, y, font, size, fontList, width, height, hAnchor,     vAnchor, col = NA)
+#> 22                                                                                                                           (just, ...)
+#> 23                                                                                                   (w, label = "width", left = "left")
+#> 24                                                                                                                            (w, label)
+#> 25 (glyphInfo, x = 0.5, y = 0.5, default.units = "npc",     hjust = "centre", vjust = "centre", gp = gpar(), vp = NULL,     name = NULL)
+#> 26                                                                                                                                 (...)
+#> 27                                                                                                                              (x, ...)
+#> 28                                                                   (x, nrow = length(x) + 1L - ncol, ncol = length(x) +     1L - nrow)
+#> 29                                                                                                                              (x, ...)
+#> 30                                                                                                        (concordance, prevConcordance)
+#> 31                                                                                                                (linenum, concordance)
+#> 32                                                                                                                          (x, pattern)
+#> 33                                                                                                              (pattern, values, fuzzy)
 ```
 
 Base functions over time:
