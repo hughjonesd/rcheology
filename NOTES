@@ -33,7 +33,7 @@ UPDATE PROCEDURE
    # update NEWS.md
    Rscript -e 'rmarkdown::render("README.Rmd")'
    rm README.html
-   git commit -a --no-verify
+   git commit -a --no-verify -m 'Updates for R x.y.z'
    git push
    Rscript -e 'source("make-app-data.R")'
    # run app.R locally, make sure it looks OK
