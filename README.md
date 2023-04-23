@@ -53,20 +53,23 @@ Sarge](https://hub.docker.com/r/debian/eol/).
 Versions 1.0.1 to 1.2.2 (and a couple of later versions) are built from
 source on [Debian Woody](https://hub.docker.com/r/debian/eol/).
 
-Results are found from running `ls` on all installed packages from a
-minimal installation. Recommended packages are not included.
+Results are found from running `ls(all.names = TRUE)` on all installed
+packages from a minimal installation. For more details, see
+`list-objects.R`.
+
+Recommended packages are not included.
 
 The `Rversions` data frame lists versions of R and release dates.
 
 ## Do it yourself
 
-  - Install docker.
-  - `./control build` builds the images. Or get them from
-    <https://hub.docker.com/r/dash2/rcheology/>.
-  - `./control run` runs the images to build/install R and extract data
-  - `./control gather` gets CSV files from the containers
-  - `./control write` puts CSV files into a data frame and stores it in
-    the package
+- Install docker.
+- `./control build` builds the images. Or get them from
+  <https://hub.docker.com/r/dash2/rcheology/>.
+- `./control run` runs the images to build/install R and extract data
+- `./control gather` gets CSV files from the containers
+- `./control write` puts CSV files into a data frame and stores it in
+  the package
 
 ## The data
 

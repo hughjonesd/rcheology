@@ -18,7 +18,9 @@ Versions 1.2.3 to 2.4.1 are mostly built from source on [Debian Sarge](https://h
 
 Versions 1.0.1 to 1.2.2 (and a couple of later versions) are built from source on [Debian Woody](https://hub.docker.com/r/debian/eol/).
 
-Results are found from running `ls` on all installed packages from a minimal installation.
+Results are found from running `ls(all.names = TRUE)` on all installed packages 
+from a minimal installation. For more details, see `list-objects.R`.
+
 Recommended packages are not included.
 
 The `Rversions` data frame lists versions of R and release dates.
