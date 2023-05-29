@@ -5,7 +5,8 @@
 
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/hughjonesd/rcheology?branch=master&svg=true)](https://ci.appveyor.com/project/hughjonesd/rcheology)
-[![CRAN
+![runiverse-package
+badge](https://hughjonesd.r-universe.dev/badges/rcheology) [![CRAN
 status](https://www.r-pkg.org/badges/version/rcheology)](https://cran.r-project.org/package=rcheology)
 [![CRAN
 downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.org/package=rcheology)
@@ -63,13 +64,13 @@ The `Rversions` data frame lists versions of R and release dates.
 
 ## Do it yourself
 
-- Install docker.
-- `./control build` builds the images. Or get them from
-  <https://hub.docker.com/r/dash2/rcheology/>.
-- `./control run` runs the images to build/install R and extract data
-- `./control gather` gets CSV files from the containers
-- `./control write` puts CSV files into a data frame and stores it in
-  the package
+  - Install docker.
+  - `./control build` builds the images. Or get them from
+    <https://hub.docker.com/r/dash2/rcheology/>.
+  - `./control run` runs the images to build/install R and extract data
+  - `./control gather` gets CSV files from the containers
+  - `./control write` puts CSV files into a data frame and stores it in
+    the package
 
 ## The data
 

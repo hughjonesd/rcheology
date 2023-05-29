@@ -20,6 +20,7 @@ r_latest <- max(package_version(unique(rcheology::rcheology$Rversion)))
 # rcheology
 
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/hughjonesd/rcheology?branch=master&svg=true)](https://ci.appveyor.com/project/hughjonesd/rcheology)
+![runiverse-package badge](https://hughjonesd.r-universe.dev/badges/rcheology)
 [![CRAN status](https://www.r-pkg.org/badges/version/rcheology)](https://cran.r-project.org/package=rcheology)
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.org/package=rcheology) 
  
