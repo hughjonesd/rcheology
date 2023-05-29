@@ -59,3 +59,4 @@ UPDATE PROCEDURE
    git push --tags
    # reset revdepcheck
    Rscript -e 'revdepcheck::revdep_reset()'
+   # Create github release titled X.Y.Z.0 to update r-universe
