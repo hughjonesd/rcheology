@@ -21,6 +21,14 @@ app](https://hughjonesd.shinyapps.io/rcheology/).
 
 ## Installing
 
+From
+[r-universe](https://r-universe.dev):
+
+``` r
+install.packages('rcheology', repos = c('https://hughjonesd.r-universe.dev', 
+                    'https://cloud.r-project.org'))
+```
+
 From CRAN:
 
 ``` r
@@ -206,7 +214,7 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
       theme(legend.position = "top")
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 An alternative view:
 
@@ -222,4 +230,4 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
       theme(legend.position = "none") 
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" height="1000px" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" height="1000px" />

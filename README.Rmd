@@ -32,6 +32,13 @@ You can view the data online in a [Shiny app](https://hughjonesd.shinyapps.io/rc
 
 ## Installing
 
+From [r-universe](https://r-universe.dev):
+
+```{r, eval = FALSE}
+install.packages('rcheology', repos = c('https://hughjonesd.r-universe.dev', 
+					'https://cloud.r-project.org'))
+```
+
 From CRAN:
 
 ```{r, eval = FALSE}
