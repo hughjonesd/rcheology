@@ -1,4 +1,9 @@
 
+# Development version
+
+* Links in the Shiny app now go to hughjonesd/r-help, which provides help pages
+  for all versions of R from 0.60 onwards.
+
 # rcheology 4.3.1.0
 
 * New data for R 4.3.1

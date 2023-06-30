@@ -7,13 +7,12 @@ all_versions <- sort(as.package_version(unique(rcheology$Rversion)))
 make_doc_anchors <- function (name, package, versions) {
   # rdocumentation.org doesn't have 3.2.0
   rdoc_versions <- ifelse(versions == '3.2.0', '3.2.1', as.character(versions))
-  v3.1.1 <- as.package_version('3.1.1')
-  url <- utils::URLencode(sprintf("https://www.rdocumentation.org/packages/%s/versions/%s/topics/%s", 
-        package, rdoc_versions, name))
+  url <- utils::URLencode(sprintf("https://hughjonesd.github.io/r-help/%s/%s/%s.html",
+                                  rdoc_versions, package, name))
+  # url <- utils::URLencode(sprintf("https://www.rdocumentation.org/packages/%s/versions/%s/topics/%s", 
+  #       package, rdoc_versions, name))
   versions <- as.character(versions)
-  anchors <- ifelse(versions >= v3.1.1, 
-        paste0("<a href='", url, "' target='_blank'>", versions, "</a>"), 
-        versions)
+  anchors <- paste0("<a href='", url, "' target='_blank'>", versions, "</a>")
         
   anchors
 }

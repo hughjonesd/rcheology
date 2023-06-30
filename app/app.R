@@ -45,7 +45,7 @@ ui <- fluidPage(
   frc(code("Ever changed?"), " is true if a function was introduced or removed."),
   frc(code("Args changed?"), " is true if a function's arguments changed."),
   frc("Regexes work in filters. You can search for all versions in ", code("Versions"), "."),
-  frc(HTML("Links go to <a href='https://rdocumentation.org'>rdocumentation.org</a> and may not always work.")),
+  frc(HTML("Documentation links go to <a href='https://github.com/hughjonesd/r-help'>hughjonesd/r-help</a> on github. Please report broken links there.")),
   frc(" Try: ", lapply(keywords, function (kw) list(HTML("&nbsp;"), actionLink(kw, kw)))),
   frc("This is on the shinyapps free plan; if it runs out of credit, visit ", 
     a(href = "https://github.com/hughjonesd/rcheology", "github.com/hughjonesd/rcheology"), 
