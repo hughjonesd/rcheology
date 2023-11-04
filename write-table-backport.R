@@ -1,18 +1,12 @@
-write.table <- function (x, file = "", append = FALSE, quote = TRUE, sep = " ", 
-  eol = "\n", na = "NA", dec = ".", row.names = TRUE, col.names = TRUE, 
+write.table <- function (x, file = "", append = F, quote = T, sep = " ", 
+  eol = "\n", na = "NA", dec = ".", row.names = T, col.names = T, 
   qmethod = c("escape", "double")) 
 {
-  qmethod <- match.arg(qmethod)
-  if (!is.data.frame(x)) 
-    x <- data.frame(x)
-  else if (is.logical(quote) && quote) 
+
+  if (is.logical(quote) && quote) 
     quote <- which(unlist(lapply(x, function(x) is.character(x) || 
         is.factor(x))))
-  if (dec != ".") {
-    num <- which(unlist(lapply(x, is.numeric)))
-    x[num] <- lapply(x[num], function(z) gsub("\\.", ",", 
-      as.character(z)))
-  }
+
   i <- is.na(x)
   x <- as.matrix(x)
   if (any(i)) 
@@ -28,19 +22,8 @@ write.table <- function (x, file = "", append = FALSE, quote = TRUE, sep = " ",
       stop("invalid numbers in quote")
   }
   else stop("invalid quote specification")
-  rn <- FALSE
-  if (is.logical(row.names)) {
-    if (row.names) {
-      x <- cbind(d[[1]], x)
-      rn <- TRUE
-    }
-  }
-  else {
-    row.names <- as.character(row.names)
-    if (length(row.names) == nrow(x)) 
-      x <- cbind(row.names, x)
-    else stop("invalid row.names specification")
-  }
+  rn <- F
+ 
   if (!is.null(quote) && (p < ncol(x))) 
     quote <- c(0, quote) + 1
   if (is.logical(col.names)) 
@@ -60,8 +43,8 @@ write.table <- function (x, file = "", append = FALSE, quote = TRUE, sep = " ",
     if (!is.null(quote)) 
       col.names <- paste("\"", col.names, "\"", sep = "")
     cat(col.names, file = file, sep = rep(sep, p - 1), append = append)
-    cat(eol, file = file, append = TRUE)
-    append <- TRUE
+    cat(eol, file = file, append = T)
+    append <- T
   }
   qstring <- switch(qmethod, escape = "\\\\\"", double = "\"\"")
   for (i in quote) x[, i] <- paste("\"", gsub("\"", qstring, 
