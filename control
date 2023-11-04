@@ -27,7 +27,8 @@ COMMANDS <- c("build", "run", "gather", "write", "clean")
 build <- function(containers = CONTAINERS, no_cache = FALSE) {
   for (image in names(containers)) {
     dockerfile <- DOCKERFILES[[image]]
-    system2("docker", c("build", if (no_cache) "--no-cache" else NULL,  "-t", image, "-f", dockerfile, "."))
+    system2("docker", c("build", if (no_cache) "--no-cache" else NULL,  
+                        "--platform", "linux/amd64", "-t", image, "-f", dockerfile, "."))
   }
 }
 
@@ -41,7 +42,7 @@ run <- function(containers = CONTAINERS, versions = NULL) {
                 paste0("MYVERSIONS=", paste0(versions, collapse=","))) 
     }
     args <- c(args, image)
-    cat(args)
+    cat(c("docker", args))
     system2("docker", args)
   }
 }
