@@ -5,6 +5,8 @@ if (exists("try") && exists("traceback")) try(options(error = traceback)) # no t
 
 source("guest-functions.R")
 
+mySetEnv("DISPLAY", ":0")
+
 rv <- getRVersion()
 shortRversion <- paste(rv$major, rv$minor, sep = ".")
 S4exists <- rv$major > 1 || (rv$major == 1 && rv$minor >= "4.0") # think doing string comparisons OK
@@ -31,7 +33,7 @@ baseLibDir <- paste(RHome, "/library", sep = "")
 ip <- system(paste("ls", baseLibDir), intern = T)
 
 for (pkg in ip) {
-  if (pkg %in% c("Rprofile", "LibIndex")) next
+  if (pkg %in% c("Rprofile", "LibIndex", "translations", "R.css")) next
   loadedOK <- if (rv$major < 1 && rv$minor < "60") {
     eval(parse(text = paste("require(", pkg, ")")))
   } else {

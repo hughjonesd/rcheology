@@ -32,6 +32,14 @@ myGetEnv <- if (exists("Sys.getenv")) {
   Sys.getenv 
 } else if (exists("getenv")) {
   getenv
+} else {
+  function (x) {}
+}
+
+mySetEnv <- if (exists("Sys.setenv")) {
+  Sys.setenv
+} else if (exists("Sys.putenv")) {
+  Sys.putenv
 }
 
 
@@ -80,8 +88,9 @@ checkExported <- function(objName, pkg) {
   if (pkg == "base") return(T)
   
   if (rv$major > 1 || (rv$major == 1 && rv$minor >= "7.0")) {
-  # some packages used not to have a namespace. In this case we return NA
-    cond <- try(objName %in% getNamespaceExports(pkg))
+    # some packages used not to have a namespace. In this case we return NA
+    # try(silent = *) is available in 1.7.0
+    cond <- try(objName %in% getNamespaceExports(pkg), silent = T)
     if (inherits(cond, "try-error")) return(NA) 
     return(cond)
   } else {
