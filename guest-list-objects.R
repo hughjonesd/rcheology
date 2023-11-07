@@ -5,7 +5,7 @@ if (exists("try") && exists("traceback")) try(options(error = traceback)) # no t
 
 source("guest-functions.R")
 
-mySetEnv("DISPLAY", ":0")
+mySetEnv(DISPLAY=":0")
 
 rv <- getRVersion()
 shortRversion <- paste(rv$major, rv$minor, sep = ".")

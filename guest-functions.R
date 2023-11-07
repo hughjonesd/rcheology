@@ -40,6 +40,8 @@ mySetEnv <- if (exists("Sys.setenv")) {
   Sys.setenv
 } else if (exists("Sys.putenv")) {
   Sys.putenv
+} else {
+  function (...) {NULL}
 }
 
 

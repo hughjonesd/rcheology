@@ -2,6 +2,8 @@
 
 mkdir -p docker-data
 
+/usr/X11R6/bin/Xvfb :0 -ac -screen 0 1960x2000x24 &
+
 for RVERSION in /opt/R/*; do
   RBIN="$RVERSION/bin/R"
   echo "Starting $RBIN"
