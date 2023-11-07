@@ -18,7 +18,7 @@ function setup_container {
   docker cp guest-run-r-versions.sh $CONTAINER:/root/
   docker start $CONTAINER
   docker exec $CONTAINER apt-get update
-  docker exec $CONTAINER apt-get install -y -q r-base-dev tclx8.4-dev tk8.4-dev \
+  docker exec -e DEBIAN_FRONTEND=noninteractive $CONTAINER apt-get install -y -q r-base-dev tclx8.4-dev tk8.4-dev \
     xvfb xbase-clients x-window-system-core
 }
 
