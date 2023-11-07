@@ -1,8 +1,21 @@
 
 # Development version
 
+* Completely new build infrastructure using 
+  [r-lib/evercran](https://github.com/r-lib/evercran).
+  - Data is extended back to R version 0.62.3.
+  - Recommended packages are now recorded.
+  - Versions 2.15.1-w and 3.2.4-revised are now NOT recorded in the dataset.
+  - Versions 3.0.1 and 3.0.3 ARE now recorded.
+  - `last.warning` and `.Last.sys` are not recorded in the dataset for some
+    R versions.
+  - The class of `as.array` is recorded as `standardGeneric` rather than
+    `function` in R 2.9.0 to 2.13.1.
+  - Package `tcltk` is not recorded for 1.x versions. Working on a fix....
+    
 * Links in the Shiny app now go to hughjonesd/r-help, which provides help pages
   for all versions of R from 0.60 onwards.
+
 
 # rcheology 4.3.1.0
 
