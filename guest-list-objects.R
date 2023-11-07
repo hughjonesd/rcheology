@@ -27,14 +27,19 @@ pkgData <- data.frame(
 
 RHome <- myGetEnv("R_HOME")
 if (RHome == "") RHome <- myGetEnv("RHOME")
+if (RHome == "") RHome <- paste("/opt/R/", shortRversion, sep = "")
 baseLibDir <- paste(RHome, "/library", sep = "")
 # ip <- installed.packages()[, "Package"]
 # baseLibDir <- paste("/opt/R/", shortRversion, "/lib/R/library", sep = "")
 ip <- system(paste("ls", baseLibDir), intern = T)
 
 for (pkg in ip) {
-  if (pkg %in% c("Rprofile", "LibIndex", "translations", "R.css")) next
-  loadedOK <- if (rv$major < 1 && rv$minor < "60") {
+  if (pkg ==  "Rprofile" || pkg == "LibIndex" || pkg == "translations" || 
+      pkg == "R.css") next
+  # as.numeric catches versions e.g. 0.7 in pre
+  loadedOK <- if (rv$major < 1 && as.numeric(rv$minor) < 14) {
+    TRUE # let's hope
+  } else if (rv$major < 1 && as.numeric(rv$minor) < 60) {
     eval(parse(text = paste("require(", pkg, ")")))
   } else {
     library(pkg, character.only = T, logical.return = T)
@@ -55,4 +60,5 @@ write.table(pkgData,
         qmethod   = "double",
         col.names = T
       )
+q("no")
 

@@ -7,8 +7,11 @@ getRVersion <- function () {
       return(R.version())
     }
   }
-  warning("Couldn't find version string")
-  return(NULL)
+  rv <- system("echo $RV", intern = T)
+  bits <- strsplit(rv, ".")[[1]]
+  major <- bits[1]
+  minor <- paste(bits[-1], sep = ".")
+  return(list(major = major, minor = minor))
 }
 
 
@@ -33,7 +36,7 @@ myGetEnv <- if (exists("Sys.getenv")) {
 } else if (exists("getenv")) {
   getenv
 } else {
-  function (x) {}
+  function (x) {""}
 }
 
 mySetEnv <- if (exists("Sys.setenv")) {
@@ -54,10 +57,16 @@ funArgs <- function (fn) {
     res <- pasteCollapse(a, collapse = "")
   }
   
-  # get rid of 'function ', sub() may not exist
-  functionStripped <- strsplit(res, "function ")[[1]]
-  if (length(functionStripped))  res[1] <- functionStripped[1]
-    
+  if (exists("sub")) {
+    res <- sub("function *", "", res)
+    res <- sub("\\{.*", "", res)
+  } else {
+    functionStripped <- strsplit(res, "function ")[[1]]
+    if (length(functionStripped))  res[1] <- functionStripped[2]
+    braceStripped <- strsplit(res, "{")[[1]]
+    if (length(braceStripped))  res[1] <- braceStripped[1]
+  }
+  
   res
 }
 

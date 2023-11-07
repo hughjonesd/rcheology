@@ -10,6 +10,7 @@
     R versions.
   - The class of `as.array` is recorded as `standardGeneric` rather than
     `function` in R 2.9.0 to 2.13.1.
+  - Package `tcltk` is not recorded for 1.x versions. Working on a fix....
     
 * Links in the Shiny app now go to hughjonesd/r-help, which provides help pages
   for all versions of R from 0.60 onwards.

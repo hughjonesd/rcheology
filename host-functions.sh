@@ -4,7 +4,7 @@
 # create a bash shell:
 # docker exec -it ctr-XXX /bin/bash
 
-function setup_container {
+function setup_ctr {
   IMAGE=$1
   CONTAINER="ctr-$IMAGE"
   PLATFORM="linux/arm64"
@@ -24,10 +24,17 @@ function setup_container {
 
 function run_image {
   IMAGE=$1
-  setup_container $IMAGE
+  setup_ctr $IMAGE
   CONTAINER="ctr-$IMAGE"
   docker exec $CONTAINER chmod a+x /root/guest-run-r-versions.sh
   docker exec $CONTAINER /root/guest-run-r-versions.sh
   docker cp "$CONTAINER:/root/docker-data/." docker-data
   docker stop $CONTAINER
+}
+
+function login_ctr {
+  IMAGE=$1
+  CONTAINER="ctr-$IMAGE"
+  docker start $CONTAINER
+  docker exec -it $CONTAINER /bin/bash
 }
