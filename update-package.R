@@ -18,8 +18,9 @@ print(table(rcheology::rcheology$Rversion))
 
 rmarkdown::render("README.Rmd")
 file.remove("README.html")
-usethis::use_version() # can't add manually
+stop("Now update DESCRIPTION to ", version)
 system(paste0("git commit -a --no-verify -m 'Updates for R ", r_version, "'"))
+
 system("git push")
 
 source("make-app-data.R")

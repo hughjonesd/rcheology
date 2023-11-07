@@ -12,7 +12,7 @@ status](https://www.r-pkg.org/badges/version/rcheology)](https://cran.r-project.
 downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.org/package=rcheology)
 
 A data package which lists every command in base R packages since R
-version 1.0.1.
+version 0.62.3.
 
 The latest R version covered is 4.3.1.
 
@@ -21,8 +21,7 @@ app](https://hughjonesd.shinyapps.io/rcheology/).
 
 ## Installing
 
-From
-[r-universe](https://r-universe.dev):
+From [r-universe](https://r-universe.dev):
 
 ``` r
 install.packages('rcheology', repos = c('https://hughjonesd.r-universe.dev', 
@@ -72,13 +71,13 @@ The `Rversions` data frame lists versions of R and release dates.
 
 ## Do it yourself
 
-  - Install docker.
-  - `./control build` builds the images. Or get them from
-    <https://hub.docker.com/r/dash2/rcheology/>.
-  - `./control run` runs the images to build/install R and extract data
-  - `./control gather` gets CSV files from the containers
-  - `./control write` puts CSV files into a data frame and stores it in
-    the package
+- Install docker.
+- `./control build` builds the images. Or get them from
+  <https://hub.docker.com/r/dash2/rcheology/>.
+- `./control run` runs the images to build/install R and extract data
+- `./control gather` gets CSV files from the containers
+- `./control write` puts CSV files into a data frame and stores it in
+  the package
 
 ## The data
 
@@ -87,19 +86,15 @@ library(rcheology)
 data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
-#>        package   name Rversion    type exported    class generic
-#> 216706     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
-#> 237563   stats kmeans    1.9.0 closure     TRUE function   FALSE
-#> 237567   stats kmeans    2.1.0 closure     TRUE function   FALSE
-#> 237606   stats kmeans    3.0.2 closure     TRUE function   FALSE
-#> 237611   stats kmeans    3.2.0 closure     TRUE function   FALSE
-#>                                                                                                                              args
-#> 216706                                                                                                (x, centers, iter.max = 10)
-#> 237563                                                                                                (x, centers, iter.max = 10)
-#> 237567                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 237606   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 237611 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#>  [ reached 'max' / getOption("max.print") -- omitted 1 rows ]
+#> # A tibble: 6 × 8
+#>   package name   Rversion type    exported class    generic args                                   
+#>   <chr>   <chr>  <chr>    <chr>   <lgl>    <chr>    <lgl>   <chr>                                  
+#> 1 mva     kmeans 1.0.1    closure TRUE     <NA>     FALSE   "(x, centers, iter.max = 10)"          
+#> 2 stats   kmeans 1.9.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10)"          
+#> 3 stats   kmeans 2.1.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10, nstart = …
+#> 4 stats   kmeans 3.0.2    closure TRUE     function FALSE   "(x, centers, iter.max = 10, nstart = …
+#> 5 stats   kmeans 3.2.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10L, nstart =…
+#> 6 stats   kmeans 4.0.2    closure TRUE     function FALSE   "(x, centers, iter.max = 10L, nstart =…
 ```
 
 Latest changes:
@@ -118,14 +113,16 @@ r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#> [1] package  name     Rversion type     exported class    generic  args    
-#> <0 rows> (or 0-length row.names)
+#> # A tibble: 0 × 8
+#> # ℹ 8 variables: package <chr>, name <chr>, Rversion <chr>, type <chr>, exported <lgl>,
+#> #   class <chr>, generic <lgl>, args <chr>
 ```
 
 Base functions over time:
 
 ``` r
 library(ggplot2)
+#> Warning: package 'ggplot2' was built under R version 4.3.1
 
 rvs <- rcheology$Rversion     %>% 
       unique()                %>% 
@@ -145,7 +142,6 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
       scale_x_date(breaks  = major_rv_dates, labels = major_rvs) + 
       xlab("Version") + ylab("Function count") + 
       theme(legend.position = "top")
-#> Warning: Removed 3498 rows containing non-finite values (`stat_count()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
@@ -162,7 +158,6 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
       xlab("Version") + ylab("Function count") + 
       facet_wrap(~package, scales = "free_y", ncol = 2) +
       theme(legend.position = "none") 
-#> Warning: Removed 3498 rows containing non-finite values (`stat_count()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" height="1000px" />
