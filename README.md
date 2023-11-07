@@ -38,46 +38,18 @@ install.packages('rcheology')
 
 ## Where the data comes from
 
-Versions 4.2.1 and up are installed from the [CRAN apt repositories for
-Ubuntu
-Focal](https://cran.r-project.org/bin/linux/ubuntu/focal-cran40/).
-
-Versions 4.0.0 to 4.2.0 are installed from the [CRAN apt repositories
-for Ubuntu
-Bionic](https://cran.r-project.org/bin/linux/ubuntu/bionic-cran40/).
-
-Versions 3.0.1 to 3.6.3 are installed from the [CRAN apt repositories
-for Ubuntu Trusty
-Tahr](https://cran.r-project.org/bin/linux/ubuntu/trusty/). Version
-3.5.0 and up use a [special
-repository](https://cran.r-project.org/bin/linux/ubuntu/trusty-cran35/).
-
-Versions 2.5.1 to 3.0.0 are built from source on [Ubuntu Lucid
-Lynx](https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/).
-
-Versions 1.2.3 to 2.4.1 are mostly built from source on [Debian
-Sarge](https://hub.docker.com/r/debian/eol/).
-
-Versions 1.0.1 to 1.2.2 (and a couple of later versions) are built from
-source on [Debian Woody](https://hub.docker.com/r/debian/eol/).
+R versions are built using the
+[evercran](https://github.com/r-lib/evercran) project.
 
 Results are found from running `ls(all.names = TRUE)` on all installed
-packages from a minimal installation. For more details, see
-`list-objects.R`.
-
-Recommended packages are not included.
+packages. For more details, see `guest-list-objects.R`.
 
 The `Rversions` data frame lists versions of R and release dates.
 
 ## Do it yourself
 
-- Install docker.
-- `./control build` builds the images. Or get them from
-  <https://hub.docker.com/r/dash2/rcheology/>.
-- `./control run` runs the images to build/install R and extract data
-- `./control gather` gets CSV files from the containers
-- `./control write` puts CSV files into a data frame and stores it in
-  the package
+- Install and start docker.
+- Run `host-run-on-evercran.sh`.
 
 ## The data
 
@@ -86,15 +58,20 @@ library(rcheology)
 data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
-#> # A tibble: 6 × 8
-#>   package name   Rversion type    exported class    generic args                                   
-#>   <chr>   <chr>  <chr>    <chr>   <lgl>    <chr>    <lgl>   <chr>                                  
-#> 1 mva     kmeans 1.0.1    closure TRUE     <NA>     FALSE   "(x, centers, iter.max = 10)"          
-#> 2 stats   kmeans 1.9.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10)"          
-#> 3 stats   kmeans 2.1.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10, nstart = …
-#> 4 stats   kmeans 3.0.2    closure TRUE     function FALSE   "(x, centers, iter.max = 10, nstart = …
-#> 5 stats   kmeans 3.2.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10L, nstart =…
-#> 6 stats   kmeans 4.0.2    closure TRUE     function FALSE   "(x, centers, iter.max = 10L, nstart =…
+#>        package   name Rversion    type exported    class generic
+#> 322049     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
+#> 370732   stats kmeans    1.9.0 closure     TRUE function   FALSE
+#> 370736   stats kmeans    2.1.0 closure     TRUE function   FALSE
+#> 370776   stats kmeans    3.0.2 closure     TRUE function   FALSE
+#> 370782   stats kmeans    3.2.0 closure     TRUE function   FALSE
+#> 370807   stats kmeans    4.0.2 closure     TRUE function   FALSE
+#>                                                                                                                              args
+#> 322049                                                                                                (x, centers, iter.max = 10)
+#> 370732                                                                                                (x, centers, iter.max = 10)
+#> 370736                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 370776   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 370782 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 370807 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:
@@ -114,8 +91,8 @@ r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
 #> # A tibble: 0 × 8
-#> # ℹ 8 variables: package <chr>, name <chr>, Rversion <chr>, type <chr>, exported <lgl>,
-#> #   class <chr>, generic <lgl>, args <chr>
+#> # ℹ 8 variables: package <chr>, name <chr>, Rversion <chr>, type <chr>,
+#> #   exported <lgl>, class <chr>, generic <lgl>, args <chr>
 ```
 
 Base functions over time:

@@ -4,6 +4,7 @@
 * Completely new build infrastructure using 
   [r-lib/evercran](https://github.com/r-lib/evercran).
   - Data is extended back to R version 0.62.3.
+  - Recommended packages are now recorded.
   - Versions 2.15.1-w and 3.2.4-revised are now NOT recorded in the dataset.
   - Versions 3.0.1 and 3.0.3 ARE now recorded.
   - `last.warning` and `.Last.sys` are not recorded in the dataset for some

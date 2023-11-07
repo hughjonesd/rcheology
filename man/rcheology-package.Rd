@@ -9,7 +9,7 @@ rcheology is a data package providing two data frames:
 }
 \details{
 \itemize{
-\item \link{rcheology} lists objects in all versions of R from 1.0.1 onwards.
+\item \link{rcheology} lists objects in all versions of R from 0.62.3 onwards.
 \item \link{Rversions} lists R versions and their release dates. NB: For a more complete
 and "canonical" solution, see the
 \href{https://cran.r-project.org/package=rversions}{rversions} package.
@@ -26,20 +26,11 @@ An online app for data exploration is available at \url{https://hughjonesd.shiny
 
 \subsection{Where the data comes from}{
 
-Versions 4.0.0 and up are installed from the \href{https://cran.r-project.org/bin/linux/ubuntu/bionic-cran40/}{CRAN apt repositories for Ubuntu Bionic}.
+R versions are built using the
+\href{https://github.com/r-lib/evercran}{evercran} project.
 
-Versions 3.0.1 to 3.6.3 are installed from the \href{https://cran.r-project.org/bin/linux/ubuntu/trusty/}{CRAN apt repositories for Ubuntu Trusty Tahr}. Version
-3.5.0 and up use a \href{https://cran.r-project.org/bin/linux/ubuntu/trusty-cran35/}{special repository}.
-
-Versions 2.5.1 to 3.0.0 are built from source on \href{https://hub.docker.com/r/yamamuteki/ubuntu-lucid-i386/}{Ubuntu Lucid Lynx}.
-
-Versions 1.2.3 to 2.4.1 are mostly built from source on \href{https://hub.docker.com/r/debian/eol/}{Debian Sarge}.
-
-Versions 1.0.1 to 1.2.2 (and a couple of later versions) are built from
-source on \href{https://hub.docker.com/r/debian/eol/}{Debian Woody}.
-
-Results are found from running \code{ls} on all installed packages from a
-minimal installation. Recommended packages are not included.
+Results are found from running \code{ls(all.names = TRUE)} on all installed
+packages. For more details, see \code{guest-list-objects.R}.
 
 The \code{Rversions} data frame lists versions of R and release dates.
 }
