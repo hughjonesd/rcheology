@@ -16,4 +16,4 @@ for RVERSION in /opt/R/*; do
   esac
   RV=$RVERSION $RBIN $RARGS < guest-list-objects.R 1>$RERR 
 done 
-wait
+

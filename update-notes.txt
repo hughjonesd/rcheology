@@ -1,0 +1,41 @@
+
+## UPDATE PROCEDURE
+# start docker running
+bash host-run-on-evercran.sh
+Rscript write-package-data.R
+# rebuild package
+Rscript -e 'devtools::install()'
+# check new data
+Rscript -e 'print(table(rcheology::rcheology$Rversion))'
+
+Rscript -e 'rmarkdown::render("README.Rmd")'
+rm README.html
+git commit -a --no-verify -m 'Updates for R x.y.z'
+git push
+Rscript make-app-data.R
+# run app.R locally, make sure it looks OK
+# publish to shinyapps.io
+Rscript -e 'rsconnect::deployApp("app")'
+
+# run checks:
+Rscript -e 'devtools::check()'
+# can we do this from command line??
+devtools::check_win_devel()
+devtools::check_win_release()
+devtools::check_mac_release()
+# check it's passed appveyor
+# rhc <- rhub::check_for_cran()
+rdc <- revdepcheck::revdep_check()
+# check CRAN for previous check failures to fix:
+# https://cran.r-project.org/web/checks/check_results_rcheology.html
+
+# update cran-comments.md appropriately
+devtools::release()
+
+# when it's accepted, tag release
+rm CRAN-SUBMISSION
+git tag -m "Version X.Y.Z.0 on CRAN" -a vX.Y.Z.0
+git push --tags
+# reset revdepcheck
+Rscript -e 'revdepcheck::revdep_reset()'
+# Create github release titled X.Y.Z.0 to update r-universe
