@@ -2,7 +2,7 @@
 # Development version
 
 * Completely new build infrastructure using 
-  [r-lib/evercran](https://github.com/r-lib/evercran).
+  [r-hub/evercran](https://github.com/r-hub/evercran).
   - Data is extended back to R version 0.62.3.
   - Recommended packages are now recorded.
   - Versions 2.15.1-w and 3.2.4-revised are now NOT recorded in the dataset.

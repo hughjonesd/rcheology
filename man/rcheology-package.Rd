@@ -27,7 +27,7 @@ An online app for data exploration is available at \url{https://hughjonesd.shiny
 \subsection{Where the data comes from}{
 
 R versions are built using the
-\href{https://github.com/r-lib/evercran}{evercran} project.
+\href{https://github.com/r-hub/evercran}{evercran} project.
 
 Results are found from running \code{ls(all.names = TRUE)} on all installed
 packages. For more details, see \code{guest-list-objects.R}.
