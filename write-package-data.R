@@ -17,12 +17,13 @@ cat("Versions:\n")
 print(table(rcheology$Rversion))
 
 url <- paste0("http://cran.r-project.org/src/base/R-", 0:4)
-versions <- lapply(url, function (x) XML::readHTMLTable(x, stringsAsFactors=FALSE)[[1]])
-versions <- do.call(rbind, versions)
-versions <- versions[grep("R-(.*)(\\.tar\\.gz|\\.tgz)", versions$Name), c(-1, -5)]
-versions$Rversion <- gsub("R-(.*)\\.(tar\\.gz|tgz)", "\\1", versions$Name)
-versions$date <- as.Date(versions[["Last modified"]])
-versions <- versions[, c("Rversion", "date")]
+Rversions <- lapply(url, function (x) XML::readHTMLTable(x, stringsAsFactors=FALSE)[[1]])
+Rversions <- do.call(rbind, Rversions)
+Rversions <- Rversions[grep("R-(.*)(\\.tar\\.gz|\\.tgz)", Rversions$Name), c(-1, -5)]
+Rversions$Rversion <- gsub("R-(.*)\\.(tar\\.gz|tgz)", "\\1", Rversions$Name)
+Rversions$date <- as.Date(Rversions[["Last modified"]])
+Rversions <- Rversions[, c("Rversion", "date")]
 
+print(Rversions)
 usethis::use_data(Rversions, overwrite = TRUE)
 usethis::use_data(rcheology, overwrite = TRUE)
