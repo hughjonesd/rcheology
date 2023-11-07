@@ -39,7 +39,7 @@ install.packages('rcheology')
 ## Where the data comes from
 
 R versions are built using the
-[evercran](https://github.com/r-lib/evercran) project.
+[evercran](https://github.com/r-hub/evercran) project.
 
 Results are found from running `ls(all.names = TRUE)` on all installed
 packages. For more details, see `guest-list-objects.R`.
