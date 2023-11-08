@@ -1,7 +1,7 @@
 Package: rcheology
 Version: 4.3.1.1
 Title: Data on Base Packages for Current and Previous Versions of R
-Description: Provides a dataset of functions in all base packages of R versions 1.0.1 onwards.
+Description: Provides a dataset of functions in all base packages of R versions 0.62.3 onwards.
 Authors@R: person("David", "Hugh-Jones", , "davidhughjones@gmail.com", c("aut", "cre"))
 License: CC0
 URL: https://github.com/hughjonesd/rcheology
