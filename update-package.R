@@ -37,23 +37,14 @@ devtools::check_mac_release()
 # rhc <- rhub::check_for_cran()
 rdc <- revdepcheck::revdep_check()
 
-cat(sprintf("
+cat("
 # Now wait for checks. Also check it's passed appveyor.
 # Check CRAN for previous check failures to fix:
 # https://cran.r-project.org/web/checks/check_results_rcheology.html
 
 # update cran-comments.md appropriately
 # then 
-Rscript -e 'devtools::release()'
+devtools::release()
 
-# AFTER ACCEPTANCE
-# tag release
-rm CRAN-SUBMISSION
-git tag -m \"Version %s on CRAN\" -a v%s
-git push --tags
-
-# reset revdepcheck
-Rscript -e 'revdepcheck::revdep_reset()'
-
-# And create github release titled %s to update r-universe
-", version, version, version))
+# after acceptance, update VERSION in post-acceptance.sh and run
+")
