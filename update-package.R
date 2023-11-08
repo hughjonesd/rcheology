@@ -3,7 +3,7 @@
 
 # 1. run ./host-run-on-evercran.sh
 # 2. edit 'version' below
-# 3. run this script
+# 3. run this script in a fresh R session
 
 version <- "4.3.2.0"
 
