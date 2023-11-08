@@ -1,30 +1,32 @@
 
 ## UPDATE PROCEDURE
-# version <- commandArgs(trailingOnly = TRUE)
 
-# run ./host-run-on-evercran.sh
+# 1. run ./host-run-on-evercran.sh
+# 2. edit 'version' below
+# 3. run this script
 
 version <- "4.3.2.0"
 
 if (length(version) != 1) {
   stop("Usage: Rscript update-package.R x.y.z.v")
 }
-r_version <- gsub("\\.\\d+$", "", version)
+r_version <- sub("\\.\\d+$", "", version)
 
 source("write-package-data.R")
 devtools::install()
 # check new data
 print(table(rcheology::rcheology$Rversion))
 
-rmarkdown::render("README.Rmd")
+devtools::build_readme()
 file.remove("README.html")
-system(sprintf("sed -i -e 's/Version:.*/Version: %s/' DESCRIPTION", version))
+system(sprintf("sed -e 's/Version:.*/Version: %s/' -i '' DESCRIPTION", version))
+system("git add docker-data/*.csv")
 system(sprintf("git commit -a --no-verify -m 'Updates for R %s'", r_version))
-
 system("git push")
 
+# update shinyapps app
 source("make-app-data.R")
-rsconnect::deployApp("app")
+rsconnect::deployApp("app", forceUpdate = TRUE)
 
 # run checks:
 devtools::check()
