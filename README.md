@@ -14,7 +14,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 0.62.3.
 
-The latest R version covered is 4.3.1.
+The latest R version covered is 4.3.2.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -58,15 +58,20 @@ library(rcheology)
 data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
-#> # A tibble: 6 × 8
-#>   package name   Rversion type    exported class    generic args                                   
-#>   <chr>   <chr>  <chr>    <chr>   <lgl>    <chr>    <lgl>   <chr>                                  
-#> 1 mva     kmeans 1.0.1    closure TRUE     <NA>     FALSE   "(x, centers, iter.max = 10)"          
-#> 2 stats   kmeans 1.9.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10)"          
-#> 3 stats   kmeans 2.1.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10, nstart = …
-#> 4 stats   kmeans 3.0.2    closure TRUE     function FALSE   "(x, centers, iter.max = 10, nstart = …
-#> 5 stats   kmeans 3.2.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10L, nstart =…
-#> 6 stats   kmeans 4.0.2    closure TRUE     function FALSE   "(x, centers, iter.max = 10L, nstart =…
+#>        package   name Rversion    type exported    class generic
+#> 325491     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
+#> 374628   stats kmeans    1.9.0 closure     TRUE function   FALSE
+#> 374632   stats kmeans    2.1.0 closure     TRUE function   FALSE
+#> 374672   stats kmeans    3.0.2 closure     TRUE function   FALSE
+#> 374678   stats kmeans    3.2.0 closure     TRUE function   FALSE
+#> 374703   stats kmeans    4.0.2 closure     TRUE function   FALSE
+#>                                                                                                                              args
+#> 325491                                                                                                (x, centers, iter.max = 10)
+#> 374628                                                                                                (x, centers, iter.max = 10)
+#> 374632                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 374672   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 374678 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 374703 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:
@@ -85,9 +90,20 @@ r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#> # A tibble: 0 × 8
-#> # ℹ 8 variables: package <chr>, name <chr>, Rversion <chr>, type <chr>, exported <lgl>,
-#> #   class <chr>, generic <lgl>, args <chr>
+#> # A tibble: 30 × 8
+#>    package name                      Rversion type  exported class generic args 
+#>    <chr>   <chr>                     <chr>    <chr> <lgl>    <chr> <lgl>   <chr>
+#>  1 Matrix  .M2C                      4.3.2    clos… TRUE     func… FALSE   "(fr…
+#>  2 Matrix  .M2R                      4.3.2    clos… TRUE     func… FALSE   "(fr…
+#>  3 Matrix  .M2T                      4.3.2    clos… TRUE     func… FALSE   "(fr…
+#>  4 Matrix  .M2gen                    4.3.2    clos… TRUE     func… FALSE   "(fr…
+#>  5 Matrix  .M2kind                   4.3.2    clos… TRUE     func… FALSE   "(fr…
+#>  6 Matrix  .M2m                      4.3.2    clos… TRUE     func… FALSE   "(fr…
+#>  7 Matrix  .M2packed                 4.3.2    clos… TRUE     func… FALSE   "(fr…
+#>  8 Matrix  .M2unpacked               4.3.2    clos… TRUE     func… FALSE   "(fr…
+#>  9 Matrix  .M2v                      4.3.2    clos… TRUE     func… FALSE   "(fr…
+#> 10 Matrix  .__C__BunchKaufmanFactor… 4.3.2    S4    TRUE     clas… FALSE    <NA>
+#> # ℹ 20 more rows
 ```
 
 Base functions over time:
