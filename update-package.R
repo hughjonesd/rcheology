@@ -4,7 +4,7 @@
 
 # run ./host-run-on-evercran.sh
 
-version <- "4.3.1.1"
+version <- "4.3.2.0"
 
 if (length(version) != 1) {
   stop("Usage: Rscript update-package.R x.y.z.v")
@@ -18,8 +18,8 @@ print(table(rcheology::rcheology$Rversion))
 
 rmarkdown::render("README.Rmd")
 file.remove("README.html")
-stop("Now update DESCRIPTION to ", version)
-system(paste0("git commit -a --no-verify -m 'Updates for R ", r_version, "'"))
+system(sprintf("sed -i -e 's/Version:.*/Version: %s/' DESCRIPTION", version))
+system(sprintf("git commit -a --no-verify -m 'Updates for R %s'", r_version))
 
 system("git push")
 

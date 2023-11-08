@@ -58,20 +58,15 @@ library(rcheology)
 data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
-#>        package   name Rversion    type exported    class generic
-#> 322049     mva kmeans    1.0.1 closure     TRUE     <NA>   FALSE
-#> 370732   stats kmeans    1.9.0 closure     TRUE function   FALSE
-#> 370736   stats kmeans    2.1.0 closure     TRUE function   FALSE
-#> 370776   stats kmeans    3.0.2 closure     TRUE function   FALSE
-#> 370782   stats kmeans    3.2.0 closure     TRUE function   FALSE
-#> 370807   stats kmeans    4.0.2 closure     TRUE function   FALSE
-#>                                                                                                                              args
-#> 322049                                                                                                (x, centers, iter.max = 10)
-#> 370732                                                                                                (x, centers, iter.max = 10)
-#> 370736                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 370776   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 370782 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 370807 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> # A tibble: 6 × 8
+#>   package name   Rversion type    exported class    generic args                                   
+#>   <chr>   <chr>  <chr>    <chr>   <lgl>    <chr>    <lgl>   <chr>                                  
+#> 1 mva     kmeans 1.0.1    closure TRUE     <NA>     FALSE   "(x, centers, iter.max = 10)"          
+#> 2 stats   kmeans 1.9.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10)"          
+#> 3 stats   kmeans 2.1.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10, nstart = …
+#> 4 stats   kmeans 3.0.2    closure TRUE     function FALSE   "(x, centers, iter.max = 10, nstart = …
+#> 5 stats   kmeans 3.2.0    closure TRUE     function FALSE   "(x, centers, iter.max = 10L, nstart =…
+#> 6 stats   kmeans 4.0.2    closure TRUE     function FALSE   "(x, centers, iter.max = 10L, nstart =…
 ```
 
 Latest changes:
@@ -91,8 +86,8 @@ r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
 #> # A tibble: 0 × 8
-#> # ℹ 8 variables: package <chr>, name <chr>, Rversion <chr>, type <chr>,
-#> #   exported <lgl>, class <chr>, generic <lgl>, args <chr>
+#> # ℹ 8 variables: package <chr>, name <chr>, Rversion <chr>, type <chr>, exported <lgl>,
+#> #   class <chr>, generic <lgl>, args <chr>
 ```
 
 Base functions over time:
