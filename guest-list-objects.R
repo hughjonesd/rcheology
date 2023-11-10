@@ -22,6 +22,7 @@ pkgData <- data.frame(
         generic  = logical(1),
         args     = I(character(1)),
         package  = I(character(1)),
+        priority = I(character(1)),
         Rversion = I(character(1))
       )
 
@@ -32,6 +33,15 @@ baseLibDir <- paste(RHome, "/library", sep = "")
 # ip <- installed.packages()[, "Package"]
 # baseLibDir <- paste("/opt/R/", shortRversion, "/lib/R/library", sep = "")
 ip <- system(paste("ls", baseLibDir), intern = T)
+
+hasPriorities <- exists("installed.packages") && 
+  "priority" %in% names(formals(installed.packages))
+if (hasPriorities) {
+  basePackages <- installed.packages(priority = "base")
+  basePackages <- basePackages[, "Package"]
+  recommendedPackages <- installed.packages(priority = "recommended")
+  recommendedPackages <- recommendedPackages[, "Package"]
+}
 
 for (pkg in ip) {
   if (pkg ==  "Rprofile" || pkg == "LibIndex" || pkg == "translations" || 
@@ -48,7 +58,16 @@ for (pkg in ip) {
     warning(paste("Could not load", pkg))
     next
   }
-  thisPkgData <- makeData(pkg)
+  priority <- if (! hasPriorities) NA else {
+    if (pkg %in% basePackages) {
+      "base" 
+    } else if (pkg %in% recommendedPackages) {
+      "recommended"
+    } else {
+      NA
+    }
+  } 
+  thisPkgData <- makeData(pkg, priority = priority)
   pkgData <- myRbind(pkgData, thisPkgData)
 }
 

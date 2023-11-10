@@ -110,7 +110,7 @@ checkExported <- function(objName, pkg) {
 }
 
 
-makeData <- function (pkg) {
+makeData <- function (pkg, priority) {
   nsName <- paste("package:", pkg, sep = "")
   # no do.call
   pkgObjNames  <- do.call("ls", list(nsName, all.names = T)) # NSE weirdness in early R
@@ -133,6 +133,7 @@ makeData <- function (pkg) {
     generic  = generics,
     args     = I(args),
     package  = I(rep(pkg, length(pkgObjNames))), # rep necessary for old R
+    priority = I(rep(priority, length(pkgObjNames))),
     Rversion = I(rep(shortRversion, length(pkgObjNames)))
   )
   
