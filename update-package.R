@@ -46,5 +46,5 @@ cat("
 # then 
 devtools::release()
 
-# after acceptance, update VERSION in post-acceptance.sh and run
+# after acceptance, run post-acceptance.sh and enter the (full package) version
 ")

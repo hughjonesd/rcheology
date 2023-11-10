@@ -1,8 +1,8 @@
 
 # After CRAN acceptance
 # tag release
-
-VERSION=4.3.2.0
+echo "Enter full version (x.y.z.w):"
+read VERSION
 CRANCOMMIT=$(cat CRAN-SUBMISSION)
 git tag -m "Version $VERSION on CRAN" -a v$VERSION $CRANCOMMIT
 git push --tags
