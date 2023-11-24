@@ -18,11 +18,15 @@
 #' @section Limitations:
 #' 
 #' * Functions not built on the relevant platform - e.g. Windows functions - are not included.
-#' * Because data is collected using the original R version, it is subject to changes in the way
-#'   R works. For example, before 2.5.0, [args()] didn't work on `Primitive` functions, so
-#'   those functions have no value in the `args` column.
-#' * I have failed to build tcltk on R versions 1.0.1-1.4.1 and 1.7.0/1, so there's no
-#'   tcltk data for these versions. If you can help, get in touch.
+#' 
+#' @section Historical quirks:
+#' 
+#' * In 2.9.0, package Matrix was mistakenly given priority `"Recommended"` not 
+#'   `"recommended"` in the output of [installed.packages()].
+#' * In 2.5.0, package rcompgen was given priority `NA`. The NEWS file records
+#'   it as a recommended package.
+#'   
+#' Both these errors have been corrected in the rcheology data.
 #' 
 #' @docType package
 #' @name rcheology-package
@@ -43,6 +47,9 @@ NULL
 #'    (e.g. "datasets" in early versions).
 #' * `generic`: `TRUE` if the object is an S4 generic according to 
 #'   [`methods::isGeneric()`][methods::GenericFunctions]
+#' * `priority`: `"base"` for base packages, `"recommended"` for recommended
+#'   packages. `NA` for earlier versions of R (pre 1.6.0) when the priority 
+#'   concept did not exist.
 #' * `args`: the arguments of the function, or NA for non-functions
 #' 
 #' @name rcheology 

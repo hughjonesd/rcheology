@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# TODO: run 4.3.2 when it's available
 # TODO: make args capture whole args...
 # TODO: R 0.60 and 0.60.1 and maybe 0.61 segfault, maybe try on different platform?
 # TODO: 

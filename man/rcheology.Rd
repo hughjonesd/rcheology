@@ -17,6 +17,9 @@ anything in the "base" package. \code{NA} if the package does not have a namespa
 (e.g. "datasets" in early versions).
 \item \code{generic}: \code{TRUE} if the object is an S4 generic according to
 \code{\link[methods:GenericFunctions]{methods::isGeneric()}}
+\item \code{priority}: \code{"base"} for base packages, \code{"recommended"} for recommended
+packages. \code{NA} for earlier versions of R (pre 1.6.0) when the priority
+concept did not exist.
 \item \code{args}: the arguments of the function, or NA for non-functions
 }
 }

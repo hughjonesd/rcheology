@@ -1,0 +1,103 @@
+WARNING: option -nosave no longer supported
+
+R : Copyright 2001, The R Development Core Team
+Version 1.4.0  (2001-12-19)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type `license()' or `licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type `contributors()' for more information.
+
+Type `demo()' for some demos, `help()' for on-line help, or
+`help.start()' for a HTML browser interface to help.
+Type `q()' to quit R.
+
+> #! Rscript
+> #
+> 
+> if (exists("try") && exists("traceback")) try(options(error = traceback)) # no traceback in 0.0
+> 
+> source("guest-functions.R")
+> 
+> mySetEnv(DISPLAY=":0")
+> 
+> rv <- getRVersion()
+> shortRversion <- paste(rv$major, rv$minor, sep = ".")
+> S4exists <- rv$major > 1 || (rv$major == 1 && rv$minor >= "4.0") # think doing string comparisons OK
+> if (S4exists) library(methods)
+> 
+> # zero-length data frame creation didn't work around 0.65
+> # and truncation removes class info
+> pkgData <- data.frame(
++         name     = I(character(1)), 
++         type     = I(character(1)),
++         class    = I(character(1)),
++         exported = logical(1),
++         generic  = logical(1),
++         args     = I(character(1)),
++         package  = I(character(1)),
++         Rversion = I(character(1))
++       )
+> 
+> RHome <- myGetEnv("R_HOME")
+> if (RHome == "") RHome <- myGetEnv("RHOME")
+> baseLibDir <- paste(RHome, "/library", sep = "")
+> # ip <- installed.packages()[, "Package"]
+> # baseLibDir <- paste("/opt/R/", shortRversion, "/lib/R/library", sep = "")
+> ip <- system(paste("ls", baseLibDir), intern = T)
+> 
+> for (pkg in ip) {
++   if (pkg %in% c("Rprofile", "LibIndex", "translations", "R.css")) next
++   loadedOK <- if (rv$major < 1 && rv$minor < "60") {
++     eval(parse(text = paste("require(", pkg, ")")))
++   } else {
++     library(pkg, character.only = T, logical.return = T)
++   }
++   if (! loadedOK) {
++     warning(paste("Could not load", pkg))
++     next
++   }
++   thisPkgData <- makeData(pkg)
++   pkgData <- myRbind(pkgData, thisPkgData)
++ }
+KernSmooth 2.22 installed
+Copyright M. P. Wand 1997
+Loading required package: mva 
+This is mgcv 0.6.1
+
+Attaching package `mgcv':
+
+
+	The following object(s) are masked from package:MASS :
+
+	 neg.bin 
+
+Loading required package: nls 
+
+Attaching package `survival':
+
+
+	The following object(s) are masked from package:rpart :
+
+	 is.Surv 
+
+Error in firstlib(which.lib.loc, package) : 
+	no display name and no $DISPLAY environment variable
+No traceback available
+Error in .Last.lib(libpath) : Tcl is not loaded
+No traceback available
+Warning message: 
+Could not load tcltk 
+> 
+> pkgData <- pkgData[-1, ] # remove first empty row
+> write.table(pkgData, 
++         file = paste("docker-data/pkg_data-R-", shortRversion, ".csv", sep = ""),
++         sep = ",",
++         row.names = F,
++         qmethod   = "double",
++         col.names = T
++       )
+> 
+> 

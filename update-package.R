@@ -1,9 +1,10 @@
 
 ## UPDATE PROCEDURE
 
-# 1. run ./host-run-on-evercran.sh
-# 2. edit 'version' below
-# 3. run this script in a fresh R session
+# 1. Start docker
+# 2. run ./host-run-on-evercran.sh (update to include latest version if nec)
+# 3. edit 'version' below
+# 4. run this script in a fresh R session
 
 version <- "4.3.2.0"
 

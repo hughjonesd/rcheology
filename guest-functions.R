@@ -150,6 +150,7 @@ myRbind <- function (df1, df2) {
     generic = c(as.character(df1$generic), as.character(df2$generic)),
     args = I(c(df1$args, df2$args)),
     package = I(c(df1$package, df2$package)),
+    priority = I(c(df1$priority, df2$priority)),
     Rversion = I(c(df1$Rversion, df2$Rversion))
   )
 }

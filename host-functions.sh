@@ -9,7 +9,7 @@ function setup_ctr {
   CONTAINER="ctr-$IMAGE"
   PLATFORM="linux/arm64"
   case $IMAGE in
-    pre | 0.x | 1.x | 2.x ) PLATFORM="linux/i386"
+    pre | 0.* | 1.* | 2.* ) PLATFORM="linux/i386"
   esac
   docker create --name $CONTAINER --platform $PLATFORM --entrypoint bash -i -t \
     "ghcr.io/r-hub/evercran/$IMAGE"

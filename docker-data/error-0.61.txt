@@ -1,0 +1,2 @@
+warning: unknown option --no-restore
+Fatal error: you must specify -save or -nosave

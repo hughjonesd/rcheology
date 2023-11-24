@@ -1,5 +1,12 @@
 
-# Development version
+# rcheology 4.3.2.0
+
+* New data for R 4.3.2
+* New column `"priority"` records whether an object's package was `"base"` or 
+  `"recommended"`.
+* Some data cleanups.
+
+# rcheology 4.3.1.1
 
 * Completely new build infrastructure using 
   [r-hub/evercran](https://github.com/r-hub/evercran).
