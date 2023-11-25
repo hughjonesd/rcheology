@@ -27,7 +27,7 @@ source("make-app-data.R")
 rsconnect::deployApp("app", forceUpdate = TRUE)
 
 system("git add docker-data/*.csv")
-system("git ad app/rcheology-app-data.RData")
+system("git add app/rcheology-app-data.RData")
 system(sprintf("git commit -a --no-verify -m 'Updates for R %s'", r_version))
 system("git push")
 
