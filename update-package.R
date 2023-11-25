@@ -21,13 +21,15 @@ print(table(rcheology::rcheology$Rversion))
 devtools::build_readme()
 file.remove("README.html")
 system(sprintf("sed -e 's/Version:.*/Version: %s/' -i '' DESCRIPTION", version))
-system("git add docker-data/*.csv")
-system(sprintf("git commit -a --no-verify -m 'Updates for R %s'", r_version))
-system("git push")
 
 # update shinyapps app
 source("make-app-data.R")
 rsconnect::deployApp("app", forceUpdate = TRUE)
+
+system("git add docker-data/*.csv")
+system("git ad app/rcheology-app-data.RData")
+system(sprintf("git commit -a --no-verify -m 'Updates for R %s'", r_version))
+system("git push")
 
 # run checks:
 devtools::check()
