@@ -110,8 +110,19 @@ checkExported <- function(objName, pkg) {
 }
 
 
+makeNsName <- function (pkg) {
+  if (exists("search")) {
+    searchPath <- search()
+    nsName <- grep(pkg, searchPath, value = T)
+  }
+  if (length(nsName) == 0 && pkg == "base") nsName <- ".SystemEnv" # 0.49
+  
+  nsName
+}
+
+
 makeData <- function (pkg, priority) {
-  nsName <- paste("package:", pkg, sep = "")
+  nsName <- makeNsName(pkg)
   # no do.call
   pkgObjNames  <- do.call("ls", list(nsName, all.names = T)) # NSE weirdness in early R
   pkgObjNames  <- sort(pkgObjNames)

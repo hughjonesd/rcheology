@@ -41,8 +41,10 @@ if (hasPriorities) {
   basePackages <- basePackages[, "Package"]
   recommendedPackages <- installed.packages(priority = "recommended")
   # this happened in 2.9.0:
-  recommendedPackagesMisspelled <- installed.packages(priority = "Recommended")
-  recommendedPackages <- rbind(recommendedPackages, recommendedPackagesMisspelled)
+  if (shortRversion == "2.9.0") {
+    recommendedPackagesMisspelled <- installed.packages(priority = "Recommended")
+    recommendedPackages <- rbind(recommendedPackages, recommendedPackagesMisspelled)
+  }
   recommendedPackages <- recommendedPackages[, "Package"]
   recommendedPackages <- c(recommendedPackages, "rcompgen") # for R 2.5.0, see NEWS
 }

@@ -3,7 +3,10 @@
 mkdir -p docker-data
 mkdir -p errors
 
-/usr/X11R6/bin/Xvfb :0 -ac -screen 0 1960x2000x24 &
+# tcltk didn't exist until R 1.1.0. No need for  Xvfb in earlier versions
+if [[ ! -e /opt/R/0.60 ]]; then
+  /usr/X11R6/bin/Xvfb :0 -ac -screen 0 1960x2000x24 &
+fi
 
 for RVERSION in /opt/R/*; do
   RBIN="$RVERSION/bin/R"

@@ -4,3 +4,5 @@
 .Ruserdata
 app/rsconnect/**
 .DS_Store
+opt-R-volume
+docker-data/error*

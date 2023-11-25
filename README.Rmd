@@ -93,7 +93,9 @@ rvs <- rcheology$Rversion     %>%
       as.character()
 
 major_rvs <- grep(".0$", rvs, value = TRUE)
+major_rvs <- gsub("0.50", "0.50-a1", major_rvs)
 major_rv_dates <- Rversions$date[Rversions$Rversion %in% major_rvs]
+major_rv_dates
 major_rvs <- gsub("\\.0$", "", major_rvs)
 
 rch_dates <- rcheology %>% left_join(Rversions, by = "Rversion")
