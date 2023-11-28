@@ -14,11 +14,10 @@ function setup_ctr {
   
   docker stop $CONTAINER
   docker rm $CONTAINER
-  rm -rf opt-R-volume
   
-  mkdir -p opt-R-volume
+  mkdir -p opt-R-volumes/$CONTAINER
   docker create --name $CONTAINER --platform $PLATFORM \
-    --mount type=bind,source="$(pwd)"/opt-R-volume,destination=/root/opt-copy \
+    --mount type=bind,source="$(pwd)"/opt-R-volumes/"$CONTAINER",destination=/root/opt-copy \
     --entrypoint bash -i -t "ghcr.io/r-hub/evercran/$IMAGE"
     
   docker cp guest-list-objects.R $CONTAINER:/root/
@@ -32,6 +31,8 @@ function setup_ctr {
   docker exec $CONTAINER cp -R /opt/R/ /root/opt-copy
   docker exec $CONTAINER rm -rf /opt/R
   docker exec $CONTAINER ln -s /root/opt-copy/R /opt/R
+  docker exec $CONTAINER mkdir /root/docker-data
+  docker exec $CONTAINER mkdir /root/errors
   
   docker exec $CONTAINER apt-get update
   docker exec -e DEBIAN_FRONTEND=noninteractive $CONTAINER \

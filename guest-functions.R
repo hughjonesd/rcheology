@@ -113,7 +113,8 @@ checkExported <- function(objName, pkg) {
 makeNsName <- function (pkg) {
   if (exists("search")) {
     searchPath <- search()
-    nsName <- grep(pkg, searchPath, value = T)
+    pkgPattern <- paste(":", pkg, "$", sep = "")
+    nsName <- grep(pkgPattern, searchPath, value = T)
   }
   if (length(nsName) == 0 && pkg == "base") nsName <- ".SystemEnv" # 0.49
   

@@ -51,7 +51,7 @@ if (hasPriorities) {
 
 for (pkg in ip) {
   if (pkg ==  "Rprofile" || pkg == "LibIndex" || pkg == "translations" || 
-      pkg == "R.css") next
+      pkg == "R.css" || pkg == "index.html") next
   # as.numeric catches versions e.g. 0.7 in pre
   loadedOK <- if (rv$major < 1 && as.numeric(rv$minor) < 14) {
     TRUE # let's hope

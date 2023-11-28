@@ -12,6 +12,7 @@ source host-functions.sh
 
 # cleanup
 rm docker-data/*
+rm -rf opt-R-volumes/*
 
 # run_image pre
 run_image 0.x

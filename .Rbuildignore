@@ -14,7 +14,7 @@
 ^README.*\.Rmd$
 ^\.travis\.yml$
 ^appveyor\.yml$
-^opt-r-volume$
+^opt-R-volumes$
 
 ^cran-comments\.md$
 ^revdep$

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-mkdir -p docker-data
-mkdir -p errors
 
 # tcltk didn't exist until R 1.1.0. No need for  Xvfb in earlier versions
 if [[ ! -e /opt/R/0.60 ]]; then

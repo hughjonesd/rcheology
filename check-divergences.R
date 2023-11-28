@@ -7,14 +7,13 @@ lost <- changed <- list()
 for (rv in rcheology::Rversions$Rversion) {
   r_new <- try(read_csv(sprintf("docker-data/pkg_data-R-%s.csv", rv), 
                         show_col_types = FALSE))
-  
-  if (inherits(r_new, "try-error") || nrow(r_new) == 0) {
-    lost[[rv]] <- 'NO DATA'
-    next
-  }
   r_old <- rcheology |> filter(Rversion == rv)
   if (nrow(r_old) == 0) {
     lost[[rv]] <- 'NO OLD'
+    next
+  }
+  if (inherits(r_new, "try-error") || nrow(r_new) == 0) {
+    lost[[rv]] <- 'NO DATA'
     next
   }
   
