@@ -15,8 +15,9 @@ of R from 1.0.1 onwards. Variables are:
 \item \code{exported}: \code{TRUE} if the object name was found in \code{\link[=getNamespaceExports]{getNamespaceExports()}}. True for
 anything in the "base" package. \code{NA} if the package does not have a namespace
 (e.g. "datasets" in early versions).
-\item \code{generic}: \code{TRUE} if the object is an S4 generic according to
-\code{\link[methods:GenericFunctions]{methods::isGeneric()}}
+\item \code{S4generic}: \code{TRUE} if the object is an S4 generic according to
+\code{\link[methods:GenericFunctions]{methods::isGeneric()}}. Note that in earlier
+versions of rcheology, this column was called \code{generic}.
 \item \code{priority}: \code{"base"} for base packages, \code{"recommended"} for recommended
 packages. \code{NA} for earlier versions of R (pre 1.6.0) when the priority
 concept did not exist.

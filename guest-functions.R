@@ -134,7 +134,7 @@ makeData <- function (pkg, priority) {
   types        <- unlist(lapply(pkgObjs, typeof))
   isExported   <- unlist(lapply(as.list(pkgObjNames), checkExported, pkg))
   classes      <- unlist(lapply(pkgObjs, function (x) pasteCollapse(class(x), collapse = "/")))
-  generics     <- unlist(lapply(as.list(pkgObjNames), safelyTestGeneric, nsName))
+  S4generics   <- unlist(lapply(as.list(pkgObjNames), safelyTestGeneric, nsName))
   args         <- unlist(lapply(pkgObjs, function (x) if (is.function(x)) funArgs(x) else NA))
   
   thisPkgData <- data.frame(
@@ -142,7 +142,7 @@ makeData <- function (pkg, priority) {
     type     = I(types),
     class    = I(classes),
     exported = isExported,
-    generic  = generics,
+    S4generic  = S4generics,
     args     = I(args),
     package  = I(rep(pkg, length(pkgObjNames))), # rep necessary for old R
     priority = I(rep(priority, length(pkgObjNames))),
@@ -159,7 +159,7 @@ myRbind <- function (df1, df2) {
     type = I(c(df1$type, df2$type)),
     class = I(c(df1$class, df2$class)),
     exported = c(as.character(df1$exported), as.character(df2$exported)),
-    generic = c(as.character(df1$generic), as.character(df2$generic)),
+    S4generic = c(as.character(df1$S4generic), as.character(df2$S4generic)),
     args = I(c(df1$args, df2$args)),
     package = I(c(df1$package, df2$package)),
     priority = I(c(df1$priority, df2$priority)),

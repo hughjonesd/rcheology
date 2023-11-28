@@ -45,8 +45,9 @@ NULL
 #' * `exported`: `TRUE` if the object name was found in [getNamespaceExports()]. True for 
 #'    anything in the "base" package. `NA` if the package does not have a namespace 
 #'    (e.g. "datasets" in early versions).
-#' * `generic`: `TRUE` if the object is an S4 generic according to 
-#'   [`methods::isGeneric()`][methods::GenericFunctions]
+#' * `S4generic`: `TRUE` if the object is an S4 generic according to 
+#'   [`methods::isGeneric()`][methods::GenericFunctions]. Note that in earlier
+#'   versions of rcheology, this column was called `generic`.
 #' * `priority`: `"base"` for base packages, `"recommended"` for recommended
 #'   packages. `NA` for earlier versions of R (pre 1.6.0) when the priority 
 #'   concept did not exist.

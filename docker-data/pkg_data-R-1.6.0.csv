@@ -1,4 +1,4 @@
-"name","type","class","exported","generic","args","package","priority","Rversion"
+"name","type","class","exported","S4generic","args","package","priority","Rversion"
 ".First.lib","closure","function","TRUE","FALSE","(lib, pkg) ","KernSmooth","recommended","1.6.0"
 ".packageName","character","character","TRUE","FALSE","NA","KernSmooth","recommended","1.6.0"
 "bkde","closure","function","TRUE","FALSE","(x, kernel = ""normal"", canonical = FALSE, bandwidth,     gridsize = 401, range.x, truncate = TRUE) ","KernSmooth","recommended","1.6.0"

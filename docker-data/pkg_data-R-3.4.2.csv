@@ -1,4 +1,4 @@
-"name","type","class","exported","generic","args","package","priority","Rversion"
+"name","type","class","exported","S4generic","args","package","priority","Rversion"
 ".Depends","character","character","FALSE","FALSE","NA","KernSmooth","recommended","3.4.2"
 "bkde","closure","function","TRUE","FALSE","(x, kernel = ""normal"", canonical = FALSE, bandwidth,     gridsize = 401L, range.x, truncate = TRUE) ","KernSmooth","recommended","3.4.2"
 "bkde2D","closure","function","TRUE","FALSE","(x, bandwidth, gridsize = c(51L, 51L), range.x, truncate = TRUE) ","KernSmooth","recommended","3.4.2"

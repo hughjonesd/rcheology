@@ -15,15 +15,15 @@ if (S4exists) library(methods)
 # zero-length data frame creation didn't work around 0.65
 # and truncation removes class info
 pkgData <- data.frame(
-        name     = I(character(1)), 
-        type     = I(character(1)),
-        class    = I(character(1)),
-        exported = logical(1),
-        generic  = logical(1),
-        args     = I(character(1)),
-        package  = I(character(1)),
-        priority = I(character(1)),
-        Rversion = I(character(1))
+        name       = I(character(1)), 
+        type       = I(character(1)),
+        class      = I(character(1)),
+        exported   = logical(1),
+        S4generic  = logical(1),
+        args       = I(character(1)),
+        package    = I(character(1)),
+        priority   = I(character(1)),
+        Rversion   = I(character(1))
       )
 
 RHome <- myGetEnv("R_HOME")
