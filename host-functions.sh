@@ -38,7 +38,7 @@ function setup_ctr {
   docker exec $CONTAINER apt-get update
   docker exec -e DEBIAN_FRONTEND=noninteractive $CONTAINER \
     apt-get install -y -q r-base-dev tcl8.4-dev tk8.4-dev \
-    xvfb xbase-clients x-window-system-core
+    xvfb 
     
   # if [[ $IMAGE == "1.x" ]]; then
   #   docker exec $CONTAINER cp -R /usr/X11R6/lib/X11/ /root/opt-copy/
