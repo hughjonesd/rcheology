@@ -36,8 +36,15 @@ function setup_ctr {
   
   docker exec $CONTAINER apt-get update
   docker exec -e DEBIAN_FRONTEND=noninteractive $CONTAINER \
-    apt-get install -y -q r-base-dev tclx8.4-dev tk8.4-dev \
+    apt-get install -y -q r-base-dev tcl8.4-dev tk8.4-dev \
     xvfb xbase-clients x-window-system-core
+    
+  case $IMAGE in
+   # before 1.x there is no tcltk package
+   1.x ) docker exec $CONTAINER /usr/X11R6/bin/Xvfb :0 -ac -screen 0 1960x2000x24 & ;;
+   2.x ) docker exec $CONTAINER /usr/bin/Xvfb :0 -ac -screen 0 1960x2000x24 & ;;
+   # after 2.8 you don't need X to load tcltk
+  esac
 }
 
 function run_image {
