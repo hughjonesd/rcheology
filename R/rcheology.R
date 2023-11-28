@@ -19,6 +19,7 @@
 #' 
 #' * Functions not built on the relevant platform - e.g. Windows functions - are not included.
 #' * R 0.60 data is not yet included.
+#' * Functions in package tcltk are not yet included before R 2.0.0.
 #' 
 #' @section Historical quirks:
 #' 

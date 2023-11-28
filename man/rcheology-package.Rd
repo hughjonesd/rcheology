@@ -40,6 +40,7 @@ The \code{Rversions} data frame lists versions of R and release dates.
 \itemize{
 \item Functions not built on the relevant platform - e.g. Windows functions - are not included.
 \item R 0.60 data is not yet included.
+\item Functions in package tcltk are not yet included before R 2.0.0.
 }
 }
 

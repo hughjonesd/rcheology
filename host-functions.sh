@@ -31,6 +31,7 @@ function setup_ctr {
   docker exec $CONTAINER cp -R /opt/R/ /root/opt-copy
   docker exec $CONTAINER rm -rf /opt/R
   docker exec $CONTAINER ln -s /root/opt-copy/R /opt/R
+  
   docker exec $CONTAINER mkdir /root/docker-data
   docker exec $CONTAINER mkdir /root/errors
   
@@ -39,6 +40,12 @@ function setup_ctr {
     apt-get install -y -q r-base-dev tcl8.4-dev tk8.4-dev \
     xvfb xbase-clients x-window-system-core
     
+  # if [[ $IMAGE == "1.x" ]]; then
+  #   docker exec $CONTAINER cp -R /usr/X11R6/lib/X11/ /root/opt-copy/
+  #   docker exec $CONTAINER rm -rf /usr/X11R6/lib/X11/
+  #   docker exec $CONTAINER ln -s /root/opt-copy/X11 /usr/X11R6/lib/X11
+  # fi
+  
   case $IMAGE in
    # before 1.x there is no tcltk package
    1.x ) docker exec $CONTAINER /usr/X11R6/bin/Xvfb :0 -ac -screen 0 1960x2000x24 & ;;
