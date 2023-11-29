@@ -67,3 +67,6 @@ run_image 4.2.3
 run_image 4.3.0
 run_image 4.3.1
 run_image 4.3.2
+
+# this speeds up package building a lot, even though the file is in .Rbuildignore
+rm -rf opt-R-volumes/*
