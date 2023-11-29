@@ -47,6 +47,8 @@ NULL
 #' * `exported`: `TRUE` if the object name was found in [getNamespaceExports()]. True for 
 #'    anything in the "base" package. `NA` if the package does not have a namespace 
 #'    (e.g. "datasets" in early versions).
+#' * `hidden`: `TRUE` if the object name starts with `"."`. These objects
+#'   are not reported by [ls()].
 #' * `S4generic`: `TRUE` if the object is an S4 generic according to 
 #'   [`methods::isGeneric()`][methods::GenericFunctions]. Note that in earlier
 #'   versions of rcheology, this column was called `generic`.

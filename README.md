@@ -58,18 +58,27 @@ library(rcheology)
 data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
-#>        package   name Rversion priority    type exported    class generic
-#> 326270     mva kmeans    1.0.1     <NA> closure     TRUE     <NA>   FALSE
-#> 375026   stats kmeans    2.1.0     base closure     TRUE function   FALSE
-#> 375066   stats kmeans    3.0.2     base closure     TRUE function   FALSE
-#> 375072   stats kmeans    3.2.0     base closure     TRUE function   FALSE
-#> 375097   stats kmeans    4.0.2     base closure     TRUE function   FALSE
+#>        package   name Rversion priority    type exported hidden    class
+#> 329565     mva kmeans    1.0.1     <NA> closure     TRUE  FALSE     <NA>
+#> 378737   stats kmeans    1.9.0     base closure     TRUE  FALSE function
+#> 378741   stats kmeans    2.1.0     base closure     TRUE  FALSE function
+#> 378781   stats kmeans    3.0.2     base closure     TRUE  FALSE function
+#> 378787   stats kmeans    3.2.0     base closure     TRUE  FALSE function
+#> 378812   stats kmeans    4.0.2     base closure     TRUE  FALSE function
+#>        S4generic
+#> 329565     FALSE
+#> 378737     FALSE
+#> 378741     FALSE
+#> 378781     FALSE
+#> 378787     FALSE
+#> 378812     FALSE
 #>                                                                                                                              args
-#> 326270                                                                                                (x, centers, iter.max = 10)
-#> 375026                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 375066   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 375072 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 375097 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 329565                                                                                                (x, centers, iter.max = 10)
+#> 378737                                                                                                (x, centers, iter.max = 10)
+#> 378741                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 378781   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 378787 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 378812 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:
@@ -88,19 +97,19 @@ r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#> # A tibble: 30 × 9
-#>    package name             Rversion priority type  exported class generic args 
-#>    <chr>   <chr>            <chr>    <chr>    <chr> <lgl>    <chr> <lgl>   <chr>
-#>  1 Matrix  .M2C             4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#>  2 Matrix  .M2R             4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#>  3 Matrix  .M2T             4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#>  4 Matrix  .M2gen           4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#>  5 Matrix  .M2kind          4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#>  6 Matrix  .M2m             4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#>  7 Matrix  .M2packed        4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#>  8 Matrix  .M2unpacked      4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#>  9 Matrix  .M2v             4.3.2    recomme… clos… TRUE     func… FALSE   "(fr…
-#> 10 Matrix  .__C__BunchKauf… 4.3.2    recomme… S4    TRUE     clas… FALSE    <NA>
+#> # A tibble: 30 × 10
+#>    package name    Rversion priority type  exported hidden class S4generic args 
+#>    <chr>   <chr>   <chr>    <chr>    <chr> <lgl>    <lgl>  <chr> <lgl>     <chr>
+#>  1 Matrix  .M2C    4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#>  2 Matrix  .M2R    4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#>  3 Matrix  .M2T    4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#>  4 Matrix  .M2gen  4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#>  5 Matrix  .M2kind 4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#>  6 Matrix  .M2m    4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#>  7 Matrix  .M2pac… 4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#>  8 Matrix  .M2unp… 4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#>  9 Matrix  .M2v    4.3.2    recomme… clos… TRUE     TRUE   func… FALSE     "(fr…
+#> 10 Matrix  .__C__… 4.3.2    recomme… S4    TRUE     TRUE   clas… FALSE      <NA>
 #> # ℹ 20 more rows
 ```
 
@@ -120,15 +129,15 @@ major_rvs <- grep(".0$", rvs, value = TRUE)
 major_rvs <- gsub("0.50", "0.50-a1", major_rvs)
 major_rv_dates <- Rversions$date[Rversions$Rversion %in% major_rvs]
 major_rv_dates
-#>  [1] "1997-07-22" "1998-11-14" "1999-04-08" "1999-08-28" "1999-11-22"
-#>  [6] "2000-02-07" "2000-02-29" "2000-06-15" "2000-12-15" "2001-06-22"
-#> [11] "2001-12-19" "2002-04-29" "2002-10-01" "2003-04-16" "2003-10-08"
-#> [16] "2004-04-12" "2004-10-04" "2005-04-19" "2005-10-06" "2006-04-24"
-#> [21] "2006-10-03" "2007-04-24" "2007-10-03" "2008-04-22" "2008-10-20"
-#> [26] "2009-04-17" "2009-10-26" "2010-04-22" "2010-10-15" "2011-04-13"
-#> [31] "2011-10-31" "2012-03-30" "2013-04-03" "2014-04-10" "2015-04-16"
-#> [36] "2016-05-03" "2017-04-21" "2018-04-23" "2019-04-26" "2020-04-24"
-#> [41] "2021-05-18" "2022-04-22" "2023-04-21"
+#>  [1] "1997-07-22" "1997-12-22" "1998-11-14" "1999-04-08" "1999-08-28"
+#>  [6] "1999-11-22" "2000-02-07" "2000-02-29" "2000-06-15" "2000-12-15"
+#> [11] "2001-06-22" "2001-12-19" "2002-04-29" "2002-10-01" "2003-04-16"
+#> [16] "2003-10-08" "2004-04-12" "2004-10-04" "2005-04-19" "2005-10-06"
+#> [21] "2006-04-24" "2006-10-03" "2007-04-24" "2007-10-03" "2008-04-22"
+#> [26] "2008-10-20" "2009-04-17" "2009-10-26" "2010-04-22" "2010-10-15"
+#> [31] "2011-04-13" "2011-10-31" "2012-03-30" "2013-04-03" "2014-04-10"
+#> [36] "2015-04-16" "2016-05-03" "2017-04-21" "2018-04-23" "2019-04-26"
+#> [41] "2020-04-24" "2021-05-18" "2022-04-22" "2023-04-21"
 major_rvs <- gsub("\\.0$", "", major_rvs)
 
 rch_dates <- rcheology %>% left_join(Rversions, by = "Rversion")

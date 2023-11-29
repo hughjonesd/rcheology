@@ -36,9 +36,14 @@ function setup_ctr {
   docker exec $CONTAINER mkdir /root/errors
   
   docker exec $CONTAINER apt-get update
+  
+  PACKAGES="r-base-dev"
+  case $IMAGE in
+   1.x | 2.x ) PACKAGES="$PACKAGES tcl8.4-dev tk8.4-dev xvfb" ;;
+  esac
+  
   docker exec -e DEBIAN_FRONTEND=noninteractive $CONTAINER \
-    apt-get install -y -q r-base-dev tcl8.4-dev tk8.4-dev \
-    xvfb 
+    apt-get install -y -q $PACKAGES
     
   # if [[ $IMAGE == "1.x" ]]; then
   #   docker exec $CONTAINER cp -R /usr/X11R6/lib/X11/ /root/opt-copy/

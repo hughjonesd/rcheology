@@ -78,6 +78,8 @@ for (pkg in ip) {
 }
 
 pkgData <- pkgData[-1, ] # remove first empty row
+pkgData$hidden <- substring(pkgData$name, 1, 1) == "."
+
 write.table(pkgData, 
         file = paste("docker-data/pkg_data-R-", shortRversion, ".csv", sep = ""),
         sep = ",",

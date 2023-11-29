@@ -6,7 +6,8 @@ library(readr)
 rcheology <- list.files(pattern="*.csv", path = "docker-data", full.names = TRUE) |> 
   purrr::map(~readr::read_csv(., col_types = "cccllcccc")) |> 
   purrr::list_rbind() |> 
-  select(package, name, Rversion, priority, type, exported, class, S4generic, args) |> 
+  select(package, name, Rversion, priority, type, exported, hidden, class, 
+         S4generic, args) |> 
   arrange(package, name, as.package_version(Rversion)) |> 
   tibble::remove_rownames()
   

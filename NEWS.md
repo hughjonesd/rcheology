@@ -4,6 +4,8 @@
 * New data for R 4.3.2
 * New column `"priority"` records whether an object's package was `"base"` or 
   `"recommended"`.
+* New column `"hidden"` simply records whether an object's name starts with `"."`
+  (i.e. it is hidden from `ls()`).
 * Column `"generic"` has been renamed to `"S4generic"`, to be more informative.
 * Some data cleanups.
 * Data is extended back to R version 0.61.

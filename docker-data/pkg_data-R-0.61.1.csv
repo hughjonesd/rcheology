@@ -1,839 +1,839 @@
-"name","type","class","exported","S4generic","args","package","priority","Rversion"
-"!","builtin","","TRUE","NA","","base","NA","0.61.1"
-"!=","builtin","","TRUE","NA","","base","NA","0.61.1"
-"$","special","","TRUE","NA","","base","NA","0.61.1"
-"$<-","special","","TRUE","NA","","base","NA","0.61.1"
-"%%","builtin","","TRUE","NA","","base","NA","0.61.1"
-"%*%","builtin","","TRUE","NA","","base","NA","0.61.1"
-"%/%","builtin","","TRUE","NA","","base","NA","0.61.1"
-"%in%","closure","","TRUE","FALSE","(x, y) ","base","NA","0.61.1"
-"%o%","closure","","TRUE","FALSE","(x, y, FUN = ""*"", ...) ","base","NA","0.61.1"
-"&","builtin","","TRUE","NA","","base","NA","0.61.1"
-"&&","special","","TRUE","NA","","base","NA","0.61.1"
-"(","builtin","","TRUE","NA","","base","NA","0.61.1"
-"*","builtin","","TRUE","NA","","base","NA","0.61.1"
-"+","builtin","","TRUE","NA","","base","NA","0.61.1"
-"-","builtin","","TRUE","NA","","base","NA","0.61.1"
-".AutoloadEnv","environment","","TRUE","FALSE","NA","base","NA","0.61.1"
-".C","builtin","","TRUE","NA","","base","NA","0.61.1"
-".First","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-".Fortran","builtin","","TRUE","NA","","base","NA","0.61.1"
-".GlobalEnv","environment","","TRUE","FALSE","NA","base","NA","0.61.1"
-".Internal","special","","TRUE","NA","","base","NA","0.61.1"
-".Last.value","NULL","","TRUE","FALSE","NA","base","NA","0.61.1"
-".Library","character","","TRUE","FALSE","NA","base","NA","0.61.1"
-".Machine","list","","TRUE","FALSE","NA","base","NA","0.61.1"
-".Options","list","","TRUE","FALSE","NA","base","NA","0.61.1"
-".Pars","character","","TRUE","FALSE","NA","base","NA","0.61.1"
-".PostScript.Options","list","","TRUE","FALSE","NA","base","NA","0.61.1"
-".format.Internal","builtin","","TRUE","NA","","base","NA","0.61.1"
-".lib.loc","character","","TRUE","FALSE","NA","base","NA","0.61.1"
-".not.yet.implemented","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-".packages","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"/","builtin","","TRUE","NA","","base","NA","0.61.1"
-":","builtin","","TRUE","NA","","base","NA","0.61.1"
-"<","builtin","","TRUE","NA","","base","NA","0.61.1"
-"<-","special","","TRUE","NA","","base","NA","0.61.1"
-"<<-","special","","TRUE","NA","","base","NA","0.61.1"
-"<=","builtin","","TRUE","NA","","base","NA","0.61.1"
-"==","builtin","","TRUE","NA","","base","NA","0.61.1"
-">","builtin","","TRUE","NA","","base","NA","0.61.1"
-">=","builtin","","TRUE","NA","","base","NA","0.61.1"
-"Arg","builtin","","TRUE","NA","","base","NA","0.61.1"
-"Conj","builtin","","TRUE","NA","","base","NA","0.61.1"
-"D","builtin","","TRUE","NA","","base","NA","0.61.1"
-"F","logical","","TRUE","FALSE","NA","base","NA","0.61.1"
-"Gamma","closure","","TRUE","FALSE","(link = ""inverse"") ","base","NA","0.61.1"
-"I","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"IQR","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"Im","builtin","","TRUE","NA","","base","NA","0.61.1"
-"LETTERS","character","","TRUE","FALSE","NA","base","NA","0.61.1"
-"Machine","builtin","","TRUE","NA","","base","NA","0.61.1"
-"Mod","builtin","","TRUE","NA","","base","NA","0.61.1"
-"NCOL","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"NROW","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"NextMethod","closure","","TRUE","FALSE","(generic = NULL, object = NULL, ...) ","base","NA","0.61.1"
-"Re","builtin","","TRUE","NA","","base","NA","0.61.1"
-"Recall","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"T","logical","","TRUE","FALSE","NA","base","NA","0.61.1"
-"UseMethod","special","","TRUE","NA","","base","NA","0.61.1"
-"Version","builtin","","TRUE","NA","","base","NA","0.61.1"
-"[","special","","TRUE","NA","","base","NA","0.61.1"
-"[.data.frame","special","","TRUE","NA","","base","NA","0.61.1"
-"[.formula","closure","","TRUE","FALSE","(x, i) ","base","NA","0.61.1"
-"[.noquote","closure","","TRUE","FALSE","(x, subs) ","base","NA","0.61.1"
-"[.ts","closure","","TRUE","FALSE","(x, i, j, drop = T) ","base","NA","0.61.1"
-"[<-","special","","TRUE","NA","","base","NA","0.61.1"
-"[<-.data.frame","special","","TRUE","NA","","base","NA","0.61.1"
-"[[","special","","TRUE","NA","","base","NA","0.61.1"
-"[[.data.frame","special","","TRUE","NA","","base","NA","0.61.1"
-"[[<-","special","","TRUE","NA","","base","NA","0.61.1"
-"[[<-.data.frame","special","","TRUE","NA","","base","NA","0.61.1"
-"^","builtin","","TRUE","NA","","base","NA","0.61.1"
-"abbreviate","closure","","TRUE","FALSE","(names.arg, minlength = 4, use.classes = T, dot = F) ","base","NA","0.61.1"
-"abline","closure","","TRUE","FALSE","(a = NULL, b = NULL, h = NULL, v = NULL, reg = NULL,         coef = NULL, col = par(""col""), lty = par(""lty""), ...) ","base","NA","0.61.1"
-"abs","builtin","","TRUE","NA","","base","NA","0.61.1"
-"acos","builtin","","TRUE","NA","","base","NA","0.61.1"
-"acosh","builtin","","TRUE","NA","","base","NA","0.61.1"
-"all","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"all.names","closure","","TRUE","FALSE","(expr, functions = TRUE, max.names = 200, unique = FALSE) ","base","NA","0.61.1"
-"all.vars","closure","","TRUE","FALSE","(expr, functions = FALSE, max.names = 200, unique = TRUE) ","base","NA","0.61.1"
-"anova","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"anova.glm","closure","","TRUE","FALSE","(object, ..., test = NULL, na.action = na.omit) ","base","NA","0.61.1"
-"anova.glm.null","closure","","TRUE","FALSE","(object, ..., test = NULL, na.action = na.omit) ","base","NA","0.61.1"
-"anova.glmlist","closure","","TRUE","FALSE","(object, na.action = na.omit, test = NULL) ","base","NA","0.61.1"
-"anova.lm","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1"
-"anova.lm.null","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1"
-"anovalist.lm","closure","","TRUE","FALSE","(object, ..., test = NULL) ","base","NA","0.61.1"
-"any","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"any.data.frame","builtin","","TRUE","NA","","base","NA","0.61.1"
-"aperm","closure","","TRUE","FALSE","(a, perm, resize = TRUE) ","base","NA","0.61.1"
-"append","closure","","TRUE","FALSE","(x, values, after = length(x)) ","base","NA","0.61.1"
-"apply","closure","","TRUE","FALSE","(X, MARGIN, FUN, ...) ","base","NA","0.61.1"
-"approx","closure","","TRUE","FALSE","(x, y = NULL, xout, method = ""linear"", n = 50, yleft,         yright, rule = 1, f = 0) ","base","NA","0.61.1"
-"approxfun","closure","","TRUE","FALSE","(x, y = NULL, method = ""linear"", yleft, yright, rule = 1,         f = 0) ","base","NA","0.61.1"
-"apropos","closure","","TRUE","FALSE","(pattern, where = FALSE) ","base","NA","0.61.1"
-"args","builtin","","TRUE","NA","","base","NA","0.61.1"
-"array","closure","","TRUE","FALSE","(data = NA, dim = length(data), dimnames = NULL) ","base","NA","0.61.1"
-"arrows","closure","","TRUE","FALSE","(x0, y0, x1, y1, length = 0.25, angle = 30, code = 2,         col = par(""fg""), lty = NULL, xpd = FALSE) ","base","NA","0.61.1"
-"as.array","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.call","builtin","","TRUE","NA","","base","NA","0.61.1"
-"as.char.or.expr","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.character","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.complex","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.data.frame","closure","","TRUE","FALSE","(x, row.names = NULL, optional = F, ...) ","base","NA","0.61.1"
-"as.data.frame.default","closure","","TRUE","FALSE","(x, row.names = NULL, optional = F, ...) ","base","NA","0.61.1"
-"as.double","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.expression","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.factor","closure","","TRUE","FALSE","(x, ordered = FALSE) ","base","NA","0.61.1"
-"as.formula","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1"
-"as.function","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.integer","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.list","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.logical","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.matrix","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.matrix.data.frame","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.matrix.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.name","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.null","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.numeric","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.ordered","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.qr","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.real","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.single","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"as.vector","closure","","TRUE","FALSE","(x, mode = ""any"") ","base","NA","0.61.1"
-"asin","builtin","","TRUE","NA","","base","NA","0.61.1"
-"asinh","builtin","","TRUE","NA","","base","NA","0.61.1"
-"assign","closure","","TRUE","FALSE","(x, value, pos = -1, envir = pos.to.env(pos), inherits = FALSE,         immediate = TRUE) ","base","NA","0.61.1"
-"atan","builtin","","TRUE","NA","","base","NA","0.61.1"
-"atan2","builtin","","TRUE","NA","","base","NA","0.61.1"
-"atanh","builtin","","TRUE","NA","","base","NA","0.61.1"
-"attach","closure","","TRUE","FALSE","(what, pos = 2, name = deparse(substitute(what))) ","base","NA","0.61.1"
-"attr","builtin","","TRUE","NA","","base","NA","0.61.1"
-"attr<-","special","","TRUE","NA","","base","NA","0.61.1"
-"attributes","builtin","","TRUE","NA","","base","NA","0.61.1"
-"attributes<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"autoload","closure","","TRUE","FALSE","(name, file) ","base","NA","0.61.1"
-"autoloader","closure","","TRUE","FALSE","(name, file) ","base","NA","0.61.1"
-"ave","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"axis","closure","","TRUE","FALSE","(which, at, labels = TRUE, ...) ","base","NA","0.61.1"
-"backsolve","closure","","TRUE","FALSE","(r, x, k = ncol(r)) ","base","NA","0.61.1"
-"barplot","closure","","TRUE","FALSE","(height, width = 1, space = NULL, names.arg = NULL,         legend.text = NULL, beside = FALSE, horiz = FALSE, col = heat.colors(NR),         border = par(""fg""), main = NULL, xlab = NULL, ylab = NULL,         xlim = NULL, ylim = NULL, axes = TRUE, ...) ","base","NA","0.61.1"
-"beta","builtin","","TRUE","NA","","base","NA","0.61.1"
-"binomial","closure","","TRUE","FALSE","(link = ""logit"") ","base","NA","0.61.1"
-"body","closure","","TRUE","FALSE","(fun = sys.function(sys.parent())) ","base","NA","0.61.1"
-"box","closure","","TRUE","FALSE","(which = ""plot"", lty = ""solid"", ...) ","base","NA","0.61.1"
-"boxplot","closure","","TRUE","FALSE","(x, ..., range = 1.5, width = NULL, varwidth = FALSE,         notch = FALSE, names, data = sys.frame(sys.parent()),         plot = TRUE, border = par(""fg""), col = NULL, log = """",         pars = NULL) ","base","NA","0.61.1"
-"boxplot.stats","closure","","TRUE","FALSE","(x, coef = 1.5) ","base","NA","0.61.1"
-"break","special","","TRUE","NA","","base","NA","0.61.1"
-"browser","special","","TRUE","NA","","base","NA","0.61.1"
-"builtins","closure","","TRUE","FALSE","(internal = FALSE) ","base","NA","0.61.1"
-"bw.bcv","closure","","TRUE","FALSE","(x, samples = 100) ","base","NA","0.61.1"
-"bw.sj","closure","","TRUE","FALSE","(x, samples = 100) ","base","NA","0.61.1"
-"bw.ucv","closure","","TRUE","FALSE","(x, samples = 100) ","base","NA","0.61.1"
-"bxp","closure","","TRUE","FALSE","(z, notch = FALSE, width = NULL, varwidth = FALSE, border = par(""fg""),         col = NULL, log = """", pars = NULL, ...) ","base","NA","0.61.1"
-"c","special","","TRUE","NA","","base","NA","0.61.1"
-"call","special","","TRUE","NA","","base","NA","0.61.1"
-"case.names","closure","","TRUE","FALSE","(obj, ...) ","base","NA","0.61.1"
-"case.names.lm","closure","","TRUE","FALSE","(lm.obj, full = FALSE) ","base","NA","0.61.1"
-"cat","closure","","TRUE","FALSE","(..., file = """", sep = "" "", fill = FALSE, labels = NULL,         append = FALSE) ","base","NA","0.61.1"
-"cbind","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"ceiling","builtin","","TRUE","NA","","base","NA","0.61.1"
-"char.expand","closure","","TRUE","FALSE","(input, target, nomatch = stop(""no match"")) ","base","NA","0.61.1"
-"character","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1"
-"charmatch","closure","","TRUE","FALSE","(x, table, nomatch = NA) ","base","NA","0.61.1"
-"check.bounds","builtin","","TRUE","NA","","base","NA","0.61.1"
-"chisq.test","closure","","TRUE","FALSE","(x, y = NULL, correct = TRUE, p = rep(1/length(x), length(x))) ","base","NA","0.61.1"
-"chol","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"chol2inv","closure","","TRUE","FALSE","(x, size = ncol(x)) ","base","NA","0.61.1"
-"choose","builtin","","TRUE","NA","","base","NA","0.61.1"
-"class","builtin","","TRUE","NA","","base","NA","0.61.1"
-"class<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"cm","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"co.intervals","closure","","TRUE","FALSE","(x, number = 6, overlap = 0.5) ","base","NA","0.61.1"
-"codes","builtin","","TRUE","NA","","base","NA","0.61.1"
-"codes<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"coef","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"coefficients","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"coefficients.default","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"coefficients.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1"
-"coefficients.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1"
-"col","closure","","TRUE","FALSE","(x, as.factor = FALSE) ","base","NA","0.61.1"
-"colnames","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"colnames<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1"
-"colors","builtin","","TRUE","NA","","base","NA","0.61.1"
-"colours","builtin","","TRUE","NA","","base","NA","0.61.1"
-"comment","builtin","","TRUE","NA","","base","NA","0.61.1"
-"comment<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"complete.cases","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"complex","closure","","TRUE","FALSE","(n = 0, real = numeric(), imaginary = numeric()) ","base","NA","0.61.1"
-"contour","closure","","TRUE","FALSE","(x = seq(0, 1, len = nrow(z)), y = seq(0, 1, len = ncol(z)),         z, nlevels = 10, levels = pretty(range(z, na.rm = TRUE),                 nlevels), labcex = 0, xlim = range(x, na.rm = TRUE),         ylim = range(y, na.rm = TRUE), col = par(""fg""), lty = par(""lty""),         add = FALSE) ","base","NA","0.61.1"
-"contr.helmert","closure","","TRUE","FALSE","(n, contrasts = TRUE) ","base","NA","0.61.1"
-"contr.poly","closure","","TRUE","FALSE","(n, contrasts = TRUE) ","base","NA","0.61.1"
-"contr.sum","closure","","TRUE","FALSE","(n, contrasts = TRUE) ","base","NA","0.61.1"
-"contr.treatment","closure","","TRUE","FALSE","(n, contrasts = TRUE) ","base","NA","0.61.1"
-"contrasts","closure","","TRUE","FALSE","(x, contrasts = TRUE) ","base","NA","0.61.1"
-"contrasts<-","closure","","TRUE","FALSE","(x, ctr) ","base","NA","0.61.1"
-"convolve","closure","","TRUE","FALSE","(x, y, conj = T) ","base","NA","0.61.1"
-"cooks.distance","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1"
-"coplot","closure","","TRUE","FALSE","(formula, data, given.values, panel = points, rows,         columns, show.given = TRUE, col = par(""fg""), pch = par(""pch""),         ...) ","base","NA","0.61.1"
-"cor","closure","","TRUE","FALSE","(x, y = NULL, use = ""all.obs"") ","base","NA","0.61.1"
-"cos","builtin","","TRUE","NA","","base","NA","0.61.1"
-"cosh","builtin","","TRUE","NA","","base","NA","0.61.1"
-"count.fields","closure","","TRUE","FALSE","(file, sep = """", skip = 0) ","base","NA","0.61.1"
-"cov","closure","","TRUE","FALSE","(x, y = NULL, use = ""all.obs"") ","base","NA","0.61.1"
-"covratio","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1"
-"crossprod","closure","","TRUE","FALSE","(x, y = x) ","base","NA","0.61.1"
-"cummax","builtin","","TRUE","NA","","base","NA","0.61.1"
-"cummin","builtin","","TRUE","NA","","base","NA","0.61.1"
-"cumprod","builtin","","TRUE","NA","","base","NA","0.61.1"
-"cumsum","builtin","","TRUE","NA","","base","NA","0.61.1"
-"curve","closure","","TRUE","FALSE","(expr, from, to, n = 100, add = FALSE, type = ""l"", ...) ","base","NA","0.61.1"
-"cut","closure","","TRUE","FALSE","(x, breaks, labels = NULL, right = TRUE, dig.lab = 3) ","base","NA","0.61.1"
-"data","closure","","TRUE","FALSE","(..., list = character(0), package = .packages(), lib.loc = .lib.loc) ","base","NA","0.61.1"
-"data.class","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"data.entry","closure","","TRUE","FALSE","(..., Modes = NULL, Names = NULL) ","base","NA","0.61.1"
-"data.frame","closure","","TRUE","FALSE","(..., row.names = NULL, col.names = NULL, as.is = FALSE) ","base","NA","0.61.1"
-"data.matrix","closure","","TRUE","FALSE","(frame) ","base","NA","0.61.1"
-"dataentry","builtin","","TRUE","NA","","base","NA","0.61.1"
-"dbeta","closure","","TRUE","FALSE","(x, a, b) ","base","NA","0.61.1"
-"dbinom","closure","","TRUE","FALSE","(x, n, p) ","base","NA","0.61.1"
-"dcauchy","closure","","TRUE","FALSE","(x, location = 0, scale = 1) ","base","NA","0.61.1"
-"dchisq","closure","","TRUE","FALSE","(x, df) ","base","NA","0.61.1"
-"de","closure","","TRUE","FALSE","(..., Modes = NULL, Names = NULL) ","base","NA","0.61.1"
-"de.ncols","closure","","TRUE","FALSE","(inlist) ","base","NA","0.61.1"
-"de.restore","closure","","TRUE","FALSE","(inlist, ncols, coltypes, argnames, args) ","base","NA","0.61.1"
-"de.setup","closure","","TRUE","FALSE","(ilist, list.names, incols) ","base","NA","0.61.1"
-"debug","builtin","","TRUE","NA","","base","NA","0.61.1"
-"delay","closure","","TRUE","FALSE","(x, env = .GlobalEnv) ","base","NA","0.61.1"
-"delete.response","closure","","TRUE","FALSE","(termobj) ","base","NA","0.61.1"
-"demo","closure","","TRUE","FALSE","(topic, device = x11, directory.sep = ""/"") ","base","NA","0.61.1"
-"density","closure","","TRUE","FALSE","(x, bw, adjust = 1, kernel = ""gaussian"", n = 512, width,         from, to, cut = 3, plot.graph = FALSE) ","base","NA","0.61.1"
-"deparse","builtin","","TRUE","NA","","base","NA","0.61.1"
-"deriv","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"deriv.default","closure","","TRUE","FALSE","(expr, namevec, function.arg = NULL, tag = "".expr"") ","base","NA","0.61.1"
-"deriv.formula","closure","","TRUE","FALSE","(expr, namevec, function.arg = NULL, tag = "".expr"") ","base","NA","0.61.1"
-"detach","closure","","TRUE","FALSE","(name, pos = 2) ","base","NA","0.61.1"
-"dev.off","builtin","","TRUE","NA","","base","NA","0.61.1"
-"deviance","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"deviance.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1"
-"deviance.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1"
-"dexp","closure","","TRUE","FALSE","(x, rate = 1) ","base","NA","0.61.1"
-"df","closure","","TRUE","FALSE","(x, n1, n2) ","base","NA","0.61.1"
-"df.residual","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"df.residual.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1"
-"dfbetas","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1"
-"dffits","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1"
-"dgamma","closure","","TRUE","FALSE","(x, shape, scale = 1) ","base","NA","0.61.1"
-"dgeom","closure","","TRUE","FALSE","(x, p) ","base","NA","0.61.1"
-"dget","closure","","TRUE","FALSE","(file) ","base","NA","0.61.1"
-"dhyper","closure","","TRUE","FALSE","(x, N1, N2, n) ","base","NA","0.61.1"
-"diag","closure","","TRUE","FALSE","(x = 1, nrow, ncol = n) ","base","NA","0.61.1"
-"diag<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1"
-"diff","closure","","TRUE","FALSE","(x, lag = 1, differences = 1) ","base","NA","0.61.1"
-"digamma","builtin","","TRUE","NA","","base","NA","0.61.1"
-"dim","builtin","","TRUE","NA","","base","NA","0.61.1"
-"dim<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"dimnames","builtin","","TRUE","NA","","base","NA","0.61.1"
-"dimnames<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"dlnorm","closure","","TRUE","FALSE","(x, meanlog = 0, sdlog = 1) ","base","NA","0.61.1"
-"dlogis","closure","","TRUE","FALSE","(x, location = 0, scale = 1) ","base","NA","0.61.1"
-"dnbinom","closure","","TRUE","FALSE","(x, n, p) ","base","NA","0.61.1"
-"dnchisq","closure","","TRUE","FALSE","(x, df, lambda) ","base","NA","0.61.1"
-"dnorm","closure","","TRUE","FALSE","(x, mean = 0, sd = 1) ","base","NA","0.61.1"
-"do.call","builtin","","TRUE","NA","","base","NA","0.61.1"
-"dotplot","closure","","TRUE","FALSE","(x, labels = NULL, groups = NULL, gdata = NULL, cex = par(""cex""),         pch = 21, gpch = 21, bg = par(""bg""), color = par(""fg""),         gcolor = par(""fg""), lcolor = ""gray"", ...) ","base","NA","0.61.1"
-"double","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1"
-"dpois","closure","","TRUE","FALSE","(x, lambda) ","base","NA","0.61.1"
-"dput","closure","","TRUE","FALSE","(x, file = """") ","base","NA","0.61.1"
-"drop","builtin","","TRUE","NA","","base","NA","0.61.1"
-"drop.terms","closure","","TRUE","FALSE","(termobj, dropx = NULL, keep.response = FALSE) ","base","NA","0.61.1"
-"dt","closure","","TRUE","FALSE","(x, df) ","base","NA","0.61.1"
-"dump","closure","","TRUE","FALSE","(list, fileout = ""dumpdata"") ","base","NA","0.61.1"
-"dunif","closure","","TRUE","FALSE","(x, min = 0, max = 1) ","base","NA","0.61.1"
-"duplicated","builtin","","TRUE","NA","","base","NA","0.61.1"
-"dweibull","closure","","TRUE","FALSE","(x, shape, scale = 1) ","base","NA","0.61.1"
-"dyn.load","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"edit","closure","","TRUE","FALSE","(name = NULL, file = """", editor = options()$editor) ","base","NA","0.61.1"
-"effects","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"effects.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1"
-"effects.lm","closure","","TRUE","FALSE","(z, term) ","base","NA","0.61.1"
-"eigen","closure","","TRUE","FALSE","(x, symmetric, only.values = FALSE) ","base","NA","0.61.1"
-"emacs","closure","","TRUE","FALSE","(name = NULL, file = """") ","base","NA","0.61.1"
-"end","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"end.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"end.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"environment","closure","","TRUE","FALSE","(fun = NULL) ","base","NA","0.61.1"
-"environment<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"eval","closure","","TRUE","FALSE","(expr, envir = sys.frame(sys.parent())) ","base","NA","0.61.1"
-"exists","closure","","TRUE","FALSE","(x, where = -1, envir = pos.to.env(where), frame, mode = ""any"",         inherits = TRUE) ","base","NA","0.61.1"
-"exp","builtin","","TRUE","NA","","base","NA","0.61.1"
-"expression","special","","TRUE","NA","","base","NA","0.61.1"
-"factor","closure","","TRUE","FALSE","(x, levels = sort(unique(x), na.last = TRUE), labels,         exclude = NA, ordered = FALSE) ","base","NA","0.61.1"
-"family","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"family.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1"
-"family.lm","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"fft","closure","","TRUE","FALSE","(z, inverse = FALSE) ","base","NA","0.61.1"
-"fitted","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"fitted.values","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"fitted.values.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1"
-"fitted.values.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1"
-"fivenum","closure","","TRUE","FALSE","(x, na.rm = TRUE) ","base","NA","0.61.1"
-"fix","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"floor","builtin","","TRUE","NA","","base","NA","0.61.1"
-"for","special","","TRUE","NA","","base","NA","0.61.1"
-"formals","closure","","TRUE","FALSE","(fun = sys.function(sys.parent())) ","base","NA","0.61.1"
-"format","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"format.default","closure","","TRUE","FALSE","(x, trim = FALSE, digits = .Options$digits) ","base","NA","0.61.1"
-"format.info","builtin","","TRUE","NA","","base","NA","0.61.1"
-"formatC","closure","","TRUE","FALSE","(x, digits = NULL, width = max(0, digits) + 1, format = NULL,         flag = """", mode = NULL) ","base","NA","0.61.1"
-"formula","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"formula.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"formula.formula","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"formula.lm","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"formula.terms","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"frame","closure","","TRUE","FALSE","(ask = NA) ","base","NA","0.61.1"
-"frame.cvt","closure","","TRUE","FALSE","(x, as.is = FALSE) ","base","NA","0.61.1"
-"frequency","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"frequency.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"frequency.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"function","special","","TRUE","NA","","base","NA","0.61.1"
-"gamma","builtin","","TRUE","NA","","base","NA","0.61.1"
-"gaussian","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"gc","builtin","","TRUE","NA","","base","NA","0.61.1"
-"gcinfo","builtin","","TRUE","NA","","base","NA","0.61.1"
-"get","closure","","TRUE","FALSE","(x, pos = -1, envir = pos.to.env(pos), mode = ""any"",         inherits = TRUE) ","base","NA","0.61.1"
-"getenv","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"gl","closure","","TRUE","FALSE","(n, k, length = n * k, labels = 1:n, ordered = FALSE) ","base","NA","0.61.1"
-"glm","closure","","TRUE","FALSE","(formula, family = gaussian, data = list(), weights = NULL,         subset = NULL, na.action = na.fail, start = NULL, offset = NULL,         control = glm.control(epsilon = 1e-04, maxit = 10, trace = FALSE),         model = TRUE, method = ""glm.fit"", x = FALSE, y = TRUE) ","base","NA","0.61.1"
-"glm.control","closure","","TRUE","FALSE","(epsilon = 1e-04, maxit = 10, trace = FALSE) ","base","NA","0.61.1"
-"glm.fit","closure","","TRUE","FALSE","(x, y, weights = rep(1, nobs), start = NULL, offset = rep(0,         nobs), family = gaussian(), control = glm.control(),         intercept = TRUE) ","base","NA","0.61.1"
-"glm.fit.null","closure","","TRUE","FALSE","(x, y, weights = rep(1, nobs), start = NULL, offset = rep(0,         nobs), family = gaussian(), control = glm.control(),         intercept = NULL) ","base","NA","0.61.1"
-"globalenv","builtin","","TRUE","NA","","base","NA","0.61.1"
-"graphics.off","builtin","","TRUE","NA","","base","NA","0.61.1"
-"gray","builtin","","TRUE","NA","","base","NA","0.61.1"
-"grep","closure","","TRUE","FALSE","(pattern, x, ignore.case = FALSE, extended = TRUE, value = FALSE) ","base","NA","0.61.1"
-"grid","closure","","TRUE","FALSE","(nx = 3, ny = 3, col = ""lightgray"", lty = ""dotted"") ","base","NA","0.61.1"
-"gsub","closure","","TRUE","FALSE","(pattern, replacement, x, ignore.case = FALSE, extended = TRUE) ","base","NA","0.61.1"
-"hat","closure","","TRUE","FALSE","(x, intercept = TRUE) ","base","NA","0.61.1"
-"heat.colors","closure","","TRUE","FALSE","(n) ","base","NA","0.61.1"
-"help","closure","","TRUE","FALSE","(topic, package = .packages(), lib.loc = .lib.loc) ","base","NA","0.61.1"
-"help.start","closure","","TRUE","FALSE","(gui = ""irrelevant"", browser = ""netscape"") ","base","NA","0.61.1"
-"hist","closure","","TRUE","FALSE","(x, breaks, freq = NULL, col = NULL, border = par(""fg""),         main = paste(""Histogram of"", deparse(substitute(x))),         xlim = range(breaks), ylim = range(y, 0), xlab = deparse(substitute(x)),         ylab, axes = TRUE, plot = TRUE, ...) ","base","NA","0.61.1"
-"hsv","closure","","TRUE","FALSE","(h = 1, s = 1, v = 1, gamma = 1) ","base","NA","0.61.1"
-"identify","closure","","TRUE","FALSE","(x, y = NULL, labels = seq(along = x), pos = FALSE,         ...) ","base","NA","0.61.1"
-"if","special","","TRUE","NA","","base","NA","0.61.1"
-"ifelse","closure","","TRUE","FALSE","(test, yes, no) ","base","NA","0.61.1"
-"image","closure","","TRUE","FALSE","(x = seq(0, 1, len = nrow(z)), y = seq(0, 1, len = ncol(z)),         z, zlim = range(z, na.rm = TRUE), col = heat.colors(12),         add = FALSE, xaxs = ""i"", yaxs = ""i"", xlab, ylab, ...) ","base","NA","0.61.1"
-"influence.measures","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1"
-"inherits","closure","","TRUE","FALSE","(x, name) ","base","NA","0.61.1"
-"integer","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1"
-"interactive","special","","TRUE","NA","","base","NA","0.61.1"
-"inverse.gaussian","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"invisible","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.array","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.atomic","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.call","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.character","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.complex","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.data.frame","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.double","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.empty.model","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"is.environment","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.expression","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.factor","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.finite","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"is.function","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.integer","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.language","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.list","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.loaded","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.logical","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.matrix","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.na","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.na.data.frame","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"is.name","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.null","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.numeric","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.object","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.ordered","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.qr","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"is.real","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.recursive","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.single","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.symbol","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"is.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"is.unordered","builtin","","TRUE","NA","","base","NA","0.61.1"
-"is.vector","closure","","TRUE","FALSE","(x, mode = ""any"") ","base","NA","0.61.1"
-"lapply","closure","","TRUE","FALSE","(x, FUN, ...) ","base","NA","0.61.1"
-"lbeta","builtin","","TRUE","NA","","base","NA","0.61.1"
-"lchoose","builtin","","TRUE","NA","","base","NA","0.61.1"
-"legend","closure","","TRUE","FALSE","(x, y, legend, fill, col = ""black"", lty, pch, bty = ""o"",         bg = par(""bg""), cex = 1, xjust = 0, yjust = 1, x.intersp = NULL,         y.intersp = NULL, text.width = NULL, merge = FALSE) ","base","NA","0.61.1"
-"length","builtin","","TRUE","NA","","base","NA","0.61.1"
-"length<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"letters","character","","TRUE","FALSE","NA","base","NA","0.61.1"
-"levels","builtin","","TRUE","NA","","base","NA","0.61.1"
-"levels<-","builtin","","TRUE","NA","","base","NA","0.61.1"
-"lgamma","builtin","","TRUE","NA","","base","NA","0.61.1"
-"lib.fixup","builtin","","TRUE","NA","","base","NA","0.61.1"
-"library","closure","","TRUE","FALSE","(name, help, lib.loc = .lib.loc, character.only = FALSE,         logical.return = FALSE) ","base","NA","0.61.1"
-"library.dynam","closure","","TRUE","FALSE","(name, package = .packages(), lib.loc = .lib.loc) ","base","NA","0.61.1"
-"license","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"lines","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"lines.default","closure","","TRUE","FALSE","(x, y = NULL, type = ""l"", col = par(""col""), ...) ","base","NA","0.61.1"
-"list","builtin","","TRUE","NA","","base","NA","0.61.1"
-"lm","closure","","TRUE","FALSE","(formula, data = list(), subset, weights, na.action,         method = ""qr"", model = TRUE, singular.ok = TRUE, ...) ","base","NA","0.61.1"
-"lm.fit","closure","","TRUE","FALSE","(x, y, method = ""qr"", tol = 1e-07, ...) ","base","NA","0.61.1"
-"lm.influence","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1"
-"lm.wfit","closure","","TRUE","FALSE","(x, y, w, method = ""qr"", tol = 1e-07, ...) ","base","NA","0.61.1"
-"load","closure","","TRUE","FALSE","(file) ","base","NA","0.61.1"
-"locator","closure","","TRUE","FALSE","(n = 1) ","base","NA","0.61.1"
-"log","builtin","","TRUE","NA","","base","NA","0.61.1"
-"log10","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"log2","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"logical","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1"
-"lower.tri","closure","","TRUE","FALSE","(x, diag = FALSE) ","base","NA","0.61.1"
-"lowess","closure","","TRUE","FALSE","(x, y = NULL, f = 2/3, iter = 3, delta = 0.01 * diff(range(xy$x[o]))) ","base","NA","0.61.1"
-"ls","closure","","TRUE","FALSE","(name, pos = -1, envir = pos.to.env(pos), all.names = FALSE,         pattern) ","base","NA","0.61.1"
-"ls.diag","closure","","TRUE","FALSE","(ls.out) ","base","NA","0.61.1"
-"ls.print","closure","","TRUE","FALSE","(ls.out, digits = 4, print.it = TRUE) ","base","NA","0.61.1"
-"ls.str","closure","","TRUE","FALSE","(..., mode = ""any"", max.level = 1, give.attr = FALSE) ","base","NA","0.61.1"
-"lsf.str","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"lsfit","closure","","TRUE","FALSE","(x, y, wt = NULL, intercept = TRUE, tolerance = 1e-07,         yname = NULL) ","base","NA","0.61.1"
-"machine","builtin","","TRUE","NA","","base","NA","0.61.1"
-"macintosh","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"mad","closure","","TRUE","FALSE","(y, center, constant = 1.4826, na.rm = FALSE) ","base","NA","0.61.1"
-"make.link","closure","","TRUE","FALSE","(link) ","base","NA","0.61.1"
-"mat.or.vec","closure","","TRUE","FALSE","(nr, nc) ","base","NA","0.61.1"
-"match","closure","","TRUE","FALSE","(x, table, nomatch = NA) ","base","NA","0.61.1"
-"match.arg","closure","","TRUE","FALSE","(arg, choices) ","base","NA","0.61.1"
-"match.call","closure","","TRUE","FALSE","(definition = NULL, call = sys.call(sys.parent()), expand.dots = T) ","base","NA","0.61.1"
-"matlines","closure","","TRUE","FALSE","(x, y, lty = 1:5, pch = NULL, col = 1:6, ...) ","base","NA","0.61.1"
-"matplot","closure","","TRUE","FALSE","(x, y, type = ""p"", lty = 1:5, pch = NULL, col = 1:6,         xlab = NULL, ylab = NULL, xlim = NULL, ylim = NULL, ...,         add = FALSE, verbose = FALSE) ","base","NA","0.61.1"
-"matpoints","closure","","TRUE","FALSE","(x, y, lty = 1:5, pch = NULL, col = 1:6, ...) ","base","NA","0.61.1"
-"matrix","closure","","TRUE","FALSE","(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL) ","base","NA","0.61.1"
-"max","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"mean","closure","","TRUE","FALSE","(x, trim = 0, na.rm = FALSE) ","base","NA","0.61.1"
-"median","closure","","TRUE","FALSE","(x, na.rm = FALSE) ","base","NA","0.61.1"
-"menu","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"methods","closure","","TRUE","FALSE","(generic.function, class) ","base","NA","0.61.1"
-"min","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"missing","special","","TRUE","NA","","base","NA","0.61.1"
-"mode","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"mode<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1"
-"model.data.frame","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"model.extract","closure","","TRUE","FALSE","(frame, component) ","base","NA","0.61.1"
-"model.frame","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"model.frame.default","closure","","TRUE","FALSE","(formula, data = NULL, subset = NULL, na.action = na.fail,         ...) ","base","NA","0.61.1"
-"model.frame.lm","closure","","TRUE","FALSE","(formula, data, na.action, ...) ","base","NA","0.61.1"
-"model.matrix","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1"
-"model.matrix.default","closure","","TRUE","FALSE","(formula, data, contrasts = NULL) ","base","NA","0.61.1"
-"model.offset","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"model.response","closure","","TRUE","FALSE","(data, type = ""numeric"") ","base","NA","0.61.1"
-"model.weights","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"month.abb","character","","TRUE","FALSE","NA","base","NA","0.61.1"
-"month.name","character","","TRUE","FALSE","NA","base","NA","0.61.1"
-"mtext","closure","","TRUE","FALSE","(text, side = 3, line = 0, outer = FALSE, at = NULL,         ...) ","base","NA","0.61.1"
-"mvfft","closure","","TRUE","FALSE","(z, inverse = FALSE) ","base","NA","0.61.1"
-"na.action","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"na.action.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"na.fail","closure","","TRUE","FALSE","(frame) ","base","NA","0.61.1"
-"na.omit","closure","","TRUE","FALSE","(frame) ","base","NA","0.61.1"
-"names","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"names.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"names<-","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"names<-.default","closure","","TRUE","FALSE","(x, n) ","base","NA","0.61.1"
-"nargs","special","","TRUE","NA","","base","NA","0.61.1"
-"nchar","builtin","","TRUE","NA","","base","NA","0.61.1"
-"ncol","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"next","special","","TRUE","NA","","base","NA","0.61.1"
-"nextn","closure","","TRUE","FALSE","(n, factors = c(2, 3, 5)) ","base","NA","0.61.1"
-"nlevels","builtin","","TRUE","NA","","base","NA","0.61.1"
-"nlm","closure","","TRUE","FALSE","(f, p, hessian = FALSE, typsize = rep(1, length(p)),         fscale = 1, print.level = 0, ndigit = 12, gradtol = 1e-06,         stepmax = max(1000 * sqrt(sum((p/typsize)^2)), 1000),         steptol = 1e-06, iterlim = 100) ","base","NA","0.61.1"
-"noquote","closure","","TRUE","FALSE","(obj) ","base","NA","0.61.1"
-"nrow","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"numeric","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1"
-"objects","closure","","TRUE","FALSE","(name, pos = -1, envir = pos.to.env(pos), all.names = FALSE,         pattern) ","base","NA","0.61.1"
-"offset","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"on.exit","special","","TRUE","NA","","base","NA","0.61.1"
-"optimise","closure","","TRUE","FALSE","(f, interval, lower = min(interval), upper = max(interval),         maximum = FALSE, tol = .Machine$double.eps^0.25, ...) ","base","NA","0.61.1"
-"optimize","closure","","TRUE","FALSE","(f, interval, lower = min(interval), upper = max(interval),         maximum = FALSE, tol = .Machine$double.eps^0.25, ...) ","base","NA","0.61.1"
-"options","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"order","builtin","","TRUE","NA","","base","NA","0.61.1"
-"ordered","closure","","TRUE","FALSE","(x, levels = sort(unique(x), na.last = TRUE), labels,         exclude = NA, ordered = TRUE) ","base","NA","0.61.1"
-"outer","closure","","TRUE","FALSE","(x, y, FUN = ""*"", ...) ","base","NA","0.61.1"
-"pairs","closure","","TRUE","FALSE","(x, labels, panel = points, main = NULL, font.main = par(""font.main""),         cex.main = par(""cex.main""), ...) ","base","NA","0.61.1"
-"palette","closure","","TRUE","FALSE","(value) ","base","NA","0.61.1"
-"panel.smooth","closure","","TRUE","FALSE","(x, y, col, pch, f = 2/3, iter = 3, ...) ","base","NA","0.61.1"
-"par","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"par2","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"parse","closure","","TRUE","FALSE","(file = """", n = NULL, text = NULL, prompt = NULL, white = FALSE) ","base","NA","0.61.1"
-"paste","closure","","TRUE","FALSE","(..., sep = "" "", collapse = NULL) ","base","NA","0.61.1"
-"pbeta","closure","","TRUE","FALSE","(q, a, b) ","base","NA","0.61.1"
-"pbinom","closure","","TRUE","FALSE","(q, n, p) ","base","NA","0.61.1"
-"pcauchy","closure","","TRUE","FALSE","(q, location = 0, scale = 1) ","base","NA","0.61.1"
-"pchisq","closure","","TRUE","FALSE","(q, df) ","base","NA","0.61.1"
-"pentagamma","builtin","","TRUE","NA","","base","NA","0.61.1"
-"pexp","closure","","TRUE","FALSE","(q, rate = 1) ","base","NA","0.61.1"
-"pf","closure","","TRUE","FALSE","(q, n1, n2) ","base","NA","0.61.1"
-"pgamma","closure","","TRUE","FALSE","(q, shape, scale = 1) ","base","NA","0.61.1"
-"pgeom","closure","","TRUE","FALSE","(q, p) ","base","NA","0.61.1"
-"phyper","closure","","TRUE","FALSE","(q, N1, N2, n) ","base","NA","0.61.1"
-"pi","real","","TRUE","FALSE","NA","base","NA","0.61.1"
-"pictex","closure","","TRUE","FALSE","(file = ""Rplots.tex"", width = 5, height = 4, debug = FALSE,         bg = ""white"", fg = ""black"") ","base","NA","0.61.1"
-"piechart","closure","","TRUE","FALSE","(x, labels = names(x), edges = 200, radius = 0.8, col = NULL,         main = NULL, ...) ","base","NA","0.61.1"
-"plnorm","closure","","TRUE","FALSE","(q, meanlog = 0, sdlog = 1) ","base","NA","0.61.1"
-"plogis","closure","","TRUE","FALSE","(q, location = 0, scale = 1) ","base","NA","0.61.1"
-"plot","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"plot.data.frame","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"plot.default","closure","","TRUE","FALSE","(x, y = NULL, type = ""p"", col = par(""fg""), bg = NA,         pch = par(""pch""), xlim = NULL, ylim = NULL, log = """",         axes = TRUE, frame.plot = axes, panel.first = NULL, panel.last = NULL,         ann = par(""ann""), main = NULL, xlab = NULL, ylab = NULL,         cex = par(""cex""), lty = par(""lty""), lwd = par(""lwd""),         ...) ","base","NA","0.61.1"
-"plot.density","closure","","TRUE","FALSE","(s, main = """", xlab = NULL, ylab = ""Density"", type = ""l"",         ...) ","base","NA","0.61.1"
-"plot.factor","closure","","TRUE","FALSE","(x, y, ...) ","base","NA","0.61.1"
-"plot.lm","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1"
-"plot.new","closure","","TRUE","FALSE","(ask = NA) ","base","NA","0.61.1"
-"plot.ts","closure","","TRUE","FALSE","(x, type = ""l"", xlim, ylim, xlab = ""Time"", ylab, log = """",         col = par(""col""), bg = NA, pch = par(""pch""), lty = par(""lty""),         axes = TRUE, frame.plot = axes, ann = par(""ann""), main = NULL,         ...) ","base","NA","0.61.1"
-"plot.window","builtin","","TRUE","NA","","base","NA","0.61.1"
-"plot.xy","closure","","TRUE","FALSE","(xy, type, pch = 1, lty = ""solid"", col = par(""fg""),         bg = NA, cex = 1, ...) ","base","NA","0.61.1"
-"pmatch","closure","","TRUE","FALSE","(x, table, nomatch = NA) ","base","NA","0.61.1"
-"pmax","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"pmin","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"pnbinom","closure","","TRUE","FALSE","(q, n, p) ","base","NA","0.61.1"
-"pnchisq","closure","","TRUE","FALSE","(q, df, lambda) ","base","NA","0.61.1"
-"pnorm","closure","","TRUE","FALSE","(q, mean = 0, sd = 1) ","base","NA","0.61.1"
-"points","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"points.default","closure","","TRUE","FALSE","(x, y = NULL, type = ""p"", pch = 1, col = ""black"", bg = NA,         cex = 1, ...) ","base","NA","0.61.1"
-"poisson","closure","","TRUE","FALSE","(link = ""log"") ","base","NA","0.61.1"
-"polygon","closure","","TRUE","FALSE","(x, y = NULL, border = par(""fg""), ...) ","base","NA","0.61.1"
-"polyroot","builtin","","TRUE","NA","","base","NA","0.61.1"
-"pos.to.env","builtin","","TRUE","NA","","base","NA","0.61.1"
-"postscript","closure","","TRUE","FALSE","(file = ""Rplots.ps"", ...) ","base","NA","0.61.1"
-"power","closure","","TRUE","FALSE","(lambda = 1) ","base","NA","0.61.1"
-"ppoints","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"ppois","closure","","TRUE","FALSE","(q, lambda) ","base","NA","0.61.1"
-"predict","closure","","TRUE","FALSE","(fit, ...) ","base","NA","0.61.1"
-"predict.default","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1"
-"predict.lm","closure","","TRUE","FALSE","(object, newdata = model.frame(object), conf.level = 0.95,         tol.level = conf.level) ","base","NA","0.61.1"
-"pretty","closure","","TRUE","FALSE","(x, n = 5) ","base","NA","0.61.1"
-"print","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"print.anova.glm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), na.print = """",         ...) ","base","NA","0.61.1"
-"print.anova.lm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","base","NA","0.61.1"
-"print.atomic","closure","","TRUE","FALSE","(x, quote = TRUE, ...) ","base","NA","0.61.1"
-"print.data.frame","builtin","","TRUE","NA","","base","NA","0.61.1"
-"print.default","closure","","TRUE","FALSE","(x, digits = NULL, quote = TRUE, na.print = NULL, print.gap = NULL,         ...) ","base","NA","0.61.1"
-"print.density","closure","","TRUE","FALSE","(x, digits = NULL, ...) ","base","NA","0.61.1"
-"print.family","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"print.formula","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"print.glm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), na.print = """",         ...) ","base","NA","0.61.1"
-"print.glm.null","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), na.print = """",         ...) ","base","NA","0.61.1"
-"print.htest","closure","","TRUE","FALSE","(x, digits = 4, quote = T, prefix = """") ","base","NA","0.61.1"
-"print.infl","closure","","TRUE","FALSE","(infobj, digits = max(3, .Options$digits - 4), ...) ","base","NA","0.61.1"
-"print.lm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","base","NA","0.61.1"
-"print.lm.null","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","base","NA","0.61.1"
-"print.noquote","closure","","TRUE","FALSE","(obj, ...) ","base","NA","0.61.1"
-"print.plot","builtin","","TRUE","NA","","base","NA","0.61.1"
-"print.summary.glm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), roundfun = round,         na.print = """", ...) ","base","NA","0.61.1"
-"print.summary.glm.null","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), na.print = """",         ...) ","base","NA","0.61.1"
-"print.summary.lm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), roundfun = round,         ...) ","base","NA","0.61.1"
-"print.summary.lm.null","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","base","NA","0.61.1"
-"print.table","closure","","TRUE","FALSE","(x, digits = .Options$digits, quote = FALSE, na.print = """",         ...) ","base","NA","0.61.1"
-"print.tabular","closure","","TRUE","FALSE","(table, digits = max(3, .Options$digits - 3), na.print = """") ","base","NA","0.61.1"
-"print.terms","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"print.ts","closure","","TRUE","FALSE","(x, calendar, ...) ","base","NA","0.61.1"
-"prmatrix","closure","","TRUE","FALSE","(x, rowlab = character(0), collab = character(0), quote = TRUE,         right = FALSE) ","base","NA","0.61.1"
-"proc.time","builtin","","TRUE","NA","","base","NA","0.61.1"
-"prod","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"prompt","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1"
-"prompt.default","closure","","TRUE","FALSE","(object, filename = paste0(name, "".Rd""), force.function = FALSE) ","base","NA","0.61.1"
-"prop.test","closure","","TRUE","FALSE","(x, n, p = NULL, alternative = ""two.sided"", conf.level = 0.95,         correct = TRUE) ","base","NA","0.61.1"
-"provide","closure","","TRUE","FALSE","(name) ","base","NA","0.61.1"
-"ps.options","closure","","TRUE","FALSE","(file = ""Rplots.ps"", ..., reset = F) ","base","NA","0.61.1"
-"pt","closure","","TRUE","FALSE","(q, df) ","base","NA","0.61.1"
-"punif","closure","","TRUE","FALSE","(q, min = 0, max = 1) ","base","NA","0.61.1"
-"pweibull","closure","","TRUE","FALSE","(q, shape, scale = 1) ","base","NA","0.61.1"
-"q","closure","","TRUE","FALSE","(save = ""ask"") ","base","NA","0.61.1"
-"qbeta","closure","","TRUE","FALSE","(p, a, b) ","base","NA","0.61.1"
-"qbinom","closure","","TRUE","FALSE","(prob, n, p) ","base","NA","0.61.1"
-"qcauchy","closure","","TRUE","FALSE","(p, location = 0, scale = 1) ","base","NA","0.61.1"
-"qchisq","closure","","TRUE","FALSE","(p, df) ","base","NA","0.61.1"
-"qexp","closure","","TRUE","FALSE","(p, rate = 1) ","base","NA","0.61.1"
-"qf","closure","","TRUE","FALSE","(p, n1, n2) ","base","NA","0.61.1"
-"qgamma","closure","","TRUE","FALSE","(p, shape, scale = 1) ","base","NA","0.61.1"
-"qgeom","closure","","TRUE","FALSE","(prob, p) ","base","NA","0.61.1"
-"qhyper","closure","","TRUE","FALSE","(p, N1, N2, n) ","base","NA","0.61.1"
-"qlnorm","closure","","TRUE","FALSE","(p, meanlog = 0, sdlog = 1) ","base","NA","0.61.1"
-"qlogis","closure","","TRUE","FALSE","(p, location = 0, scale = 1) ","base","NA","0.61.1"
-"qnbinom","closure","","TRUE","FALSE","(prob, n, p) ","base","NA","0.61.1"
-"qnchisq","closure","","TRUE","FALSE","(p, df, lambda) ","base","NA","0.61.1"
-"qnorm","closure","","TRUE","FALSE","(p, mean = 0, sd = 1) ","base","NA","0.61.1"
-"qpois","closure","","TRUE","FALSE","(p, lambda) ","base","NA","0.61.1"
-"qqline","closure","","TRUE","FALSE","(y, ...) ","base","NA","0.61.1"
-"qqnorm","closure","","TRUE","FALSE","(y, ylim, main = ""Normal Q-Q Plot"", xlab = ""Theoretical Quantiles"",         ylab = ""Sample Quantiles"", ...) ","base","NA","0.61.1"
-"qqplot","closure","","TRUE","FALSE","(x, y, plot.it = TRUE, xlab = deparse(substitute(x)),         ylab = deparse(substitute(y)), ...) ","base","NA","0.61.1"
-"qr","closure","","TRUE","FALSE","(x, tol = 1e-07) ","base","NA","0.61.1"
-"qr.Q","closure","","TRUE","FALSE","(qr, complete = FALSE, Dvec = rep(if (cmplx) 1 + 0i else 1,         if (complete) dqr[1] else min(dqr))) ","base","NA","0.61.1"
-"qr.R","closure","","TRUE","FALSE","(qr, complete = FALSE) ","base","NA","0.61.1"
-"qr.X","closure","","TRUE","FALSE","(qr, complete = FALSE, ncol = if (complete) nrow(R) else min(dim(R))) ","base","NA","0.61.1"
-"qr.coef","closure","","TRUE","FALSE","(qr, y) ","base","NA","0.61.1"
-"qr.fitted","closure","","TRUE","FALSE","(qr, y, k = qr$rank) ","base","NA","0.61.1"
-"qr.qty","closure","","TRUE","FALSE","(qr, y) ","base","NA","0.61.1"
-"qr.qy","closure","","TRUE","FALSE","(qr, y) ","base","NA","0.61.1"
-"qr.resid","closure","","TRUE","FALSE","(qr, y) ","base","NA","0.61.1"
-"qr.solve","closure","","TRUE","FALSE","(a, b, tol = 1e-07) ","base","NA","0.61.1"
-"qt","closure","","TRUE","FALSE","(p, df) ","base","NA","0.61.1"
-"quantile","closure","","TRUE","FALSE","(x, probs = seq(0, 1, 0.25), na.rm = FALSE) ","base","NA","0.61.1"
-"quasi","closure","","TRUE","FALSE","(link = ""identity"", variance = ""constant"") ","base","NA","0.61.1"
-"quit","closure","","TRUE","FALSE","(save = ""ask"") ","base","NA","0.61.1"
-"qunif","closure","","TRUE","FALSE","(p, min = 0, max = 1) ","base","NA","0.61.1"
-"quote","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"qweibull","closure","","TRUE","FALSE","(p, shape, scale = 1) ","base","NA","0.61.1"
-"rainbow","closure","","TRUE","FALSE","(n, s = 1, v = 1, start = 0, end = max(1, n - 1)/n,         gamma = 1) ","base","NA","0.61.1"
-"range","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"rank","builtin","","TRUE","NA","","base","NA","0.61.1"
-"rbeta","closure","","TRUE","FALSE","(n, a, b) ","base","NA","0.61.1"
-"rbind","builtin","","TRUE","NA","","base","NA","0.61.1"
-"rbinom","closure","","TRUE","FALSE","(nobs, n, p) ","base","NA","0.61.1"
-"rcauchy","closure","","TRUE","FALSE","(n, location = 0, scale = 1) ","base","NA","0.61.1"
-"rchisq","closure","","TRUE","FALSE","(n, df) ","base","NA","0.61.1"
-"read.fwf","closure","","TRUE","FALSE","(file, widths, sep = "" "", as.is = FALSE, skip = 0, row.names,         col.names, ...) ","base","NA","0.61.1"
-"read.table","closure","","TRUE","FALSE","(file, header = FALSE, sep = """", row.names, col.names,         as.is = FALSE, na.strings = ""NA"", skip = 0) ","base","NA","0.61.1"
-"readline","builtin","","TRUE","NA","","base","NA","0.61.1"
-"real","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1"
-"rect","closure","","TRUE","FALSE","(xleft, ybottom, xright, ytop, col = NULL, border = par(""fg""),         lty = NULL, xpd = FALSE) ","base","NA","0.61.1"
-"reformulate","closure","","TRUE","FALSE","(termlabels, response = NULL) ","base","NA","0.61.1"
-"remove","closure","","TRUE","FALSE","(..., list = character(0), pos = -1, envir = pos.to.env(pos),         inherits = FALSE) ","base","NA","0.61.1"
-"rep","closure","","TRUE","FALSE","(x, times, length.out) ","base","NA","0.61.1"
-"repeat","special","","TRUE","NA","","base","NA","0.61.1"
-"replace","closure","","TRUE","FALSE","(x, list, values) ","base","NA","0.61.1"
-"require","closure","","TRUE","FALSE","(name, quietly = FALSE) ","base","NA","0.61.1"
-"resid","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"residuals","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"residuals.glm","closure","","TRUE","FALSE","(object, type = ""deviance"") ","base","NA","0.61.1"
-"residuals.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1"
-"return","special","","TRUE","NA","","base","NA","0.61.1"
-"rev","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"rexp","closure","","TRUE","FALSE","(n, rate = 1) ","base","NA","0.61.1"
-"rf","closure","","TRUE","FALSE","(n, n1, n2) ","base","NA","0.61.1"
-"rgamma","closure","","TRUE","FALSE","(n, shape, scale = 1) ","base","NA","0.61.1"
-"rgb","closure","","TRUE","FALSE","(red, green, blue, names = NULL) ","base","NA","0.61.1"
-"rgeom","closure","","TRUE","FALSE","(n, p) ","base","NA","0.61.1"
-"rhyper","closure","","TRUE","FALSE","(nobs, N1, N2, n) ","base","NA","0.61.1"
-"rlnorm","closure","","TRUE","FALSE","(n, meanlog = 0, sdlog = 1) ","base","NA","0.61.1"
-"rlogis","closure","","TRUE","FALSE","(n, location = 0, scale = 1) ","base","NA","0.61.1"
-"rm","closure","","TRUE","FALSE","(..., list = character(0), pos = -1, envir = pos.to.env(pos),         inherits = FALSE) ","base","NA","0.61.1"
-"rnbinom","closure","","TRUE","FALSE","(nobs, n, p) ","base","NA","0.61.1"
-"rnchisq","closure","","TRUE","FALSE","(n, df, lambda) ","base","NA","0.61.1"
-"rnorm","closure","","TRUE","FALSE","(n, mean = 0, sd = 1) ","base","NA","0.61.1"
-"round","builtin","","TRUE","NA","","base","NA","0.61.1"
-"row","closure","","TRUE","FALSE","(x, as.factor = FALSE) ","base","NA","0.61.1"
-"row.names","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"row.names<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1"
-"rownames","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"rownames<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1"
-"rpois","closure","","TRUE","FALSE","(n, lambda) ","base","NA","0.61.1"
-"rstudent","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1"
-"rt","closure","","TRUE","FALSE","(n, df) ","base","NA","0.61.1"
-"runif","closure","","TRUE","FALSE","(n, min = 0, max = 1) ","base","NA","0.61.1"
-"rweibull","closure","","TRUE","FALSE","(n, shape, scale = 1) ","base","NA","0.61.1"
-"sample","closure","","TRUE","FALSE","(x, size, replace = FALSE) ","base","NA","0.61.1"
-"sapply","closure","","TRUE","FALSE","(X, FUN, ..., simplify = TRUE) ","base","NA","0.61.1"
-"save","closure","","TRUE","FALSE","(..., list = character(0), file = """", ascii = FALSE) ","base","NA","0.61.1"
-"save.plot","builtin","","TRUE","NA","","base","NA","0.61.1"
-"scale","closure","","TRUE","FALSE","(x, center = TRUE, scale = TRUE) ","base","NA","0.61.1"
-"scan","closure","","TRUE","FALSE","(file = """", what = 0, nmax = -1, sep = """", skip = 0,         nlines = 0, na.strings = ""NA"", flush = FALSE, strip.white = FALSE,         quiet = FALSE) ","base","NA","0.61.1"
-"sd","closure","","TRUE","FALSE","(x, na.rm = FALSE) ","base","NA","0.61.1"
-"search","builtin","","TRUE","NA","","base","NA","0.61.1"
-"segments","closure","","TRUE","FALSE","(x0, y0, x1, y1, col = par(""fg""), lty = par(""lty"")) ","base","NA","0.61.1"
-"seq","closure","","TRUE","FALSE","(from = 1, to = 1, by = ((to - from)/(length.out - 1)),         length.out = NULL, along.with = NULL) ","base","NA","0.61.1"
-"sequence","closure","","TRUE","FALSE","(nvec) ","base","NA","0.61.1"
-"sign","builtin","","TRUE","NA","","base","NA","0.61.1"
-"signif","builtin","","TRUE","NA","","base","NA","0.61.1"
-"sin","builtin","","TRUE","NA","","base","NA","0.61.1"
-"sinh","builtin","","TRUE","NA","","base","NA","0.61.1"
-"sink","builtin","","TRUE","NA","","base","NA","0.61.1"
-"solve","closure","","TRUE","FALSE","(a, b, tol = 1e-07) ","base","NA","0.61.1"
-"solve.qr","closure","","TRUE","FALSE","(a, b, tol = 1e-07) ","base","NA","0.61.1"
-"sort","closure","","TRUE","FALSE","(x, partial = NULL, na.last = NA) ","base","NA","0.61.1"
-"source","closure","","TRUE","FALSE","(file, local = FALSE, echo = debug, print.eval = echo,         debug = FALSE, max.deparse.length = 150) ","base","NA","0.61.1"
-"spline","closure","","TRUE","FALSE","(x, y = NULL, n = 3 * length(x), method = ""fmm"", xmin = min(x),         xmax = max(x)) ","base","NA","0.61.1"
-"splinefun","closure","","TRUE","FALSE","(x, y = NULL, method = ""fmm"") ","base","NA","0.61.1"
-"split","closure","","TRUE","FALSE","(x, f) ","base","NA","0.61.1"
-"split.data.frame","closure","","TRUE","FALSE","(x, f) ","base","NA","0.61.1"
-"split.default","closure","","TRUE","FALSE","(x, f) ","base","NA","0.61.1"
-"sqrt","builtin","","TRUE","NA","","base","NA","0.61.1"
-"start","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"start.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"start.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"stat.anova","closure","","TRUE","FALSE","(table, test, scale, df.scale, n) ","base","NA","0.61.1"
-"stem","closure","","TRUE","FALSE","(x, scale = 1, width = 80, atom = 1e-08) ","base","NA","0.61.1"
-"stop","builtin","","TRUE","NA","","base","NA","0.61.1"
-"storage.mode","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"storage.mode<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1"
-"str","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1"
-"str.data.frame","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1"
-"str.default","closure","","TRUE","FALSE","(object, max.level = 0, vec.len = 4, digits.d = 3, give.attr = TRUE,         give.length = TRUE, wid = .Options$width, nest.lev = 0,         indent.str = paste(rep("" "", max(0, nest.lev + 1)), collapse = "".."")) ","base","NA","0.61.1"
-"strheight","closure","","TRUE","FALSE","(s, units = ""user"", cex = NULL) ","base","NA","0.61.1"
-"stripplot","closure","","TRUE","FALSE","(x, method = ""overplot"", jitter = 0.1, offset = 1/3,         vertical = FALSE, group.names, xlim, ylim, main = """",         ylab = """", xlab = """", pch = 0, col = par(""fg""), cex = par(""cex"")) ","base","NA","0.61.1"
-"strsplit","closure","","TRUE","FALSE","(x, split) ","base","NA","0.61.1"
-"structure","closure","","TRUE","FALSE","(.Data, ...) ","base","NA","0.61.1"
-"strwidth","closure","","TRUE","FALSE","(s, units = ""user"", cex = NULL) ","base","NA","0.61.1"
-"sub","closure","","TRUE","FALSE","(pattern, replacement, x, ignore.case = FALSE, extended = TRUE) ","base","NA","0.61.1"
-"substitute","special","","TRUE","NA","","base","NA","0.61.1"
-"substr","closure","","TRUE","FALSE","(x, start, stop) ","base","NA","0.61.1"
-"substring","closure","","TRUE","FALSE","(text, first, last = 1e+06) ","base","NA","0.61.1"
-"sum","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1"
-"summary","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"summary.data.frame","closure","","TRUE","FALSE","(x, maxsum = 7, ...) ","base","NA","0.61.1"
-"summary.default","closure","","TRUE","FALSE","(object, ..., digits = max(options()$digits - 3, 3)) ","base","NA","0.61.1"
-"summary.factor","closure","","TRUE","FALSE","(x, maxsum = 100, ...) ","base","NA","0.61.1"
-"summary.glm","closure","","TRUE","FALSE","(object, dispersion = NULL, correlation = TRUE, na.action = na.omit) ","base","NA","0.61.1"
-"summary.glm.null","closure","","TRUE","FALSE","(object, dispersion = NULL, correlation = TRUE, na.action = na.omit) ","base","NA","0.61.1"
-"summary.infl","closure","","TRUE","FALSE","(infobj, digits = max(2, .Options$digits - 5), ...) ","base","NA","0.61.1"
-"summary.lm","closure","","TRUE","FALSE","(z, correlation = FALSE) ","base","NA","0.61.1"
-"summary.lm.null","closure","","TRUE","FALSE","(z, correlation = FALSE) ","base","NA","0.61.1"
-"summary.matrix","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"svd","closure","","TRUE","FALSE","(x, nu = min(n, p), nv = min(n, p)) ","base","NA","0.61.1"
-"sweep","closure","","TRUE","FALSE","(x, MARGIN, STATS, FUN = ""-"", ...) ","base","NA","0.61.1"
-"switch","closure","","TRUE","FALSE","(EXPR, ...) ","base","NA","0.61.1"
-"symbol.C","builtin","","TRUE","NA","","base","NA","0.61.1"
-"symbol.For","builtin","","TRUE","NA","","base","NA","0.61.1"
-"symnum","closure","","TRUE","FALSE","(x, cutpoints = c(0.3, 0.6, 0.8, 0.9, 0.95), symbols = c("" "",         ""."", "","", ""+"", ""*"", ""B""), na = ""?"", eps = 1e-05, corr = TRUE,         show.max = if (corr) ""1"", show.min = NULL, lower.triangular = corr &                 is.matrix(x)) ","base","NA","0.61.1"
-"sys.call","closure","","TRUE","FALSE","(which = 0) ","base","NA","0.61.1"
-"sys.calls","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"sys.frame","closure","","TRUE","FALSE","(which = 0) ","base","NA","0.61.1"
-"sys.frames","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"sys.function","closure","","TRUE","FALSE","(which = 0) ","base","NA","0.61.1"
-"sys.nframe","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"sys.on.exit","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"sys.parent","closure","","TRUE","FALSE","(n = 1) ","base","NA","0.61.1"
-"sys.parents","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"sys.source","closure","","TRUE","FALSE","(file) ","base","NA","0.61.1"
-"sys.status","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"system","closure","","TRUE","FALSE","(call, intern = FALSE) ","base","NA","0.61.1"
-"system.date","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"system.file","closure","","TRUE","FALSE","(file, pkg = .packages(), lib = .lib.loc) ","base","NA","0.61.1"
-"system.time","closure","","TRUE","FALSE","(expr) ","base","NA","0.61.1"
-"t","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"t.data.frame","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"t.default","builtin","","TRUE","NA","","base","NA","0.61.1"
-"t.test","closure","","TRUE","FALSE","(x, y = NULL, alternative = ""two.sided"", mu = 0, paired = FALSE,         var.equal = FALSE, conf.level = 0.95) ","base","NA","0.61.1"
-"table","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"tabulate","closure","","TRUE","FALSE","(bin, nbins = max(bin)) ","base","NA","0.61.1"
-"tan","builtin","","TRUE","NA","","base","NA","0.61.1"
-"tanh","builtin","","TRUE","NA","","base","NA","0.61.1"
-"tapply","closure","","TRUE","FALSE","(x, INDEX, FUN = NULL, simplify = TRUE, ...) ","base","NA","0.61.1"
-"tempfile","closure","","TRUE","FALSE","(pattern = ""file"") ","base","NA","0.61.1"
-"terms","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"terms.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"terms.formula","closure","","TRUE","FALSE","(x, specials = NULL, abb = NULL, data = NULL, keep.order = FALSE) ","base","NA","0.61.1"
-"terms.terms","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"terrain.colors","closure","","TRUE","FALSE","(n) ","base","NA","0.61.1"
-"tetragamma","builtin","","TRUE","NA","","base","NA","0.61.1"
-"text","closure","","TRUE","FALSE","(x, y = NULL, labels = seq(along = x), ...) ","base","NA","0.61.1"
-"text.math","special","","TRUE","NA","","base","NA","0.61.1"
-"time","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"time.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"time.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"title","closure","","TRUE","FALSE","(main = NULL, sub = NULL, xlab = NULL, ylab = NULL,         ...) ","base","NA","0.61.1"
-"topo.colors","closure","","TRUE","FALSE","(n) ","base","NA","0.61.1"
-"trace","builtin","","TRUE","NA","","base","NA","0.61.1"
-"traceback","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"trigamma","builtin","","TRUE","NA","","base","NA","0.61.1"
-"trunc","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"ts","closure","","TRUE","FALSE","(data = NA, start = 1, end = numeric(0), frequency = 1,         deltat = 1, ts.eps = .Options$ts.eps) ","base","NA","0.61.1"
-"tsp","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"tsp<-","closure","","TRUE","FALSE","(x, tsp) ","base","NA","0.61.1"
-"typeof","builtin","","TRUE","NA","","base","NA","0.61.1"
-"unclass","builtin","","TRUE","NA","","base","NA","0.61.1"
-"undebug","builtin","","TRUE","NA","","base","NA","0.61.1"
-"unique","builtin","","TRUE","NA","","base","NA","0.61.1"
-"uniroot","closure","","TRUE","FALSE","(f, interval, lower = min(interval), upper = max(interval),         tol = .Machine$double.eps^0.25, ...) ","base","NA","0.61.1"
-"unix.time","closure","","TRUE","FALSE","(expr) ","base","NA","0.61.1"
-"unlink","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"unlist","special","","TRUE","NA","","base","NA","0.61.1"
-"untrace","builtin","","TRUE","NA","","base","NA","0.61.1"
-"update","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"update.formula","builtin","","TRUE","NA","","base","NA","0.61.1"
-"update.glm","closure","","TRUE","FALSE","(glm.obj, formula, data, weights, subset, na.action,         offset, family, x) ","base","NA","0.61.1"
-"update.lm","closure","","TRUE","FALSE","(lm.obj, formula, data, weights, subset, na.action) ","base","NA","0.61.1"
-"upper.tri","closure","","TRUE","FALSE","(x, diag = FALSE) ","base","NA","0.61.1"
-"var","closure","","TRUE","FALSE","(x, y = x, na.rm = FALSE, use) ","base","NA","0.61.1"
-"variable.names","closure","","TRUE","FALSE","(obj, ...) ","base","NA","0.61.1"
-"variable.names.lm","closure","","TRUE","FALSE","(lm.obj, full = FALSE) ","base","NA","0.61.1"
-"vector","builtin","","TRUE","NA","","base","NA","0.61.1"
-"version","list","","TRUE","FALSE","NA","base","NA","0.61.1"
-"vi","closure","","TRUE","FALSE","(name = NULL, file = """") ","base","NA","0.61.1"
-"warning","builtin","","TRUE","NA","","base","NA","0.61.1"
-"weighted.mean","closure","","TRUE","FALSE","(x, w, na.rm = FALSE) ","base","NA","0.61.1"
-"weighted.residuals","closure","","TRUE","FALSE","(obj) ","base","NA","0.61.1"
-"weights","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"weights.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1"
-"which","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"while","special","","TRUE","NA","","base","NA","0.61.1"
-"window","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1"
-"window.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1"
-"window.ts","closure","","TRUE","FALSE","(x, start, end) ","base","NA","0.61.1"
-"windows","closure","","TRUE","FALSE","() ","base","NA","0.61.1"
-"write","closure","","TRUE","FALSE","(x, file = ""data"", ncolumns = if (is.character(x)) 1 else 5,         append = FALSE) ","base","NA","0.61.1"
-"x11","closure","","TRUE","FALSE","(display = """", width = 7, height = 7, ps = 12, printcmd = options(""printcmd"")$printcmd,         paper = options(""papersize"")$papersize, orientation = ""flexible"") ","base","NA","0.61.1"
-"xedit","closure","","TRUE","FALSE","(name = NULL, file = """") ","base","NA","0.61.1"
-"xemacs","closure","","TRUE","FALSE","(name = NULL, file = """") ","base","NA","0.61.1"
-"xinch","closure","","TRUE","FALSE","(x = 1) ","base","NA","0.61.1"
-"xor","closure","","TRUE","FALSE","(x, y) ","base","NA","0.61.1"
-"xy.coords","closure","","TRUE","FALSE","(x, y, xlab = NULL, ylab = NULL) ","base","NA","0.61.1"
-"yinch","closure","","TRUE","FALSE","(x = 1) ","base","NA","0.61.1"
-"{","special","","TRUE","NA","","base","NA","0.61.1"
-"|","builtin","","TRUE","NA","","base","NA","0.61.1"
-"||","special","","TRUE","NA","","base","NA","0.61.1"
-"~","special","","TRUE","NA","","base","NA","0.61.1"
-"coefficients.tukeyline","closure","","TRUE","FALSE","(z) ","eda","NA","0.61.1"
-"fitted.values.tukeyline","closure","","TRUE","FALSE","(z) ","eda","NA","0.61.1"
-"line","closure","","TRUE","FALSE","(x, y = NULL) ","eda","NA","0.61.1"
-"medpolish","closure","","TRUE","FALSE","(x, eps = 0.01, maxiter = 10) ","eda","NA","0.61.1"
-"plot.medpolish","closure","","TRUE","FALSE","(x, main = ""Tukey Additivity Plot"", ...) ","eda","NA","0.61.1"
-"print.medpolish","closure","","TRUE","FALSE","(x) ","eda","NA","0.61.1"
-"print.tukeyline","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","eda","NA","0.61.1"
-"residuals.tukeyline","closure","","TRUE","FALSE","(z) ","eda","NA","0.61.1"
-"smooth","closure","","TRUE","FALSE","(x) ","eda","NA","0.61.1"
-"cancor","closure","","TRUE","FALSE","(x, y, xcenter = TRUE, ycenter = TRUE) ","mva","NA","0.61.1"
-"cmdscale","closure","","TRUE","FALSE","(d, k = 2, eig = FALSE) ","mva","NA","0.61.1"
-"dist","closure","","TRUE","FALSE","(x, method = ""euclidian"") ","mva","NA","0.61.1"
-"hclust","closure","","TRUE","FALSE","(d, method = ""complete"") ","mva","NA","0.61.1"
-"names.dist","closure","","TRUE","FALSE","(d) ","mva","NA","0.61.1"
-"names<-.dist","closure","","TRUE","FALSE","(d, n) ","mva","NA","0.61.1"
-"plot.hclust","closure","","TRUE","FALSE","(tree, hang = 0.1, ...) ","mva","NA","0.61.1"
-"plot.prcomp","closure","","TRUE","FALSE","(x, main = ""Scree Plot"", ylab = ""Variance"", xlab = ""Component"",         ...) ","mva","NA","0.61.1"
-"prcomp","closure","","TRUE","FALSE","(x, scale = FALSE, use = ""all.obs"") ","mva","NA","0.61.1"
-"print.dist","closure","","TRUE","FALSE","(d) ","mva","NA","0.61.1"
-"print.prcomp","closure","","TRUE","FALSE","(x) ","mva","NA","0.61.1"
-"ecdf","closure","","TRUE","FALSE","(x) ","stepfun","NA","0.61.1"
-"is.stepfun","closure","","TRUE","FALSE","(x) ","stepfun","NA","0.61.1"
-"knots","closure","","TRUE","FALSE","(...) ","stepfun","NA","0.61.1"
-"knots.stepfun","closure","","TRUE","FALSE","(Fn) ","stepfun","NA","0.61.1"
-"plot.ecdf","closure","","TRUE","FALSE","(..., verticals = FALSE, col.01line = ""gray70"") ","stepfun","NA","0.61.1"
-"plot.stepfun","closure","","TRUE","FALSE","(Fn, x, xlim, xlab = ""x"", ylab = ""f(x)"", main = NULL,         add = FALSE, verticals = TRUE, do.points = TRUE, pch = par(""pch""),         col.points = par(""col""), cex.points = par(""cex""), col.hor = par(""col""),         col.vert = par(""col""), ...) ","stepfun","NA","0.61.1"
-"print.ecdf","closure","","TRUE","FALSE","(Fn, digits = options(""digits"")[[1]] - 2, ...) ","stepfun","NA","0.61.1"
-"print.stepfun","closure","","TRUE","FALSE","(Fn, digits = options(""digits"")[[1]] - 2, ...) ","stepfun","NA","0.61.1"
-"stepfun","closure","","TRUE","FALSE","(x, y, f = 0) ","stepfun","NA","0.61.1"
-"summary.ecdf","closure","","TRUE","FALSE","(Fn, ...) ","stepfun","NA","0.61.1"
-"summary.stepfun","closure","","TRUE","FALSE","(Fn) ","stepfun","NA","0.61.1"
+"name","type","class","exported","S4generic","args","package","priority","Rversion","hidden"
+"!","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"!=","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"$","special","","TRUE","NA","","base","NA","0.61.1",F
+"$<-","special","","TRUE","NA","","base","NA","0.61.1",F
+"%%","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"%*%","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"%/%","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"%in%","closure","","TRUE","FALSE","(x, y) ","base","NA","0.61.1",F
+"%o%","closure","","TRUE","FALSE","(x, y, FUN = ""*"", ...) ","base","NA","0.61.1",F
+"&","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"&&","special","","TRUE","NA","","base","NA","0.61.1",F
+"(","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"*","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"+","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+".AutoloadEnv","environment","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".C","builtin","","TRUE","NA","","base","NA","0.61.1",T
+".First","closure","","TRUE","FALSE","() ","base","NA","0.61.1",T
+".Fortran","builtin","","TRUE","NA","","base","NA","0.61.1",T
+".GlobalEnv","environment","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".Internal","special","","TRUE","NA","","base","NA","0.61.1",T
+".Last.value","NULL","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".Library","character","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".Machine","list","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".Options","list","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".Pars","character","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".PostScript.Options","list","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".format.Internal","builtin","","TRUE","NA","","base","NA","0.61.1",T
+".lib.loc","character","","TRUE","FALSE","NA","base","NA","0.61.1",T
+".not.yet.implemented","closure","","TRUE","FALSE","() ","base","NA","0.61.1",T
+".packages","closure","","TRUE","FALSE","() ","base","NA","0.61.1",T
+"/","builtin","","TRUE","NA","","base","NA","0.61.1",F
+":","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"<","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"<-","special","","TRUE","NA","","base","NA","0.61.1",F
+"<<-","special","","TRUE","NA","","base","NA","0.61.1",F
+"<=","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"==","builtin","","TRUE","NA","","base","NA","0.61.1",F
+">","builtin","","TRUE","NA","","base","NA","0.61.1",F
+">=","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"Arg","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"Conj","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"D","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"F","logical","","TRUE","FALSE","NA","base","NA","0.61.1",F
+"Gamma","closure","","TRUE","FALSE","(link = ""inverse"") ","base","NA","0.61.1",F
+"I","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"IQR","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"Im","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"LETTERS","character","","TRUE","FALSE","NA","base","NA","0.61.1",F
+"Machine","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"Mod","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"NCOL","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"NROW","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"NextMethod","closure","","TRUE","FALSE","(generic = NULL, object = NULL, ...) ","base","NA","0.61.1",F
+"Re","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"Recall","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"T","logical","","TRUE","FALSE","NA","base","NA","0.61.1",F
+"UseMethod","special","","TRUE","NA","","base","NA","0.61.1",F
+"Version","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"[","special","","TRUE","NA","","base","NA","0.61.1",F
+"[.data.frame","special","","TRUE","NA","","base","NA","0.61.1",F
+"[.formula","closure","","TRUE","FALSE","(x, i) ","base","NA","0.61.1",F
+"[.noquote","closure","","TRUE","FALSE","(x, subs) ","base","NA","0.61.1",F
+"[.ts","closure","","TRUE","FALSE","(x, i, j, drop = T) ","base","NA","0.61.1",F
+"[<-","special","","TRUE","NA","","base","NA","0.61.1",F
+"[<-.data.frame","special","","TRUE","NA","","base","NA","0.61.1",F
+"[[","special","","TRUE","NA","","base","NA","0.61.1",F
+"[[.data.frame","special","","TRUE","NA","","base","NA","0.61.1",F
+"[[<-","special","","TRUE","NA","","base","NA","0.61.1",F
+"[[<-.data.frame","special","","TRUE","NA","","base","NA","0.61.1",F
+"^","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"abbreviate","closure","","TRUE","FALSE","(names.arg, minlength = 4, use.classes = T, dot = F) ","base","NA","0.61.1",F
+"abline","closure","","TRUE","FALSE","(a = NULL, b = NULL, h = NULL, v = NULL, reg = NULL,         coef = NULL, col = par(""col""), lty = par(""lty""), ...) ","base","NA","0.61.1",F
+"abs","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"acos","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"acosh","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"all","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"all.names","closure","","TRUE","FALSE","(expr, functions = TRUE, max.names = 200, unique = FALSE) ","base","NA","0.61.1",F
+"all.vars","closure","","TRUE","FALSE","(expr, functions = FALSE, max.names = 200, unique = TRUE) ","base","NA","0.61.1",F
+"anova","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"anova.glm","closure","","TRUE","FALSE","(object, ..., test = NULL, na.action = na.omit) ","base","NA","0.61.1",F
+"anova.glm.null","closure","","TRUE","FALSE","(object, ..., test = NULL, na.action = na.omit) ","base","NA","0.61.1",F
+"anova.glmlist","closure","","TRUE","FALSE","(object, na.action = na.omit, test = NULL) ","base","NA","0.61.1",F
+"anova.lm","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1",F
+"anova.lm.null","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1",F
+"anovalist.lm","closure","","TRUE","FALSE","(object, ..., test = NULL) ","base","NA","0.61.1",F
+"any","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"any.data.frame","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"aperm","closure","","TRUE","FALSE","(a, perm, resize = TRUE) ","base","NA","0.61.1",F
+"append","closure","","TRUE","FALSE","(x, values, after = length(x)) ","base","NA","0.61.1",F
+"apply","closure","","TRUE","FALSE","(X, MARGIN, FUN, ...) ","base","NA","0.61.1",F
+"approx","closure","","TRUE","FALSE","(x, y = NULL, xout, method = ""linear"", n = 50, yleft,         yright, rule = 1, f = 0) ","base","NA","0.61.1",F
+"approxfun","closure","","TRUE","FALSE","(x, y = NULL, method = ""linear"", yleft, yright, rule = 1,         f = 0) ","base","NA","0.61.1",F
+"apropos","closure","","TRUE","FALSE","(pattern, where = FALSE) ","base","NA","0.61.1",F
+"args","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"array","closure","","TRUE","FALSE","(data = NA, dim = length(data), dimnames = NULL) ","base","NA","0.61.1",F
+"arrows","closure","","TRUE","FALSE","(x0, y0, x1, y1, length = 0.25, angle = 30, code = 2,         col = par(""fg""), lty = NULL, xpd = FALSE) ","base","NA","0.61.1",F
+"as.array","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.call","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"as.char.or.expr","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.character","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.complex","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.data.frame","closure","","TRUE","FALSE","(x, row.names = NULL, optional = F, ...) ","base","NA","0.61.1",F
+"as.data.frame.default","closure","","TRUE","FALSE","(x, row.names = NULL, optional = F, ...) ","base","NA","0.61.1",F
+"as.double","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.expression","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.factor","closure","","TRUE","FALSE","(x, ordered = FALSE) ","base","NA","0.61.1",F
+"as.formula","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1",F
+"as.function","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.integer","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.list","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.logical","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.matrix","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.matrix.data.frame","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.matrix.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.name","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.null","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.numeric","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.ordered","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.qr","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.real","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.single","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"as.vector","closure","","TRUE","FALSE","(x, mode = ""any"") ","base","NA","0.61.1",F
+"asin","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"asinh","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"assign","closure","","TRUE","FALSE","(x, value, pos = -1, envir = pos.to.env(pos), inherits = FALSE,         immediate = TRUE) ","base","NA","0.61.1",F
+"atan","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"atan2","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"atanh","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"attach","closure","","TRUE","FALSE","(what, pos = 2, name = deparse(substitute(what))) ","base","NA","0.61.1",F
+"attr","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"attr<-","special","","TRUE","NA","","base","NA","0.61.1",F
+"attributes","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"attributes<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"autoload","closure","","TRUE","FALSE","(name, file) ","base","NA","0.61.1",F
+"autoloader","closure","","TRUE","FALSE","(name, file) ","base","NA","0.61.1",F
+"ave","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"axis","closure","","TRUE","FALSE","(which, at, labels = TRUE, ...) ","base","NA","0.61.1",F
+"backsolve","closure","","TRUE","FALSE","(r, x, k = ncol(r)) ","base","NA","0.61.1",F
+"barplot","closure","","TRUE","FALSE","(height, width = 1, space = NULL, names.arg = NULL,         legend.text = NULL, beside = FALSE, horiz = FALSE, col = heat.colors(NR),         border = par(""fg""), main = NULL, xlab = NULL, ylab = NULL,         xlim = NULL, ylim = NULL, axes = TRUE, ...) ","base","NA","0.61.1",F
+"beta","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"binomial","closure","","TRUE","FALSE","(link = ""logit"") ","base","NA","0.61.1",F
+"body","closure","","TRUE","FALSE","(fun = sys.function(sys.parent())) ","base","NA","0.61.1",F
+"box","closure","","TRUE","FALSE","(which = ""plot"", lty = ""solid"", ...) ","base","NA","0.61.1",F
+"boxplot","closure","","TRUE","FALSE","(x, ..., range = 1.5, width = NULL, varwidth = FALSE,         notch = FALSE, names, data = sys.frame(sys.parent()),         plot = TRUE, border = par(""fg""), col = NULL, log = """",         pars = NULL) ","base","NA","0.61.1",F
+"boxplot.stats","closure","","TRUE","FALSE","(x, coef = 1.5) ","base","NA","0.61.1",F
+"break","special","","TRUE","NA","","base","NA","0.61.1",F
+"browser","special","","TRUE","NA","","base","NA","0.61.1",F
+"builtins","closure","","TRUE","FALSE","(internal = FALSE) ","base","NA","0.61.1",F
+"bw.bcv","closure","","TRUE","FALSE","(x, samples = 100) ","base","NA","0.61.1",F
+"bw.sj","closure","","TRUE","FALSE","(x, samples = 100) ","base","NA","0.61.1",F
+"bw.ucv","closure","","TRUE","FALSE","(x, samples = 100) ","base","NA","0.61.1",F
+"bxp","closure","","TRUE","FALSE","(z, notch = FALSE, width = NULL, varwidth = FALSE, border = par(""fg""),         col = NULL, log = """", pars = NULL, ...) ","base","NA","0.61.1",F
+"c","special","","TRUE","NA","","base","NA","0.61.1",F
+"call","special","","TRUE","NA","","base","NA","0.61.1",F
+"case.names","closure","","TRUE","FALSE","(obj, ...) ","base","NA","0.61.1",F
+"case.names.lm","closure","","TRUE","FALSE","(lm.obj, full = FALSE) ","base","NA","0.61.1",F
+"cat","closure","","TRUE","FALSE","(..., file = """", sep = "" "", fill = FALSE, labels = NULL,         append = FALSE) ","base","NA","0.61.1",F
+"cbind","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"ceiling","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"char.expand","closure","","TRUE","FALSE","(input, target, nomatch = stop(""no match"")) ","base","NA","0.61.1",F
+"character","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1",F
+"charmatch","closure","","TRUE","FALSE","(x, table, nomatch = NA) ","base","NA","0.61.1",F
+"check.bounds","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"chisq.test","closure","","TRUE","FALSE","(x, y = NULL, correct = TRUE, p = rep(1/length(x), length(x))) ","base","NA","0.61.1",F
+"chol","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"chol2inv","closure","","TRUE","FALSE","(x, size = ncol(x)) ","base","NA","0.61.1",F
+"choose","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"class","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"class<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"cm","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"co.intervals","closure","","TRUE","FALSE","(x, number = 6, overlap = 0.5) ","base","NA","0.61.1",F
+"codes","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"codes<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"coef","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"coefficients","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"coefficients.default","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"coefficients.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1",F
+"coefficients.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1",F
+"col","closure","","TRUE","FALSE","(x, as.factor = FALSE) ","base","NA","0.61.1",F
+"colnames","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"colnames<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1",F
+"colors","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"colours","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"comment","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"comment<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"complete.cases","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"complex","closure","","TRUE","FALSE","(n = 0, real = numeric(), imaginary = numeric()) ","base","NA","0.61.1",F
+"contour","closure","","TRUE","FALSE","(x = seq(0, 1, len = nrow(z)), y = seq(0, 1, len = ncol(z)),         z, nlevels = 10, levels = pretty(range(z, na.rm = TRUE),                 nlevels), labcex = 0, xlim = range(x, na.rm = TRUE),         ylim = range(y, na.rm = TRUE), col = par(""fg""), lty = par(""lty""),         add = FALSE) ","base","NA","0.61.1",F
+"contr.helmert","closure","","TRUE","FALSE","(n, contrasts = TRUE) ","base","NA","0.61.1",F
+"contr.poly","closure","","TRUE","FALSE","(n, contrasts = TRUE) ","base","NA","0.61.1",F
+"contr.sum","closure","","TRUE","FALSE","(n, contrasts = TRUE) ","base","NA","0.61.1",F
+"contr.treatment","closure","","TRUE","FALSE","(n, contrasts = TRUE) ","base","NA","0.61.1",F
+"contrasts","closure","","TRUE","FALSE","(x, contrasts = TRUE) ","base","NA","0.61.1",F
+"contrasts<-","closure","","TRUE","FALSE","(x, ctr) ","base","NA","0.61.1",F
+"convolve","closure","","TRUE","FALSE","(x, y, conj = T) ","base","NA","0.61.1",F
+"cooks.distance","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1",F
+"coplot","closure","","TRUE","FALSE","(formula, data, given.values, panel = points, rows,         columns, show.given = TRUE, col = par(""fg""), pch = par(""pch""),         ...) ","base","NA","0.61.1",F
+"cor","closure","","TRUE","FALSE","(x, y = NULL, use = ""all.obs"") ","base","NA","0.61.1",F
+"cos","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"cosh","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"count.fields","closure","","TRUE","FALSE","(file, sep = """", skip = 0) ","base","NA","0.61.1",F
+"cov","closure","","TRUE","FALSE","(x, y = NULL, use = ""all.obs"") ","base","NA","0.61.1",F
+"covratio","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1",F
+"crossprod","closure","","TRUE","FALSE","(x, y = x) ","base","NA","0.61.1",F
+"cummax","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"cummin","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"cumprod","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"cumsum","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"curve","closure","","TRUE","FALSE","(expr, from, to, n = 100, add = FALSE, type = ""l"", ...) ","base","NA","0.61.1",F
+"cut","closure","","TRUE","FALSE","(x, breaks, labels = NULL, right = TRUE, dig.lab = 3) ","base","NA","0.61.1",F
+"data","closure","","TRUE","FALSE","(..., list = character(0), package = .packages(), lib.loc = .lib.loc) ","base","NA","0.61.1",F
+"data.class","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"data.entry","closure","","TRUE","FALSE","(..., Modes = NULL, Names = NULL) ","base","NA","0.61.1",F
+"data.frame","closure","","TRUE","FALSE","(..., row.names = NULL, col.names = NULL, as.is = FALSE) ","base","NA","0.61.1",F
+"data.matrix","closure","","TRUE","FALSE","(frame) ","base","NA","0.61.1",F
+"dataentry","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"dbeta","closure","","TRUE","FALSE","(x, a, b) ","base","NA","0.61.1",F
+"dbinom","closure","","TRUE","FALSE","(x, n, p) ","base","NA","0.61.1",F
+"dcauchy","closure","","TRUE","FALSE","(x, location = 0, scale = 1) ","base","NA","0.61.1",F
+"dchisq","closure","","TRUE","FALSE","(x, df) ","base","NA","0.61.1",F
+"de","closure","","TRUE","FALSE","(..., Modes = NULL, Names = NULL) ","base","NA","0.61.1",F
+"de.ncols","closure","","TRUE","FALSE","(inlist) ","base","NA","0.61.1",F
+"de.restore","closure","","TRUE","FALSE","(inlist, ncols, coltypes, argnames, args) ","base","NA","0.61.1",F
+"de.setup","closure","","TRUE","FALSE","(ilist, list.names, incols) ","base","NA","0.61.1",F
+"debug","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"delay","closure","","TRUE","FALSE","(x, env = .GlobalEnv) ","base","NA","0.61.1",F
+"delete.response","closure","","TRUE","FALSE","(termobj) ","base","NA","0.61.1",F
+"demo","closure","","TRUE","FALSE","(topic, device = x11, directory.sep = ""/"") ","base","NA","0.61.1",F
+"density","closure","","TRUE","FALSE","(x, bw, adjust = 1, kernel = ""gaussian"", n = 512, width,         from, to, cut = 3, plot.graph = FALSE) ","base","NA","0.61.1",F
+"deparse","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"deriv","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"deriv.default","closure","","TRUE","FALSE","(expr, namevec, function.arg = NULL, tag = "".expr"") ","base","NA","0.61.1",F
+"deriv.formula","closure","","TRUE","FALSE","(expr, namevec, function.arg = NULL, tag = "".expr"") ","base","NA","0.61.1",F
+"detach","closure","","TRUE","FALSE","(name, pos = 2) ","base","NA","0.61.1",F
+"dev.off","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"deviance","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"deviance.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1",F
+"deviance.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1",F
+"dexp","closure","","TRUE","FALSE","(x, rate = 1) ","base","NA","0.61.1",F
+"df","closure","","TRUE","FALSE","(x, n1, n2) ","base","NA","0.61.1",F
+"df.residual","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"df.residual.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1",F
+"dfbetas","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1",F
+"dffits","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1",F
+"dgamma","closure","","TRUE","FALSE","(x, shape, scale = 1) ","base","NA","0.61.1",F
+"dgeom","closure","","TRUE","FALSE","(x, p) ","base","NA","0.61.1",F
+"dget","closure","","TRUE","FALSE","(file) ","base","NA","0.61.1",F
+"dhyper","closure","","TRUE","FALSE","(x, N1, N2, n) ","base","NA","0.61.1",F
+"diag","closure","","TRUE","FALSE","(x = 1, nrow, ncol = n) ","base","NA","0.61.1",F
+"diag<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1",F
+"diff","closure","","TRUE","FALSE","(x, lag = 1, differences = 1) ","base","NA","0.61.1",F
+"digamma","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"dim","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"dim<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"dimnames","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"dimnames<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"dlnorm","closure","","TRUE","FALSE","(x, meanlog = 0, sdlog = 1) ","base","NA","0.61.1",F
+"dlogis","closure","","TRUE","FALSE","(x, location = 0, scale = 1) ","base","NA","0.61.1",F
+"dnbinom","closure","","TRUE","FALSE","(x, n, p) ","base","NA","0.61.1",F
+"dnchisq","closure","","TRUE","FALSE","(x, df, lambda) ","base","NA","0.61.1",F
+"dnorm","closure","","TRUE","FALSE","(x, mean = 0, sd = 1) ","base","NA","0.61.1",F
+"do.call","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"dotplot","closure","","TRUE","FALSE","(x, labels = NULL, groups = NULL, gdata = NULL, cex = par(""cex""),         pch = 21, gpch = 21, bg = par(""bg""), color = par(""fg""),         gcolor = par(""fg""), lcolor = ""gray"", ...) ","base","NA","0.61.1",F
+"double","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1",F
+"dpois","closure","","TRUE","FALSE","(x, lambda) ","base","NA","0.61.1",F
+"dput","closure","","TRUE","FALSE","(x, file = """") ","base","NA","0.61.1",F
+"drop","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"drop.terms","closure","","TRUE","FALSE","(termobj, dropx = NULL, keep.response = FALSE) ","base","NA","0.61.1",F
+"dt","closure","","TRUE","FALSE","(x, df) ","base","NA","0.61.1",F
+"dump","closure","","TRUE","FALSE","(list, fileout = ""dumpdata"") ","base","NA","0.61.1",F
+"dunif","closure","","TRUE","FALSE","(x, min = 0, max = 1) ","base","NA","0.61.1",F
+"duplicated","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"dweibull","closure","","TRUE","FALSE","(x, shape, scale = 1) ","base","NA","0.61.1",F
+"dyn.load","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"edit","closure","","TRUE","FALSE","(name = NULL, file = """", editor = options()$editor) ","base","NA","0.61.1",F
+"effects","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"effects.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1",F
+"effects.lm","closure","","TRUE","FALSE","(z, term) ","base","NA","0.61.1",F
+"eigen","closure","","TRUE","FALSE","(x, symmetric, only.values = FALSE) ","base","NA","0.61.1",F
+"emacs","closure","","TRUE","FALSE","(name = NULL, file = """") ","base","NA","0.61.1",F
+"end","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"end.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"end.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"environment","closure","","TRUE","FALSE","(fun = NULL) ","base","NA","0.61.1",F
+"environment<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"eval","closure","","TRUE","FALSE","(expr, envir = sys.frame(sys.parent())) ","base","NA","0.61.1",F
+"exists","closure","","TRUE","FALSE","(x, where = -1, envir = pos.to.env(where), frame, mode = ""any"",         inherits = TRUE) ","base","NA","0.61.1",F
+"exp","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"expression","special","","TRUE","NA","","base","NA","0.61.1",F
+"factor","closure","","TRUE","FALSE","(x, levels = sort(unique(x), na.last = TRUE), labels,         exclude = NA, ordered = FALSE) ","base","NA","0.61.1",F
+"family","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"family.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1",F
+"family.lm","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"fft","closure","","TRUE","FALSE","(z, inverse = FALSE) ","base","NA","0.61.1",F
+"fitted","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"fitted.values","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"fitted.values.glm","closure","","TRUE","FALSE","(object) ","base","NA","0.61.1",F
+"fitted.values.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1",F
+"fivenum","closure","","TRUE","FALSE","(x, na.rm = TRUE) ","base","NA","0.61.1",F
+"fix","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"floor","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"for","special","","TRUE","NA","","base","NA","0.61.1",F
+"formals","closure","","TRUE","FALSE","(fun = sys.function(sys.parent())) ","base","NA","0.61.1",F
+"format","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"format.default","closure","","TRUE","FALSE","(x, trim = FALSE, digits = .Options$digits) ","base","NA","0.61.1",F
+"format.info","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"formatC","closure","","TRUE","FALSE","(x, digits = NULL, width = max(0, digits) + 1, format = NULL,         flag = """", mode = NULL) ","base","NA","0.61.1",F
+"formula","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"formula.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"formula.formula","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"formula.lm","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"formula.terms","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"frame","closure","","TRUE","FALSE","(ask = NA) ","base","NA","0.61.1",F
+"frame.cvt","closure","","TRUE","FALSE","(x, as.is = FALSE) ","base","NA","0.61.1",F
+"frequency","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"frequency.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"frequency.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"function","special","","TRUE","NA","","base","NA","0.61.1",F
+"gamma","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"gaussian","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"gc","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"gcinfo","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"get","closure","","TRUE","FALSE","(x, pos = -1, envir = pos.to.env(pos), mode = ""any"",         inherits = TRUE) ","base","NA","0.61.1",F
+"getenv","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"gl","closure","","TRUE","FALSE","(n, k, length = n * k, labels = 1:n, ordered = FALSE) ","base","NA","0.61.1",F
+"glm","closure","","TRUE","FALSE","(formula, family = gaussian, data = list(), weights = NULL,         subset = NULL, na.action = na.fail, start = NULL, offset = NULL,         control = glm.control(epsilon = 1e-04, maxit = 10, trace = FALSE),         model = TRUE, method = ""glm.fit"", x = FALSE, y = TRUE) ","base","NA","0.61.1",F
+"glm.control","closure","","TRUE","FALSE","(epsilon = 1e-04, maxit = 10, trace = FALSE) ","base","NA","0.61.1",F
+"glm.fit","closure","","TRUE","FALSE","(x, y, weights = rep(1, nobs), start = NULL, offset = rep(0,         nobs), family = gaussian(), control = glm.control(),         intercept = TRUE) ","base","NA","0.61.1",F
+"glm.fit.null","closure","","TRUE","FALSE","(x, y, weights = rep(1, nobs), start = NULL, offset = rep(0,         nobs), family = gaussian(), control = glm.control(),         intercept = NULL) ","base","NA","0.61.1",F
+"globalenv","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"graphics.off","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"gray","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"grep","closure","","TRUE","FALSE","(pattern, x, ignore.case = FALSE, extended = TRUE, value = FALSE) ","base","NA","0.61.1",F
+"grid","closure","","TRUE","FALSE","(nx = 3, ny = 3, col = ""lightgray"", lty = ""dotted"") ","base","NA","0.61.1",F
+"gsub","closure","","TRUE","FALSE","(pattern, replacement, x, ignore.case = FALSE, extended = TRUE) ","base","NA","0.61.1",F
+"hat","closure","","TRUE","FALSE","(x, intercept = TRUE) ","base","NA","0.61.1",F
+"heat.colors","closure","","TRUE","FALSE","(n) ","base","NA","0.61.1",F
+"help","closure","","TRUE","FALSE","(topic, package = .packages(), lib.loc = .lib.loc) ","base","NA","0.61.1",F
+"help.start","closure","","TRUE","FALSE","(gui = ""irrelevant"", browser = ""netscape"") ","base","NA","0.61.1",F
+"hist","closure","","TRUE","FALSE","(x, breaks, freq = NULL, col = NULL, border = par(""fg""),         main = paste(""Histogram of"", deparse(substitute(x))),         xlim = range(breaks), ylim = range(y, 0), xlab = deparse(substitute(x)),         ylab, axes = TRUE, plot = TRUE, ...) ","base","NA","0.61.1",F
+"hsv","closure","","TRUE","FALSE","(h = 1, s = 1, v = 1, gamma = 1) ","base","NA","0.61.1",F
+"identify","closure","","TRUE","FALSE","(x, y = NULL, labels = seq(along = x), pos = FALSE,         ...) ","base","NA","0.61.1",F
+"if","special","","TRUE","NA","","base","NA","0.61.1",F
+"ifelse","closure","","TRUE","FALSE","(test, yes, no) ","base","NA","0.61.1",F
+"image","closure","","TRUE","FALSE","(x = seq(0, 1, len = nrow(z)), y = seq(0, 1, len = ncol(z)),         z, zlim = range(z, na.rm = TRUE), col = heat.colors(12),         add = FALSE, xaxs = ""i"", yaxs = ""i"", xlab, ylab, ...) ","base","NA","0.61.1",F
+"influence.measures","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1",F
+"inherits","closure","","TRUE","FALSE","(x, name) ","base","NA","0.61.1",F
+"integer","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1",F
+"interactive","special","","TRUE","NA","","base","NA","0.61.1",F
+"inverse.gaussian","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"invisible","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.array","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.atomic","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.call","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.character","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.complex","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.data.frame","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.double","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.empty.model","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"is.environment","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.expression","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.factor","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.finite","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"is.function","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.integer","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.language","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.list","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.loaded","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.logical","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.matrix","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.na","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.na.data.frame","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"is.name","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.null","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.numeric","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.object","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.ordered","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.qr","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"is.real","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.recursive","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.single","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.symbol","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"is.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"is.unordered","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"is.vector","closure","","TRUE","FALSE","(x, mode = ""any"") ","base","NA","0.61.1",F
+"lapply","closure","","TRUE","FALSE","(x, FUN, ...) ","base","NA","0.61.1",F
+"lbeta","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"lchoose","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"legend","closure","","TRUE","FALSE","(x, y, legend, fill, col = ""black"", lty, pch, bty = ""o"",         bg = par(""bg""), cex = 1, xjust = 0, yjust = 1, x.intersp = NULL,         y.intersp = NULL, text.width = NULL, merge = FALSE) ","base","NA","0.61.1",F
+"length","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"length<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"letters","character","","TRUE","FALSE","NA","base","NA","0.61.1",F
+"levels","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"levels<-","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"lgamma","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"lib.fixup","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"library","closure","","TRUE","FALSE","(name, help, lib.loc = .lib.loc, character.only = FALSE,         logical.return = FALSE) ","base","NA","0.61.1",F
+"library.dynam","closure","","TRUE","FALSE","(name, package = .packages(), lib.loc = .lib.loc) ","base","NA","0.61.1",F
+"license","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"lines","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"lines.default","closure","","TRUE","FALSE","(x, y = NULL, type = ""l"", col = par(""col""), ...) ","base","NA","0.61.1",F
+"list","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"lm","closure","","TRUE","FALSE","(formula, data = list(), subset, weights, na.action,         method = ""qr"", model = TRUE, singular.ok = TRUE, ...) ","base","NA","0.61.1",F
+"lm.fit","closure","","TRUE","FALSE","(x, y, method = ""qr"", tol = 1e-07, ...) ","base","NA","0.61.1",F
+"lm.influence","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1",F
+"lm.wfit","closure","","TRUE","FALSE","(x, y, w, method = ""qr"", tol = 1e-07, ...) ","base","NA","0.61.1",F
+"load","closure","","TRUE","FALSE","(file) ","base","NA","0.61.1",F
+"locator","closure","","TRUE","FALSE","(n = 1) ","base","NA","0.61.1",F
+"log","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"log10","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"log2","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"logical","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1",F
+"lower.tri","closure","","TRUE","FALSE","(x, diag = FALSE) ","base","NA","0.61.1",F
+"lowess","closure","","TRUE","FALSE","(x, y = NULL, f = 2/3, iter = 3, delta = 0.01 * diff(range(xy$x[o]))) ","base","NA","0.61.1",F
+"ls","closure","","TRUE","FALSE","(name, pos = -1, envir = pos.to.env(pos), all.names = FALSE,         pattern) ","base","NA","0.61.1",F
+"ls.diag","closure","","TRUE","FALSE","(ls.out) ","base","NA","0.61.1",F
+"ls.print","closure","","TRUE","FALSE","(ls.out, digits = 4, print.it = TRUE) ","base","NA","0.61.1",F
+"ls.str","closure","","TRUE","FALSE","(..., mode = ""any"", max.level = 1, give.attr = FALSE) ","base","NA","0.61.1",F
+"lsf.str","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"lsfit","closure","","TRUE","FALSE","(x, y, wt = NULL, intercept = TRUE, tolerance = 1e-07,         yname = NULL) ","base","NA","0.61.1",F
+"machine","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"macintosh","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"mad","closure","","TRUE","FALSE","(y, center, constant = 1.4826, na.rm = FALSE) ","base","NA","0.61.1",F
+"make.link","closure","","TRUE","FALSE","(link) ","base","NA","0.61.1",F
+"mat.or.vec","closure","","TRUE","FALSE","(nr, nc) ","base","NA","0.61.1",F
+"match","closure","","TRUE","FALSE","(x, table, nomatch = NA) ","base","NA","0.61.1",F
+"match.arg","closure","","TRUE","FALSE","(arg, choices) ","base","NA","0.61.1",F
+"match.call","closure","","TRUE","FALSE","(definition = NULL, call = sys.call(sys.parent()), expand.dots = T) ","base","NA","0.61.1",F
+"matlines","closure","","TRUE","FALSE","(x, y, lty = 1:5, pch = NULL, col = 1:6, ...) ","base","NA","0.61.1",F
+"matplot","closure","","TRUE","FALSE","(x, y, type = ""p"", lty = 1:5, pch = NULL, col = 1:6,         xlab = NULL, ylab = NULL, xlim = NULL, ylim = NULL, ...,         add = FALSE, verbose = FALSE) ","base","NA","0.61.1",F
+"matpoints","closure","","TRUE","FALSE","(x, y, lty = 1:5, pch = NULL, col = 1:6, ...) ","base","NA","0.61.1",F
+"matrix","closure","","TRUE","FALSE","(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL) ","base","NA","0.61.1",F
+"max","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"mean","closure","","TRUE","FALSE","(x, trim = 0, na.rm = FALSE) ","base","NA","0.61.1",F
+"median","closure","","TRUE","FALSE","(x, na.rm = FALSE) ","base","NA","0.61.1",F
+"menu","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"methods","closure","","TRUE","FALSE","(generic.function, class) ","base","NA","0.61.1",F
+"min","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"missing","special","","TRUE","NA","","base","NA","0.61.1",F
+"mode","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"mode<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1",F
+"model.data.frame","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"model.extract","closure","","TRUE","FALSE","(frame, component) ","base","NA","0.61.1",F
+"model.frame","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"model.frame.default","closure","","TRUE","FALSE","(formula, data = NULL, subset = NULL, na.action = na.fail,         ...) ","base","NA","0.61.1",F
+"model.frame.lm","closure","","TRUE","FALSE","(formula, data, na.action, ...) ","base","NA","0.61.1",F
+"model.matrix","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1",F
+"model.matrix.default","closure","","TRUE","FALSE","(formula, data, contrasts = NULL) ","base","NA","0.61.1",F
+"model.offset","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"model.response","closure","","TRUE","FALSE","(data, type = ""numeric"") ","base","NA","0.61.1",F
+"model.weights","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"month.abb","character","","TRUE","FALSE","NA","base","NA","0.61.1",F
+"month.name","character","","TRUE","FALSE","NA","base","NA","0.61.1",F
+"mtext","closure","","TRUE","FALSE","(text, side = 3, line = 0, outer = FALSE, at = NULL,         ...) ","base","NA","0.61.1",F
+"mvfft","closure","","TRUE","FALSE","(z, inverse = FALSE) ","base","NA","0.61.1",F
+"na.action","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"na.action.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"na.fail","closure","","TRUE","FALSE","(frame) ","base","NA","0.61.1",F
+"na.omit","closure","","TRUE","FALSE","(frame) ","base","NA","0.61.1",F
+"names","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"names.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"names<-","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"names<-.default","closure","","TRUE","FALSE","(x, n) ","base","NA","0.61.1",F
+"nargs","special","","TRUE","NA","","base","NA","0.61.1",F
+"nchar","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"ncol","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"next","special","","TRUE","NA","","base","NA","0.61.1",F
+"nextn","closure","","TRUE","FALSE","(n, factors = c(2, 3, 5)) ","base","NA","0.61.1",F
+"nlevels","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"nlm","closure","","TRUE","FALSE","(f, p, hessian = FALSE, typsize = rep(1, length(p)),         fscale = 1, print.level = 0, ndigit = 12, gradtol = 1e-06,         stepmax = max(1000 * sqrt(sum((p/typsize)^2)), 1000),         steptol = 1e-06, iterlim = 100) ","base","NA","0.61.1",F
+"noquote","closure","","TRUE","FALSE","(obj) ","base","NA","0.61.1",F
+"nrow","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"numeric","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1",F
+"objects","closure","","TRUE","FALSE","(name, pos = -1, envir = pos.to.env(pos), all.names = FALSE,         pattern) ","base","NA","0.61.1",F
+"offset","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"on.exit","special","","TRUE","NA","","base","NA","0.61.1",F
+"optimise","closure","","TRUE","FALSE","(f, interval, lower = min(interval), upper = max(interval),         maximum = FALSE, tol = .Machine$double.eps^0.25, ...) ","base","NA","0.61.1",F
+"optimize","closure","","TRUE","FALSE","(f, interval, lower = min(interval), upper = max(interval),         maximum = FALSE, tol = .Machine$double.eps^0.25, ...) ","base","NA","0.61.1",F
+"options","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"order","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"ordered","closure","","TRUE","FALSE","(x, levels = sort(unique(x), na.last = TRUE), labels,         exclude = NA, ordered = TRUE) ","base","NA","0.61.1",F
+"outer","closure","","TRUE","FALSE","(x, y, FUN = ""*"", ...) ","base","NA","0.61.1",F
+"pairs","closure","","TRUE","FALSE","(x, labels, panel = points, main = NULL, font.main = par(""font.main""),         cex.main = par(""cex.main""), ...) ","base","NA","0.61.1",F
+"palette","closure","","TRUE","FALSE","(value) ","base","NA","0.61.1",F
+"panel.smooth","closure","","TRUE","FALSE","(x, y, col, pch, f = 2/3, iter = 3, ...) ","base","NA","0.61.1",F
+"par","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"par2","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"parse","closure","","TRUE","FALSE","(file = """", n = NULL, text = NULL, prompt = NULL, white = FALSE) ","base","NA","0.61.1",F
+"paste","closure","","TRUE","FALSE","(..., sep = "" "", collapse = NULL) ","base","NA","0.61.1",F
+"pbeta","closure","","TRUE","FALSE","(q, a, b) ","base","NA","0.61.1",F
+"pbinom","closure","","TRUE","FALSE","(q, n, p) ","base","NA","0.61.1",F
+"pcauchy","closure","","TRUE","FALSE","(q, location = 0, scale = 1) ","base","NA","0.61.1",F
+"pchisq","closure","","TRUE","FALSE","(q, df) ","base","NA","0.61.1",F
+"pentagamma","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"pexp","closure","","TRUE","FALSE","(q, rate = 1) ","base","NA","0.61.1",F
+"pf","closure","","TRUE","FALSE","(q, n1, n2) ","base","NA","0.61.1",F
+"pgamma","closure","","TRUE","FALSE","(q, shape, scale = 1) ","base","NA","0.61.1",F
+"pgeom","closure","","TRUE","FALSE","(q, p) ","base","NA","0.61.1",F
+"phyper","closure","","TRUE","FALSE","(q, N1, N2, n) ","base","NA","0.61.1",F
+"pi","real","","TRUE","FALSE","NA","base","NA","0.61.1",F
+"pictex","closure","","TRUE","FALSE","(file = ""Rplots.tex"", width = 5, height = 4, debug = FALSE,         bg = ""white"", fg = ""black"") ","base","NA","0.61.1",F
+"piechart","closure","","TRUE","FALSE","(x, labels = names(x), edges = 200, radius = 0.8, col = NULL,         main = NULL, ...) ","base","NA","0.61.1",F
+"plnorm","closure","","TRUE","FALSE","(q, meanlog = 0, sdlog = 1) ","base","NA","0.61.1",F
+"plogis","closure","","TRUE","FALSE","(q, location = 0, scale = 1) ","base","NA","0.61.1",F
+"plot","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"plot.data.frame","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"plot.default","closure","","TRUE","FALSE","(x, y = NULL, type = ""p"", col = par(""fg""), bg = NA,         pch = par(""pch""), xlim = NULL, ylim = NULL, log = """",         axes = TRUE, frame.plot = axes, panel.first = NULL, panel.last = NULL,         ann = par(""ann""), main = NULL, xlab = NULL, ylab = NULL,         cex = par(""cex""), lty = par(""lty""), lwd = par(""lwd""),         ...) ","base","NA","0.61.1",F
+"plot.density","closure","","TRUE","FALSE","(s, main = """", xlab = NULL, ylab = ""Density"", type = ""l"",         ...) ","base","NA","0.61.1",F
+"plot.factor","closure","","TRUE","FALSE","(x, y, ...) ","base","NA","0.61.1",F
+"plot.lm","closure","","TRUE","FALSE","(...) ","base","NA","0.61.1",F
+"plot.new","closure","","TRUE","FALSE","(ask = NA) ","base","NA","0.61.1",F
+"plot.ts","closure","","TRUE","FALSE","(x, type = ""l"", xlim, ylim, xlab = ""Time"", ylab, log = """",         col = par(""col""), bg = NA, pch = par(""pch""), lty = par(""lty""),         axes = TRUE, frame.plot = axes, ann = par(""ann""), main = NULL,         ...) ","base","NA","0.61.1",F
+"plot.window","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"plot.xy","closure","","TRUE","FALSE","(xy, type, pch = 1, lty = ""solid"", col = par(""fg""),         bg = NA, cex = 1, ...) ","base","NA","0.61.1",F
+"pmatch","closure","","TRUE","FALSE","(x, table, nomatch = NA) ","base","NA","0.61.1",F
+"pmax","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"pmin","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"pnbinom","closure","","TRUE","FALSE","(q, n, p) ","base","NA","0.61.1",F
+"pnchisq","closure","","TRUE","FALSE","(q, df, lambda) ","base","NA","0.61.1",F
+"pnorm","closure","","TRUE","FALSE","(q, mean = 0, sd = 1) ","base","NA","0.61.1",F
+"points","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"points.default","closure","","TRUE","FALSE","(x, y = NULL, type = ""p"", pch = 1, col = ""black"", bg = NA,         cex = 1, ...) ","base","NA","0.61.1",F
+"poisson","closure","","TRUE","FALSE","(link = ""log"") ","base","NA","0.61.1",F
+"polygon","closure","","TRUE","FALSE","(x, y = NULL, border = par(""fg""), ...) ","base","NA","0.61.1",F
+"polyroot","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"pos.to.env","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"postscript","closure","","TRUE","FALSE","(file = ""Rplots.ps"", ...) ","base","NA","0.61.1",F
+"power","closure","","TRUE","FALSE","(lambda = 1) ","base","NA","0.61.1",F
+"ppoints","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"ppois","closure","","TRUE","FALSE","(q, lambda) ","base","NA","0.61.1",F
+"predict","closure","","TRUE","FALSE","(fit, ...) ","base","NA","0.61.1",F
+"predict.default","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1",F
+"predict.lm","closure","","TRUE","FALSE","(object, newdata = model.frame(object), conf.level = 0.95,         tol.level = conf.level) ","base","NA","0.61.1",F
+"pretty","closure","","TRUE","FALSE","(x, n = 5) ","base","NA","0.61.1",F
+"print","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"print.anova.glm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), na.print = """",         ...) ","base","NA","0.61.1",F
+"print.anova.lm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","base","NA","0.61.1",F
+"print.atomic","closure","","TRUE","FALSE","(x, quote = TRUE, ...) ","base","NA","0.61.1",F
+"print.data.frame","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"print.default","closure","","TRUE","FALSE","(x, digits = NULL, quote = TRUE, na.print = NULL, print.gap = NULL,         ...) ","base","NA","0.61.1",F
+"print.density","closure","","TRUE","FALSE","(x, digits = NULL, ...) ","base","NA","0.61.1",F
+"print.family","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"print.formula","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"print.glm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), na.print = """",         ...) ","base","NA","0.61.1",F
+"print.glm.null","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), na.print = """",         ...) ","base","NA","0.61.1",F
+"print.htest","closure","","TRUE","FALSE","(x, digits = 4, quote = T, prefix = """") ","base","NA","0.61.1",F
+"print.infl","closure","","TRUE","FALSE","(infobj, digits = max(3, .Options$digits - 4), ...) ","base","NA","0.61.1",F
+"print.lm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","base","NA","0.61.1",F
+"print.lm.null","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","base","NA","0.61.1",F
+"print.noquote","closure","","TRUE","FALSE","(obj, ...) ","base","NA","0.61.1",F
+"print.plot","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"print.summary.glm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), roundfun = round,         na.print = """", ...) ","base","NA","0.61.1",F
+"print.summary.glm.null","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), na.print = """",         ...) ","base","NA","0.61.1",F
+"print.summary.lm","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), roundfun = round,         ...) ","base","NA","0.61.1",F
+"print.summary.lm.null","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","base","NA","0.61.1",F
+"print.table","closure","","TRUE","FALSE","(x, digits = .Options$digits, quote = FALSE, na.print = """",         ...) ","base","NA","0.61.1",F
+"print.tabular","closure","","TRUE","FALSE","(table, digits = max(3, .Options$digits - 3), na.print = """") ","base","NA","0.61.1",F
+"print.terms","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"print.ts","closure","","TRUE","FALSE","(x, calendar, ...) ","base","NA","0.61.1",F
+"prmatrix","closure","","TRUE","FALSE","(x, rowlab = character(0), collab = character(0), quote = TRUE,         right = FALSE) ","base","NA","0.61.1",F
+"proc.time","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"prod","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"prompt","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1",F
+"prompt.default","closure","","TRUE","FALSE","(object, filename = paste0(name, "".Rd""), force.function = FALSE) ","base","NA","0.61.1",F
+"prop.test","closure","","TRUE","FALSE","(x, n, p = NULL, alternative = ""two.sided"", conf.level = 0.95,         correct = TRUE) ","base","NA","0.61.1",F
+"provide","closure","","TRUE","FALSE","(name) ","base","NA","0.61.1",F
+"ps.options","closure","","TRUE","FALSE","(file = ""Rplots.ps"", ..., reset = F) ","base","NA","0.61.1",F
+"pt","closure","","TRUE","FALSE","(q, df) ","base","NA","0.61.1",F
+"punif","closure","","TRUE","FALSE","(q, min = 0, max = 1) ","base","NA","0.61.1",F
+"pweibull","closure","","TRUE","FALSE","(q, shape, scale = 1) ","base","NA","0.61.1",F
+"q","closure","","TRUE","FALSE","(save = ""ask"") ","base","NA","0.61.1",F
+"qbeta","closure","","TRUE","FALSE","(p, a, b) ","base","NA","0.61.1",F
+"qbinom","closure","","TRUE","FALSE","(prob, n, p) ","base","NA","0.61.1",F
+"qcauchy","closure","","TRUE","FALSE","(p, location = 0, scale = 1) ","base","NA","0.61.1",F
+"qchisq","closure","","TRUE","FALSE","(p, df) ","base","NA","0.61.1",F
+"qexp","closure","","TRUE","FALSE","(p, rate = 1) ","base","NA","0.61.1",F
+"qf","closure","","TRUE","FALSE","(p, n1, n2) ","base","NA","0.61.1",F
+"qgamma","closure","","TRUE","FALSE","(p, shape, scale = 1) ","base","NA","0.61.1",F
+"qgeom","closure","","TRUE","FALSE","(prob, p) ","base","NA","0.61.1",F
+"qhyper","closure","","TRUE","FALSE","(p, N1, N2, n) ","base","NA","0.61.1",F
+"qlnorm","closure","","TRUE","FALSE","(p, meanlog = 0, sdlog = 1) ","base","NA","0.61.1",F
+"qlogis","closure","","TRUE","FALSE","(p, location = 0, scale = 1) ","base","NA","0.61.1",F
+"qnbinom","closure","","TRUE","FALSE","(prob, n, p) ","base","NA","0.61.1",F
+"qnchisq","closure","","TRUE","FALSE","(p, df, lambda) ","base","NA","0.61.1",F
+"qnorm","closure","","TRUE","FALSE","(p, mean = 0, sd = 1) ","base","NA","0.61.1",F
+"qpois","closure","","TRUE","FALSE","(p, lambda) ","base","NA","0.61.1",F
+"qqline","closure","","TRUE","FALSE","(y, ...) ","base","NA","0.61.1",F
+"qqnorm","closure","","TRUE","FALSE","(y, ylim, main = ""Normal Q-Q Plot"", xlab = ""Theoretical Quantiles"",         ylab = ""Sample Quantiles"", ...) ","base","NA","0.61.1",F
+"qqplot","closure","","TRUE","FALSE","(x, y, plot.it = TRUE, xlab = deparse(substitute(x)),         ylab = deparse(substitute(y)), ...) ","base","NA","0.61.1",F
+"qr","closure","","TRUE","FALSE","(x, tol = 1e-07) ","base","NA","0.61.1",F
+"qr.Q","closure","","TRUE","FALSE","(qr, complete = FALSE, Dvec = rep(if (cmplx) 1 + 0i else 1,         if (complete) dqr[1] else min(dqr))) ","base","NA","0.61.1",F
+"qr.R","closure","","TRUE","FALSE","(qr, complete = FALSE) ","base","NA","0.61.1",F
+"qr.X","closure","","TRUE","FALSE","(qr, complete = FALSE, ncol = if (complete) nrow(R) else min(dim(R))) ","base","NA","0.61.1",F
+"qr.coef","closure","","TRUE","FALSE","(qr, y) ","base","NA","0.61.1",F
+"qr.fitted","closure","","TRUE","FALSE","(qr, y, k = qr$rank) ","base","NA","0.61.1",F
+"qr.qty","closure","","TRUE","FALSE","(qr, y) ","base","NA","0.61.1",F
+"qr.qy","closure","","TRUE","FALSE","(qr, y) ","base","NA","0.61.1",F
+"qr.resid","closure","","TRUE","FALSE","(qr, y) ","base","NA","0.61.1",F
+"qr.solve","closure","","TRUE","FALSE","(a, b, tol = 1e-07) ","base","NA","0.61.1",F
+"qt","closure","","TRUE","FALSE","(p, df) ","base","NA","0.61.1",F
+"quantile","closure","","TRUE","FALSE","(x, probs = seq(0, 1, 0.25), na.rm = FALSE) ","base","NA","0.61.1",F
+"quasi","closure","","TRUE","FALSE","(link = ""identity"", variance = ""constant"") ","base","NA","0.61.1",F
+"quit","closure","","TRUE","FALSE","(save = ""ask"") ","base","NA","0.61.1",F
+"qunif","closure","","TRUE","FALSE","(p, min = 0, max = 1) ","base","NA","0.61.1",F
+"quote","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"qweibull","closure","","TRUE","FALSE","(p, shape, scale = 1) ","base","NA","0.61.1",F
+"rainbow","closure","","TRUE","FALSE","(n, s = 1, v = 1, start = 0, end = max(1, n - 1)/n,         gamma = 1) ","base","NA","0.61.1",F
+"range","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"rank","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"rbeta","closure","","TRUE","FALSE","(n, a, b) ","base","NA","0.61.1",F
+"rbind","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"rbinom","closure","","TRUE","FALSE","(nobs, n, p) ","base","NA","0.61.1",F
+"rcauchy","closure","","TRUE","FALSE","(n, location = 0, scale = 1) ","base","NA","0.61.1",F
+"rchisq","closure","","TRUE","FALSE","(n, df) ","base","NA","0.61.1",F
+"read.fwf","closure","","TRUE","FALSE","(file, widths, sep = "" "", as.is = FALSE, skip = 0, row.names,         col.names, ...) ","base","NA","0.61.1",F
+"read.table","closure","","TRUE","FALSE","(file, header = FALSE, sep = """", row.names, col.names,         as.is = FALSE, na.strings = ""NA"", skip = 0) ","base","NA","0.61.1",F
+"readline","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"real","closure","","TRUE","FALSE","(n = 0) ","base","NA","0.61.1",F
+"rect","closure","","TRUE","FALSE","(xleft, ybottom, xright, ytop, col = NULL, border = par(""fg""),         lty = NULL, xpd = FALSE) ","base","NA","0.61.1",F
+"reformulate","closure","","TRUE","FALSE","(termlabels, response = NULL) ","base","NA","0.61.1",F
+"remove","closure","","TRUE","FALSE","(..., list = character(0), pos = -1, envir = pos.to.env(pos),         inherits = FALSE) ","base","NA","0.61.1",F
+"rep","closure","","TRUE","FALSE","(x, times, length.out) ","base","NA","0.61.1",F
+"repeat","special","","TRUE","NA","","base","NA","0.61.1",F
+"replace","closure","","TRUE","FALSE","(x, list, values) ","base","NA","0.61.1",F
+"require","closure","","TRUE","FALSE","(name, quietly = FALSE) ","base","NA","0.61.1",F
+"resid","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"residuals","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"residuals.glm","closure","","TRUE","FALSE","(object, type = ""deviance"") ","base","NA","0.61.1",F
+"residuals.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1",F
+"return","special","","TRUE","NA","","base","NA","0.61.1",F
+"rev","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"rexp","closure","","TRUE","FALSE","(n, rate = 1) ","base","NA","0.61.1",F
+"rf","closure","","TRUE","FALSE","(n, n1, n2) ","base","NA","0.61.1",F
+"rgamma","closure","","TRUE","FALSE","(n, shape, scale = 1) ","base","NA","0.61.1",F
+"rgb","closure","","TRUE","FALSE","(red, green, blue, names = NULL) ","base","NA","0.61.1",F
+"rgeom","closure","","TRUE","FALSE","(n, p) ","base","NA","0.61.1",F
+"rhyper","closure","","TRUE","FALSE","(nobs, N1, N2, n) ","base","NA","0.61.1",F
+"rlnorm","closure","","TRUE","FALSE","(n, meanlog = 0, sdlog = 1) ","base","NA","0.61.1",F
+"rlogis","closure","","TRUE","FALSE","(n, location = 0, scale = 1) ","base","NA","0.61.1",F
+"rm","closure","","TRUE","FALSE","(..., list = character(0), pos = -1, envir = pos.to.env(pos),         inherits = FALSE) ","base","NA","0.61.1",F
+"rnbinom","closure","","TRUE","FALSE","(nobs, n, p) ","base","NA","0.61.1",F
+"rnchisq","closure","","TRUE","FALSE","(n, df, lambda) ","base","NA","0.61.1",F
+"rnorm","closure","","TRUE","FALSE","(n, mean = 0, sd = 1) ","base","NA","0.61.1",F
+"round","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"row","closure","","TRUE","FALSE","(x, as.factor = FALSE) ","base","NA","0.61.1",F
+"row.names","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"row.names<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1",F
+"rownames","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"rownames<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1",F
+"rpois","closure","","TRUE","FALSE","(n, lambda) ","base","NA","0.61.1",F
+"rstudent","closure","","TRUE","FALSE","(lm.obj) ","base","NA","0.61.1",F
+"rt","closure","","TRUE","FALSE","(n, df) ","base","NA","0.61.1",F
+"runif","closure","","TRUE","FALSE","(n, min = 0, max = 1) ","base","NA","0.61.1",F
+"rweibull","closure","","TRUE","FALSE","(n, shape, scale = 1) ","base","NA","0.61.1",F
+"sample","closure","","TRUE","FALSE","(x, size, replace = FALSE) ","base","NA","0.61.1",F
+"sapply","closure","","TRUE","FALSE","(X, FUN, ..., simplify = TRUE) ","base","NA","0.61.1",F
+"save","closure","","TRUE","FALSE","(..., list = character(0), file = """", ascii = FALSE) ","base","NA","0.61.1",F
+"save.plot","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"scale","closure","","TRUE","FALSE","(x, center = TRUE, scale = TRUE) ","base","NA","0.61.1",F
+"scan","closure","","TRUE","FALSE","(file = """", what = 0, nmax = -1, sep = """", skip = 0,         nlines = 0, na.strings = ""NA"", flush = FALSE, strip.white = FALSE,         quiet = FALSE) ","base","NA","0.61.1",F
+"sd","closure","","TRUE","FALSE","(x, na.rm = FALSE) ","base","NA","0.61.1",F
+"search","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"segments","closure","","TRUE","FALSE","(x0, y0, x1, y1, col = par(""fg""), lty = par(""lty"")) ","base","NA","0.61.1",F
+"seq","closure","","TRUE","FALSE","(from = 1, to = 1, by = ((to - from)/(length.out - 1)),         length.out = NULL, along.with = NULL) ","base","NA","0.61.1",F
+"sequence","closure","","TRUE","FALSE","(nvec) ","base","NA","0.61.1",F
+"sign","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"signif","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"sin","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"sinh","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"sink","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"solve","closure","","TRUE","FALSE","(a, b, tol = 1e-07) ","base","NA","0.61.1",F
+"solve.qr","closure","","TRUE","FALSE","(a, b, tol = 1e-07) ","base","NA","0.61.1",F
+"sort","closure","","TRUE","FALSE","(x, partial = NULL, na.last = NA) ","base","NA","0.61.1",F
+"source","closure","","TRUE","FALSE","(file, local = FALSE, echo = debug, print.eval = echo,         debug = FALSE, max.deparse.length = 150) ","base","NA","0.61.1",F
+"spline","closure","","TRUE","FALSE","(x, y = NULL, n = 3 * length(x), method = ""fmm"", xmin = min(x),         xmax = max(x)) ","base","NA","0.61.1",F
+"splinefun","closure","","TRUE","FALSE","(x, y = NULL, method = ""fmm"") ","base","NA","0.61.1",F
+"split","closure","","TRUE","FALSE","(x, f) ","base","NA","0.61.1",F
+"split.data.frame","closure","","TRUE","FALSE","(x, f) ","base","NA","0.61.1",F
+"split.default","closure","","TRUE","FALSE","(x, f) ","base","NA","0.61.1",F
+"sqrt","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"start","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"start.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"start.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"stat.anova","closure","","TRUE","FALSE","(table, test, scale, df.scale, n) ","base","NA","0.61.1",F
+"stem","closure","","TRUE","FALSE","(x, scale = 1, width = 80, atom = 1e-08) ","base","NA","0.61.1",F
+"stop","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"storage.mode","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"storage.mode<-","closure","","TRUE","FALSE","(x, value) ","base","NA","0.61.1",F
+"str","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1",F
+"str.data.frame","closure","","TRUE","FALSE","(object, ...) ","base","NA","0.61.1",F
+"str.default","closure","","TRUE","FALSE","(object, max.level = 0, vec.len = 4, digits.d = 3, give.attr = TRUE,         give.length = TRUE, wid = .Options$width, nest.lev = 0,         indent.str = paste(rep("" "", max(0, nest.lev + 1)), collapse = "".."")) ","base","NA","0.61.1",F
+"strheight","closure","","TRUE","FALSE","(s, units = ""user"", cex = NULL) ","base","NA","0.61.1",F
+"stripplot","closure","","TRUE","FALSE","(x, method = ""overplot"", jitter = 0.1, offset = 1/3,         vertical = FALSE, group.names, xlim, ylim, main = """",         ylab = """", xlab = """", pch = 0, col = par(""fg""), cex = par(""cex"")) ","base","NA","0.61.1",F
+"strsplit","closure","","TRUE","FALSE","(x, split) ","base","NA","0.61.1",F
+"structure","closure","","TRUE","FALSE","(.Data, ...) ","base","NA","0.61.1",F
+"strwidth","closure","","TRUE","FALSE","(s, units = ""user"", cex = NULL) ","base","NA","0.61.1",F
+"sub","closure","","TRUE","FALSE","(pattern, replacement, x, ignore.case = FALSE, extended = TRUE) ","base","NA","0.61.1",F
+"substitute","special","","TRUE","NA","","base","NA","0.61.1",F
+"substr","closure","","TRUE","FALSE","(x, start, stop) ","base","NA","0.61.1",F
+"substring","closure","","TRUE","FALSE","(text, first, last = 1e+06) ","base","NA","0.61.1",F
+"sum","closure","","TRUE","FALSE","(..., na.rm = FALSE) ","base","NA","0.61.1",F
+"summary","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"summary.data.frame","closure","","TRUE","FALSE","(x, maxsum = 7, ...) ","base","NA","0.61.1",F
+"summary.default","closure","","TRUE","FALSE","(object, ..., digits = max(options()$digits - 3, 3)) ","base","NA","0.61.1",F
+"summary.factor","closure","","TRUE","FALSE","(x, maxsum = 100, ...) ","base","NA","0.61.1",F
+"summary.glm","closure","","TRUE","FALSE","(object, dispersion = NULL, correlation = TRUE, na.action = na.omit) ","base","NA","0.61.1",F
+"summary.glm.null","closure","","TRUE","FALSE","(object, dispersion = NULL, correlation = TRUE, na.action = na.omit) ","base","NA","0.61.1",F
+"summary.infl","closure","","TRUE","FALSE","(infobj, digits = max(2, .Options$digits - 5), ...) ","base","NA","0.61.1",F
+"summary.lm","closure","","TRUE","FALSE","(z, correlation = FALSE) ","base","NA","0.61.1",F
+"summary.lm.null","closure","","TRUE","FALSE","(z, correlation = FALSE) ","base","NA","0.61.1",F
+"summary.matrix","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"svd","closure","","TRUE","FALSE","(x, nu = min(n, p), nv = min(n, p)) ","base","NA","0.61.1",F
+"sweep","closure","","TRUE","FALSE","(x, MARGIN, STATS, FUN = ""-"", ...) ","base","NA","0.61.1",F
+"switch","closure","","TRUE","FALSE","(EXPR, ...) ","base","NA","0.61.1",F
+"symbol.C","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"symbol.For","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"symnum","closure","","TRUE","FALSE","(x, cutpoints = c(0.3, 0.6, 0.8, 0.9, 0.95), symbols = c("" "",         ""."", "","", ""+"", ""*"", ""B""), na = ""?"", eps = 1e-05, corr = TRUE,         show.max = if (corr) ""1"", show.min = NULL, lower.triangular = corr &                 is.matrix(x)) ","base","NA","0.61.1",F
+"sys.call","closure","","TRUE","FALSE","(which = 0) ","base","NA","0.61.1",F
+"sys.calls","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"sys.frame","closure","","TRUE","FALSE","(which = 0) ","base","NA","0.61.1",F
+"sys.frames","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"sys.function","closure","","TRUE","FALSE","(which = 0) ","base","NA","0.61.1",F
+"sys.nframe","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"sys.on.exit","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"sys.parent","closure","","TRUE","FALSE","(n = 1) ","base","NA","0.61.1",F
+"sys.parents","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"sys.source","closure","","TRUE","FALSE","(file) ","base","NA","0.61.1",F
+"sys.status","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"system","closure","","TRUE","FALSE","(call, intern = FALSE) ","base","NA","0.61.1",F
+"system.date","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"system.file","closure","","TRUE","FALSE","(file, pkg = .packages(), lib = .lib.loc) ","base","NA","0.61.1",F
+"system.time","closure","","TRUE","FALSE","(expr) ","base","NA","0.61.1",F
+"t","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"t.data.frame","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"t.default","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"t.test","closure","","TRUE","FALSE","(x, y = NULL, alternative = ""two.sided"", mu = 0, paired = FALSE,         var.equal = FALSE, conf.level = 0.95) ","base","NA","0.61.1",F
+"table","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"tabulate","closure","","TRUE","FALSE","(bin, nbins = max(bin)) ","base","NA","0.61.1",F
+"tan","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"tanh","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"tapply","closure","","TRUE","FALSE","(x, INDEX, FUN = NULL, simplify = TRUE, ...) ","base","NA","0.61.1",F
+"tempfile","closure","","TRUE","FALSE","(pattern = ""file"") ","base","NA","0.61.1",F
+"terms","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"terms.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"terms.formula","closure","","TRUE","FALSE","(x, specials = NULL, abb = NULL, data = NULL, keep.order = FALSE) ","base","NA","0.61.1",F
+"terms.terms","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"terrain.colors","closure","","TRUE","FALSE","(n) ","base","NA","0.61.1",F
+"tetragamma","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"text","closure","","TRUE","FALSE","(x, y = NULL, labels = seq(along = x), ...) ","base","NA","0.61.1",F
+"text.math","special","","TRUE","NA","","base","NA","0.61.1",F
+"time","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"time.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"time.ts","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"title","closure","","TRUE","FALSE","(main = NULL, sub = NULL, xlab = NULL, ylab = NULL,         ...) ","base","NA","0.61.1",F
+"topo.colors","closure","","TRUE","FALSE","(n) ","base","NA","0.61.1",F
+"trace","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"traceback","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"trigamma","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"trunc","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"ts","closure","","TRUE","FALSE","(data = NA, start = 1, end = numeric(0), frequency = 1,         deltat = 1, ts.eps = .Options$ts.eps) ","base","NA","0.61.1",F
+"tsp","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"tsp<-","closure","","TRUE","FALSE","(x, tsp) ","base","NA","0.61.1",F
+"typeof","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"unclass","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"undebug","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"unique","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"uniroot","closure","","TRUE","FALSE","(f, interval, lower = min(interval), upper = max(interval),         tol = .Machine$double.eps^0.25, ...) ","base","NA","0.61.1",F
+"unix.time","closure","","TRUE","FALSE","(expr) ","base","NA","0.61.1",F
+"unlink","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"unlist","special","","TRUE","NA","","base","NA","0.61.1",F
+"untrace","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"update","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"update.formula","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"update.glm","closure","","TRUE","FALSE","(glm.obj, formula, data, weights, subset, na.action,         offset, family, x) ","base","NA","0.61.1",F
+"update.lm","closure","","TRUE","FALSE","(lm.obj, formula, data, weights, subset, na.action) ","base","NA","0.61.1",F
+"upper.tri","closure","","TRUE","FALSE","(x, diag = FALSE) ","base","NA","0.61.1",F
+"var","closure","","TRUE","FALSE","(x, y = x, na.rm = FALSE, use) ","base","NA","0.61.1",F
+"variable.names","closure","","TRUE","FALSE","(obj, ...) ","base","NA","0.61.1",F
+"variable.names.lm","closure","","TRUE","FALSE","(lm.obj, full = FALSE) ","base","NA","0.61.1",F
+"vector","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"version","list","","TRUE","FALSE","NA","base","NA","0.61.1",F
+"vi","closure","","TRUE","FALSE","(name = NULL, file = """") ","base","NA","0.61.1",F
+"warning","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"weighted.mean","closure","","TRUE","FALSE","(x, w, na.rm = FALSE) ","base","NA","0.61.1",F
+"weighted.residuals","closure","","TRUE","FALSE","(obj) ","base","NA","0.61.1",F
+"weights","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"weights.lm","closure","","TRUE","FALSE","(z) ","base","NA","0.61.1",F
+"which","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"while","special","","TRUE","NA","","base","NA","0.61.1",F
+"window","closure","","TRUE","FALSE","(x, ...) ","base","NA","0.61.1",F
+"window.default","closure","","TRUE","FALSE","(x) ","base","NA","0.61.1",F
+"window.ts","closure","","TRUE","FALSE","(x, start, end) ","base","NA","0.61.1",F
+"windows","closure","","TRUE","FALSE","() ","base","NA","0.61.1",F
+"write","closure","","TRUE","FALSE","(x, file = ""data"", ncolumns = if (is.character(x)) 1 else 5,         append = FALSE) ","base","NA","0.61.1",F
+"x11","closure","","TRUE","FALSE","(display = """", width = 7, height = 7, ps = 12, printcmd = options(""printcmd"")$printcmd,         paper = options(""papersize"")$papersize, orientation = ""flexible"") ","base","NA","0.61.1",F
+"xedit","closure","","TRUE","FALSE","(name = NULL, file = """") ","base","NA","0.61.1",F
+"xemacs","closure","","TRUE","FALSE","(name = NULL, file = """") ","base","NA","0.61.1",F
+"xinch","closure","","TRUE","FALSE","(x = 1) ","base","NA","0.61.1",F
+"xor","closure","","TRUE","FALSE","(x, y) ","base","NA","0.61.1",F
+"xy.coords","closure","","TRUE","FALSE","(x, y, xlab = NULL, ylab = NULL) ","base","NA","0.61.1",F
+"yinch","closure","","TRUE","FALSE","(x = 1) ","base","NA","0.61.1",F
+"{","special","","TRUE","NA","","base","NA","0.61.1",F
+"|","builtin","","TRUE","NA","","base","NA","0.61.1",F
+"||","special","","TRUE","NA","","base","NA","0.61.1",F
+"~","special","","TRUE","NA","","base","NA","0.61.1",F
+"coefficients.tukeyline","closure","","TRUE","FALSE","(z) ","eda","NA","0.61.1",F
+"fitted.values.tukeyline","closure","","TRUE","FALSE","(z) ","eda","NA","0.61.1",F
+"line","closure","","TRUE","FALSE","(x, y = NULL) ","eda","NA","0.61.1",F
+"medpolish","closure","","TRUE","FALSE","(x, eps = 0.01, maxiter = 10) ","eda","NA","0.61.1",F
+"plot.medpolish","closure","","TRUE","FALSE","(x, main = ""Tukey Additivity Plot"", ...) ","eda","NA","0.61.1",F
+"print.medpolish","closure","","TRUE","FALSE","(x) ","eda","NA","0.61.1",F
+"print.tukeyline","closure","","TRUE","FALSE","(x, digits = max(3, .Options$digits - 3), ...) ","eda","NA","0.61.1",F
+"residuals.tukeyline","closure","","TRUE","FALSE","(z) ","eda","NA","0.61.1",F
+"smooth","closure","","TRUE","FALSE","(x) ","eda","NA","0.61.1",F
+"cancor","closure","","TRUE","FALSE","(x, y, xcenter = TRUE, ycenter = TRUE) ","mva","NA","0.61.1",F
+"cmdscale","closure","","TRUE","FALSE","(d, k = 2, eig = FALSE) ","mva","NA","0.61.1",F
+"dist","closure","","TRUE","FALSE","(x, method = ""euclidian"") ","mva","NA","0.61.1",F
+"hclust","closure","","TRUE","FALSE","(d, method = ""complete"") ","mva","NA","0.61.1",F
+"names.dist","closure","","TRUE","FALSE","(d) ","mva","NA","0.61.1",F
+"names<-.dist","closure","","TRUE","FALSE","(d, n) ","mva","NA","0.61.1",F
+"plot.hclust","closure","","TRUE","FALSE","(tree, hang = 0.1, ...) ","mva","NA","0.61.1",F
+"plot.prcomp","closure","","TRUE","FALSE","(x, main = ""Scree Plot"", ylab = ""Variance"", xlab = ""Component"",         ...) ","mva","NA","0.61.1",F
+"prcomp","closure","","TRUE","FALSE","(x, scale = FALSE, use = ""all.obs"") ","mva","NA","0.61.1",F
+"print.dist","closure","","TRUE","FALSE","(d) ","mva","NA","0.61.1",F
+"print.prcomp","closure","","TRUE","FALSE","(x) ","mva","NA","0.61.1",F
+"ecdf","closure","","TRUE","FALSE","(x) ","stepfun","NA","0.61.1",F
+"is.stepfun","closure","","TRUE","FALSE","(x) ","stepfun","NA","0.61.1",F
+"knots","closure","","TRUE","FALSE","(...) ","stepfun","NA","0.61.1",F
+"knots.stepfun","closure","","TRUE","FALSE","(Fn) ","stepfun","NA","0.61.1",F
+"plot.ecdf","closure","","TRUE","FALSE","(..., verticals = FALSE, col.01line = ""gray70"") ","stepfun","NA","0.61.1",F
+"plot.stepfun","closure","","TRUE","FALSE","(Fn, x, xlim, xlab = ""x"", ylab = ""f(x)"", main = NULL,         add = FALSE, verticals = TRUE, do.points = TRUE, pch = par(""pch""),         col.points = par(""col""), cex.points = par(""cex""), col.hor = par(""col""),         col.vert = par(""col""), ...) ","stepfun","NA","0.61.1",F
+"print.ecdf","closure","","TRUE","FALSE","(Fn, digits = options(""digits"")[[1]] - 2, ...) ","stepfun","NA","0.61.1",F
+"print.stepfun","closure","","TRUE","FALSE","(Fn, digits = options(""digits"")[[1]] - 2, ...) ","stepfun","NA","0.61.1",F
+"stepfun","closure","","TRUE","FALSE","(x, y, f = 0) ","stepfun","NA","0.61.1",F
+"summary.ecdf","closure","","TRUE","FALSE","(Fn, ...) ","stepfun","NA","0.61.1",F
+"summary.stepfun","closure","","TRUE","FALSE","(Fn) ","stepfun","NA","0.61.1",F
