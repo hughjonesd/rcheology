@@ -8,7 +8,7 @@
   (i.e. it is hidden from `ls()`).
 * Column `"generic"` has been renamed to `"S4generic"`, to be more informative.
 * Some data cleanups.
-* Data is extended back to R version 0.61.
+* Data is extended back to R version 0.50.
 
 
 # rcheology 4.3.1.1
