@@ -32,29 +32,29 @@ make_range <- function (name, package, versions) {
   stop_v <- ifelse(start_v == stop_v, "", paste0("-", my_doc_anchors(stop_v)))
   ranges <- paste0(my_doc_anchors(start_v), stop_v, sep = "", collapse = "; ")
   
-  ranges
+  all_versions <- paste(versions, collapse = " ")
+  range_string <- paste0(ranges,"<!--",  all_versions ,"-->")
+  
+  range_string
 }
 
 
 n_all_versions <- length(unique(rcheology$Rversion))
 
 rch_summary <- rcheology %>% 
-      group_by(name, package) %>% 
       mutate(
-        ever_changed = length(Rversion) < n_all_versions, 
-        n_versions   = length(Rversion),
-        args         = sub("^function ", "", args)
-      ) %>% 
-      group_by(name, package, args, exported) %>% 
+        # for DT search box to display as an option:
+        package = as.factor(package),
+        type = as.factor(type),
+        class = as.factor(class),
+        priority = as.factor(priority),
+      ) %>%
+      group_by(name, package, args, type, class, exported) %>% 
       summarize(
-        `First Version` = Rversion[1],
-        `Last Version`  = Rversion[length(Rversion)],
-        versions     = paste0(
-          make_range(name[1], package[1], Rversion), 
-          "<!--", paste(Rversion, collapse = " ") ,"-->"
-        ),
-        `Ever changed?` = ever_changed[1],
-        `Args changed?` = length(Rversion) < n_versions[1]
+        hidden          = hidden[1],
+        versions        = make_range(name[1], package[1], Rversion), 
       )
 
-save(rcheology, rch_summary, file = file.path("app", "rcheology-app-data.RData"))
+Rversions <- as.package_version(unique(rcheology$Rversion))
+
+save(Rversions, rch_summary, file = file.path("app", "rcheology-app-data.RData"))
