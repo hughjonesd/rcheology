@@ -34,8 +34,9 @@ ui <- fluidPage(
 
 
 rch_summary <- select(rch_summary,
-                      name, package, versions, args, type, class, exported, 
-                      hidden)
+                      name, args, package, versions, priority, 
+                      type, class, 
+                      exported, hidden)
 
 search_col_opts <- rep(list(NULL), ncol(rch_summary))
 hidden_col <- which(names(rch_summary) == "hidden")

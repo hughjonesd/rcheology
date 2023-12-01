@@ -51,7 +51,7 @@ rch_summary <- rcheology |>
         class = as.factor(class),
         priority = as.factor(priority),
       ) |>
-      group_by(name, package, args, type, class, exported) |> 
+      group_by(name, args, package, priority, type, class, exported) |> 
       summarize(
         hidden          = hidden[1],
         versions        = make_range(name[1], package[1], Rversion), 
