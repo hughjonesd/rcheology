@@ -56,7 +56,7 @@ server <- function(input, output) {
           pageLength = 10,
           search     = list(regex = TRUE, caseInsensitive = FALSE),
           searchCols = search_col_opts,
-          order      = c(0, "asc")
+          order      = list(c(0, "asc"), c(2, "asc"), c(3, "asc"))
         ))
   summary_dt <- DT::formatStyle(summary_dt, c("name", "args"), 
                                 `font-family` = "courier, monospace")
