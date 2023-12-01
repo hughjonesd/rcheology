@@ -7,16 +7,16 @@
 function setup_ctr {
   IMAGE=$1
   CONTAINER="ctr-$IMAGE"
-  PLATFORM="linux/arm64"
+  PLATFORM=""
   case $IMAGE in
-    pre | 0.* | 1.* | 2.* ) PLATFORM="linux/i386"
+    pre | 0.* | 1.* | 2.* ) PLATFORM="--platform linux/i386"
   esac
   
   docker stop $CONTAINER
   docker rm $CONTAINER
   
   mkdir -p opt-R-volumes/$CONTAINER
-  docker create --name $CONTAINER --platform $PLATFORM \
+  docker create --name $CONTAINER $PLATFORM \
     --mount type=bind,source="$(pwd)"/opt-R-volumes/"$CONTAINER",destination=/root/opt-copy \
     --entrypoint bash -i -t "ghcr.io/r-hub/evercran/$IMAGE"
     
