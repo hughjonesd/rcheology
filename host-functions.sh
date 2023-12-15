@@ -1,17 +1,22 @@
 # useful commands:
 # remove all stopped containers:
-# docker container prune 
+#   docker container prune 
 # create a bash shell:
-# docker exec -it ctr-XXX /bin/bash
+#   docker exec -it ctr-XXX /bin/bash
+# list images:
+#   docker image ls
+# update an image
+#   docker image pull ghcr.io/whatever
 
 function setup_ctr {
   IMAGE=$1
   CONTAINER="ctr-$IMAGE"
   PLATFORM=""
   case $IMAGE in
-    pre | 0.* | 1.* | 2.* ) PLATFORM="--platform linux/i386"
+    pre | 0.* | 1.* | 2.* ) PLATFORM="--platform=linux/i386"
   esac
   
+  docker image pull ghcr.io/r-hub/evercran/$IMAGE
   docker stop $CONTAINER
   docker rm $CONTAINER
   
