@@ -1,4 +1,8 @@
 
+# development version
+
+* Data for R 0.60 and 0.60.1 is now available. Thanks @gaborcsardi for help with evercran.
+
 # rcheology 4.3.2.0
 
 * New data for R 4.3.2
