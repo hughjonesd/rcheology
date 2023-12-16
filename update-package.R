@@ -2,6 +2,7 @@
 ## UPDATE PROCEDURE
 
 # 1. Start docker
+# 2. Run a bash shell (it matters because of allowing spaces in variables)
 # 2. run ./host-run-on-evercran.sh (update to include latest version if nec)
 # 3. edit 'version' below
 # 4. run this script in a fresh R session
