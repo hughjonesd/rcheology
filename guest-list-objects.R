@@ -5,8 +5,6 @@ if (exists("try") && exists("traceback")) try(options(error = traceback)) # no t
 
 source("guest-functions.R")
 
-mySetEnv(DISPLAY=":0")
-
 rv <- getRVersion()
 shortRversion <- paste(rv$major, rv$minor, sep = ".")
 S4exists <- rv$major > 1 || (rv$major == 1 && rv$minor >= "4.0") # think doing string comparisons OK

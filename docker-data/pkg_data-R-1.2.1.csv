@@ -1566,6 +1566,221 @@
 "stepfun","closure","","TRUE","FALSE","(x, y, f = 0) ","stepfun","NA","1.2.1",FALSE
 "summary.ecdf","closure","","TRUE","FALSE","(Fn, ...) ","stepfun","NA","1.2.1",FALSE
 "summary.stepfun","closure","","TRUE","FALSE","(Fn) ","stepfun","NA","1.2.1",FALSE
+"$.tclvar","closure","","TRUE","FALSE","(x, name) ","tcltk","NA","1.2.1",FALSE
+"$<-.tclvar","closure","","TRUE","FALSE","(x, name, value) ","tcltk","NA","1.2.1",FALSE
+".First.lib","closure","","TRUE","FALSE","(lib, pkg) ","tcltk","NA","1.2.1", TRUE
+".Last.lib","closure","","TRUE","FALSE","(libpath) ","tcltk","NA","1.2.1", TRUE
+".Tcl","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1", TRUE
+".Tcl.args","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1", TRUE
+".Tcl.callback","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1", TRUE
+".Tk.ID","closure","","TRUE","FALSE","(win) ","tcltk","NA","1.2.1", TRUE
+".Tk.newwin","closure","","TRUE","FALSE","(ID) ","tcltk","NA","1.2.1", TRUE
+".Tk.subwin","closure","","TRUE","FALSE","(parent) ","tcltk","NA","1.2.1", TRUE
+".TkRoot","list","tkwin","TRUE","FALSE","NA","tcltk","NA","1.2.1", TRUE
+"addTclPath","closure","","TRUE","FALSE","(path = ""."") ","tcltk","NA","1.2.1",FALSE
+"is.tkwin","closure","","TRUE","FALSE","(x) ","tcltk","NA","1.2.1",FALSE
+"tclRequire","closure","","TRUE","FALSE","(package, warn = TRUE) ","tcltk","NA","1.2.1",FALSE
+"tclvar","list","tclvar","TRUE","FALSE","NA","tcltk","NA","1.2.1",FALSE
+"tkXselection.clear","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkXselection.get","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkXselection.handle","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkXselection.own","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkactivate","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkadd","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkaddtag","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkbbox","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkbell","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkbind","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkbindtags","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkbutton","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkcanvas","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkcanvasx","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkcanvasy","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkcget","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkcheckbutton","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkclipboard.append","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkclipboard.clear","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkcmd","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkcompare","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkconfigure","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkcoords","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkcreate","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkcurselection","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkdchars","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkdebug","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkdelete","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkdelta","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkdeselect","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkdestroy","closure","","TRUE","FALSE","(win) ","tcltk","NA","1.2.1",FALSE
+"tkdlineinfo","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkdtag","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkdump","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkentry","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkentrycget","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkentryconfigure","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkevent.add","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkevent.delete","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkevent.generate","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkevent.info","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfind","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkflash","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkfocus","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfont.actual","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfont.configure","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfont.create","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfont.delete","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfont.families","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfont.measure","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfont.metrics","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfont.names","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkfraction","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkframe","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkget","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkgettags","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkgrab","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrab.current","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrab.release","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrab.set","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrab.status","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.bbox","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.columnconfigure","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.configure","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.forget","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.info","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.location","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.propagate","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.remove","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.rowconfigure","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.size","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkgrid.slaves","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkicursor","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkidentify","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkimage.cget","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkimage.configure","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkimage.create","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkimage.names","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkindex","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkinsert","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkinvoke","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkitembind","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkitemcget","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkitemconfigure","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkitemfocus","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkitemlower","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkitemraise","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkitemscale","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tklabel","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tklistbox","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tklower","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkmark.gravity","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmark.names","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmark.next","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmark.previous","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmark.set","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmark.unset","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmenu","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmenubutton","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmessage","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkmove","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tknearest","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkpack","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkpack.configure","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkpack.forget","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkpack.info","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkpack.propagate","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkpack.slaves","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkpager","closure","","TRUE","FALSE","(file, header, title, delete.file) ","tcltk","NA","1.2.1",FALSE
+"tkplace","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkplace.configure","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkplace.forget","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkplace.info","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkplace.slaves","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkpost","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkpostcascade","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkpostscript","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkradiobutton","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkraise","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkscale","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tkscan.dragto","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkscan.mark","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkscrollbar","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tksearch","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tksee","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselect","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.adjust","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.anchor","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.clear","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.from","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.includes","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.present","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.range","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.set","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkselection.to","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkset","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tksize","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.add","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.bind","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.cget","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.configure","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.delete","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.lower","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.names","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.nextrange","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.prevrange","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.raise","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.ranges","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktag.remove","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktext","closure","","TRUE","FALSE","(parent, ...) ","tcltk","NA","1.2.1",FALSE
+"tktitle","closure","","TRUE","FALSE","(x) ","tcltk","NA","1.2.1",FALSE
+"tktitle<-","closure","","TRUE","FALSE","(x, value) ","tcltk","NA","1.2.1",FALSE
+"tktoggle","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tktoplevel","closure","","TRUE","FALSE","(parent = .TkRoot, ...) ","tcltk","NA","1.2.1",FALSE
+"tktype","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkunpost","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkwait.variable","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwait.visibility","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwait.window","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwidget","closure","","TRUE","FALSE","(parent, type, ...) ","tcltk","NA","1.2.1",FALSE
+"tkwindow.cget","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkwindow.configure","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkwindow.create","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkwindow.names","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkwinfo","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.aspect","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.client","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.colormapwindows","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.command","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.deiconify","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.focusmodel","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.frame","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.geometry","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.grid","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.group","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.iconbitmap","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.iconify","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.iconmask","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.iconname","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.iconposition","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.iconwindow","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.maxsize","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.minsize","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.overrideredirect","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.positionfrom","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.protocol","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.resizable","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.sizefrom","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.state","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.title","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.transient","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkwm.withdraw","closure","","TRUE","FALSE","(...) ","tcltk","NA","1.2.1",FALSE
+"tkxview","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkxview.moveto","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkxview.scroll","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkyposition","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkyview","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkyview.moveto","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
+"tkyview.scroll","closure","","TRUE","FALSE","(widget, ...) ","tcltk","NA","1.2.1",FALSE
 ".First.lib","closure","","TRUE","FALSE","(lib, pkg) ","ts","NA","1.2.1", TRUE
 "Box.test","closure","","TRUE","FALSE","(x, lag = 1, type = c(""Box-Pierce"", ""Ljung-Box"")) ","ts","NA","1.2.1",FALSE
 "Ops.ts","closure","","TRUE","FALSE","(e1, e2) ","ts","NA","1.2.1",FALSE

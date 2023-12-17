@@ -10,6 +10,7 @@ for RVERSION in /opt/R/*; do
     0.49 | 0.50-a1 | 0.50-a4 ) RARGS="";;
     0.60* | 0.61* ) RARGS="-nosave";;
   esac
-  RV=$RVERSION $RBIN $RARGS < guest-list-objects.R 1>$RERR 
+  RV=$RVERSION DISPLAY=host.docker.internal:0 $RBIN \
+      $RARGS < guest-list-objects.R 1>$RERR 
 done 
 

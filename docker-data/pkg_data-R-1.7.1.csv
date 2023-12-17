@@ -3199,6 +3199,254 @@
 "survreg.old","closure","function","NA","FALSE","(formula, data = sys.frame(sys.parent()), ..., link = ""log"",     dist = c(""extreme"", ""logistic"", ""gaussian"", ""exponential"",         ""rayleigh"", ""weibull""), fixed = list()) ","survival","recommended","1.7.1",FALSE
 "tcut","closure","function","NA","FALSE","(x, breaks, labels, scale = 1) ","survival","recommended","1.7.1",FALSE
 "untangle.specials","closure","function","NA","FALSE","(tt, special, order = 1) ","survival","recommended","1.7.1",FALSE
+"$.tclvar","closure","function","NA","FALSE","(x, name) ","tcltk","base","1.7.1",FALSE
+"$<-.tclvar","closure","function","NA","FALSE","(x, name, value) ","tcltk","base","1.7.1",FALSE
+".First.lib","closure","function","NA","FALSE","(lib, pkg) ","tcltk","base","1.7.1", TRUE
+".Last.lib","closure","function","NA","FALSE","(libpath) ","tcltk","base","1.7.1", TRUE
+".Tcl","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1", TRUE
+".Tcl.args","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1", TRUE
+".Tcl.callback","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1", TRUE
+".Tk.ID","closure","function","NA","FALSE","(win) ","tcltk","base","1.7.1", TRUE
+".Tk.newwin","closure","function","NA","FALSE","(ID) ","tcltk","base","1.7.1", TRUE
+".Tk.subwin","closure","function","NA","FALSE","(parent) ","tcltk","base","1.7.1", TRUE
+".TkRoot","list","tkwin","NA","FALSE","NA","tcltk","base","1.7.1", TRUE
+".packageName","character","character","NA","FALSE","NA","tcltk","base","1.7.1", TRUE
+"addTclPath","closure","function","NA","FALSE","(path = ""."") ","tcltk","base","1.7.1",FALSE
+"as.character.tclObj","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"as.character.tclVar","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"as.double.tclObj","closure","function","NA","FALSE","(x, ...) ","tcltk","base","1.7.1",FALSE
+"as.integer.tclObj","closure","function","NA","FALSE","(x, ...) ","tcltk","base","1.7.1",FALSE
+"as.tclObj","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"is.tclObj","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"is.tkwin","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"print.tclObj","closure","function","NA","FALSE","(x, ...) ","tcltk","base","1.7.1",FALSE
+"tclObj","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"tclObj.tclVar","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"tclObj<-","closure","function","NA","FALSE","(x, value) ","tcltk","base","1.7.1",FALSE
+"tclObj<-.tclVar","closure","function","NA","FALSE","(x, value) ","tcltk","base","1.7.1",FALSE
+"tclRequire","closure","function","NA","FALSE","(package, warn = TRUE) ","tcltk","base","1.7.1",FALSE
+"tclVar","closure","function","NA","FALSE","(init = """") ","tcltk","base","1.7.1",FALSE
+"tclvalue","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"tclvalue.default","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"tclvalue.tclObj","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"tclvalue.tclVar","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"tclvalue<-","closure","function","NA","FALSE","(x, value) ","tcltk","base","1.7.1",FALSE
+"tclvalue<-.default","closure","function","NA","FALSE","(x, value) ","tcltk","base","1.7.1",FALSE
+"tclvalue<-.tclVar","closure","function","NA","FALSE","(x, value) ","tcltk","base","1.7.1",FALSE
+"tclvar","list","tclvar","NA","FALSE","NA","tcltk","base","1.7.1",FALSE
+"tkStartGUI","closure","function","NA","FALSE","() ","tcltk","base","1.7.1",FALSE
+"tkXselection.clear","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkXselection.get","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkXselection.handle","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkXselection.own","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkactivate","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkadd","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkaddtag","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkbbox","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkbell","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkbind","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkbindtags","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkbutton","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkcanvas","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkcanvasx","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkcanvasy","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkcget","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkcheckbutton","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkchooseDirectory","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkclipboard.append","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkclipboard.clear","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkclose","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkcmd","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkcompare","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkconfigure","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkcoords","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkcreate","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkcurselection","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkdchars","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkdebug","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkdelete","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkdelta","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkdeselect","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkdestroy","closure","function","NA","FALSE","(win) ","tcltk","base","1.7.1",FALSE
+"tkdialog","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkdlineinfo","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkdtag","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkdump","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkentry","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkentrycget","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkentryconfigure","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkevent.add","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkevent.delete","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkevent.generate","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkevent.info","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfile.dir","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfile.tail","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfind","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkflash","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkfocus","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfont.actual","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfont.configure","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfont.create","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfont.delete","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfont.families","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfont.measure","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfont.metrics","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfont.names","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkfraction","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkframe","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkget","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkgetOpenFile","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgetSaveFile","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgettags","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkgrab","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrab.current","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrab.release","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrab.set","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrab.status","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.bbox","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.columnconfigure","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.configure","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.forget","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.info","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.location","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.propagate","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.remove","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.rowconfigure","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.size","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkgrid.slaves","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkicursor","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkidentify","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkimage.cget","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkimage.configure","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkimage.create","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkimage.names","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkindex","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkinsert","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkinvoke","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkitembind","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkitemcget","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkitemconfigure","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkitemfocus","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkitemlower","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkitemraise","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkitemscale","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tklabel","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tklistbox","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tklower","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkmark.gravity","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkmark.names","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkmark.next","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkmark.previous","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkmark.set","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkmark.unset","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkmenu","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkmenubutton","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkmessage","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkmessageBox","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkmove","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tknearest","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkopen","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpack","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpack.configure","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpack.forget","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpack.info","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpack.propagate","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpack.slaves","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpager","closure","function","NA","FALSE","(file, header, title, delete.file) ","tcltk","base","1.7.1",FALSE
+"tkplace","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkplace.configure","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkplace.forget","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkplace.info","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkplace.slaves","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpopup","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkpost","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkpostcascade","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkpostscript","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkputs","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkradiobutton","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkraise","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkread","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkscale","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tkscan.dragto","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkscan.mark","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkscrollbar","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tksearch","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tksee","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselect","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.adjust","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.anchor","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.clear","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.from","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.includes","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.present","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.range","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.set","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkselection.to","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkset","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tksize","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.add","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.bind","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.cget","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.configure","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.delete","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.lower","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.names","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.nextrange","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.prevrange","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.raise","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.ranges","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktag.remove","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktext","closure","function","NA","FALSE","(parent, ...) ","tcltk","base","1.7.1",FALSE
+"tktitle","closure","function","NA","FALSE","(x) ","tcltk","base","1.7.1",FALSE
+"tktitle<-","closure","function","NA","FALSE","(x, value) ","tcltk","base","1.7.1",FALSE
+"tktoggle","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tktoplevel","closure","function","NA","FALSE","(parent = .TkRoot, ...) ","tcltk","base","1.7.1",FALSE
+"tktype","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkunpost","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkwait.variable","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwait.visibility","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwait.window","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwidget","closure","function","NA","FALSE","(parent, type, ...) ","tcltk","base","1.7.1",FALSE
+"tkwindow.cget","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkwindow.configure","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkwindow.create","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkwindow.names","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkwinfo","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.aspect","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.client","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.colormapwindows","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.command","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.deiconify","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.focusmodel","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.frame","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.geometry","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.grid","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.group","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.iconbitmap","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.iconify","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.iconmask","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.iconname","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.iconposition","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.iconwindow","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.maxsize","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.minsize","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.overrideredirect","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.positionfrom","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.protocol","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.resizable","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.sizefrom","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.state","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.title","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.transient","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkwm.withdraw","closure","function","NA","FALSE","(...) ","tcltk","base","1.7.1",FALSE
+"tkxview","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkxview.moveto","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkxview.scroll","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkyposition","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkyview","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkyview.moveto","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
+"tkyview.scroll","closure","function","NA","FALSE","(widget, ...) ","tcltk","base","1.7.1",FALSE
 ".checkDemoIndex","closure","function","TRUE","FALSE","(demoDir) ","tools","base","1.7.1", TRUE
 ".checkVignetteIndex","closure","function","TRUE","FALSE","(vignetteDir) ","tools","base","1.7.1", TRUE
 ".installMD5sums","closure","function","TRUE","FALSE","(pkgDir, outDir = pkgDir) ","tools","base","1.7.1", TRUE

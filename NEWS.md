@@ -1,7 +1,9 @@
 
 # development version
 
-* Data for R 0.60 and 0.60.1 is now available. Thanks @gaborcsardi for help with evercran.
+* Data for R 0.60 and 0.60.1 is now available. 
+  Thanks @gaborcsardi for help with evercran.
+* Data for tcltk on 1.x is now available. Thanks again to @gaborcsardi.
 
 # rcheology 4.3.2.0
 
