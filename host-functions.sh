@@ -22,11 +22,9 @@ function setup_ctr {
   docker stop $CONTAINER
   docker rm $CONTAINER
   
-  mkdir -p opt-R-volumes/$CONTAINER
   docker create --name $CONTAINER $PLATFORM \
-    --mount type=bind,source="$(pwd)"/opt-R-volumes/"$CONTAINER",destination=/root/opt-copy \
-    --entrypoint bash -i -t "ghcr.io/r-hub/evercran/$IMAGE"
-    
+    -i -t "ghcr.io/r-hub/evercran/$IMAGE" 
+
   docker cp guest-list-objects.R $CONTAINER:/root/
   docker cp guest-functions.R $CONTAINER:/root/
   docker cp guest-run-r-versions.sh $CONTAINER:/root/
@@ -35,13 +33,13 @@ function setup_ctr {
   docker start $CONTAINER
   docker exec $CONTAINER chmod a+x /root/guest-run-r-versions.sh
   
-  # we use this to avoid problems with i386 guest file systems on arm64
-  docker exec $CONTAINER cp -R /opt/R/ /root/opt-copy
-  docker exec $CONTAINER rm -rf /opt/R
-  docker exec $CONTAINER ln -s /root/opt-copy/R /opt/R
-  
   docker exec $CONTAINER mkdir /root/docker-data
   docker exec $CONTAINER mkdir /root/errors
+}
+
+function get_entrypoint {
+  IMAGE=$1
+  
 }
 
 
@@ -50,7 +48,12 @@ function run_image {
   setup_ctr $IMAGE
   CONTAINER="ctr-$IMAGE"
 
-  docker exec $CONTAINER /root/guest-run-r-versions.sh
+  ENTRYPOINT=""
+  case $IMAGE in 
+    0.* | 1.* ) ENTRYPOINT="entrypoint.sh"
+  esac
+  get_entrypoint $IMAGE
+  docker exec $CONTAINER $ENTRYPOINT /root/guest-run-r-versions.sh
   docker cp "$CONTAINER:/root/docker-data/." docker-data
   docker stop $CONTAINER
 }
@@ -60,5 +63,10 @@ function login_ctr {
   IMAGE=$1
   CONTAINER="ctr-$IMAGE"
   docker start $CONTAINER
-  docker exec -it $CONTAINER /bin/bash
+  
+  ENTRYPOINT=""
+  case $IMAGE in 
+    0.* | 1.* ) ENTRYPOINT="entrypoint.sh"
+  esac
+  docker exec -it $CONTAINER $ENTRYPOINT /bin/bash
 }
