@@ -37,11 +37,6 @@ function setup_ctr {
   docker exec $CONTAINER mkdir /root/errors
 }
 
-function get_entrypoint {
-  IMAGE=$1
-  
-}
-
 
 function run_image {
   IMAGE=$1
@@ -52,7 +47,6 @@ function run_image {
   case $IMAGE in 
     0.* | 1.* ) ENTRYPOINT="entrypoint.sh"
   esac
-  get_entrypoint $IMAGE
   docker exec $CONTAINER $ENTRYPOINT /root/guest-run-r-versions.sh
   docker cp "$CONTAINER:/root/docker-data/." docker-data
   docker stop $CONTAINER

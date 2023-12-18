@@ -3,9 +3,10 @@
 
 # 1. Start docker
 # 2. Run a bash shell (it matters because of allowing spaces in variables)
-# 2. run ./host-run-on-evercran.sh (update to include latest version if nec)
-# 3. edit 'version' below
-# 4. run this script in a fresh R session
+# 3. Start Xquartz (or windows equivalent) and run 'xhost +' in a separate terminal
+# 4. run ./host-run-on-evercran.sh (update to include latest version if nec)
+# 5. edit 'version' below
+# 6. run this script in a fresh R session
 
 version <- "4.3.2.0"
 
