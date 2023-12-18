@@ -37,13 +37,23 @@ function setup_ctr {
   docker exec $CONTAINER mkdir /root/errors
 }
 
+function get_entrypoint {
+  IMAGE=$1
+  
+}
+
 
 function run_image {
   IMAGE=$1
   setup_ctr $IMAGE
   CONTAINER="ctr-$IMAGE"
 
-  docker exec $CONTAINER /root/guest-run-r-versions.sh
+  ENTRYPOINT=""
+  case $IMAGE in 
+    0.* | 1.* ) ENTRYPOINT="entrypoint.sh"
+  esac
+  get_entrypoint $IMAGE
+  docker exec $CONTAINER $ENTRYPOINT /root/guest-run-r-versions.sh
   docker cp "$CONTAINER:/root/docker-data/." docker-data
   docker stop $CONTAINER
 }
@@ -53,5 +63,10 @@ function login_ctr {
   IMAGE=$1
   CONTAINER="ctr-$IMAGE"
   docker start $CONTAINER
-  docker exec -it $CONTAINER /bin/bash
+  
+  ENTRYPOINT=""
+  case $IMAGE in 
+    0.* | 1.* ) ENTRYPOINT="entrypoint.sh"
+  esac
+  docker exec -it $CONTAINER $ENTRYPOINT /bin/bash
 }
