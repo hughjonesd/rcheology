@@ -13,7 +13,7 @@ for RVERSION in /opt/R/*; do
   esac
   
   echo "Starting $RBIN"
-  RV=$RVERSION DISPLAY=host.docker.internal:0 $RBIN \
+  RV=$RVERSION DISPLAY=host.docker.internal:1 $RBIN \
       $RARGS < guest-list-objects.R 1>$RERR 
 done 
 

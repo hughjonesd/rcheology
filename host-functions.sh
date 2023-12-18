@@ -37,6 +37,20 @@ function setup_ctr {
   docker exec $CONTAINER mkdir /root/errors
 }
 
+function maybe_start_x {
+  IMAGE=$1
+  case $IMAGE in
+    1.* | 2.* ) Xvfb :1 -listen tcp &
+  esac
+}
+
+function maybe_stop_x {
+  IMAGE=$1
+  case $IMAGE in
+    1.* | 2.* ) killall Xvfb
+  esac
+}
+
 
 function run_image {
   IMAGE=$1
@@ -47,9 +61,12 @@ function run_image {
   case $IMAGE in 
     0.* | 1.* ) ENTRYPOINT="entrypoint.sh"
   esac
+  
+  maybe_start_x $IMAGE
   docker exec $CONTAINER $ENTRYPOINT /root/guest-run-r-versions.sh
   docker cp "$CONTAINER:/root/docker-data/." docker-data
   docker stop $CONTAINER
+  maybe_stop_x $IMAGE
 }
 
 
@@ -60,7 +77,7 @@ function login_ctr {
   
   ENTRYPOINT=""
   case $IMAGE in 
-    0.* | 1.* ) ENTRYPOINT="entrypoint.sh"
+    0.* | 1.* ) ENTRYPOINT="entrypoint.sh";;
   esac
   docker exec -it $CONTAINER $ENTRYPOINT /bin/bash
 }

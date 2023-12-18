@@ -7,7 +7,6 @@
 
 source host-functions.sh
 
-echo "Have you started Xquartz and run 'xhost +' in a separate terminal?"
 # cleanup
 rm docker-data/*
 

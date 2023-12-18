@@ -116,7 +116,7 @@ makeNsName <- function (pkg) {
     pkgPattern <- paste(":", pkg, "$", sep = "")
     nsName <- grep(pkgPattern, searchPath, value = T)
   }
-  if (length(nsName) == 0 && pkg == "base") nsName <- ".SystemEnv" # 0.49
+  if (length(nsName) == 0) nsName <- ".SystemEnv" # 0.49
   
   nsName
 }
@@ -124,8 +124,12 @@ makeNsName <- function (pkg) {
 
 makeData <- function (pkg, priority) {
   nsName <- makeNsName(pkg)
-  # no do.call
-  pkgObjNames  <- do.call("ls", list(nsName, all.names = T)) # NSE weirdness in early R
+  
+  pkgObjNames  <- if (any(names(formals(ls)) == "all.names")) {
+    do.call("ls", list(nsName, all.names = T)) # NSE weirdness in early R
+  } else {
+    do.call("ls", list(nsName))
+  }
   pkgObjNames  <- sort(pkgObjNames)
 
   nsPos <- nsToPos(nsName)
