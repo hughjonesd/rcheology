@@ -1,11 +1,10 @@
 
-New data for R 4.3.2. 
-We also go back to 0.50.
-Some new database columns
+New data for R 4.3.3. 
+
 
 ## Test environments
 
-* OS X (local), R 4.3.0
+* OS X (local), R 4.3.2
 * windows (on win-builder), R-devel and R-release
 * mac (on mac-builder), R-release
 
