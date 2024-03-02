@@ -47,7 +47,7 @@ cat("
 # Check CRAN for previous check failures to fix:
 # https://cran.r-project.org/web/checks/check_results_rcheology.html
 
-# update cran-comments.md appropriately and commit
+# update cran-comments.md and NEWS.md appropriately and commit
 # then 
 devtools::release()
 

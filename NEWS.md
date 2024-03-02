@@ -1,13 +1,15 @@
 
-# development version
+# rcheology 4.3.3.0
 
+* New data for R 4.3.3.
 * Data for R 0.60 and 0.60.1 is now available. 
   Thanks @gaborcsardi for help with evercran.
 * Data for tcltk on 1.x is now available. Thanks again to @gaborcsardi.
 
+
 # rcheology 4.3.2.0
 
-* New data for R 4.3.2
+* New data for R 4.3.2.
 * New column `"priority"` records whether an object's package was `"base"` or 
   `"recommended"`.
 * New column `"hidden"` simply records whether an object's name starts with `"."`
