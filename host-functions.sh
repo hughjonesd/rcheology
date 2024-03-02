@@ -9,13 +9,16 @@
 #   docker image ls
 # update an image
 #   docker image pull ghcr.io/whatever
+# 
+# If you get "no space left on device" errors, you can try
+#   docker system prune
 
 function setup_ctr {
   IMAGE=$1
   CONTAINER="ctr-$IMAGE"
   PLATFORM=""
   case $IMAGE in
-    pre | 0.* | 1.* | 2.* ) PLATFORM="--platform=linux/i386"
+    pre | 0.* | 1.* | 2.* ) PLATFORM="--platform=linux/i386" ;;
   esac
   
   docker image pull ghcr.io/r-hub/evercran/$IMAGE
@@ -47,7 +50,16 @@ function maybe_start_x {
 function maybe_stop_x {
   IMAGE=$1
   case $IMAGE in
-    1.* | 2.* ) killall Xvfb
+    1.* | 2.* ) killall Xvfb ;;
+  esac
+}
+
+
+function set_entrypoint {
+  IMAGE=$1
+  case $IMAGE in
+    0.* | 1.* ) ENTRYPOINT="entrypoint.sh" ;;
+    * ) ENTRYPOINT="" ;;
   esac
 }
 
@@ -57,12 +69,8 @@ function run_image {
   setup_ctr $IMAGE
   CONTAINER="ctr-$IMAGE"
 
-  ENTRYPOINT=""
-  case $IMAGE in 
-    0.* | 1.* ) ENTRYPOINT="entrypoint.sh"
-  esac
-  
   maybe_start_x $IMAGE
+  set_entrypoint $IMAGE
   docker exec $CONTAINER $ENTRYPOINT /root/guest-run-r-versions.sh
   docker cp "$CONTAINER:/root/docker-data/." docker-data
   docker stop $CONTAINER
@@ -75,9 +83,6 @@ function login_ctr {
   CONTAINER="ctr-$IMAGE"
   docker start $CONTAINER
   
-  ENTRYPOINT=""
-  case $IMAGE in 
-    0.* | 1.* ) ENTRYPOINT="entrypoint.sh";;
-  esac
+  set_entrypoint $IMAGE
   docker exec -it $CONTAINER $ENTRYPOINT /bin/bash
 }

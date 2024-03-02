@@ -8,7 +8,7 @@
 # 5. edit 'version' below
 # 6. run this script in a fresh R session
 
-version <- "4.3.2.0"
+version <- "4.3.3.0"
 
 if (length(version) != 1) {
   stop("Usage: Rscript update-package.R x.y.z.v")

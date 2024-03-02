@@ -94,6 +94,7 @@ rvs <- rcheology$Rversion     %>%
 
 major_rvs <- grep(".0$", rvs, value = TRUE)
 major_rvs <- gsub("0.50", "0.50-a1", major_rvs)
+major_rvs <- gsub("0.60", "0.60.0", major_rvs)
 major_rv_dates <- Rversions$date[Rversions$Rversion %in% major_rvs]
 major_rv_dates
 major_rvs <- gsub("\\.0$", "", major_rvs)
