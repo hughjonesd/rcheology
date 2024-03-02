@@ -47,9 +47,9 @@ cat("
 # Check CRAN for previous check failures to fix:
 # https://cran.r-project.org/web/checks/check_results_rcheology.html
 
-# update cran-comments.md appropriately
+# update cran-comments.md appropriately and commit
 # then 
 devtools::release()
 
-# after acceptance, run post-acceptance.sh and enter the (full package) version
+# after acceptance, run post-acceptance.sh
 ")
