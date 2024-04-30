@@ -64,3 +64,4 @@ run_image 4.3.0
 run_image 4.3.1
 run_image 4.3.2
 run_image 4.3.3
+run_image 4.4.0

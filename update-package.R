@@ -2,13 +2,16 @@
 ## UPDATE PROCEDURE
 
 # 1. Start docker
-# 2. Run a bash shell (it matters because of allowing spaces in variables)
+# 2. Run a bash shell 
+#   - bash matters because of allowing spaces in variables
 # 3. Start Xquartz (or windows equivalent) and run 'xhost +' in a separate terminal
-# 4. run ./host-run-on-evercran.sh (update to include latest version if nec)
-# 5. edit 'version' below
+# 4. run ./host-run-on-evercran.sh 
+#   - update the script to include the latest R version, if necessary
+# 5. edit 'version' below. 
+#   - Usually this should be the latest R version, with an extra zero.
 # 6. run this script in a fresh R session
 
-version <- "4.3.3.0"
+version <- "4.4.0.0"
 
 if (length(version) != 1) {
   stop("Usage: Rscript update-package.R x.y.z.v")
