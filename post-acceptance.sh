@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # After CRAN acceptance
 # tag release
@@ -19,6 +20,3 @@ gh::gh("POST /repos/hughjonesd/rcheology/releases",
        tag_name = paste0("v", version),
        body = sprintf("Version %s on CRAN", version))
 '
-
-
-
