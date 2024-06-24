@@ -11,7 +11,8 @@
 #   - Or, source host-functions.sh and run run_image x.y.z
 # 6. edit 'version' below. 
 #   - Usually this should be the latest R version, with an extra zero.
-# 7. run this script in a fresh R session
+# 7. run this script in a fresh R session.
+#   - Note that the script is interactive
 
 version <- "4.4.1.0"
 

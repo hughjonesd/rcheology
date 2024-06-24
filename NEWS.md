@@ -1,4 +1,9 @@
 
+# rcheology 4.4.1.0
+
+* New data for R 4.4.1.
+
+
 # rcheology 4.4.0.0
 
 * New data for R 4.4.0.
