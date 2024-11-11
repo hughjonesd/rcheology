@@ -14,7 +14,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 0.50.
 
-The latest R version covered is 4.4.1.
+The latest R version covered is 4.4.2.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -59,26 +59,26 @@ data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
 #>        package   name Rversion priority    type exported hidden    class
-#> 341560     mva kmeans    1.0.1     <NA> closure     TRUE  FALSE     <NA>
-#> 392116   stats kmeans    1.9.0     base closure     TRUE  FALSE function
-#> 392120   stats kmeans    2.1.0     base closure     TRUE  FALSE function
-#> 392160   stats kmeans    3.0.2     base closure     TRUE  FALSE function
-#> 392166   stats kmeans    3.2.0     base closure     TRUE  FALSE function
-#> 392191   stats kmeans    4.0.2     base closure     TRUE  FALSE function
+#> 345020     mva kmeans    1.0.1     <NA> closure     TRUE  FALSE     <NA>
+#> 396034   stats kmeans    1.9.0     base closure     TRUE  FALSE function
+#> 396038   stats kmeans    2.1.0     base closure     TRUE  FALSE function
+#> 396078   stats kmeans    3.0.2     base closure     TRUE  FALSE function
+#> 396084   stats kmeans    3.2.0     base closure     TRUE  FALSE function
+#> 396109   stats kmeans    4.0.2     base closure     TRUE  FALSE function
 #>        S4generic
-#> 341560     FALSE
-#> 392116     FALSE
-#> 392120     FALSE
-#> 392160     FALSE
-#> 392166     FALSE
-#> 392191     FALSE
+#> 345020     FALSE
+#> 396034     FALSE
+#> 396038     FALSE
+#> 396078     FALSE
+#> 396084     FALSE
+#> 396109     FALSE
 #>                                                                                                                              args
-#> 341560                                                                                                (x, centers, iter.max = 10)
-#> 392116                                                                                                (x, centers, iter.max = 10)
-#> 392120                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 392160   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 392166 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 392191 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 345020                                                                                                (x, centers, iter.max = 10)
+#> 396034                                                                                                (x, centers, iter.max = 10)
+#> 396038                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 396078   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 396084 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 396109 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:

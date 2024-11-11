@@ -6,7 +6,7 @@
 #   - bash matters because of allowing spaces in variables
 # 3. Start Xquartz (or windows equivalent) and run 'xhost +' in a separate terminal
 # 4. Update host-run-on-evercran.sh to include "run_image x.y.z", if necessary
-# 5. Either:
+# 5. In the bash shell, either:
 #   - run ./host-run-on-evercran.sh to regenerate data for all R versions;
 #   - Or, source host-functions.sh and run run_image x.y.z
 # 6. edit 'version' below. 
@@ -14,7 +14,7 @@
 # 7. run this script in a fresh R session.
 #   - Note that the script is interactive
 
-version <- "4.4.1.0"
+version <- "4.4.2.0"
 
 if (length(version) != 1) {
   stop("Usage: Rscript update-package.R x.y.z.v")
