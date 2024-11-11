@@ -15,9 +15,9 @@ fi
 
 git tag -m "Version $VERSION on CRAN" -a v$VERSION $CRANCOMMIT
 git push --tags
-rm CRAN-SUBMISSION
 
 Rscript -e 'revdepcheck::revdep_reset()'
+# This automatically deletes CRAN-SUBMISSION:
 Rscript -e 'usethis::use_github_release()'
 
 exit 0
