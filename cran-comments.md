@@ -1,12 +1,12 @@
 
-New data for R 4.4.1. 
+New data for R 4.4.2.
 
 
 ## Test environments
 
-* OS X (local), R 4.4.0
+* OS X (local), R 4.4.1
 * windows (on win-builder), R-devel and R-release
-* mac-builder gave a Bad Gateway error
+* mac-builder 
 
 ## R CMD check results
 
