@@ -30,14 +30,13 @@
 #'   
 #' Both these errors have been corrected in the rcheology data.
 #' 
-#' @docType package
 #' @name rcheology-package
-NULL
+"_PACKAGE"
 
 #' Data on objects from current and previous versions of R
 #' 
 #' A data frame with every function (and other object) in versions
-#' of R from 1.0.1 onwards. Variables are:
+#' of R from 0.50 onwards. Variables are:
 
 #' * `package`: package the object comes from
 #' * `name`: name of the object

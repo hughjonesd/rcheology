@@ -5,7 +5,7 @@
 \title{Data on objects from current and previous versions of R}
 \description{
 A data frame with every function (and other object) in versions
-of R from 1.0.1 onwards. Variables are:
+of R from 0.50 onwards. Variables are:
 \itemize{
 \item \code{package}: package the object comes from
 \item \code{name}: name of the object

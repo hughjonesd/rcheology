@@ -56,3 +56,15 @@ it as a recommended package.
 Both these errors have been corrected in the rcheology data.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/hughjonesd/rcheology}
+  \item Report bugs at \url{https://github.com/hughjonesd/rcheology/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: David Hugh-Jones \email{davidhughjones@gmail.com}
+
+}
