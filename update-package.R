@@ -14,7 +14,7 @@
 # 7. run this script in a fresh R session.
 #   - Note that the script is interactive
 
-version <- "4.4.2.0"
+version <- "4.4.3.0"
 
 if (length(version) != 1) {
   stop("Usage: Rscript update-package.R x.y.z.v")
@@ -32,7 +32,7 @@ system(sprintf("sed -e 's/Version:.*/Version: %s/' -i '' DESCRIPTION", version))
 
 # update shinyapps app
 source("make-app-data.R")
-rsconnect::deployApp("app", forceUpdate = TRUE)
+rsconnect::deployApp("app", forceUpdate = TRUE, appName = "rcheology")
 
 system("git add docker-data/*.csv")
 system("git add app/rcheology-app-data.RData")
