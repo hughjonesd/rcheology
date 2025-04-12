@@ -13,7 +13,7 @@ if [[ -z $VERSION || -z $CRANCOMMIT ]]; then
   exit 1
 fi
 
-git tag -m "Version $VERSION on CRAN" -a v$VERSION $CRANCOMMIT
+git tag -m "Version $VERSION on CRAN" -a "v$VERSION" $CRANCOMMIT
 git push --tags
 
 Rscript -e 'revdepcheck::revdep_reset()'

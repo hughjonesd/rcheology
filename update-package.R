@@ -14,11 +14,8 @@
 # 7. run this script in a fresh R session.
 #   - Note that the script is interactive
 
-version <- "4.4.3.0"
+version <- "4.5.0.0"
 
-if (length(version) != 1) {
-  stop("Usage: Rscript update-package.R x.y.z.v")
-}
 r_version <- sub("\\.\\d+$", "", version)
 
 source("write-package-data.R")
