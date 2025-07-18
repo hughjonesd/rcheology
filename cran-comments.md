@@ -1,10 +1,10 @@
 
-New data for R 4.5.0.
+New data for R 4.5.1.
 
 
 ## Test environments
 
-* OS X (local), R 4.4.2
+* OS X (local), R 4.5.0
 * windows (on win-builder), R-devel and R-release
 * mac-builder 
 
