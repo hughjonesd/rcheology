@@ -14,7 +14,7 @@
 # 7. run this script in a fresh R session.
 #   - Note that the script is interactive
 
-version <- "4.5.0.0"
+version <- "4.5.1.0"
 
 r_version <- sub("\\.\\d+$", "", version)
 
@@ -54,6 +54,10 @@ cat("
 # then 
 devtools::release()
 
+
 # after acceptance, run ./post-acceptance.sh 
 # - NB again, this needs bash
+# - NB: check contents of CRAN-SUBMISSION, you may need to rewrite post-acceptance.sh
+#   or just let use_github_release() do it for you, it seems to create the tag
+#  on github and can be pulled in
 ")
