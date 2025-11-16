@@ -14,7 +14,7 @@
 # 7. run this script in a fresh R session.
 #   - Note that the script is interactive
 
-version <- "4.5.1.0"
+version <- "4.5.2.0"
 
 r_version <- sub("\\.\\d+$", "", version)
 
