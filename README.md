@@ -14,7 +14,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 0.50.
 
-The latest R version covered is 4.5.2.
+The latest R version covered is 4.5.3.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -59,26 +59,26 @@ data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
 #>        package   name Rversion priority    type exported hidden    class
-#> 358887     mva kmeans    1.0.1     <NA> closure     TRUE  FALSE     <NA>
-#> 411736   stats kmeans    1.9.0     base closure     TRUE  FALSE function
-#> 411740   stats kmeans    2.1.0     base closure     TRUE  FALSE function
-#> 411780   stats kmeans    3.0.2     base closure     TRUE  FALSE function
-#> 411786   stats kmeans    3.2.0     base closure     TRUE  FALSE function
-#> 411811   stats kmeans    4.0.2     base closure     TRUE  FALSE function
+#> 362362     mva kmeans    1.0.1     <NA> closure     TRUE  FALSE     <NA>
+#> 415670   stats kmeans    1.9.0     base closure     TRUE  FALSE function
+#> 415674   stats kmeans    2.1.0     base closure     TRUE  FALSE function
+#> 415714   stats kmeans    3.0.2     base closure     TRUE  FALSE function
+#> 415720   stats kmeans    3.2.0     base closure     TRUE  FALSE function
+#> 415745   stats kmeans    4.0.2     base closure     TRUE  FALSE function
 #>        S4generic
-#> 358887     FALSE
-#> 411736     FALSE
-#> 411740     FALSE
-#> 411780     FALSE
-#> 411786     FALSE
-#> 411811     FALSE
+#> 362362     FALSE
+#> 415670     FALSE
+#> 415674     FALSE
+#> 415714     FALSE
+#> 415720     FALSE
+#> 415745     FALSE
 #>                                                                                                                              args
-#> 358887                                                                                                (x, centers, iter.max = 10)
-#> 411736                                                                                                (x, centers, iter.max = 10)
-#> 411740                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 411780   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 411786 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 411811 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 362362                                                                                                (x, centers, iter.max = 10)
+#> 415670                                                                                                (x, centers, iter.max = 10)
+#> 415674                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 415714   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 415720 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 415745 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:
@@ -97,10 +97,19 @@ r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#> # A tibble: 0 × 10
-#> # ℹ 10 variables: package <chr>, name <chr>, Rversion <chr>, priority <chr>,
-#> #   type <chr>, exported <lgl>, hidden <lgl>, class <chr>, S4generic <lgl>,
-#> #   args <chr>
+#> # A tibble: 10 × 10
+#>    package  name   Rversion priority type  exported hidden class S4generic args 
+#>    <chr>    <chr>  <chr>    <chr>    <chr> <lgl>    <lgl>  <chr> <lgl>     <chr>
+#>  1 mgcv     Predi… 4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(ob…
+#>  2 mgcv     Predi… 4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(ob…
+#>  3 mgcv     bcg    4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(th…
+#>  4 mgcv     dppois 4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(y0…
+#>  5 mgcv     scasm  4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(fo…
+#>  6 mgcv     smoot… 4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(ob…
+#>  7 mgcv     smoot… 4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(ob…
+#>  8 survival lvcf   4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(id…
+#>  9 survival nostu… 4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(id…
+#> 10 survival survf… 4.5.3    recomme… clos… TRUE     FALSE  func… FALSE     "(p,…
 ```
 
 Base functions over time:
