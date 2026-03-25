@@ -55,9 +55,6 @@ cat("
 devtools::release()
 
 
-# after acceptance, run ./post-acceptance.sh 
-# - NB again, this needs bash
-# - NB: check contents of CRAN-SUBMISSION, you may need to rewrite post-acceptance.sh
-#   or just let use_github_release() do it for you, it seems to create the tag
-#  on github and can be pulled in
+# after acceptance, run ./post-acceptance.R
+
 ")
