@@ -20,3 +20,5 @@
 ^revdep$
 ^CRAN-RELEASE$
 ^CRAN-SUBMISSION$
+^\.positai$
+^\.claude$

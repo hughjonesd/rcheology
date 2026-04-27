@@ -72,3 +72,4 @@ run_image 4.5.0
 run_image 4.5.1
 run_image 4.5.2
 run_image 4.5.3
+run_image 4.6.0
