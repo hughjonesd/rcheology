@@ -4,9 +4,9 @@ New data for R 4.6.0.
 
 ## Test environments
 
-* OS X (local), R 4.5.0
+* OS X (local), R 4.6.0
 * windows (on win-builder), R-devel and R-release
-* mac-builder 
+
 
 ## R CMD check results
 

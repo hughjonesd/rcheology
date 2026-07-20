@@ -1,3 +1,11 @@
+# rcheology 4.6.1.0
+
+* New data for R 4.6.1.
+* This is the final release on CRAN. Future releases will 
+  be available from https://hughjonesd.r-universe.dev and
+  https://github.com/hughjonesd/rcheology only.
+
+
 # rcheology 4.6.0.0
 
 * New data for R 4.6.0.
