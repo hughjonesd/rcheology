@@ -14,7 +14,7 @@ downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.
 A data package which lists every command in base R packages since R
 version 0.50.
 
-The latest R version covered is 4.6.0.
+The latest R version covered is 4.6.1.
 
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
@@ -59,26 +59,26 @@ data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
 #>        package   name Rversion priority    type exported hidden    class
-#> 365840     mva kmeans    1.0.1     <NA> closure     TRUE  FALSE     <NA>
-#> 419608   stats kmeans    1.9.0     base closure     TRUE  FALSE function
-#> 419612   stats kmeans    2.1.0     base closure     TRUE  FALSE function
-#> 419652   stats kmeans    3.0.2     base closure     TRUE  FALSE function
-#> 419658   stats kmeans    3.2.0     base closure     TRUE  FALSE function
-#> 419683   stats kmeans    4.0.2     base closure     TRUE  FALSE function
+#> 369318     mva kmeans    1.0.1     <NA> closure     TRUE  FALSE     <NA>
+#> 423546   stats kmeans    1.9.0     base closure     TRUE  FALSE function
+#> 423550   stats kmeans    2.1.0     base closure     TRUE  FALSE function
+#> 423590   stats kmeans    3.0.2     base closure     TRUE  FALSE function
+#> 423596   stats kmeans    3.2.0     base closure     TRUE  FALSE function
+#> 423621   stats kmeans    4.0.2     base closure     TRUE  FALSE function
 #>        S4generic
-#> 365840     FALSE
-#> 419608     FALSE
-#> 419612     FALSE
-#> 419652     FALSE
-#> 419658     FALSE
-#> 419683     FALSE
+#> 369318     FALSE
+#> 423546     FALSE
+#> 423550     FALSE
+#> 423590     FALSE
+#> 423596     FALSE
+#> 423621     FALSE
 #>                                                                                                                              args
-#> 365840                                                                                                (x, centers, iter.max = 10)
-#> 419608                                                                                                (x, centers, iter.max = 10)
-#> 419612                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
-#> 419652   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 419658 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
-#> 419683 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 369318                                                                                                (x, centers, iter.max = 10)
+#> 423546                                                                                                (x, centers, iter.max = 10)
+#> 423550                  (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"))
+#> 423590   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 423596 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+#> 423621 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 ```
 
 Latest changes:
@@ -97,33 +97,16 @@ r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#> # A tibble: 17 × 10
-#>    package   name  Rversion priority type  exported hidden class S4generic args 
-#>    <chr>     <chr> <chr>    <chr>    <chr> <lgl>    <lgl>  <chr> <lgl>     <chr>
-#>  1 base      %not… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(x,…
-#>  2 base      mess… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(me…
-#>  3 base      mtfr… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(x)"
-#>  4 grDevices glyp… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(..…
-#>  5 methods   .__C… 4.6.0    base     S4    TRUE     TRUE   clas… FALSE      <NA>
-#>  6 stats     free… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(y,…
-#>  7 stats     powe… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(n …
-#>  8 stats     pppl… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(x,…
-#>  9 stats     rfre… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(n,…
-#> 10 tcltk     tkgr… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(..…
-#> 11 tcltk     tkpa… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(..…
-#> 12 tcltk     tkpl… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(..…
-#> 13 tools     chec… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(pa…
-#> 14 tools     veri… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(pa…
-#> 15 utils     Rtan… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(op…
-#> 16 utils     Swea… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "()" 
-#> 17 utils     bits… 4.6.0    base     clos… TRUE     FALSE  func… FALSE     "(x)"
+#> # A tibble: 0 × 10
+#> # ℹ 10 variables: package <chr>, name <chr>, Rversion <chr>, priority <chr>,
+#> #   type <chr>, exported <lgl>, hidden <lgl>, class <chr>, S4generic <lgl>,
+#> #   args <chr>
 ```
 
 Base functions over time:
 
 ``` r
 library(ggplot2)
-#> Warning: package 'ggplot2' was built under R version 4.5.2
 
 rvs <- rcheology$Rversion     %>% 
       unique()                %>% 
@@ -164,7 +147,7 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
 #> (`stat_count()`).
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
 
 An alternative view:
 
@@ -182,4 +165,4 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
 #> (`stat_count()`).
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" height="1000px" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" height="1000px" />
