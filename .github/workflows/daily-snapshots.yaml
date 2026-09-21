@@ -73,6 +73,7 @@ jobs:
           cp daily-input/*.csv docker-data
           Rscript write-package-data.R
           Rscript build-daily-package.R daily-dist
+          Rscript make-app-data.R
 
       - name: Test and build daily package
         shell: Rscript {0}
@@ -87,6 +88,13 @@ jobs:
 
       - name: Compress CSV asset
         run: gzip -9 daily-dist/rcheology-daily.csv
+
+      - name: Upload Shiny app data
+        uses: actions/upload-artifact@v4
+        with:
+          name: shiny-app-data
+          path: app/rcheology-app-data.RData
+          retention-days: 1
 
       - name: Commit snapshot to daily branch
         run: |
@@ -129,3 +137,52 @@ jobs:
             daily-dist/rcheology-daily.tar.gz \
             daily-dist/rcheology-daily.csv.gz \
             daily-dist/rcheology-daily.rds
+
+  deploy:
+    name: Deploy daily Shiny app
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::dplyr, any::DT, any::rsconnect, any::shiny
+          needs: check
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: shiny-app-data
+          path: app
+
+      - name: Deploy Shiny app
+        shell: Rscript {0}
+        env:
+          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+        run: |
+          token <- Sys.getenv("SHINYAPPS_TOKEN")
+          secret <- Sys.getenv("SHINYAPPS_SECRET")
+          if (!nzchar(token) || !nzchar(secret)) {
+            stop("SHINYAPPS_TOKEN and SHINYAPPS_SECRET must be configured")
+          }
+          rsconnect::setAccountInfo(
+            name = "hughjonesd",
+            token = token,
+            secret = secret
+          )
+          rsconnect::deployApp(
+            "app",
+            appFiles = c("app.R", "rcheology-app-data.RData"),
+            appName = "rcheology",
+            account = "hughjonesd",
+            server = "shinyapps.io",
+            forceUpdate = TRUE
+          )
