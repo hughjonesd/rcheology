@@ -4,12 +4,9 @@ library(purrr)
 library(readr)
 
 files <- list.files(pattern = "\\.csv$", path = "docker-data", full.names = TRUE)
-statuses <- sub("\\.csv$", "", basename(files))
-statuses[! statuses %in% c("r-patched", "r-devel")] <- "released"
 
-rcheology <- purrr::map2(files, statuses,
-  ~ readr::read_csv(.x, col_types = "cccllcccc", trim_ws = TRUE) |>
-    mutate(status = .y)
+rcheology <- purrr::map(files,
+  ~ readr::read_csv(.x, col_types = "cccllcccccl", trim_ws = TRUE)
 ) |>
   purrr::list_rbind() |> 
   select(package, name, Rversion, status, priority, type, exported, hidden, class,
@@ -24,7 +21,7 @@ print(head(rcheology))
 cat("Versions:\n")
 print(table(rcheology$Rversion))
 
-if (all(statuses == "released")) {
+if (all(rcheology$status == "released")) {
   url <- paste0("https://cran.r-project.org/src/base/R-", 0:4)
   Rversions <- lapply(url, function (x) {
     html <- paste(readLines(x, warn = FALSE), collapse = "\n")
