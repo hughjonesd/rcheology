@@ -32,6 +32,10 @@ R versions are built using the
 Results are found from running \code{ls(all.names = TRUE)} on all installed
 packages. For more details, see \code{guest-list-objects.R}.
 
+The \code{daily} branch is rebuilt by GitHub Actions from the latest
+R-patched and R-devel builds. These snapshots are marked in the \code{status}
+column and are not included in the CRAN package.
+
 The \code{Rversions} data frame lists versions of R and release dates.
 }
 }
@@ -66,5 +70,10 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: David Hugh-Jones \email{davidhughjones@gmail.com}
+
+Authors:
+\itemize{
+  \item David Hugh-Jones \email{davidhughjones@gmail.com}
+}
 
 }

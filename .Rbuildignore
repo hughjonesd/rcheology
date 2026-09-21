@@ -22,3 +22,4 @@
 ^CRAN-SUBMISSION$
 ^\.positai$
 ^\.claude$
+^\.github$

@@ -1,6 +1,10 @@
 # rcheology 4.6.1.0
 
 * New data for R 4.6.1.
+* Add a `status` column distinguishing released R versions from the `r-patched`
+  and `r-devel` data in daily GitHub builds.
+* `fun_changed()` accepts `"patched"` and `"devel"` as version bounds when
+  those snapshots are installed.
 * This is the final release on CRAN. Future releases will 
   be available from https://hughjonesd.r-universe.dev and
   https://github.com/hughjonesd/rcheology only.

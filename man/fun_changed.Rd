@@ -9,9 +9,11 @@ fun_changed(fn, from = NULL, to = NULL, package = NULL)
 \arguments{
 \item{fn}{Character name of a function in a core R package.}
 
-\item{from}{Minimum R version (optional).}
+\item{from}{Minimum R build (optional). This can be an R version or, in a
+daily GitHub build, \code{"patched"} or \code{"devel"}.}
 
-\item{to}{Maximum R version (optional).}
+\item{to}{Maximum R build (optional). This can be an R version or, in a
+daily GitHub build, \code{"patched"} or \code{"devel"}.}
 
 \item{package}{Name of the package (optional).}
 }

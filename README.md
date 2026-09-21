@@ -34,6 +34,20 @@ From CRAN:
 install.packages('rcheology')
 ```
 
+### Daily R snapshots
+
+The GitHub-only `daily` branch adds the latest R-patched and R-devel
+snapshots to the historical released versions. Install it with:
+
+``` r
+devtools::install_github("hughjonesd/rcheology", ref = "daily")
+```
+
+The `rcheology$status` column distinguishes `"released"`, `"r-patched"`,
+and `"r-devel"` rows. The latest source package and data files are also
+available from the [daily GitHub
+release](https://github.com/hughjonesd/rcheology/releases/tag/daily).
+
 <!-- this is .Rmd so it can be easily included by README.Rmd -->
 
 ## Where the data comes from
@@ -43,6 +57,10 @@ R versions are built using the
 
 Results are found from running `ls(all.names = TRUE)` on all installed
 packages. For more details, see `guest-list-objects.R`.
+
+The `daily` branch is rebuilt by GitHub Actions from the latest
+R-patched and R-devel builds. These snapshots are marked in the `status`
+column and are not included in the CRAN package.
 
 The `Rversions` data frame lists versions of R and release dates.
 
@@ -58,20 +76,20 @@ library(rcheology)
 data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
-#>        package   name Rversion priority    type exported hidden    class
-#> 369318     mva kmeans    1.0.1     <NA> closure     TRUE  FALSE     <NA>
-#> 423546   stats kmeans    1.9.0     base closure     TRUE  FALSE function
-#> 423550   stats kmeans    2.1.0     base closure     TRUE  FALSE function
-#> 423590   stats kmeans    3.0.2     base closure     TRUE  FALSE function
-#> 423596   stats kmeans    3.2.0     base closure     TRUE  FALSE function
-#> 423621   stats kmeans    4.0.2     base closure     TRUE  FALSE function
-#>        S4generic
-#> 369318     FALSE
-#> 423546     FALSE
-#> 423550     FALSE
-#> 423590     FALSE
-#> 423596     FALSE
-#> 423621     FALSE
+#>        package   name Rversion   status priority    type exported hidden
+#> 369318     mva kmeans    1.0.1 released     <NA> closure     TRUE  FALSE
+#> 423546   stats kmeans    1.9.0 released     base closure     TRUE  FALSE
+#> 423550   stats kmeans    2.1.0 released     base closure     TRUE  FALSE
+#> 423590   stats kmeans    3.0.2 released     base closure     TRUE  FALSE
+#> 423596   stats kmeans    3.2.0 released     base closure     TRUE  FALSE
+#> 423621   stats kmeans    4.0.2 released     base closure     TRUE  FALSE
+#>           class S4generic
+#> 369318     <NA>     FALSE
+#> 423546 function     FALSE
+#> 423550 function     FALSE
+#> 423590 function     FALSE
+#> 423596 function     FALSE
+#> 423621 function     FALSE
 #>                                                                                                                              args
 #> 369318                                                                                                (x, centers, iter.max = 10)
 #> 423546                                                                                                (x, centers, iter.max = 10)
@@ -97,10 +115,10 @@ r_penult_obj <- rcheology %>% dplyr::filter(Rversion == r_penultimate)
 r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 
 r_introduced
-#> # A tibble: 0 × 10
-#> # ℹ 10 variables: package <chr>, name <chr>, Rversion <chr>, priority <chr>,
-#> #   type <chr>, exported <lgl>, hidden <lgl>, class <chr>, S4generic <lgl>,
-#> #   args <chr>
+#> # A tibble: 0 × 11
+#> # ℹ 11 variables: package <chr>, name <chr>, Rversion <chr>, status <chr>,
+#> #   priority <chr>, type <chr>, exported <lgl>, hidden <lgl>, class <chr>,
+#> #   S4generic <lgl>, args <chr>
 ```
 
 Base functions over time:
