@@ -83,9 +83,9 @@ NULL
 #' @param fn Character name of a function in a core R package.
 #' @param package Name of the package (optional).
 #' @param from Minimum R build (optional). This can be an R version or, in a
-#'   daily GitHub build, `"patched"` or `"devel"`.
+#'   daily GitHub build, `"r-patched"` or `"r-devel"`.
 #' @param to Maximum R build (optional). This can be an R version or, in a
-#'   daily GitHub build, `"patched"` or `"devel"`.
+#'   daily GitHub build, `"r-patched"` or `"r-devel"`.
 #' 
 #' @return 0 if there was no change. 1 if the function's arguments changed.
 #'   2 if the function was not present in all versions. If the function can't
@@ -109,12 +109,12 @@ fun_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
   builds$build <- ifelse(
     builds$status == "released",
     builds$Rversion,
-    sub("^r-", "", builds$status)
+    builds$status
   )
 
   find_build <- function(x, default) {
     if (is.null(x)) return(default)
-    if (x %in% c("patched", "devel")) position <- match(x, builds$build) else {
+    if (x %in% c("r-patched", "r-devel")) position <- match(x, builds$build) else {
       position <- which(
         builds$status == "released" &
           as.package_version(builds$Rversion) == as.package_version(x)
@@ -134,7 +134,7 @@ fun_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
   build_id <- ifelse(
     rch$status == "released",
     rch$Rversion,
-    sub("^r-", "", rch$status)
+    rch$status
   )
   range <- rch$name == fn & build_id %in% relevant_builds
   if (! is.null(package)) range <- range & rch$package == package

@@ -46,7 +46,7 @@ devtools::install_github("hughjonesd/rcheology", ref = "daily")
 The `rcheology$status` column distinguishes `"released"`, `"r-patched"`,
 and `"r-devel"` rows. The latest source package and data files are also
 available from the [daily GitHub
-release](https://github.com/hughjonesd/rcheology/releases/tag/daily).
+release](https://github.com/hughjonesd/rcheology/releases/tag/daily-release).
 
 <!-- this is .Rmd so it can be easily included by README.Rmd -->
 

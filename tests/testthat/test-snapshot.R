@@ -21,18 +21,18 @@ test_that("fun_changed handles daily build bounds", {
       rcheology$Rversion[rcheology$status == "released"]
     ))
     expect_true(fun_changed("mean", from = as.character(latest_release),
-      to = "patched", package = "base") %in% 0:2)
-    expect_true(fun_changed("mean", from = "patched", to = "devel",
+      to = "r-patched", package = "base") %in% 0:2)
+    expect_true(fun_changed("mean", from = "r-patched", to = "r-devel",
       package = "base") %in% 0:2)
-    expect_equal(fun_changed("mean", from = "devel", to = "devel",
+    expect_equal(fun_changed("mean", from = "r-devel", to = "r-devel",
       package = "base"), 0)
-    expect_error(fun_changed("mean", from = "devel", to = "patched",
+    expect_error(fun_changed("mean", from = "r-devel", to = "r-patched",
       package = "base"),
       "from must not be later")
   } else {
-    expect_error(fun_changed("mean", to = "patched", package = "base"),
+    expect_error(fun_changed("mean", to = "r-patched", package = "base"),
       "not available")
-    expect_error(fun_changed("mean", to = "devel", package = "base"),
+    expect_error(fun_changed("mean", to = "r-devel", package = "base"),
       "not available")
   }
 })

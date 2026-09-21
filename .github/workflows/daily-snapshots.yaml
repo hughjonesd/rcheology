@@ -125,12 +125,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if ! gh release view daily; then
-            gh release create daily --target daily --prerelease \
+          if ! gh release view daily-release; then
+            gh release create daily-release --target daily --prerelease \
               --title "Daily R snapshots" \
               --notes "Use the named assets below for the current daily package and data. The automatic source archives belong to the fixed release tag."
           fi
-          gh release upload daily --clobber \
+          gh release upload daily-release --clobber \
             daily-dist/rcheology-daily.tar.gz \
             daily-dist/rcheology-daily.csv.gz \
             daily-dist/rcheology-daily.rds

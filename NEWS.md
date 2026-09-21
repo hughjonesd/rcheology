@@ -2,8 +2,8 @@
 
 * Add a `status` column distinguishing released R versions from the `r-patched`
   and `r-devel` data in daily GitHub builds.
-* `fun_changed()` accepts `"patched"` and `"devel"` as version bounds when
-  those snapshots are installed.
+* `fun_changed()` accepts `"r-patched"` and `"r-devel"` as version bounds
+  when those snapshots are installed.
 
 
 # rcheology 4.6.1.0
