@@ -31,7 +31,9 @@ usethis::use_data(rcheology, overwrite = TRUE, compress = "xz", version = 2)
 devel_version <- unique(devel$Rversion)
 if (length(devel_version) != 1L) stop("R-devel data has multiple versions")
 description <- readLines("DESCRIPTION")
-description[grepl("^Version:", description)] <- paste0("Version: ", devel_version, ".9000")
+description[grepl("^Version:", description)] <- paste0(
+  "Version: ", devel_version, ".0.9000"
+)
 writeLines(description, "DESCRIPTION")
 
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
@@ -39,38 +41,3 @@ write.csv(rcheology, file.path(output_dir, "rcheology-daily.csv"),
   row.names = FALSE, na = "")
 saveRDS(rcheology, file.path(output_dir, "rcheology-daily.rds"),
   compress = "xz", version = 2)
-
-metadata_files <- file.path(input_dir, c(
-  "r-patched-metadata.csv", "r-devel-metadata.csv"
-))
-metadata <- do.call(rbind, lapply(metadata_files, read.csv,
-  stringsAsFactors = FALSE))
-write.csv(metadata, file.path(output_dir, "snapshot-metadata.csv"),
-  row.names = FALSE, na = "")
-
-snapshot_description <- paste(
-  metadata$status,
-  metadata$version_string,
-  paste0("r", metadata$svn_revision),
-  sep = ": "
-)
-snapshot_date <- substr(max(metadata$generated_at), 1L, 10L)
-writeLines(
-  paste0("Daily snapshots ", snapshot_date, " (",
-    paste(snapshot_description, collapse = "; "), ")"),
-  file.path(output_dir, "commit-message.txt")
-)
-writeLines(c(
-  "Daily development package built automatically from:",
-  "",
-  paste0("- ", snapshot_description),
-  "",
-  "Install the current snapshot with:",
-  "",
-  "```r",
-  "install.packages(\"rcheology-daily.tar.gz\", repos = NULL, type = \"source\")",
-  "```",
-  "",
-  "The automatic GitHub source archives belong to the fixed release tag; use",
-  "the `rcheology-daily.tar.gz` asset for the current daily package."
-), file.path(output_dir, "release-notes.md"))

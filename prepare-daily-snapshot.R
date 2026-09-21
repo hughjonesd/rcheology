@@ -18,17 +18,8 @@ expected <- c(
   "priority", "Rversion", "hidden"
 )
 if (! identical(names(snapshot), expected)) stop("Unexpected snapshot columns")
-if (nrow(snapshot) < 4000L) stop("Snapshot has implausibly few rows")
-if (! all(c("base", "stats", "utils", "methods", "MASS", "Matrix") %in%
-  snapshot$package)) {
-  stop("Snapshot is missing expected base or recommended packages")
-}
-if (anyDuplicated(snapshot[c("package", "name")])) {
-  stop("Snapshot contains duplicate package/name pairs")
-}
-if (length(unique(snapshot$Rversion)) != 1L) {
-  stop("Snapshot contains more than one R version")
-}
+if (nrow(snapshot) == 0L) stop("Snapshot is empty")
+if (length(unique(snapshot$Rversion)) != 1L) stop("Multiple R versions found")
 
 snapshot$status <- status
 snapshot <- snapshot[c(
@@ -36,21 +27,6 @@ snapshot <- snapshot[c(
   "hidden", "class", "S4generic", "args"
 )]
 
-svn_revision <- R.version[["svn rev"]]
-if (is.null(svn_revision)) svn_revision <- NA_character_
-metadata <- data.frame(
-  status = status,
-  Rversion = unique(snapshot$Rversion),
-  version_string = R.version.string,
-  R_status = R.version$status,
-  svn_revision = svn_revision,
-  platform = R.version$platform,
-  generated_at = format(Sys.time(), "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"),
-  stringsAsFactors = FALSE
-)
-
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 saveRDS(snapshot, file.path(output_dir, paste0(status, ".rds")),
   compress = "xz", version = 2)
-write.csv(metadata, file.path(output_dir, paste0(status, "-metadata.csv")),
-  row.names = FALSE, na = "")

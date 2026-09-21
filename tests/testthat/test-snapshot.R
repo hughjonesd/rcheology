@@ -1,16 +1,18 @@
 
 test_that("numbers unchanged from version 4.3.2.0", {
-  expect_true(all(rcheology$status %in% c("released", "r-patched", "r-devel")))
-  if (! any(rcheology$status %in% c("r-patched", "r-devel"))) {
-    expect_identical(unique(rcheology$status), "released")
-  }
-
   rcheology$rv <- as.package_version(rcheology$Rversion) 
   rch_4320 <- rcheology[rcheology$rv > "0.50" & rcheology$rv <= "4.3.2", ]
   rch_4320$rv <- NULL
   pkg_table <- table(rch_4320$Rversion, rch_4320$package)
   pkg_matrix <- unclass(pkg_table)
   expect_snapshot_value(pkg_matrix, style = "deparse")
+})
+
+test_that("status identifies released and daily builds", {
+  expect_true(all(rcheology$status %in% c("released", "r-patched", "r-devel")))
+  if (! any(rcheology$status %in% c("r-patched", "r-devel"))) {
+    expect_identical(unique(rcheology$status), "released")
+  }
 })
 
 test_that("fun_changed handles daily build bounds", {
@@ -29,9 +31,9 @@ test_that("fun_changed handles daily build bounds", {
       "from must not be later")
   } else {
     expect_error(fun_changed("mean", to = "patched", package = "base"),
-      "daily GitHub build")
+      "not available")
     expect_error(fun_changed("mean", to = "devel", package = "base"),
-      "daily GitHub build")
+      "not available")
   }
 })
 

@@ -114,7 +114,7 @@ jobs:
           cp "$snapshot_stage/rcheology.rda" data/rcheology.rda
           cp "$snapshot_stage/DESCRIPTION" DESCRIPTION
           git add data/rcheology.rda DESCRIPTION
-          git commit --allow-empty --file "$snapshot_stage/daily-dist/commit-message.txt"
+          git commit --allow-empty -m "Daily snapshots $(date -u +%F)"
           git push origin daily
 
           cp -R "$snapshot_stage/daily-dist/." daily-dist
@@ -126,11 +126,9 @@ jobs:
           if ! gh release view daily; then
             gh release create daily --target daily --prerelease \
               --title "Daily R snapshots" \
-              --notes-file daily-dist/release-notes.md
+              --notes "Use the named assets below for the current daily package and data. The automatic source archives belong to the fixed release tag."
           fi
-          gh release edit daily --notes-file daily-dist/release-notes.md
           gh release upload daily --clobber \
             daily-dist/rcheology-daily.tar.gz \
             daily-dist/rcheology-daily.csv.gz \
-            daily-dist/rcheology-daily.rds \
-            daily-dist/snapshot-metadata.csv
+            daily-dist/rcheology-daily.rds
