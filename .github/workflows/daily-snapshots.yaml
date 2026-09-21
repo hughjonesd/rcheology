@@ -98,6 +98,7 @@ jobs:
           snapshot_stage=$(mktemp -d)
           cp data/rcheology.rda DESCRIPTION "$snapshot_stage"
           cp -R daily-dist "$snapshot_stage"
+          git restore data/rcheology.rda DESCRIPTION
 
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
