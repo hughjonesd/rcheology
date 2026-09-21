@@ -28,12 +28,13 @@ row.names(rcheology) <- NULL
 
 usethis::use_data(rcheology, overwrite = TRUE, compress = "xz", version = 2)
 
-devel_version <- unique(devel$Rversion)
-if (length(devel_version) != 1L) stop("R-devel data has multiple versions")
 description <- readLines("DESCRIPTION")
-description[grepl("^Version:", description)] <- paste0(
-  "Version: ", devel_version, ".0.9000"
-)
+version_line <- grepl("^Version:", description)
+if (sum(version_line) != 1L) stop("DESCRIPTION must contain one Version field")
+released_version <- sub("^Version: *", "", description[version_line])
+snapshot_date <- format(Sys.time(), "%Y%m%d", tz = "UTC")
+daily_version <- paste(released_version, snapshot_date, sep = ".")
+description[version_line] <- paste("Version:", daily_version)
 writeLines(description, "DESCRIPTION")
 
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
