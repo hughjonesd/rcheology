@@ -7,6 +7,8 @@ source("guest-functions.R")
 
 rv <- getRVersion()
 shortRversion <- paste(rv$major, rv$minor, sep = ".")
+Rstatus <- if (is.null(rv$status) || rv$status == "") "released" else
+  if (rv$status == "Patched") "r-patched" else "r-devel"
 S4exists <- rv$major > 1 || (rv$major == 1 && rv$minor >= "4.0") # think doing string comparisons OK
 if (S4exists) library(methods)
 
@@ -21,7 +23,8 @@ pkgData <- data.frame(
         args       = I(character(1)),
         package    = I(character(1)),
         priority   = I(character(1)),
-        Rversion   = I(character(1))
+        Rversion   = I(character(1)),
+        status     = I(character(1))
       )
 
 RHome <- myGetEnv("R_HOME")
@@ -86,4 +89,3 @@ write.table(pkgData,
         col.names = T
       )
 q("no")
-

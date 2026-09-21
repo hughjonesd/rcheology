@@ -14,16 +14,12 @@ concurrency:
 
 jobs:
   extract:
-    name: Extract ${{ matrix.status }}
+    name: Extract R-${{ matrix.r_version }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - r_version: next
-            status: r-patched
-          - r_version: devel
-            status: r-devel
+        r_version: [next, devel]
     steps:
       - uses: actions/checkout@v4
 
@@ -39,11 +35,11 @@ jobs:
           cd snapshot-work
           R --vanilla < guest-list-objects.R
           mkdir -p ../daily-output
-          mv docker-data/pkg_data-R-*.csv "../daily-output/${{ matrix.status }}.csv"
+          mv docker-data/pkg_data-R-*.csv "../daily-output/${{ matrix.r_version }}.csv"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: snapshot-${{ matrix.status }}
+          name: snapshot-${{ matrix.r_version }}
           path: daily-output
           retention-days: 1
 

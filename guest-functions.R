@@ -150,7 +150,8 @@ makeData <- function (pkg, priority) {
     args     = I(args),
     package  = I(rep(pkg, length(pkgObjNames))), # rep necessary for old R
     priority = I(rep(priority, length(pkgObjNames))),
-    Rversion = I(rep(shortRversion, length(pkgObjNames)))
+    Rversion = I(rep(shortRversion, length(pkgObjNames))),
+    status   = I(rep(Rstatus, length(pkgObjNames)))
   )
   
   thisPkgData
@@ -167,7 +168,8 @@ myRbind <- function (df1, df2) {
     args = I(c(df1$args, df2$args)),
     package = I(c(df1$package, df2$package)),
     priority = I(c(df1$priority, df2$priority)),
-    Rversion = I(c(df1$Rversion, df2$Rversion))
+    Rversion = I(c(df1$Rversion, df2$Rversion)),
+    status = I(c(df1$status, df2$status))
   )
 }
 
