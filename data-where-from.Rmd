@@ -9,4 +9,8 @@ project.
 Results are found from running `ls(all.names = TRUE)` on all installed packages. 
 For more details, see `guest-list-objects.R`.
 
+The `daily` branch is rebuilt by GitHub Actions from the latest R-patched and
+R-devel builds. These snapshots are marked in the `status` column and are not
+included in the CRAN package.
+
 The `Rversions` data frame lists versions of R and release dates.

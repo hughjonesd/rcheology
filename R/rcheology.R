@@ -41,6 +41,9 @@
 #' * `package`: package the object comes from
 #' * `name`: name of the object
 #' * `Rversion`: version of R as major.minor.patch
+#' * `status`: one of `"released"`, `"r-patched"`, or `"r-devel"`. The CRAN
+#'   package contains released versions only; daily GitHub builds also contain
+#'   the latest patched and development snapshots.
 #' * `type`: Result of calling [typeof()] on the object
 #' * `class`: [class()] of the object, separated by slashes if there are multiple classes.
 #' * `exported`: `TRUE` if the object name was found in [getNamespaceExports()]. True for 
@@ -78,9 +81,11 @@ NULL
 #' Check if a core R function changed between R versions
 #'
 #' @param fn Character name of a function in a core R package.
-#' @param from Minimum R version (optional).
-#' @param to Maximum R version (optional).
 #' @param package Name of the package (optional).
+#' @param from Minimum R build (optional). This can be an R version or, in a
+#'   daily GitHub build, `"r-patched"` or `"r-devel"`.
+#' @param to Maximum R build (optional). This can be an R version or, in a
+#'   daily GitHub build, `"r-patched"` or `"r-devel"`.
 #' 
 #' @return 0 if there was no change. 1 if the function's arguments changed.
 #'   2 if the function was not present in all versions. If the function can't
@@ -95,26 +100,51 @@ NULL
 #' }
 fun_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
   rch <- rcheology::rcheology
-  vns <- as.package_version(rch$Rversion) 
-  # unique.character MUCH faster than unique.package_version:
-  relevant_vns <- as.package_version(unique(rch$Rversion))
-  range <- rch$name == fn
+  status_order <- c("released", "r-patched", "r-devel")
+  builds <- unique(rch[c("Rversion", "status")])
+  builds <- builds[order(
+    as.package_version(builds$Rversion),
+    match(builds$status, status_order)
+  ), , drop = FALSE]
+  builds$build <- ifelse(
+    builds$status == "released",
+    builds$Rversion,
+    builds$status
+  )
+
+  find_build <- function(x, default) {
+    if (is.null(x)) return(default)
+    if (x %in% c("r-patched", "r-devel")) position <- match(x, builds$build) else {
+      position <- which(
+        builds$status == "released" &
+          as.package_version(builds$Rversion) == as.package_version(x)
+      )
+    }
+    if (length(position) != 1L || is.na(position)) {
+      stop("R build ", x, " is not available in this package")
+    }
+    position
+  }
+
+  first_build <- find_build(from, 1L)
+  last_build <- find_build(to, nrow(builds))
+  if (first_build > last_build) stop("from must not be later than to")
+
+  relevant_builds <- builds$build[seq.int(first_build, last_build)]
+  build_id <- ifelse(
+    rch$status == "released",
+    rch$Rversion,
+    rch$status
+  )
+  range <- rch$name == fn & build_id %in% relevant_builds
   if (! is.null(package)) range <- range & rch$package == package
-  if (! is.null(from))    {
-    from <- as.package_version(from)
-    range <- range & vns >= from
-    relevant_vns <- relevant_vns[relevant_vns >= from]
-  }
-  if (! is.null(to)) {
-    to   <- as.package_version(to)
-    range <- range & vns <= to
-    relevant_vns <- relevant_vns[relevant_vns <= to]
-  }
+
   fns <- rch[range, , drop = FALSE]
+  fn_builds <- unique(build_id[range])
   args <- fns$args
   if (length(unique(fns$package)) > 1) stop("Multiple functions found with that name")
   if (nrow(fns) == 0) stop("Couldn't find function of those versions")
-  if (nrow(fns) < length(relevant_vns)) return(2)
+  if (length(fn_builds) < length(relevant_builds)) return(2)
   if (length(unique(args)) > 1) return(1)
   return(0)
 }

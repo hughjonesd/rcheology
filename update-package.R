@@ -1,6 +1,9 @@
 
 ## UPDATE PROCEDURE
 
+# Daily snapshots are handled separately by GitHub Actions and do not change
+# this release procedure.
+
 # 1. Start docker
 # 2. Run a bash shell 
 #   - bash matters because of allowing spaces in variables

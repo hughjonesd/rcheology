@@ -1,3 +1,15 @@
+# rcheology (development version)
+
+* On the `daily` GitHub branch, we now record functions in current `r-patched`
+  and `r-devel`. A new `status` column distinguishes released R versions from
+  the `r-patched` and `r-devel` data. You can download this via the GitHub
+  branch directly, or as a GitHub release ("daily-release"). Versions released
+  to CRAN don't have this data, but do have the `status` column, which is
+  always `"released"`.
+* `fun_changed()` accepts `"r-patched"` and `"r-devel"` as version bounds
+  when those snapshots are installed.
+
+
 # rcheology 4.6.1.0
 
 * New data for R 4.6.1.
