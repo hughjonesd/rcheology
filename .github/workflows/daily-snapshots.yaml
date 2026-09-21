@@ -168,6 +168,7 @@ jobs:
           SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
           SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
         run: |
+          options(repos = c(CRAN = "https://cloud.r-project.org"))
           token <- Sys.getenv("SHINYAPPS_TOKEN")
           secret <- Sys.getenv("SHINYAPPS_SECRET")
           if (!nzchar(token) || !nzchar(secret)) {
