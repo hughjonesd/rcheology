@@ -167,6 +167,7 @@ jobs:
         env:
           SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
           SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+          RENV_CONFIG_REPOS_OVERRIDE: CRAN=https://cloud.r-project.org
         run: |
           options(repos = c(CRAN = "https://cloud.r-project.org"))
           token <- Sys.getenv("SHINYAPPS_TOKEN")
