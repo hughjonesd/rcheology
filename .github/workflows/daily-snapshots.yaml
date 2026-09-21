@@ -117,7 +117,7 @@ jobs:
           cp "$snapshot_stage/DESCRIPTION" DESCRIPTION
           git add data/rcheology.rda DESCRIPTION
           git commit --allow-empty -m "Daily snapshots $(date -u +%F)"
-          git push origin daily
+          git push origin HEAD:refs/heads/daily
 
           cp -R "$snapshot_stage/daily-dist/." daily-dist
 
