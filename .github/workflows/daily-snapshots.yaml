@@ -1,0 +1,135 @@
+name: Daily R snapshots
+
+on:
+  schedule:
+    - cron: "37 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-r-snapshots
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    name: Extract ${{ matrix.status }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - r_version: next
+            status: r-patched
+          - r_version: devel
+            status: r-devel
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.r_version }}
+          use-public-rspm: true
+
+      - name: Extract package objects
+        run: |
+          mkdir -p snapshot-work/docker-data
+          cp guest-list-objects.R guest-functions.R snapshot-work
+          cd snapshot-work
+          R --vanilla < guest-list-objects.R
+          mkdir -p ../daily-output
+          mv docker-data/pkg_data-R-*.csv "../daily-output/${{ matrix.status }}.csv"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: snapshot-${{ matrix.status }}
+          path: daily-output
+          retention-days: 1
+
+  publish:
+    name: Build and publish daily package
+    needs: extract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::devtools, any::dplyr, any::purrr, any::readr
+          needs: check
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: snapshot-*
+          path: daily-input
+          merge-multiple: true
+
+      - name: Assemble daily package
+        run: |
+          cp daily-input/*.csv docker-data
+          Rscript write-package-data.R
+          Rscript build-daily-package.R daily-dist
+
+      - name: Test and build daily package
+        shell: Rscript {0}
+        run: |
+          devtools::test()
+          devtools::check(document = FALSE, args = "--no-manual", error_on = "warning")
+          tarball <- devtools::build(path = "daily-dist", manual = FALSE, vignettes = FALSE)
+          stopifnot(file.rename(
+            tarball,
+            file.path("daily-dist", "rcheology-daily.tar.gz")
+          ))
+
+      - name: Compress CSV asset
+        run: gzip -9 daily-dist/rcheology-daily.csv
+
+      - name: Commit snapshot to daily branch
+        run: |
+          snapshot_stage=$(mktemp -d)
+          cp data/rcheology.rda DESCRIPTION "$snapshot_stage"
+          cp -R daily-dist "$snapshot_stage"
+          git restore data/rcheology.rda DESCRIPTION
+
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          if git ls-remote --exit-code --heads origin daily; then
+            git fetch origin daily:refs/remotes/origin/daily
+            git switch --create daily --track origin/daily
+            if ! git merge-base --is-ancestor origin/master HEAD; then
+              git merge --strategy=ours --no-commit origin/master
+            fi
+            git checkout origin/master -- .
+          else
+            git switch --create daily origin/master
+          fi
+
+          cp "$snapshot_stage/rcheology.rda" data/rcheology.rda
+          cp "$snapshot_stage/DESCRIPTION" DESCRIPTION
+          git add data/rcheology.rda DESCRIPTION
+          git commit --allow-empty -m "Daily snapshots $(date -u +%F)"
+          git push origin HEAD:refs/heads/daily
+
+          cp -R "$snapshot_stage/daily-dist/." daily-dist
+
+      - name: Publish rolling release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view daily-release; then
+            gh release create daily-release --target daily --prerelease \
+              --title "Daily R snapshots" \
+              --notes "Use the named assets below for the current daily package and data. The automatic source archives belong to the fixed release tag."
+          fi
+          gh release upload daily-release --clobber \
+            daily-dist/rcheology-daily.tar.gz \
+            daily-dist/rcheology-daily.csv.gz \
+            daily-dist/rcheology-daily.rds
