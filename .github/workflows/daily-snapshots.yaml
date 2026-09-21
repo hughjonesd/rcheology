@@ -55,11 +55,12 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: release
-          use-public-rspm: true
+          use-public-rspm: false
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::devtools, any::dplyr, any::purrr, any::readr
+          extra-packages: any::devtools, any::dplyr, any::DT, any::purrr, any::readr, any::rsconnect, any::shiny
+          cache-version: 3
           needs: check
 
       - uses: actions/download-artifact@v4
@@ -89,17 +90,11 @@ jobs:
       - name: Compress CSV asset
         run: gzip -9 daily-dist/rcheology-daily.csv
 
-      - name: Upload Shiny app data
-        uses: actions/upload-artifact@v4
-        with:
-          name: shiny-app-data
-          path: app/rcheology-app-data.RData
-          retention-days: 1
-
       - name: Commit snapshot to daily branch
         run: |
           snapshot_stage=$(mktemp -d)
           cp data/rcheology.rda DESCRIPTION "$snapshot_stage"
+          cp app/rcheology-app-data.RData "$snapshot_stage"
           cp -R daily-dist "$snapshot_stage"
           git restore data/rcheology.rda DESCRIPTION
 
@@ -123,6 +118,7 @@ jobs:
           git push origin HEAD:refs/heads/daily
 
           cp -R "$snapshot_stage/daily-dist/." daily-dist
+          cp "$snapshot_stage/rcheology-app-data.RData" app/rcheology-app-data.RData
 
       - name: Publish rolling release assets
         env:
@@ -137,31 +133,6 @@ jobs:
             daily-dist/rcheology-daily.tar.gz \
             daily-dist/rcheology-daily.csv.gz \
             daily-dist/rcheology-daily.rds
-
-  deploy:
-    name: Deploy daily Shiny app
-    needs: publish
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: release
-          use-public-rspm: false
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::dplyr, any::DT, any::rsconnect, any::shiny
-          cache-version: 2
-          needs: check
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: shiny-app-data
-          path: app
 
       - name: Deploy Shiny app
         shell: Rscript {0}
