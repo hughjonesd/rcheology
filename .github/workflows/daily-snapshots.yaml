@@ -1,6 +1,7 @@
 name: Daily R snapshots
 
 on:
+  pull_request:
   schedule:
     - cron: "37 6 * * *"
   workflow_dispatch:
@@ -38,11 +39,8 @@ jobs:
           cp guest-list-objects.R guest-functions.R snapshot-work
           cd snapshot-work
           R --vanilla < guest-list-objects.R
-
-      - name: Validate and prepare snapshot
-        run: |
-          cd snapshot-work
-          Rscript ../prepare-daily-snapshot.R "${{ matrix.status }}" ../daily-output
+          mkdir -p ../daily-output
+          mv docker-data/pkg_data-R-*.csv "../daily-output/${{ matrix.status }}.csv"
 
       - uses: actions/upload-artifact@v4
         with:
@@ -66,7 +64,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::devtools
+          extra-packages: any::devtools, any::dplyr, any::purrr, any::readr
           needs: check
 
       - uses: actions/download-artifact@v4
@@ -76,7 +74,10 @@ jobs:
           merge-multiple: true
 
       - name: Assemble daily package
-        run: Rscript build-daily-package.R daily-input daily-dist
+        run: |
+          cp daily-input/*.csv docker-data
+          Rscript write-package-data.R
+          Rscript build-daily-package.R daily-dist
 
       - name: Test and build daily package
         shell: Rscript {0}

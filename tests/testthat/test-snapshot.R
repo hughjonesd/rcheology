@@ -15,6 +15,10 @@ test_that("status identifies released and daily builds", {
   }
 })
 
+test_that("function arguments have no trailing whitespace", {
+  expect_false(any(grepl("[[:space:]]$", rcheology$args), na.rm = TRUE))
+})
+
 test_that("fun_changed handles daily build bounds", {
   if (all(c("r-patched", "r-devel") %in% rcheology$status)) {
     latest_release <- max(as.package_version(

@@ -1,32 +1,14 @@
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) != 2L) {
-  stop("Usage: build-daily-package.R INPUT_DIR OUTPUT_DIR")
+if (length(args) != 1L) {
+  stop("Usage: build-daily-package.R OUTPUT_DIR")
 }
 
-input_dir <- args[[1]]
-output_dir <- args[[2]]
+output_dir <- args[[1]]
 
 load("data/rcheology.rda")
-if (! identical(unique(rcheology$status), "released")) {
-  stop("The package data must contain released versions only")
+if (! setequal(unique(rcheology$status), c("released", "r-patched", "r-devel"))) {
+  stop("The package data must contain released, r-patched, and r-devel builds")
 }
-
-patched <- readRDS(file.path(input_dir, "r-patched.rds"))
-devel <- readRDS(file.path(input_dir, "r-devel.rds"))
-if (! identical(unique(patched$status), "r-patched")) stop("Invalid patched data")
-if (! identical(unique(devel$status), "r-devel")) stop("Invalid devel data")
-
-rcheology <- rbind(rcheology, patched, devel)
-status_order <- c("released", "r-patched", "r-devel")
-rcheology <- rcheology[order(
-  rcheology$package,
-  rcheology$name,
-  as.package_version(rcheology$Rversion),
-  match(rcheology$status, status_order)
-), ]
-row.names(rcheology) <- NULL
-
-usethis::use_data(rcheology, overwrite = TRUE, compress = "xz", version = 2)
 
 description <- readLines("DESCRIPTION")
 version_line <- grepl("^Version:", description)

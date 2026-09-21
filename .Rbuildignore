@@ -23,3 +23,5 @@
 ^\.positai$
 ^\.claude$
 ^\.github$
+^daily-input$
+^daily-dist$
