@@ -6,6 +6,7 @@
   branch directly, or as a GitHub release ("daily-release"). Versions released
   to CRAN don't have this data, but do have the `status` column, which is
   always `"released"`.
+* The shinyapps.io app also now includes `r-patched` and `r-devel`.
 * `fun_changed()` accepts `"r-patched"` and `"r-devel"` as version bounds
   when those snapshots are installed.
 

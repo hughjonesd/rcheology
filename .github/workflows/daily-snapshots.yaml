@@ -8,9 +8,7 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: daily-r-snapshots
-  cancel-in-progress: false
+concurrency: daily-r-snapshots
 
 jobs:
   extract:
@@ -26,25 +24,20 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.r_version }}
-          use-public-rspm: true
 
-      - name: Extract package objects
-        run: |
-          mkdir -p snapshot-work/docker-data
-          cp guest-list-objects.R guest-functions.R snapshot-work
-          cd snapshot-work
-          R --vanilla < guest-list-objects.R
-          mkdir -p ../daily-output
-          mv docker-data/pkg_data-R-*.csv "../daily-output/${{ matrix.r_version }}.csv"
+      - name: Extract snapshot
+        env:
+          RCHEOLOGY_OUTPUT_FILE: ${{ matrix.r_version }}.csv
+        run: Rscript guest-list-objects.R
 
       - uses: actions/upload-artifact@v4
         with:
           name: snapshot-${{ matrix.r_version }}
-          path: daily-output
+          path: ${{ matrix.r_version }}.csv
           retention-days: 1
 
   publish:
-    name: Build and publish daily package
+    name: Build and publish
     needs: extract
     runs-on: ubuntu-latest
     steps:
@@ -69,98 +62,61 @@ jobs:
           path: daily-input
           merge-multiple: true
 
-      - name: Assemble daily package
+      - name: Build daily data
         run: |
           cp daily-input/*.csv docker-data
           Rscript write-package-data.R
           Rscript build-daily-package.R daily-dist
           Rscript make-app-data.R
 
-      - name: Test and build daily package
+      - name: Check and package
         shell: Rscript {0}
         run: |
-          devtools::test()
           devtools::check(document = FALSE, args = "--no-manual", error_on = "warning")
           tarball <- devtools::build(path = "daily-dist", manual = FALSE, vignettes = FALSE)
-          stopifnot(file.rename(
-            tarball,
-            file.path("daily-dist", "rcheology-daily.tar.gz")
-          ))
+          stopifnot(file.rename(tarball, "daily-dist/rcheology-daily.tar.gz"))
 
-      - name: Compress CSV asset
+      - name: Compress CSV
         run: gzip -9 daily-dist/rcheology-daily.csv
 
-      - name: Commit snapshot to daily branch
+      - name: Update daily branch
         run: |
-          snapshot_stage=$(mktemp -d)
-          cp data/rcheology.rda DESCRIPTION "$snapshot_stage"
-          cp app/rcheology-app-data.RData "$snapshot_stage"
-          cp -R daily-dist "$snapshot_stage"
-          git restore data/rcheology.rda DESCRIPTION
-
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          if git ls-remote --exit-code --heads origin daily; then
-            git fetch origin daily:refs/remotes/origin/daily
-            git switch --create daily --track origin/daily
-            if ! git merge-base --is-ancestor origin/master HEAD; then
-              git merge --strategy=ours --no-commit origin/master
-            fi
-            git checkout origin/master -- .
-          else
-            git switch --create daily origin/master
-          fi
+          git fetch origin daily
+          # Update the branch separately, leaving the build outputs in place.
+          git worktree add --detach daily-branch origin/daily
+          git -C daily-branch merge --strategy=ours --no-edit origin/master
+          git -C daily-branch restore --source=origin/master --staged --worktree .
+          cp data/rcheology.rda daily-branch/data/
+          cp DESCRIPTION daily-branch/
+          git -C daily-branch add data/rcheology.rda DESCRIPTION
+          git -C daily-branch commit --allow-empty -m "Daily snapshots $(date -u +%F)"
+          git -C daily-branch push origin HEAD:daily
 
-          cp "$snapshot_stage/rcheology.rda" data/rcheology.rda
-          cp "$snapshot_stage/DESCRIPTION" DESCRIPTION
-          git add data/rcheology.rda DESCRIPTION
-          git commit --allow-empty -m "Daily snapshots $(date -u +%F)"
-          git push origin HEAD:refs/heads/daily
-
-          cp -R "$snapshot_stage/daily-dist/." daily-dist
-          cp "$snapshot_stage/rcheology-app-data.RData" app/rcheology-app-data.RData
-
-      - name: Publish rolling release assets
+      - name: Upload release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          if ! gh release view daily-release; then
-            gh release create daily-release --target daily --prerelease \
-              --title "Daily R snapshots" \
-              --notes "Use the named assets below for the current daily package and data. The automatic source archives belong to the fixed release tag."
-          fi
-          gh release upload daily-release --clobber \
-            daily-dist/rcheology-daily.tar.gz \
-            daily-dist/rcheology-daily.csv.gz \
-            daily-dist/rcheology-daily.rds
+        run: gh release upload daily-release --clobber daily-dist/*
 
-      - name: Deploy Shiny app
+      - name: Deploy app
         shell: Rscript {0}
         env:
           SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
           SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
           RENV_CONFIG_REPOS_OVERRIDE: CRAN=https://cloud.r-project.org
         run: |
-          options(
-            repos = c(CRAN = "https://cloud.r-project.org"),
-            rsconnect.packrat = TRUE
-          )
-          token <- Sys.getenv("SHINYAPPS_TOKEN")
-          secret <- Sys.getenv("SHINYAPPS_SECRET")
-          if (!nzchar(token) || !nzchar(secret)) {
-            stop("SHINYAPPS_TOKEN and SHINYAPPS_SECRET must be configured")
-          }
+          options(rsconnect.packrat = TRUE)
           rsconnect::setAccountInfo(
             name = "hughjonesd",
-            token = token,
-            secret = secret
+            token = Sys.getenv("SHINYAPPS_TOKEN"),
+            secret = Sys.getenv("SHINYAPPS_SECRET")
           )
           rsconnect::deployApp(
             "app",
             appFiles = c("app.R", "rcheology-app-data.RData"),
             appName = "rcheology",
             account = "hughjonesd",
-            server = "shinyapps.io",
             packageRepositoryResolutionR = "lockfile",
             forceUpdate = TRUE
           )
