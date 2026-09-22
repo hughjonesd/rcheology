@@ -12,7 +12,7 @@ rcheology <- purrr::map(files,
   select(package, name, Rversion, status, priority, type, exported, hidden, class,
          S4generic, args) |> 
   arrange(package, name, as.package_version(Rversion),
-    match(status, c("released", "r-patched", "r-devel"))) |>
+    match(status, c("released", "r-next", "r-devel"))) |>
   tibble::remove_rownames()
   
 cat("Dimensions:", dim(rcheology), "\n")
