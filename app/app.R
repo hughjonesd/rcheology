@@ -45,30 +45,53 @@ history_at_version <- function(history, version_id) {
   history[vapply(history$version_ids, function(x) version_id %in% x, logical(1)), ]
 }
 
-state_signature <- function(rows) {
-  if (nrow(rows) == 0) return(character())
+split_arguments <- function(args) {
+  if (length(args) == 0 || is.na(args)) return(character())
 
-  rows |>
-    transmute(
-      package,
-      args = if_else(is.na(args), "", args),
-      type = if_else(is.na(type), "", type),
-      class = if_else(is.na(class), "", class),
-      exported,
-      hidden
-    ) |>
-    arrange(package, args, type, class, exported, hidden) |>
-    apply(1, paste, collapse = "|")
+  text <- sub("^\\(", "", sub("\\)$", "", args))
+  if (! nzchar(trimws(text))) return(character())
+
+  characters <- strsplit(text, "", fixed = TRUE)[[1]]
+  pieces <- character()
+  start <- 1L
+  depth <- 0L
+  quote <- ""
+  escaped <- FALSE
+
+  for (i in seq_along(characters)) {
+    character <- characters[i]
+
+    if (nzchar(quote)) {
+      if (escaped) {
+        escaped <- FALSE
+      } else if (character == "\\") {
+        escaped <- TRUE
+      } else if (character == quote) {
+        quote <- ""
+      }
+    } else if (character %in% c("'", "\"", "`")) {
+      quote <- character
+    } else if (character %in% c("(", "[", "{")) {
+      depth <- depth + 1L
+    } else if (character %in% c(")", "]", "}")) {
+      depth <- depth - 1L
+    } else if (character == "," && depth == 0L) {
+      pieces <- c(pieces, paste0(characters[start:(i - 1L)], collapse = ""))
+      start <- i + 1L
+    }
+  }
+
+  pieces <- c(pieces, paste0(characters[start:length(characters)], collapse = ""))
+  trimws(pieces)
 }
 
-signature_panel <- function(rows, version_id, eyebrow) {
+signature_panel <- function(rows, other_rows, version_id, label, difference_class) {
   version <- app_versions[version_id, ]
 
   if (nrow(rows) == 0) {
     return(div(
       class = "signature-panel signature-panel-empty",
-      div(class = "panel-eyebrow", eyebrow),
-      div(class = "version-heading", version$label),
+      h2(class = "version-heading", paste0(label, ": ", version$label)),
       div(class = "empty-mark", "Not available"),
       p("This name was not recorded as a callable object in this version.")
     ))
@@ -76,8 +99,7 @@ signature_panel <- function(rows, version_id, eyebrow) {
 
   div(
     class = "signature-panel",
-    div(class = "panel-eyebrow", eyebrow),
-    div(class = "version-heading", version$label),
+    h2(class = "version-heading", paste0(label, ": ", version$label)),
     lapply(seq_len(nrow(rows)), function(i) {
       row <- rows[i, ]
       help_version <- app_versions$Rversion[version_id]
@@ -90,9 +112,54 @@ signature_panel <- function(rows, version_id, eyebrow) {
         utils::URLencode(row$name, reserved = TRUE)
       )
       signature <- if (is.na(row$args)) {
-        paste0(row$package, "::", row$name, "  (arguments not recorded)")
+        HTML(htmltools::htmlEscape(
+          paste0(row$package, "::", row$name, "  (arguments not recorded)")
+        ))
       } else {
-        paste0(row$package, "::", row$name, row$args)
+        other_index <- which(other_rows$package == row$package)
+        if (length(other_index) == 0 && nrow(rows) == 1 && nrow(other_rows) == 1) {
+          other_index <- 1L
+        }
+
+        other_args <- if (length(other_index) > 0) {
+          other_rows$args[other_index[1]]
+        } else {
+          NA_character_
+        }
+        arguments <- split_arguments(row$args)
+        other_arguments <- split_arguments(other_args)
+        argument_names <- trimws(sub("=.*$", "", arguments))
+        other_argument_names <- trimws(sub("=.*$", "", other_arguments))
+
+        changed <- vapply(seq_along(arguments), function(j) {
+          match_index <- which(other_argument_names == argument_names[j])
+          length(match_index) == 0 ||
+            ! identical(arguments[j], other_arguments[match_index[1]])
+        }, logical(1))
+
+        argument_html <- vapply(seq_along(arguments), function(j) {
+          argument <- htmltools::htmlEscape(arguments[j])
+          if (changed[j]) {
+            title <- if (difference_class == "argument-removed") {
+              "Removed or changed argument"
+            } else {
+              "Added or changed argument"
+            }
+            paste0(
+              '<span class="', difference_class, '" title="', title, '">',
+              argument,
+              "</span>"
+            )
+          } else {
+            argument
+          }
+        }, character(1))
+
+        HTML(paste0(
+          htmltools::htmlEscape(paste0(row$package, "::", row$name, "(")),
+          paste(argument_html, collapse = ", "),
+          ")"
+        ))
       }
 
       div(
@@ -235,14 +302,6 @@ a:hover { color: var(--teal); }
   gap: 70px;
   align-items: end;
 }
-.kicker {
-  margin-bottom: 18px;
-  color: #8dd2c7;
-  font-size: .78rem;
-  font-weight: 800;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
 .hero h1 {
   max-width: 760px;
   margin: 0;
@@ -345,45 +404,7 @@ a:hover { color: var(--teal); }
   font-size: .84rem;
 }
 
-.result-shell { margin-top: 30px; }
-.answer-banner {
-  display: flex;
-  align-items: flex-start;
-  gap: 17px;
-  padding: 24px 26px;
-  background: var(--teal-pale);
-  border: 1px solid #bbdcd5;
-  border-radius: 16px;
-}
-.answer-banner.status-change { background: var(--copper-pale); border-color: #edc4b3; }
-.answer-banner.status-introduced { background: #e8efdc; border-color: #cfdcb8; }
-.answer-banner.status-removed, .answer-banner.status-unavailable { background: #eeeae3; border-color: #d7d0c5; }
-.answer-icon {
-  flex: 0 0 auto;
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  color: white;
-  background: var(--teal);
-  border-radius: 50%;
-  font-size: 1.12rem;
-  font-weight: 850;
-}
-.status-change .answer-icon { background: var(--copper); }
-.status-introduced .answer-icon { background: #66813d; }
-.status-removed .answer-icon, .status-unavailable .answer-icon { background: #716d66; }
-.answer-kicker {
-  color: var(--ink-soft);
-  font-size: .74rem;
-  font-weight: 800;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.answer-banner h2 { margin: 2px 0 4px; font-size: 1.55rem; letter-spacing: -.02em; }
-.answer-banner p { margin: 0; color: var(--ink-soft); }
-.change-notes { margin-top: 8px !important; font-size: .9rem; font-weight: 650; }
-.scope-note { margin: 11px 4px 0; color: var(--ink-soft); font-size: .8rem; }
+.comparison-shell { margin-top: 30px; }
 
 .signature-grid {
   display: grid;
@@ -399,13 +420,6 @@ a:hover { color: var(--teal); }
   border-radius: 16px;
 }
 .signature-panel-empty { background: rgba(255,255,255,.45); }
-.panel-eyebrow {
-  color: var(--ink-soft);
-  font-size: .71rem;
-  font-weight: 800;
-  letter-spacing: .11em;
-  text-transform: uppercase;
-}
 .version-heading { margin: 2px 0 19px; font-family: Georgia, serif; font-size: 1.65rem; }
 .implementation + .implementation { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
 .implementation-meta { display: flex; gap: 7px; margin-bottom: 10px; }
@@ -425,7 +439,7 @@ a:hover { color: var(--teal); }
   margin: 0 0 12px;
   padding: 15px;
   overflow: auto;
-  white-space: pre-wrap;
+  white-space: normal;
   overflow-wrap: anywhere;
   color: #183c37;
   background: #f0eee7;
@@ -435,6 +449,16 @@ a:hover { color: var(--teal); }
   font-size: .83rem;
   line-height: 1.55;
 }
+.argument-removed, .argument-added {
+  padding: 1px 2px;
+  border-radius: 3px;
+}
+.argument-removed {
+  color: #8b1f1f;
+  background: #f8dddd;
+  text-decoration: line-through;
+}
+.argument-added { color: #155c36; background: #dcefe4; }
 .documentation-link { font-size: .8rem; font-weight: 750; text-decoration: none; }
 .empty-mark { margin: 35px 0 5px; color: #716d66; font-family: Georgia, serif; font-size: 1.3rem; }
 .signature-panel-empty p { color: var(--ink-soft); font-size: .88rem; }
@@ -446,13 +470,6 @@ a:hover { color: var(--teal); }
   justify-content: space-between;
   gap: 30px;
   margin-bottom: 22px;
-}
-.section-kicker {
-  color: var(--copper);
-  font-size: .74rem;
-  font-weight: 850;
-  letter-spacing: .12em;
-  text-transform: uppercase;
 }
 .section-heading h2 {
   margin: 2px 0 0;
@@ -649,26 +666,7 @@ body {
   background: #edf4f2;
   border-radius: 5px;
 }
-.result-shell { margin-top: 16px; }
-.answer-banner {
-  display: block;
-  padding: 15px 18px;
-  background: #ffffff;
-  border: 1px solid #dfe3e1;
-  border-left: 4px solid #0c7469;
-  border-radius: 6px;
-}
-.answer-banner.status-change { background: #ffffff; border-color: #dfe3e1; border-left-color: #bd6848; }
-.answer-banner.status-introduced { background: #ffffff; border-color: #dfe3e1; border-left-color: #66813d; }
-.answer-banner.status-removed, .answer-banner.status-unavailable {
-  background: #ffffff;
-  border-color: #dfe3e1;
-  border-left-color: #716d66;
-}
-.answer-kicker { font-size: .7rem; letter-spacing: .05em; }
-.answer-banner h2 { margin: 2px 0; font-size: 1.25rem; }
-.answer-banner p { color: #56635f; }
-.change-notes { margin-top: 5px !important; font-size: .84rem; }
+.comparison-shell { margin-top: 16px; }
 .signature-grid { gap: 12px; margin-top: 12px; }
 .signature-panel {
   padding: 16px;
@@ -676,7 +674,6 @@ body {
   border-color: #dfe3e1;
   border-radius: 6px;
 }
-.panel-eyebrow { font-size: .68rem; letter-spacing: .06em; }
 .version-heading {
   margin: 1px 0 12px;
   font-family: inherit;
@@ -780,7 +777,16 @@ ui <- fluidPage(
     div(
       class = "intro",
       h1("Compare R functions"),
-      p("Check whether a function's recorded interface differs between two R versions.")
+      p(
+        "Compare a function's recorded arguments and availability between two R versions. ",
+        "Function implementations are not compared. For more control, download the ",
+        a(
+          href = "https://github.com/hughjonesd/rcheology",
+          target = "_blank",
+          rel = "noopener noreferrer",
+          "rcheology package."
+        )
+      )
     ),
     div(
       class = "control-card",
@@ -814,7 +820,7 @@ ui <- fluidPage(
           ),
           p(
             class = "search-help",
-            "For a specific package, use ", code("stats::lm"), "."
+            HTML("For a specific package, use <code>stats::lm</code>.")
           )
         ),
         selectInput(
@@ -838,7 +844,8 @@ ui <- fluidPage(
         )
       )
     ),
-    uiOutput("comparison_result"),
+    uiOutput("comparison_panels"),
+    uiOutput("history_section"),
     tags$section(
       id = "catalog",
       class = "catalog-section",
@@ -848,8 +855,7 @@ ui <- fluidPage(
         p("Search the catalog or select a row to load that function into the comparison above.")
       ),
       div(class = "catalog-card", DTOutput("function_catalog"))
-    ),
-    uiOutput("history_section")
+    )
   ),
   tags$footer(
     class = "site-footer",
@@ -898,7 +904,7 @@ server <- function(input, output, session) {
     history
   })
 
-  output$comparison_result <- renderUI({
+  output$comparison_panels <- renderUI({
     history <- selected_history()
     baseline_id <- match(input$baseline_version, app_versions$key)
     target_id <- match(input$target_version, app_versions$key)
@@ -906,81 +912,24 @@ server <- function(input, output, session) {
 
     baseline_rows <- history_at_version(history, baseline_id)
     target_rows <- history_at_version(history, target_id)
-    baseline_signature <- state_signature(baseline_rows)
-    target_signature <- state_signature(target_rows)
-
-    if (nrow(baseline_rows) == 0 && nrow(target_rows) == 0) {
-      status_class <- "status-unavailable"
-      status_title <- "Not present in either version"
-      status_text <- paste(
-        "This function was not recorded in either selected version.",
-        "This tool compares recorded interfaces and availability, not implementations."
-      )
-    } else if (nrow(baseline_rows) == 0) {
-      status_class <- "status-introduced"
-      status_title <- "Available in the comparison version"
-      status_text <- paste(
-        "This function was not recorded at the baseline, but is present in the comparison version.",
-        "Function implementations are not compared."
-      )
-    } else if (nrow(target_rows) == 0) {
-      status_class <- "status-removed"
-      status_title <- "No longer available"
-      status_text <- paste(
-        "This function was recorded at the baseline, but not in the comparison version.",
-        "Function implementations are not compared."
-      )
-    } else if (identical(baseline_signature, target_signature)) {
-      status_class <- "status-steady"
-      status_title <- "No recorded interface change"
-      status_text <- paste(
-        "The recorded signature, package, type, class, and visibility are the same in both versions.",
-        "Function implementations are not compared."
-      )
-    } else {
-      status_class <- "status-change"
-      status_title <- "Recorded interface changed"
-      status_text <- paste(
-        "At least one recorded interface detail differs between the selected versions.",
-        "Function implementations are not compared."
-      )
-    }
-
-    change_notes <- character()
-    if (nrow(baseline_rows) > 0 && nrow(target_rows) > 0) {
-      if (! setequal(baseline_rows$package, target_rows$package)) {
-        change_notes <- c(change_notes, "package membership")
-      }
-      if (! setequal(baseline_rows$args, target_rows$args)) {
-        change_notes <- c(change_notes, "arguments")
-      }
-      if (! setequal(baseline_rows$exported, target_rows$exported) ||
-          ! setequal(baseline_rows$hidden, target_rows$hidden)) {
-        change_notes <- c(change_notes, "visibility")
-      }
-      if (! setequal(baseline_rows$type, target_rows$type) ||
-          ! setequal(baseline_rows$class, target_rows$class)) {
-        change_notes <- c(change_notes, "type or class")
-      }
-    }
-
     div(
-      class = "result-shell",
-      div(
-        class = paste("answer-banner", status_class),
-        div(
-          div(class = "answer-kicker", paste("Result for", input$function_name)),
-          h2(status_title),
-          p(status_text),
-          if (length(change_notes) > 0) {
-            p(class = "change-notes", paste("Differences:", paste(change_notes, collapse = ", ")))
-          }
-        )
-      ),
+      class = "comparison-shell",
       div(
         class = "signature-grid",
-        signature_panel(baseline_rows, baseline_id, "Baseline"),
-        signature_panel(target_rows, target_id, "Comparison")
+        signature_panel(
+          baseline_rows,
+          target_rows,
+          baseline_id,
+          "Baseline",
+          "argument-removed"
+        ),
+        signature_panel(
+          target_rows,
+          baseline_rows,
+          target_id,
+          "Comparison",
+          "argument-added"
+        )
       )
     )
   })
