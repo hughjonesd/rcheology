@@ -47,14 +47,14 @@ install.packages('rcheology')
 
 ### Daily R snapshots
 
-The GitHub-only `daily` branch adds the latest R-patched and R-devel snapshots
+The GitHub-only `daily` branch adds the latest `r-next` and `r-devel` snapshots
 to the historical released versions. Install it with:
 
 ```r
 devtools::install_github("hughjonesd/rcheology", ref = "daily")
 ```
 
-The `rcheology$status` column distinguishes `"released"`, `"r-patched"`, and
+The `rcheology$status` column distinguishes `"released"`, `"r-next"`, and
 `"r-devel"` rows. The latest source package and data files are also available
 from the [daily GitHub release](https://github.com/hughjonesd/rcheology/releases/tag/daily-release).
 

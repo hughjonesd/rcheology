@@ -41,9 +41,9 @@
 #' * `package`: package the object comes from
 #' * `name`: name of the object
 #' * `Rversion`: version of R as major.minor.patch
-#' * `status`: one of `"released"`, `"r-patched"`, or `"r-devel"`. The CRAN
+#' * `status`: one of `"released"`, `"r-next"`, or `"r-devel"`. The CRAN
 #'   package contains released versions only; daily GitHub builds also contain
-#'   the latest patched and development snapshots.
+#'   the latest `r-next` and `r-devel` snapshots.
 #' * `type`: Result of calling [typeof()] on the object
 #' * `class`: [class()] of the object, separated by slashes if there are multiple classes.
 #' * `exported`: `TRUE` if the object name was found in [getNamespaceExports()]. True for 
@@ -83,9 +83,12 @@ NULL
 #' @param fn Character name of a function in a core R package.
 #' @param package Name of the package (optional).
 #' @param from Minimum R build (optional). This can be an R version or, in a
-#'   daily GitHub build, `"r-patched"` or `"r-devel"`.
+#'   daily GitHub build, `"r-next"` or `"r-devel"`. `"r-next"` is usually
+#'   R-patched, but can be R-alpha, R-beta, R-rc, or R-prerelease during the
+#'   release cycle.
 #' @param to Maximum R build (optional). This can be an R version or, in a
-#'   daily GitHub build, `"r-patched"` or `"r-devel"`.
+#'   daily GitHub build, `"r-next"` or `"r-devel"`. See `from` for the meaning
+#'   of `"r-next"`.
 #' 
 #' @return 0 if there was no change. 1 if the function's arguments changed.
 #'   2 if the function was not present in all versions. If the function can't
@@ -100,7 +103,7 @@ NULL
 #' }
 fun_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
   rch <- rcheology::rcheology
-  status_order <- c("released", "r-patched", "r-devel")
+  status_order <- c("released", "r-next", "r-devel")
   builds <- unique(rch[c("Rversion", "status")])
   builds <- builds[order(
     as.package_version(builds$Rversion),
@@ -114,7 +117,7 @@ fun_changed <- function (fn, from = NULL, to = NULL, package = NULL) {
 
   find_build <- function(x, default) {
     if (is.null(x)) return(default)
-    if (x %in% c("r-patched", "r-devel")) position <- match(x, builds$build) else {
+    if (x %in% c("r-next", "r-devel")) position <- match(x, builds$build) else {
       position <- which(
         builds$status == "released" &
           as.package_version(builds$Rversion) == as.package_version(x)

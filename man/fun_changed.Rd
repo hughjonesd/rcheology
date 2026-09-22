@@ -10,10 +10,13 @@ fun_changed(fn, from = NULL, to = NULL, package = NULL)
 \item{fn}{Character name of a function in a core R package.}
 
 \item{from}{Minimum R build (optional). This can be an R version or, in a
-daily GitHub build, \code{"r-patched"} or \code{"r-devel"}.}
+daily GitHub build, \code{"r-next"} or \code{"r-devel"}. \code{"r-next"} is usually
+R-patched, but can be R-alpha, R-beta, R-rc, or R-prerelease during the
+release cycle.}
 
 \item{to}{Maximum R build (optional). This can be an R version or, in a
-daily GitHub build, \code{"r-patched"} or \code{"r-devel"}.}
+daily GitHub build, \code{"r-next"} or \code{"r-devel"}. See \code{from} for the meaning
+of \code{"r-next"}.}
 
 \item{package}{Name of the package (optional).}
 }

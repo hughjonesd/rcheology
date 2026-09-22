@@ -8,7 +8,7 @@ source("guest-functions.R")
 rv <- getRVersion()
 shortRversion <- paste(rv$major, rv$minor, sep = ".")
 Rstatus <- if (is.null(rv$status) || rv$status == "") "released" else
-  if (rv$status == "Patched") "r-patched" else "r-devel"
+  if (rv$status == "Under development (unstable)") "r-devel" else "r-next"
 S4exists <- rv$major > 1 || (rv$major == 1 && rv$minor >= "4.0") # think doing string comparisons OK
 if (S4exists) library(methods)
 

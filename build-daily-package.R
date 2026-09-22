@@ -6,8 +6,8 @@ if (length(args) != 1L) {
 output_dir <- args[[1]]
 
 load("data/rcheology.rda")
-if (! setequal(unique(rcheology$status), c("released", "r-patched", "r-devel"))) {
-  stop("The package data must contain released, r-patched, and r-devel builds")
+if (! setequal(unique(rcheology$status), c("released", "r-next", "r-devel"))) {
+  stop("The package data must contain released, r-next, and r-devel builds")
 }
 
 description <- readLines("DESCRIPTION")

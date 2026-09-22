@@ -1,13 +1,13 @@
 # rcheology (development version)
 
-* On the `daily` GitHub branch, we now record functions in current `r-patched`
+* On the `daily` GitHub branch, we now record functions in current `r-next`
   and `r-devel`. A new `status` column distinguishes released R versions from
-  the `r-patched` and `r-devel` data. You can download this via the GitHub
+  the `r-next` and `r-devel` data. You can download this via the GitHub
   branch directly, or as a GitHub release ("daily-release"). Versions released
   to CRAN don't have this data, but do have the `status` column, which is
   always `"released"`.
-* The shinyapps.io app also now includes `r-patched` and `r-devel`.
-* `fun_changed()` accepts `"r-patched"` and `"r-devel"` as version bounds
+* The shinyapps.io app also now includes `r-next` and `r-devel`.
+* `fun_changed()` accepts `"r-next"` and `"r-devel"` as version bounds
   when those snapshots are installed.
 
 
