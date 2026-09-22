@@ -32,6 +32,15 @@ default_function <- if ("kmeans" %in% function_catalog$name) {
   function_catalog$name[1]
 }
 
+qualified_function_names <- rch_history |>
+  distinct(package, name) |>
+  transmute(name = paste0(package, "::", name)) |>
+  arrange(name) |>
+  pull(name)
+
+function_choice_values <- c(function_catalog$name, qualified_function_names)
+function_choices <- setNames(function_choice_values, function_choice_values)
+
 history_at_version <- function(history, version_id) {
   history[vapply(history$version_ids, function(x) version_id %in% x, logical(1)), ]
 }
@@ -558,6 +567,172 @@ a:hover { color: var(--teal); }
 }
 "
 
+simple_css <- "
+body {
+  color: #202624;
+  background: #f6f7f6;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.site-header {
+  color: #202624;
+  background: #ffffff;
+  border-bottom: 1px solid #dfe3e1;
+}
+.site-header-inner {
+  max-width: 1100px;
+  min-height: 64px;
+  padding: 10px 24px;
+}
+.brand {
+  color: #202624;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.brand:hover { color: #202624; }
+.header-links { gap: 18px; }
+.header-links a { color: #4c5a56; font-size: .86rem; }
+.header-links a:hover { color: #0c7469; }
+.app-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 24px 54px;
+}
+.intro { margin: 0 0 18px; }
+.intro h1 {
+  margin: 0 0 3px;
+  font-family: inherit;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+.intro p { margin: 0; color: #56635f; }
+.control-card {
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #dfe3e1;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.control-grid {
+  grid-template-columns: minmax(250px, 1.35fr) minmax(180px, .75fr) 40px minmax(180px, .75fr);
+  gap: 14px;
+}
+.form-label, .control-label {
+  margin-bottom: 6px;
+  color: #37423f;
+  font-size: .74rem;
+  letter-spacing: .025em;
+}
+.form-control, .selectize-input {
+  min-height: 42px;
+  border-color: #cbd2cf !important;
+  border-radius: 5px !important;
+}
+.selectize-input { padding: 10px 11px !important; }
+.selectize-control.plugin-remove_button .item .remove {
+  padding: 0 7px;
+  color: #5d6965;
+  border-left-color: #dfe3e1;
+}
+.search-help {
+  margin: 7px 0 0;
+  color: #68736f;
+  font-size: .79rem;
+}
+.search-help code { color: #3c4945; }
+.swap-button {
+  width: 40px;
+  height: 42px;
+  color: #315f58;
+  background: #edf4f2;
+  border-radius: 5px;
+}
+.result-shell { margin-top: 16px; }
+.answer-banner {
+  display: block;
+  padding: 15px 18px;
+  background: #ffffff;
+  border: 1px solid #dfe3e1;
+  border-left: 4px solid #0c7469;
+  border-radius: 6px;
+}
+.answer-banner.status-change { background: #ffffff; border-color: #dfe3e1; border-left-color: #bd6848; }
+.answer-banner.status-introduced { background: #ffffff; border-color: #dfe3e1; border-left-color: #66813d; }
+.answer-banner.status-removed, .answer-banner.status-unavailable {
+  background: #ffffff;
+  border-color: #dfe3e1;
+  border-left-color: #716d66;
+}
+.answer-kicker { font-size: .7rem; letter-spacing: .05em; }
+.answer-banner h2 { margin: 2px 0; font-size: 1.25rem; }
+.answer-banner p { color: #56635f; }
+.change-notes { margin-top: 5px !important; font-size: .84rem; }
+.signature-grid { gap: 12px; margin-top: 12px; }
+.signature-panel {
+  padding: 16px;
+  background: #ffffff;
+  border-color: #dfe3e1;
+  border-radius: 6px;
+}
+.panel-eyebrow { font-size: .68rem; letter-spacing: .06em; }
+.version-heading {
+  margin: 1px 0 12px;
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 650;
+}
+.signature-code {
+  max-height: 180px;
+  padding: 12px;
+  background: #f4f6f5;
+  border-radius: 4px;
+}
+.history-disclosure {
+  margin-top: 14px;
+  background: #ffffff;
+  border: 1px solid #dfe3e1;
+  border-radius: 6px;
+}
+.history-disclosure summary {
+  padding: 13px 16px;
+  cursor: pointer;
+  color: #24302c;
+  font-weight: 650;
+}
+.history-content { padding: 2px 16px 14px; }
+.history-help { margin: 0 0 15px; color: #68736f; font-size: .82rem; }
+.timeline-row { grid-template-columns: 18px minmax(150px, .5fr) minmax(0, 1.5fr); gap: 14px; padding-bottom: 14px; }
+.timeline::before { left: 8px; }
+.timeline-dot { width: 8px; height: 8px; margin-top: 13px; border-width: 2px; }
+.timeline-card { padding: 12px 14px; border-radius: 5px; }
+.catalog-section { margin-top: 26px; }
+.catalog-heading { margin-bottom: 12px; }
+.catalog-heading h2 { margin: 0; font-size: 1.35rem; }
+.catalog-heading p { margin: 3px 0 0; color: #68736f; font-size: .84rem; }
+.catalog-card {
+  padding: 12px 14px 14px;
+  border-color: #dfe3e1;
+  border-radius: 6px;
+  box-shadow: none;
+}
+.catalog-card table.dataTable tbody td { padding: 8px 9px; }
+.site-footer { padding: 20px 24px; color: #59635f; background: #eef0ef; }
+.site-footer a { color: #315f58; }
+.footer-inner { max-width: 1052px; }
+@media (max-width: 880px) {
+  .control-grid { grid-template-columns: 1fr 1fr; }
+  .function-control { grid-column: 1 / -1; }
+}
+@media (max-width: 620px) {
+  .site-header-inner, .app-main { padding-left: 16px; padding-right: 16px; }
+  .control-grid { grid-template-columns: 1fr; }
+  .signature-grid { grid-template-columns: 1fr; }
+  .timeline-row { grid-template-columns: 18px 1fr; }
+}
+"
+
 ui <- fluidPage(
   theme = bs_theme(
     version = 5,
@@ -571,7 +746,7 @@ ui <- fluidPage(
       name = "description",
       content = "Compare base and recommended R function interfaces across R versions."
     ),
-    tags$style(HTML(app_css)),
+    tags$style(HTML(paste(app_css, simple_css))),
     tags$script(HTML(
       "Shiny.addCustomMessageHandler('scroll-to-compare', function(_) {
          document.getElementById('compare').scrollIntoView({behavior: 'smooth'});
@@ -586,12 +761,10 @@ ui <- fluidPage(
       a(
         class = "brand",
         href = "#top",
-        span(class = "brand-mark", "R"),
-        span("RCHEOLOGY")
+        "rcheology"
       ),
       div(
         class = "header-links",
-        a(href = "#catalog", "Browse functions"),
         a(
           href = "https://github.com/hughjonesd/rcheology",
           target = "_blank",
@@ -601,34 +774,14 @@ ui <- fluidPage(
       )
     )
   ),
-  div(
-    class = "hero",
-    div(
-      class = "hero-inner",
-      div(
-        div(class = "kicker", "A field guide to R's past"),
-        h1("Did this R function change?"),
-        p(
-          class = "hero-copy",
-          "Compare a function's recorded interface across releases—from early R to today's development snapshots."
-        )
-      ),
-      div(
-        class = "coverage-card",
-        div(
-          span(class = "coverage-number", format(nrow(app_versions), big.mark = ",")),
-          span(class = "coverage-label", "R versions indexed")
-        ),
-        div(
-          span(class = "coverage-number", format(nrow(function_catalog), big.mark = ",")),
-          span(class = "coverage-label", "callable names")
-        )
-      )
-    )
-  ),
   tags$main(
     id = "compare",
     class = "app-main",
+    div(
+      class = "intro",
+      h1("Compare R functions"),
+      p("Check whether a function's recorded interface differs between two R versions.")
+    ),
     div(
       class = "control-card",
       div(
@@ -640,9 +793,28 @@ ui <- fluidPage(
             "Function",
             choices = NULL,
             options = list(
-              placeholder = "Type a function name, e.g. kmeans",
-              maxOptions = 80
+              placeholder = "Search for a function",
+              maxOptions = 400,
+              plugins = list("remove_button"),
+              onFocus = I("function() { if (this.items.length) this.clear(); }"),
+              score = I(
+                "function(search) {
+                   var query = search.toLowerCase().trim();
+                   return function(item) {
+                     var text = String(item.text || item.label || item.value || '').toLowerCase();
+                     if (text.indexOf('::') !== -1 && query.indexOf('::') === -1) return 0;
+                     if (text === query) return 100;
+                     var position = text.indexOf(query);
+                     if (position === -1) return 0;
+                     return (position === 0 ? 2 : 1) + query.length / text.length;
+                   };
+                 }"
+              )
             )
+          ),
+          p(
+            class = "search-help",
+            "For a specific package, use ", code("stats::lm"), "."
           )
         ),
         selectInput(
@@ -664,62 +836,36 @@ ui <- fluidPage(
           choices = rev(version_choices),
           selected = default_target
         )
-      ),
-      div(
-        class = "quick-examples",
-        "Try",
-        actionButton("example_kmeans", "kmeans"),
-        actionButton("example_read_csv", "read.csv"),
-        actionButton("example_sample", "sample")
       )
     ),
     uiOutput("comparison_result"),
     tags$section(
-      class = "section",
-      div(
-        class = "section-heading",
-        div(
-          div(class = "section-kicker", "Stratigraphy"),
-          h2("Recorded interface history")
-        ),
-        p("Each layer represents a distinct signature or metadata state. Version spans may contain gaps when a state later reappeared.")
-      ),
-      uiOutput("function_history")
-    ),
-    tags$section(
       id = "catalog",
-      class = "section",
+      class = "catalog-section",
       div(
-        class = "section-heading",
-        div(
-          div(class = "section-kicker", "The full dig"),
-          h2("Browse all functions")
-        ),
+        class = "catalog-heading",
+        h2("Functions"),
         p("Search the catalog or select a row to load that function into the comparison above.")
       ),
       div(class = "catalog-card", DTOutput("function_catalog"))
-    )
+    ),
+    uiOutput("history_section")
   ),
   tags$footer(
     class = "site-footer",
     div(
       class = "footer-inner",
       span(
-        "Built from the ",
+        "Data and source: ",
         a(href = "https://github.com/hughjonesd/rcheology", "rcheology dataset"),
         "."
       ),
-      span("Documentation snapshots are hosted by ", a(href = "https://github.com/hughjonesd/r-help", "r-help"), ".")
+      span("Documentation: ", a(href = "https://github.com/hughjonesd/r-help", "r-help"), ".")
     )
   )
 )
 
 server <- function(input, output, session) {
-  function_choices <- setNames(
-    function_catalog$name,
-    paste0(function_catalog$name, "  ·  ", function_catalog$packages)
-  )
-
   updateSelectizeInput(
     session,
     "function_name",
@@ -734,30 +880,22 @@ server <- function(input, output, session) {
     updateSelectInput(session, "target_version", selected = baseline)
   })
 
-  observeEvent(input$example_kmeans, {
-    updateSelectizeInput(
-      session, "function_name",
-      choices = function_choices, selected = "kmeans", server = TRUE
-    )
-  })
-
-  observeEvent(input$example_read_csv, {
-    updateSelectizeInput(
-      session, "function_name",
-      choices = function_choices, selected = "read.csv", server = TRUE
-    )
-  })
-
-  observeEvent(input$example_sample, {
-    updateSelectizeInput(
-      session, "function_name",
-      choices = function_choices, selected = "sample", server = TRUE
-    )
-  })
-
   selected_history <- reactive({
-    req(input$function_name)
-    filter(rch_history, name == input$function_name)
+    req(input$function_name, nzchar(input$function_name))
+    qualified <- grepl("^[^:]+::.+$", input$function_name)
+    function_name <- if (qualified) {
+      sub("^[^:]+::", "", input$function_name)
+    } else {
+      input$function_name
+    }
+    history <- filter(rch_history, name == function_name)
+
+    if (qualified) {
+      selected_package <- sub("::.*$", "", input$function_name)
+      history <- filter(history, .data$package == .env$selected_package)
+    }
+
+    history
   })
 
   output$comparison_result <- renderUI({
@@ -773,29 +911,39 @@ server <- function(input, output, session) {
 
     if (nrow(baseline_rows) == 0 && nrow(target_rows) == 0) {
       status_class <- "status-unavailable"
-      status_icon <- "·"
       status_title <- "Not present in either version"
-      status_text <- "Choose versions within this function's recorded lifespan."
+      status_text <- paste(
+        "This function was not recorded in either selected version.",
+        "This tool compares recorded interfaces and availability, not implementations."
+      )
     } else if (nrow(baseline_rows) == 0) {
       status_class <- "status-introduced"
-      status_icon <- "+"
       status_title <- "Available in the comparison version"
-      status_text <- "This callable was not recorded at the baseline, but it is present in the comparison version."
+      status_text <- paste(
+        "This function was not recorded at the baseline, but is present in the comparison version.",
+        "Function implementations are not compared."
+      )
     } else if (nrow(target_rows) == 0) {
       status_class <- "status-removed"
-      status_icon <- "−"
       status_title <- "No longer available"
-      status_text <- "This callable was recorded at the baseline, but not in the comparison version."
+      status_text <- paste(
+        "This function was recorded at the baseline, but not in the comparison version.",
+        "Function implementations are not compared."
+      )
     } else if (identical(baseline_signature, target_signature)) {
       status_class <- "status-steady"
-      status_icon <- "="
       status_title <- "No recorded interface change"
-      status_text <- "The signature, package, type, class, and visibility match in both versions."
+      status_text <- paste(
+        "The recorded signature, package, type, class, and visibility are the same in both versions.",
+        "Function implementations are not compared."
+      )
     } else {
       status_class <- "status-change"
-      status_icon <- "Δ"
       status_title <- "Recorded interface changed"
-      status_text <- "At least one recorded part of this callable differs between the selected versions."
+      status_text <- paste(
+        "At least one recorded interface detail differs between the selected versions.",
+        "Function implementations are not compared."
+      )
     }
 
     change_notes <- character()
@@ -820,7 +968,6 @@ server <- function(input, output, session) {
       class = "result-shell",
       div(
         class = paste("answer-banner", status_class),
-        div(class = "answer-icon", status_icon),
         div(
           div(class = "answer-kicker", paste("Result for", input$function_name)),
           h2(status_title),
@@ -830,10 +977,6 @@ server <- function(input, output, session) {
           }
         )
       ),
-      p(
-        class = "scope-note",
-        "Scope: this compares recorded interfaces and availability. A function body may have changed even when its interface did not."
-      ),
       div(
         class = "signature-grid",
         signature_panel(baseline_rows, baseline_id, "Baseline"),
@@ -842,45 +985,56 @@ server <- function(input, output, session) {
     )
   })
 
-  output$function_history <- renderUI({
+  output$history_section <- renderUI({
     history <- selected_history() |>
       arrange(desc(last_id), desc(first_id), package)
 
-    div(
-      class = "timeline",
-      lapply(seq_len(nrow(history)), function(i) {
-        row <- history[i, ]
-        version_ids <- sort(unique(row$version_ids[[1]]))
-        version_groups <- cumsum(c(TRUE, diff(version_ids) != 1))
-        version_span <- vapply(split(version_ids, version_groups), function(ids) {
-          first <- app_versions$label[ids[1]]
-          last <- app_versions$label[ids[length(ids)]]
-          if (first == last) first else paste(first, last, sep = " – ")
-        }, character(1)) |>
-          paste(collapse = "; ")
-        signature <- if (is.na(row$args)) {
-          paste0(row$package, "::", row$name, "  (arguments not recorded)")
-        } else {
-          paste0(row$package, "::", row$name, row$args)
-        }
-        metadata <- c(
-          row$type,
-          row$class,
-          if (isTRUE(row$exported)) "exported" else "internal"
-        )
-        metadata <- metadata[! is.na(metadata) & metadata != ""]
-
+    tags$details(
+      class = "history-disclosure",
+      tags$summary("Interface history"),
+      div(
+        class = "history-content",
+        p(
+          class = "history-help",
+          "Distinct recorded signatures and metadata states across R versions."
+        ),
         div(
-          class = "timeline-row",
-          div(class = "timeline-dot", `aria-hidden` = "true"),
-          div(class = "timeline-range", version_span),
-          div(
-            class = "timeline-card",
-            code(signature),
-            div(class = "timeline-meta", paste(metadata, collapse = " · "))
-          )
+          class = "timeline",
+          lapply(seq_len(nrow(history)), function(i) {
+            row <- history[i, ]
+            version_ids <- sort(unique(row$version_ids[[1]]))
+            version_groups <- cumsum(c(TRUE, diff(version_ids) != 1))
+            version_span <- vapply(split(version_ids, version_groups), function(ids) {
+              first <- app_versions$label[ids[1]]
+              last <- app_versions$label[ids[length(ids)]]
+              if (first == last) first else paste(first, last, sep = " – ")
+            }, character(1)) |>
+              paste(collapse = "; ")
+            signature <- if (is.na(row$args)) {
+              paste0(row$package, "::", row$name, "  (arguments not recorded)")
+            } else {
+              paste0(row$package, "::", row$name, row$args)
+            }
+            metadata <- c(
+              row$type,
+              row$class,
+              if (isTRUE(row$exported)) "exported" else "internal"
+            )
+            metadata <- metadata[! is.na(metadata) & metadata != ""]
+
+            div(
+              class = "timeline-row",
+              div(class = "timeline-dot", `aria-hidden` = "true"),
+              div(class = "timeline-range", version_span),
+              div(
+                class = "timeline-card",
+                code(signature),
+                div(class = "timeline-meta", paste(metadata, collapse = " · "))
+              )
+            )
+          })
         )
-      })
+      )
     )
   })
 
