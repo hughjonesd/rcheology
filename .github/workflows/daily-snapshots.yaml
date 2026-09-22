@@ -59,7 +59,8 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::devtools, any::dplyr, any::purrr, any::readr
+          extra-packages: any::devtools, any::dplyr, any::DT, any::purrr, any::readr, any::rsconnect, any::shiny
+          cache-version: 3
           needs: check
 
       - uses: actions/download-artifact@v4
@@ -73,6 +74,7 @@ jobs:
           cp daily-input/*.csv docker-data
           Rscript write-package-data.R
           Rscript build-daily-package.R daily-dist
+          Rscript make-app-data.R
 
       - name: Test and build daily package
         shell: Rscript {0}
@@ -92,6 +94,7 @@ jobs:
         run: |
           snapshot_stage=$(mktemp -d)
           cp data/rcheology.rda DESCRIPTION "$snapshot_stage"
+          cp app/rcheology-app-data.RData "$snapshot_stage"
           cp -R daily-dist "$snapshot_stage"
           git restore data/rcheology.rda DESCRIPTION
 
@@ -115,6 +118,7 @@ jobs:
           git push origin HEAD:refs/heads/daily
 
           cp -R "$snapshot_stage/daily-dist/." daily-dist
+          cp "$snapshot_stage/rcheology-app-data.RData" app/rcheology-app-data.RData
 
       - name: Publish rolling release assets
         env:
@@ -129,3 +133,34 @@ jobs:
             daily-dist/rcheology-daily.tar.gz \
             daily-dist/rcheology-daily.csv.gz \
             daily-dist/rcheology-daily.rds
+
+      - name: Deploy Shiny app
+        shell: Rscript {0}
+        env:
+          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+          RENV_CONFIG_REPOS_OVERRIDE: CRAN=https://cloud.r-project.org
+        run: |
+          options(
+            repos = c(CRAN = "https://cloud.r-project.org"),
+            rsconnect.packrat = TRUE
+          )
+          token <- Sys.getenv("SHINYAPPS_TOKEN")
+          secret <- Sys.getenv("SHINYAPPS_SECRET")
+          if (!nzchar(token) || !nzchar(secret)) {
+            stop("SHINYAPPS_TOKEN and SHINYAPPS_SECRET must be configured")
+          }
+          rsconnect::setAccountInfo(
+            name = "hughjonesd",
+            token = token,
+            secret = secret
+          )
+          rsconnect::deployApp(
+            "app",
+            appFiles = c("app.R", "rcheology-app-data.RData"),
+            appName = "rcheology",
+            account = "hughjonesd",
+            server = "shinyapps.io",
+            packageRepositoryResolutionR = "lockfile",
+            forceUpdate = TRUE
+          )
