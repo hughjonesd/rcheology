@@ -13,4 +13,9 @@ The `daily` branch is rebuilt by GitHub Actions from the latest `r-next` and
 `r-devel` builds. These snapshots are marked in the `status` column and are not
 included in the CRAN package.
 
+`r-next` follows the `next` build provided by
+[`r-lib/actions`](https://github.com/r-lib/actions/tree/v2/setup-r). This is
+usually R-patched, but becomes R-alpha, R-beta, R-rc, or R-prerelease during
+the R release cycle. `r-devel` is the latest daily development snapshot.
+
 The `Rversions` data frame lists versions of R and release dates.

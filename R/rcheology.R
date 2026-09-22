@@ -83,9 +83,12 @@ NULL
 #' @param fn Character name of a function in a core R package.
 #' @param package Name of the package (optional).
 #' @param from Minimum R build (optional). This can be an R version or, in a
-#'   daily GitHub build, `"r-next"` or `"r-devel"`.
+#'   daily GitHub build, `"r-next"` or `"r-devel"`. `"r-next"` is usually
+#'   R-patched, but can be R-alpha, R-beta, R-rc, or R-prerelease during the
+#'   release cycle.
 #' @param to Maximum R build (optional). This can be an R version or, in a
-#'   daily GitHub build, `"r-next"` or `"r-devel"`.
+#'   daily GitHub build, `"r-next"` or `"r-devel"`. See `from` for the meaning
+#'   of `"r-next"`.
 #' 
 #' @return 0 if there was no change. 1 if the function's arguments changed.
 #'   2 if the function was not present in all versions. If the function can't
