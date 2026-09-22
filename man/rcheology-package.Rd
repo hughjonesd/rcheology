@@ -32,9 +32,15 @@ R versions are built using the
 Results are found from running \code{ls(all.names = TRUE)} on all installed
 packages. For more details, see \code{guest-list-objects.R}.
 
-The \code{daily} branch is rebuilt by GitHub Actions from the latest
-R-patched and R-devel builds. These snapshots are marked in the \code{status}
-column and are not included in the CRAN package.
+The \code{daily} branch is rebuilt by GitHub Actions from the latest \code{r-next}
+and \code{r-devel} builds. These snapshots are marked in the \code{status} column
+and are not included in the CRAN package.
+
+\code{r-next} follows the \code{next} build provided by
+\href{https://github.com/r-lib/actions/tree/v2/setup-r}{\code{r-lib/actions}}.
+This is usually R-patched, but becomes R-alpha, R-beta, R-rc, or
+R-prerelease during the R release cycle. \code{r-devel} is the latest daily
+development snapshot.
 
 The \code{Rversions} data frame lists versions of R and release dates.
 }
