@@ -36,14 +36,14 @@ install.packages('rcheology')
 
 ### Daily R snapshots
 
-The GitHub-only `daily` branch adds the latest R-patched and R-devel
+The GitHub-only `daily` branch adds the latest `r-next` and `r-devel`
 snapshots to the historical released versions. Install it with:
 
 ``` r
 devtools::install_github("hughjonesd/rcheology", ref = "daily")
 ```
 
-The `rcheology$status` column distinguishes `"released"`, `"r-patched"`,
+The `rcheology$status` column distinguishes `"released"`, `"r-next"`,
 and `"r-devel"` rows. The latest source package and data files are also
 available from the [daily GitHub
 release](https://github.com/hughjonesd/rcheology/releases/tag/daily-release).
@@ -58,9 +58,15 @@ R versions are built using the
 Results are found from running `ls(all.names = TRUE)` on all installed
 packages. For more details, see `guest-list-objects.R`.
 
-The `daily` branch is rebuilt by GitHub Actions from the latest
-R-patched and R-devel builds. These snapshots are marked in the `status`
-column and are not included in the CRAN package.
+The `daily` branch is rebuilt by GitHub Actions from the latest `r-next`
+and `r-devel` builds. These snapshots are marked in the `status` column
+and are not included in the CRAN package.
+
+`r-next` follows the `next` build provided by
+[`r-lib/actions`](https://github.com/r-lib/actions/tree/v2/setup-r).
+This is usually R-patched, but becomes R-alpha, R-beta, R-rc, or
+R-prerelease during the R release cycle. `r-devel` is the latest daily
+development snapshot.
 
 The `Rversions` data frame lists versions of R and release dates.
 

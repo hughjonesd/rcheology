@@ -62,15 +62,11 @@ make_range <- function (name, package, versions, statuses) {
   snapshot_statuses <- snapshot_statuses[keep]
   snapshot_order <- order(
     snapshot_versions,
-    match(snapshot_statuses, c("r-patched", "r-devel"))
+    match(snapshot_statuses, c("r-next", "r-devel"))
   )
   snapshot_versions <- snapshot_versions[snapshot_order]
   snapshot_statuses <- snapshot_statuses[snapshot_order]
-  snapshot_suffixes <- ifelse(
-    snapshot_statuses == "r-patched",
-    " patched",
-    " Devel"
-  )
+  snapshot_suffixes <- paste0(" ", snapshot_statuses)
   snapshot_anchors <- make_doc_anchors(
     name,
     package,

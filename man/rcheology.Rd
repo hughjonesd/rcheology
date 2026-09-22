@@ -10,9 +10,9 @@ of R from 0.50 onwards. Variables are:
 \item \code{package}: package the object comes from
 \item \code{name}: name of the object
 \item \code{Rversion}: version of R as major.minor.patch
-\item \code{status}: one of \code{"released"}, \code{"r-patched"}, or \code{"r-devel"}. The CRAN
+\item \code{status}: one of \code{"released"}, \code{"r-next"}, or \code{"r-devel"}. The CRAN
 package contains released versions only; daily GitHub builds also contain
-the latest patched and development snapshots.
+the latest \code{r-next} and \code{r-devel} snapshots.
 \item \code{type}: Result of calling \code{\link[=typeof]{typeof()}} on the object
 \item \code{class}: \code{\link[=class]{class()}} of the object, separated by slashes if there are multiple classes.
 \item \code{exported}: \code{TRUE} if the object name was found in \code{\link[=getNamespaceExports]{getNamespaceExports()}}. True for
