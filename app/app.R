@@ -26,20 +26,41 @@ default_baseline <- if (nrow(baseline_candidates) > 0) {
   app_versions$key[max(1, round(nrow(app_versions) * 0.7))]
 }
 default_target <- app_versions$key[latest_id]
-default_function <- if ("kmeans" %in% function_catalog$name) {
+default_function_name <- if ("kmeans" %in% function_catalog$name) {
   "kmeans"
 } else {
   function_catalog$name[1]
 }
 
-qualified_function_names <- rch_history |>
-  distinct(package, name) |>
-  transmute(name = paste0(package, "::", name)) |>
-  arrange(name) |>
+function_choices <- rch_history |>
+  filter(! hidden) |>
+  mutate(current = vapply(
+    version_ids,
+    function(ids) latest_id %in% ids,
+    logical(1)
+  )) |>
+  summarise(.by = c(package, name),
+    current = any(current),
+    last_id = max(last_id)
+  ) |>
+  transmute(
+    value = paste0(package, "::", name),
+    label = value,
+    name,
+    package,
+    current,
+    last_id
+  ) |>
+  arrange(nchar(name), name, desc(current), desc(last_id), package)
+
+visible_function_names <- function_choices |>
+  distinct(name) |>
   pull(name)
 
-function_choice_values <- c(function_catalog$name, qualified_function_names)
-function_choices <- setNames(function_choice_values, function_choice_values)
+default_function <- function_choices |>
+  filter(name == default_function_name) |>
+  slice_head(n = 1) |>
+  pull(value)
 
 history_at_version <- function(history, version_id) {
   history[vapply(history$version_ids, function(x) version_id %in% x, logical(1)), ]
@@ -85,6 +106,49 @@ split_arguments <- function(args) {
   trimws(pieces)
 }
 
+signature_html <- function(row, other_args = NA_character_, difference_class = NULL) {
+  if (is.na(row$args)) {
+    return(HTML(htmltools::htmlEscape(
+      paste0(row$package, "::", row$name, "  (arguments not recorded)")
+    )))
+  }
+
+  arguments <- split_arguments(row$args)
+  other_arguments <- split_arguments(other_args)
+  argument_names <- trimws(sub("=.*$", "", arguments))
+  other_argument_names <- trimws(sub("=.*$", "", other_arguments))
+
+  changed <- vapply(seq_along(arguments), function(j) {
+    match_index <- which(other_argument_names == argument_names[j])
+    length(match_index) == 0 ||
+      ! identical(arguments[j], other_arguments[match_index[1]])
+  }, logical(1))
+
+  argument_html <- vapply(seq_along(arguments), function(j) {
+    argument <- htmltools::htmlEscape(arguments[j])
+    if (! is.null(difference_class) && changed[j]) {
+      title <- if (difference_class == "argument-removed") {
+        "Removed or changed argument"
+      } else {
+        "Added or changed argument"
+      }
+      paste0(
+        '<span class="', difference_class, '" title="', title, '">',
+        argument,
+        "</span>"
+      )
+    } else {
+      argument
+    }
+  }, character(1))
+
+  HTML(paste0(
+    htmltools::htmlEscape(paste0(row$package, "::", row$name, "(")),
+    paste(argument_html, collapse = ", "),
+    ")"
+  ))
+}
+
 signature_panel <- function(rows, other_rows, version_id, label, difference_class) {
   version <- app_versions[version_id, ]
 
@@ -111,62 +175,23 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
         row$package,
         utils::URLencode(row$name, reserved = TRUE)
       )
-      signature <- if (is.na(row$args)) {
-        HTML(htmltools::htmlEscape(
-          paste0(row$package, "::", row$name, "  (arguments not recorded)")
-        ))
-      } else {
-        other_index <- which(other_rows$package == row$package)
-        if (length(other_index) == 0 && nrow(rows) == 1 && nrow(other_rows) == 1) {
-          other_index <- 1L
-        }
-
-        other_args <- if (length(other_index) > 0) {
-          other_rows$args[other_index[1]]
-        } else {
-          NA_character_
-        }
-        arguments <- split_arguments(row$args)
-        other_arguments <- split_arguments(other_args)
-        argument_names <- trimws(sub("=.*$", "", arguments))
-        other_argument_names <- trimws(sub("=.*$", "", other_arguments))
-
-        changed <- vapply(seq_along(arguments), function(j) {
-          match_index <- which(other_argument_names == argument_names[j])
-          length(match_index) == 0 ||
-            ! identical(arguments[j], other_arguments[match_index[1]])
-        }, logical(1))
-
-        argument_html <- vapply(seq_along(arguments), function(j) {
-          argument <- htmltools::htmlEscape(arguments[j])
-          if (changed[j]) {
-            title <- if (difference_class == "argument-removed") {
-              "Removed or changed argument"
-            } else {
-              "Added or changed argument"
-            }
-            paste0(
-              '<span class="', difference_class, '" title="', title, '">',
-              argument,
-              "</span>"
-            )
-          } else {
-            argument
-          }
-        }, character(1))
-
-        HTML(paste0(
-          htmltools::htmlEscape(paste0(row$package, "::", row$name, "(")),
-          paste(argument_html, collapse = ", "),
-          ")"
-        ))
+      other_index <- which(other_rows$package == row$package)
+      if (length(other_index) == 0 && nrow(rows) == 1 && nrow(other_rows) == 1) {
+        other_index <- 1L
       }
+
+      other_args <- if (length(other_index) > 0) {
+        other_rows$args[other_index[1]]
+      } else {
+        NA_character_
+      }
+      signature <- signature_html(row, other_args, difference_class)
 
       div(
         class = "implementation",
         div(
           class = "implementation-meta",
-          span(class = "package-badge", row$package),
+          span(class = "package-badge", paste0("package: ", row$package)),
           span(
             class = if (isTRUE(row$exported)) "visibility-badge" else
               "visibility-badge visibility-internal",
@@ -187,6 +212,7 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
 }
 
 catalog_table <- function_catalog |>
+  filter(name %in% visible_function_names) |>
   transmute(
     Function = name,
     Packages = packages,
@@ -635,6 +661,7 @@ body {
 .control-grid {
   grid-template-columns: minmax(250px, 1.35fr) minmax(180px, .75fr) 40px minmax(180px, .75fr);
   gap: 14px;
+  align-items: start;
 }
 .form-label, .control-label {
   margin-bottom: 6px;
@@ -648,6 +675,7 @@ body {
   border-radius: 5px !important;
 }
 .selectize-input { padding: 10px 11px !important; }
+.search-package { color: #7a8581; }
 .selectize-control.plugin-remove_button .item .remove {
   padding: 0 7px;
   color: #5d6965;
@@ -662,6 +690,7 @@ body {
 .swap-button {
   width: 40px;
   height: 42px;
+  margin-top: 26px;
   color: #315f58;
   background: #edf4f2;
   border-radius: 5px;
@@ -701,7 +730,7 @@ body {
 .history-content { padding: 2px 16px 14px; }
 .history-help { margin: 0 0 15px; color: #68736f; font-size: .82rem; }
 .timeline-row { grid-template-columns: 18px minmax(150px, .5fr) minmax(0, 1.5fr); gap: 14px; padding-bottom: 14px; }
-.timeline::before { left: 8px; }
+.timeline::before { left: 5.5px; }
 .timeline-dot { width: 8px; height: 8px; margin-top: 13px; border-width: 2px; }
 .timeline-card { padding: 12px 14px; border-radius: 5px; }
 .catalog-section { margin-top: 26px; }
@@ -800,15 +829,38 @@ ui <- fluidPage(
             choices = NULL,
             options = list(
               placeholder = "Search for a function",
-              maxOptions = 400,
+              maxOptions = 100,
               plugins = list("remove_button"),
               onFocus = I("function() { if (this.items.length) this.clear(); }"),
+              valueField = "value",
+              labelField = "label",
+              searchField = c("name", "label"),
+              sortField = list(
+                list(field = "$score", direction = "desc"),
+                list(field = "name", direction = "asc"),
+                list(field = "current", direction = "desc"),
+                list(field = "last_id", direction = "desc"),
+                list(field = "package", direction = "asc")
+              ),
+              render = I(
+                "{
+                   option: function(item, escape) {
+                     return '<div><span class=\"search-package\">' +
+                       escape(item.package) + '::</span>' + escape(item.name) + '</div>';
+                   },
+                   item: function(item, escape) {
+                     return '<div><span class=\"search-package\">' +
+                       escape(item.package) + '::</span>' + escape(item.name) + '</div>';
+                   }
+                 }"
+              ),
               score = I(
                 "function(search) {
                    var query = search.toLowerCase().trim();
                    return function(item) {
-                     var text = String(item.text || item.label || item.value || '').toLowerCase();
-                     if (text.indexOf('::') !== -1 && query.indexOf('::') === -1) return 0;
+                     var name = String(item.name || '').toLowerCase();
+                     var qualified = String(item.label || item.value || '').toLowerCase();
+                     var text = query.indexOf('::') === -1 ? name : qualified;
                      if (text === query) return 100;
                      var position = text.indexOf(query);
                      if (position === -1) return 0;
@@ -820,7 +872,7 @@ ui <- fluidPage(
           ),
           p(
             class = "search-help",
-            HTML("For a specific package, use <code>stats::lm</code>.")
+            HTML("Type a function name, for example <code>lm</code>.")
           )
         ),
         selectInput(
@@ -945,7 +997,10 @@ server <- function(input, output, session) {
         class = "history-content",
         p(
           class = "history-help",
-          "Distinct recorded signatures and metadata states across R versions."
+          paste(
+            "Distinct recorded signatures and metadata states across R versions.",
+            "Arguments added or changed since the previous state are highlighted in green."
+          )
         ),
         div(
           class = "timeline",
@@ -959,10 +1014,17 @@ server <- function(input, output, session) {
               if (first == last) first else paste(first, last, sep = " – ")
             }, character(1)) |>
               paste(collapse = "; ")
-            signature <- if (is.na(row$args)) {
-              paste0(row$package, "::", row$name, "  (arguments not recorded)")
+            previous_rows <- history[history$last_id < row$first_id, ]
+            if (nrow(previous_rows) > 0) {
+              same_package <- which(previous_rows$package == row$package)
+              if (length(same_package) > 0) {
+                previous_rows <- previous_rows[same_package, ]
+              }
+              previous_row <- previous_rows[which.max(previous_rows$last_id), ]
+              previous_args <- previous_row$args
+              signature <- signature_html(row, previous_args, "argument-added")
             } else {
-              paste0(row$package, "::", row$name, row$args)
+              signature <- signature_html(row)
             }
             metadata <- c(
               row$type,
@@ -1012,11 +1074,16 @@ server <- function(input, output, session) {
   observeEvent(input$function_catalog_rows_selected, {
     row <- input$function_catalog_rows_selected
     req(length(row) == 1)
+    selected_name <- catalog_table$Function[row]
+    selected_value <- function_choices |>
+      filter(name == selected_name) |>
+      slice_head(n = 1) |>
+      pull(value)
     updateSelectizeInput(
       session,
       "function_name",
       choices = function_choices,
-      selected = catalog_table$Function[row],
+      selected = selected_value,
       server = TRUE
     )
     session$sendCustomMessage("scroll-to-compare", list())
