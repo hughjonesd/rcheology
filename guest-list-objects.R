@@ -81,8 +81,13 @@ for (pkg in ip) {
 pkgData <- pkgData[-1, ] # remove first empty row
 pkgData$hidden <- substring(pkgData$name, 1, 1) == "."
 
+outputFile <- myGetEnv("RCHEOLOGY_OUTPUT_FILE")
+if (outputFile == "") {
+  outputFile <- paste("docker-data/pkg_data-R-", shortRversion, ".csv", sep = "")
+}
+
 write.table(pkgData, 
-        file = paste("docker-data/pkg_data-R-", shortRversion, ".csv", sep = ""),
+        file = outputFile,
         sep = ",",
         row.names = F,
         qmethod   = "double",
