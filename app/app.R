@@ -6,9 +6,9 @@ library(dplyr)
 load("rcheology-app-data.RData")
 
 version_choice_labels <- ifelse(
-  is.na(app_versions$date),
-  app_versions$label,
-  paste0(app_versions$label, "  ·  ", format(app_versions$date, "%d %b %Y"))
+  app_versions$status == "released" & ! is.na(app_versions$date),
+  paste0(app_versions$label, "  ·  ", format(app_versions$date, "%d %b %Y")),
+  app_versions$label
 )
 version_choices <- setNames(app_versions$key, version_choice_labels)
 
@@ -47,6 +47,7 @@ function_choices <- rch_history |>
     value = paste0(package, "::", name),
     label = value,
     name,
+    name_length = nchar(name),
     package,
     current,
     last_id
@@ -61,6 +62,10 @@ default_function <- function_choices |>
   filter(name == default_function_name) |>
   slice_head(n = 1) |>
   pull(value)
+
+function_options <- lapply(seq_len(nrow(function_choices)), function(i) {
+  as.list(function_choices[i, ])
+})
 
 history_at_version <- function(history, version_id) {
   history[vapply(history$version_ids, function(x) version_id %in% x, logical(1)), ]
@@ -829,18 +834,21 @@ ui <- fluidPage(
             choices = NULL,
             options = list(
               placeholder = "Search for a function",
-              maxOptions = 100,
+              options = function_options,
+              items = list(default_function),
+              maxOptions = 3000,
               plugins = list("remove_button"),
               onFocus = I("function() { if (this.items.length) this.clear(); }"),
               valueField = "value",
               labelField = "label",
               searchField = c("name", "label"),
               sortField = list(
-                list(field = "$score", direction = "desc"),
+                list(field = "name_length", direction = "asc"),
                 list(field = "name", direction = "asc"),
                 list(field = "current", direction = "desc"),
                 list(field = "last_id", direction = "desc"),
-                list(field = "package", direction = "asc")
+                list(field = "package", direction = "asc"),
+                list(field = "$score", direction = "desc")
               ),
               render = I(
                 "{
@@ -856,15 +864,12 @@ ui <- fluidPage(
               ),
               score = I(
                 "function(search) {
-                   var query = search.toLowerCase().trim();
+                   var query = String(search).toLowerCase().trim();
+                   var qualified = query.indexOf('::') !== -1;
                    return function(item) {
-                     var name = String(item.name || '').toLowerCase();
-                     var qualified = String(item.label || item.value || '').toLowerCase();
-                     var text = query.indexOf('::') === -1 ? name : qualified;
-                     if (text === query) return 100;
-                     var position = text.indexOf(query);
-                     if (position === -1) return 0;
-                     return (position === 0 ? 2 : 1) + query.length / text.length;
+                     var text = String(qualified ? item.label : item.name).toLowerCase();
+                     if (text === query) return 2;
+                     return text.indexOf(query) === -1 ? 0 : 1;
                    };
                  }"
               )
@@ -872,7 +877,12 @@ ui <- fluidPage(
           ),
           p(
             class = "search-help",
-            HTML("Type a function name, for example <code>lm</code>.")
+            HTML(
+              paste(
+                "Type a function name, for example <code>lm</code>.",
+                "Version lists show where the selected package and function were recorded."
+              )
+            )
           )
         ),
         selectInput(
@@ -924,14 +934,6 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  updateSelectizeInput(
-    session,
-    "function_name",
-    choices = function_choices,
-    selected = default_function,
-    server = TRUE
-  )
-
   observeEvent(input$swap_versions, {
     baseline <- input$baseline_version
     updateSelectInput(session, "baseline_version", selected = input$target_version)
@@ -954,6 +956,35 @@ server <- function(input, output, session) {
     }
 
     history
+  })
+
+  observeEvent(input$function_name, {
+    history <- selected_history()
+    version_ids <- sort(unique(unlist(history$version_ids)))
+    choices <- rev(version_choices[version_ids])
+
+    baseline <- isolate(input$baseline_version)
+    if (length(baseline) != 1 || ! baseline %in% app_versions$key[version_ids]) {
+      baseline <- app_versions$key[min(version_ids)]
+    }
+
+    target <- isolate(input$target_version)
+    if (length(target) != 1 || ! target %in% app_versions$key[version_ids]) {
+      target <- app_versions$key[max(version_ids)]
+    }
+
+    updateSelectInput(
+      session,
+      "baseline_version",
+      choices = choices,
+      selected = baseline
+    )
+    updateSelectInput(
+      session,
+      "target_version",
+      choices = choices,
+      selected = target
+    )
   })
 
   output$comparison_panels <- renderUI({
@@ -1082,9 +1113,7 @@ server <- function(input, output, session) {
     updateSelectizeInput(
       session,
       "function_name",
-      choices = function_choices,
-      selected = selected_value,
-      server = TRUE
+      selected = selected_value
     )
     session$sendCustomMessage("scroll-to-compare", list())
   })
