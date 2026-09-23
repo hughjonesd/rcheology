@@ -111,7 +111,8 @@ split_arguments <- function(args) {
   trimws(pieces)
 }
 
-signature_html <- function(row, other_args = NA_character_, difference_class = NULL) {
+signature_html <- function(row, other_args = NA_character_, difference_class = NULL,
+                           include_removed = FALSE) {
   if (is.na(row$args)) {
     return(HTML(htmltools::htmlEscape(
       paste0(row$package, "::", row$name, "  (arguments not recorded)")
@@ -146,6 +147,18 @@ signature_html <- function(row, other_args = NA_character_, difference_class = N
       argument
     }
   }, character(1))
+
+  if (include_removed) {
+    removed <- ! other_argument_names %in% argument_names
+    removed_html <- vapply(other_arguments[removed], function(argument) {
+      paste0(
+        '<span class="argument-removed" title="Deleted argument">',
+        htmltools::htmlEscape(argument),
+        "</span>"
+      )
+    }, character(1))
+    argument_html <- c(argument_html, removed_html)
+  }
 
   HTML(paste0(
     htmltools::htmlEscape(paste0(row$package, "::", row$name, "(")),
@@ -1030,7 +1043,8 @@ server <- function(input, output, session) {
           class = "history-help",
           paste(
             "Distinct recorded signatures and metadata states across R versions.",
-            "Arguments added or changed since the previous state are highlighted in green."
+            "Arguments added or changed since the previous state are highlighted in green;",
+            "deleted arguments are crossed out in red."
           )
         ),
         div(
@@ -1053,7 +1067,12 @@ server <- function(input, output, session) {
               }
               previous_row <- previous_rows[which.max(previous_rows$last_id), ]
               previous_args <- previous_row$args
-              signature <- signature_html(row, previous_args, "argument-added")
+              signature <- signature_html(
+                row,
+                previous_args,
+                "argument-added",
+                include_removed = TRUE
+              )
             } else {
               signature <- signature_html(row)
             }
