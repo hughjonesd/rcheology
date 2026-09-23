@@ -19,6 +19,13 @@ The latest R version covered is 4.6.1.
 You can view the data online in a [Shiny
 app](https://hughjonesd.shinyapps.io/rcheology/).
 
+Open the help for a function as it appeared in a particular R release
+with:
+
+``` r
+version_help("lm", "3.6.3", package = "stats")
+```
+
 ## Installing
 
 From [r-universe](https://r-universe.dev):
@@ -57,6 +64,11 @@ R versions are built using the
 
 Results are found from running `ls(all.names = TRUE)` on all installed
 packages. For more details, see `guest-list-objects.R`.
+
+Historical HTML help is built separately by GitHub Actions from the same
+R installations. Existing HTML is copied from older releases; later
+releases are rendered by the R version that supplied the help. The files
+are published with GitHub Pages rather than included in the package.
 
 The `daily` branch is rebuilt by GitHub Actions from the latest `r-next`
 and `r-devel` builds. These snapshots are marked in the `status` column

@@ -22,13 +22,14 @@ function setup_ctr {
   esac
   
   docker image pull ghcr.io/r-hub/evercran/$IMAGE
-  docker stop $CONTAINER
-  docker rm $CONTAINER
+  docker stop $CONTAINER 2>/dev/null || true
+  docker rm $CONTAINER 2>/dev/null || true
   
   docker create --name $CONTAINER $PLATFORM \
     -i -t "ghcr.io/r-hub/evercran/$IMAGE" 
 
   docker cp guest-list-objects.R $CONTAINER:/root/
+  docker cp guest-html-help.R $CONTAINER:/root/
   docker cp guest-functions.R $CONTAINER:/root/
   docker cp guest-run-r-versions.sh $CONTAINER:/root/
   
@@ -36,8 +37,7 @@ function setup_ctr {
   docker start $CONTAINER
   docker exec $CONTAINER chmod a+x /root/guest-run-r-versions.sh
   
-  docker exec $CONTAINER mkdir /root/docker-data
-  docker exec $CONTAINER mkdir /root/errors
+  docker exec $CONTAINER mkdir -p /root/docker-data /root/errors /root/help-site
 }
 
 function maybe_start_x {
@@ -66,13 +66,18 @@ function set_entrypoint {
 
 function run_image {
   IMAGE=$1
+  HTML_HELP=$2
   setup_ctr $IMAGE
   CONTAINER="ctr-$IMAGE"
 
   maybe_start_x $IMAGE
   set_entrypoint $IMAGE
-  docker exec $CONTAINER $ENTRYPOINT /root/guest-run-r-versions.sh
+  docker exec $CONTAINER $ENTRYPOINT /root/guest-run-r-versions.sh $HTML_HELP
   docker cp "$CONTAINER:/root/docker-data/." docker-data
+  if [ "$HTML_HELP" = "--html-help" ]; then
+    mkdir -p help-site
+    docker cp "$CONTAINER:/root/help-site/." help-site
+  fi
   docker stop $CONTAINER
   maybe_stop_x $IMAGE
 }

@@ -93,4 +93,8 @@ write.table(pkgData,
         qmethod   = "double",
         col.names = T
       )
+
+if (exists("commandArgs") && "--html-help" %in% commandArgs()) {
+  source("guest-html-help.R")
+}
 q("no")

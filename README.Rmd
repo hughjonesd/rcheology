@@ -30,6 +30,12 @@ The latest R version covered is `r r_latest`.
 
 You can view the data online in a [Shiny app](https://hughjonesd.shinyapps.io/rcheology/).
 
+Open the help for a function as it appeared in a particular R release with:
+
+```r
+version_help("lm", "3.6.3", package = "stats")
+```
+
 ## Installing
 
 From [r-universe](https://r-universe.dev):

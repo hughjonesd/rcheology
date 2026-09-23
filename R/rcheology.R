@@ -7,6 +7,7 @@
 #' * [Rversions] lists R versions and their release dates. NB: For a more complete 
 #'   and "canonical" solution, see the 
 #'   [rversions](https://cran.r-project.org/package=rversions) package.
+#' * [version_help()] opens the historical HTML help for a recorded function.
 #' 
 #' The version of the rcheology package reflects the latest R version to be included in the data, 
 #' e.g. 3.5.1.x contains data up to and including R 3.5.1.

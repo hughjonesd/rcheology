@@ -13,6 +13,7 @@ rcheology is a data package providing two data frames:
 \item \link{Rversions} lists R versions and their release dates. NB: For a more complete
 and "canonical" solution, see the
 \href{https://cran.r-project.org/package=rversions}{rversions} package.
+\item \code{\link[=version_help]{version_help()}} opens the historical HTML help for a recorded function.
 }
 
 The version of the rcheology package reflects the latest R version to be included in the data,
@@ -31,6 +32,11 @@ R versions are built using the
 
 Results are found from running \code{ls(all.names = TRUE)} on all installed
 packages. For more details, see \code{guest-list-objects.R}.
+
+Historical HTML help is built separately by GitHub Actions from the same
+R installations. Existing HTML is copied from older releases; later
+releases are rendered by the R version that supplied the help. The files
+are published with GitHub Pages rather than included in the package.
 
 The \code{daily} branch is rebuilt by GitHub Actions from the latest \code{r-next}
 and \code{r-devel} builds. These snapshots are marked in the \code{status} column

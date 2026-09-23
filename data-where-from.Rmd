@@ -9,6 +9,11 @@ project.
 Results are found from running `ls(all.names = TRUE)` on all installed packages. 
 For more details, see `guest-list-objects.R`.
 
+Historical HTML help is built separately by GitHub Actions from the same R
+installations. Existing HTML is copied from older releases; later releases are
+rendered by the R version that supplied the help. The files are published with
+GitHub Pages rather than included in the package.
+
 The `daily` branch is rebuilt by GitHub Actions from the latest `r-next` and
 `r-devel` builds. These snapshots are marked in the `status` column and are not
 included in the CRAN package.

@@ -171,15 +171,18 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
     h2(class = "version-heading", paste0(label, ": ", version$label)),
     lapply(seq_len(nrow(rows)), function(i) {
       row <- rows[i, ]
-      help_version <- app_versions$Rversion[version_id]
-      help_version <- sub("(1\\.[0-4])\\.0", "\\1", help_version)
-      help_version <- sub("(0\\.\\d+)\\.0", "\\1", help_version)
-      help_url <- sprintf(
-        "https://hughjonesd.github.io/r-help/%s/%s/%s.html",
-        help_version,
-        row$package,
-        utils::URLencode(row$name, reserved = TRUE)
-      )
+      help_url <- if (version$status == "released") {
+        paste0(
+          "https://hughjonesd.github.io/rcheology/help/",
+          version$Rversion,
+          "/index.html?package=",
+          utils::URLencode(row$package, reserved = TRUE),
+          "&name=",
+          utils::URLencode(row$name, reserved = TRUE)
+        )
+      } else {
+        NA_character_
+      }
       other_index <- which(other_rows$package == row$package)
       if (length(other_index) == 0 && nrow(rows) == 1 && nrow(other_rows) == 1) {
         other_index <- 1L
@@ -204,13 +207,19 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
           )
         ),
         pre(class = "signature-code", code(signature)),
-        a(
-          class = "documentation-link",
-          href = help_url,
-          target = "_blank",
-          rel = "noopener noreferrer",
-          "Open documentation ", span("↗", `aria-hidden` = "true")
-        )
+        if (is.na(help_url)) {
+          span(class = "documentation-unavailable", "Help not published")
+        } else {
+          a(
+            class = "documentation-link",
+            href = help_url,
+            target = "_blank",
+            rel = "noopener noreferrer",
+            `data-help-url` = help_url,
+            `data-help-title` = paste0(row$package, "::", row$name),
+            "Open documentation ", span("↗", `aria-hidden` = "true")
+          )
+        }
       )
     })
   )
@@ -491,6 +500,8 @@ a:hover { color: var(--teal); }
 }
 .argument-added { color: #155c36; background: #dcefe4; }
 .documentation-link { font-size: .8rem; font-weight: 750; text-decoration: none; }
+.documentation-unavailable { color: var(--ink-soft); font-size: .8rem; }
+.help-frame { width: 100%; height: 70vh; border: 0; }
 .empty-mark { margin: 35px 0 5px; color: #716d66; font-family: Georgia, serif; font-size: 1.3rem; }
 .signature-panel-empty p { color: var(--ink-soft); font-size: .88rem; }
 
@@ -781,6 +792,16 @@ ui <- fluidPage(
     tags$script(HTML(
       "Shiny.addCustomMessageHandler('scroll-to-compare', function(_) {
          document.getElementById('compare').scrollIntoView({behavior: 'smooth'});
+       });
+       document.addEventListener('click', function(event) {
+         var link = event.target.closest('.documentation-link');
+         if (!link) return;
+         event.preventDefault();
+         Shiny.setInputValue('help_request', {
+           url: link.dataset.helpUrl,
+           title: link.dataset.helpTitle,
+           nonce: Math.random()
+         }, {priority: 'event'});
        });"
     ))
   ),
@@ -928,12 +949,43 @@ ui <- fluidPage(
         a(href = "https://github.com/hughjonesd/rcheology", "rcheology dataset"),
         "."
       ),
-      span("Documentation: ", a(href = "https://github.com/hughjonesd/r-help", "r-help"), ".")
+      span(
+        "Documentation: ",
+        a(
+          href = "https://hughjonesd.github.io/rcheology/help/",
+          "historical R help"
+        ),
+        "."
+      )
     )
   )
 )
 
 server <- function(input, output, session) {
+  observeEvent(input$help_request, {
+    request <- input$help_request
+    req(request$url, request$title)
+    showModal(modalDialog(
+      title = request$title,
+      tags$iframe(
+        class = "help-frame",
+        src = request$url,
+        title = paste("Help for", request$title)
+      ),
+      easyClose = TRUE,
+      size = "l",
+      footer = tagList(
+        a(
+          href = request$url,
+          target = "_blank",
+          rel = "noopener noreferrer",
+          "Open in a new tab"
+        ),
+        modalButton("Close")
+      )
+    ))
+  })
+
   observeEvent(input$swap_versions, {
     baseline <- input$baseline_version
     updateSelectInput(session, "baseline_version", selected = input$target_version)
