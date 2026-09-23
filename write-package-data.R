@@ -2,21 +2,38 @@ library(dplyr)
 library(purrr)
 library(readr)
 
+help_records <- if (file.exists("inst/rcheology-help.rds")) {
+  readRDS("inst/rcheology-help.rds")
+} else {
+  list()
+}
+help_lookup <- new.env(parent = emptyenv(), hash = TRUE)
+if (length(help_records) > 0L) {
+  for (i in seq_along(help_records)) {
+    key <- digest::digest(help_records[[i]], algo = "sha256", serialize = FALSE)
+    help_lookup[[key]] <- i
+  }
+}
+store_help <- function(records) {
+  vapply(records, function(record) {
+    key <- digest::digest(record, algo = "sha256", serialize = FALSE)
+    id <- help_lookup[[key]]
+    if (is.null(id)) {
+      id <- length(help_records) + 1L
+      help_records[[id]] <<- record
+      help_lookup[[key]] <- id
+    }
+    id
+  }, integer(1))
+}
+
 existing_help <- NULL
 if (file.exists("data/rcheology.rda")) {
   existing_data <- new.env(parent = emptyenv())
   load("data/rcheology.rda", envir = existing_data)
-  if (
-    "help" %in% names(existing_data$rcheology) &&
-      file.exists("inst/rcheology-help.rds")
-  ) {
-    existing_records <- readRDS("inst/rcheology-help.rds")
+  if ("help" %in% names(existing_data$rcheology)) {
     existing_help <- existing_data$rcheology |>
       select(package, name, Rversion, status, existing_help = help)
-    existing_help$existing_help <- lapply(
-      existing_help$existing_help,
-      function(id) if (is.na(id)) NULL else existing_records[[id]]
-    )
   }
 }
 
@@ -49,7 +66,7 @@ read_modern_help <- function(path) {
     }
     x
   }
-  pages$help <- lapply(pages$rd, function(rd) {
+  records <- lapply(pages$rd, function(rd) {
     rd <- strip_rd_sources(rd)
     memCompress(serialize(
       list(rd = rd, html = NA_character_, text = NA_character_),
@@ -57,6 +74,7 @@ read_modern_help <- function(path) {
       version = 2
     ), type = "gzip")
   })
+  pages$help <- store_help(records)
 
   help_data$aliases |>
     inner_join(
@@ -101,7 +119,7 @@ read_legacy_help <- function(path, released_versions) {
     topics <- vapply(index_bits, `[[`, character(1), 2L)
     page_topics <- unique(topics)
 
-    page_help <- lapply(page_topics, function(topic) {
+    page_records <- lapply(page_topics, function(topic) {
       html_file <- file.path(package_dir, "html", paste0(topic, ".html"))
       text_file <- file.path(package_dir, "help", topic)
       text <- if (file.exists(text_file)) {
@@ -155,6 +173,7 @@ read_legacy_help <- function(path, released_versions) {
         version = 2
       ), type = "gzip")
     })
+    page_help <- store_help(page_records)
 
     help_parts[[i]] <- tibble(
       package,
@@ -230,23 +249,14 @@ if (! is.null(existing_help)) {
       existing_help,
       by = c("package", "name", "Rversion", "status")
     )
-  rcheology$help <- Map(function(new, existing) {
-    if (length(new) > 0L) new else existing
-  }, rcheology$help, rcheology$existing_help)
-  rcheology <- select(rcheology, -existing_help)
+  rcheology <- rcheology |>
+    mutate(help = coalesce(help, existing_help)) |>
+    select(-existing_help)
 }
-
-help_rows <- which(lengths(rcheology$help) > 0L)
-records <- rcheology$help[help_rows]
-unique_records <- ! duplicated(records)
-help_store <- records[unique_records]
-help_ids <- rep(NA_integer_, nrow(rcheology))
-help_ids[help_rows] <- match(records, help_store)
-rcheology$help <- help_ids
 
 dir.create("inst", showWarnings = FALSE)
 saveRDS(
-  help_store,
+  help_records,
   "inst/rcheology-help.rds",
   compress = "xz",
   version = 2
@@ -254,7 +264,7 @@ saveRDS(
 
 cat("Dimensions:", dim(rcheology), "\n")
 cat("Functions with help:", sum(! is.na(rcheology$help)), "\n")
-cat("Distinct help records:", length(help_store), "\n")
+cat("Distinct help records:", length(help_records), "\n")
 cat("Versions:\n")
 print(table(rcheology$Rversion))
 

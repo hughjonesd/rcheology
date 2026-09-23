@@ -55,7 +55,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::devtools, any::dplyr, any::DT, any::purrr, any::readr, any::rsconnect, any::shiny
+          extra-packages: any::devtools, any::digest, any::dplyr, any::DT, any::purrr, any::readr, any::rsconnect, any::shiny
           cache-version: 3
           needs: check
 
