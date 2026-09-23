@@ -28,12 +28,15 @@ jobs:
       - name: Extract snapshot
         env:
           RCHEOLOGY_OUTPUT_FILE: ${{ matrix.r_version }}.csv
+          RCHEOLOGY_HELP_OUTPUT_FILE: help-${{ matrix.r_version }}.RData
         run: Rscript guest-list-objects.R
 
       - uses: actions/upload-artifact@v4
         with:
           name: snapshot-${{ matrix.r_version }}
-          path: ${{ matrix.r_version }}.csv
+          path: |
+            ${{ matrix.r_version }}.csv
+            help-${{ matrix.r_version }}.RData
           retention-days: 1
 
   publish:
@@ -64,7 +67,7 @@ jobs:
 
       - name: Build daily data
         run: |
-          cp daily-input/*.csv docker-data
+          cp daily-input/* docker-data
           Rscript write-package-data.R
           Rscript build-daily-package.R daily-dist
           Rscript make-app-data.R
@@ -89,8 +92,10 @@ jobs:
           git -C daily-branch merge --strategy=ours --no-edit origin/master
           git -C daily-branch restore --source=origin/master --staged --worktree .
           cp data/rcheology.rda daily-branch/data/
+          mkdir -p daily-branch/inst
+          cp inst/rcheology-help.rds daily-branch/inst/
           cp DESCRIPTION daily-branch/
-          git -C daily-branch add data/rcheology.rda DESCRIPTION
+          git -C daily-branch add data/rcheology.rda inst/rcheology-help.rds DESCRIPTION
           git -C daily-branch commit --allow-empty -m "Daily snapshots $(date -u +%F)"
           git -C daily-branch push origin HEAD:daily
 
@@ -114,7 +119,11 @@ jobs:
           )
           rsconnect::deployApp(
             "app",
-            appFiles = c("app.R", "rcheology-app-data.RData"),
+            appFiles = c(
+              "app.R",
+              "rcheology-app-data.RData",
+              "rcheology-help.rds"
+            ),
             appName = "rcheology",
             account = "hughjonesd",
             packageRepositoryResolutionR = "lockfile",

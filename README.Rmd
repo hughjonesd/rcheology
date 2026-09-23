@@ -64,7 +64,7 @@ from the [daily GitHub release](https://github.com/hughjonesd/rcheology/releases
 ## Do it yourself
 
 * Install and start docker.
-* Run `host-run-on-evercran.sh`.
+* Run `host-run-on-evercran.sh` to collect functions and help in one pass.
 
 ## The data
 
@@ -74,6 +74,13 @@ library(rcheology)
 data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
+```
+
+Retrieve a help page as modern Rd, plain text, or HTML:
+
+```{r}
+old_mean_help <- version_help("mean", "1.9.1", package = "base", format = "text")
+cat(substr(old_mean_help, 1, 500))
 ```
  
 Latest changes:

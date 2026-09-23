@@ -4,6 +4,7 @@ library(DT)
 library(dplyr)
 
 load("rcheology-app-data.RData")
+help_store <- readRDS("rcheology-help.rds")
 
 version_choice_labels <- ifelse(
   app_versions$status == "released" & ! is.na(app_versions$date),
@@ -171,15 +172,7 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
     h2(class = "version-heading", paste0(label, ": ", version$label)),
     lapply(seq_len(nrow(rows)), function(i) {
       row <- rows[i, ]
-      help_version <- app_versions$Rversion[version_id]
-      help_version <- sub("(1\\.[0-4])\\.0", "\\1", help_version)
-      help_version <- sub("(0\\.\\d+)\\.0", "\\1", help_version)
-      help_url <- sprintf(
-        "https://hughjonesd.github.io/r-help/%s/%s/%s.html",
-        help_version,
-        row$package,
-        utils::URLencode(row$name, reserved = TRUE)
-      )
+      help_name <- paste0(row$package, "::", row$name)
       other_index <- which(other_rows$package == row$package)
       if (length(other_index) == 0 && nrow(rows) == 1 && nrow(other_rows) == 1) {
         other_index <- 1L
@@ -204,13 +197,22 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
           )
         ),
         pre(class = "signature-code", code(signature)),
-        a(
-          class = "documentation-link",
-          href = help_url,
-          target = "_blank",
-          rel = "noopener noreferrer",
-          "Open documentation ", span("↗", `aria-hidden` = "true")
-        )
+        if (any(
+          app_help$version_id == version_id &
+            app_help$package == row$package &
+            app_help$name == row$name
+        )) {
+          tags$button(
+            type = "button",
+            class = "documentation-link",
+            `data-version-id` = version_id,
+            `data-package` = row$package,
+            `data-name` = row$name,
+            paste0("Open help for ", help_name)
+          )
+        } else {
+          span(class = "documentation-unavailable", "Help not recorded")
+        }
       )
     })
   )
@@ -490,7 +492,24 @@ a:hover { color: var(--teal); }
   text-decoration: line-through;
 }
 .argument-added { color: #155c36; background: #dcefe4; }
-.documentation-link { font-size: .8rem; font-weight: 750; text-decoration: none; }
+.documentation-link {
+  padding: 0;
+  color: var(--teal-dark);
+  background: transparent;
+  border: 0;
+  font-size: .8rem;
+  font-weight: 750;
+  text-decoration: none;
+  cursor: pointer;
+}
+.documentation-link:hover { color: var(--copper); }
+.documentation-unavailable { color: #77827e; font-size: .8rem; }
+.help-documentation { max-height: 68vh; overflow-y: auto; padding-right: 10px; }
+.help-documentation h2 { margin-top: 0; font-size: 1.35rem; }
+.help-documentation h3 { margin-top: 1.35rem; font-size: 1.05rem; }
+.help-documentation pre { white-space: pre-wrap; font-size: .82rem; }
+.help-documentation table { width: 100%; margin: .8rem 0; }
+.help-documentation td { padding: .25rem .5rem; vertical-align: top; }
 .empty-mark { margin: 35px 0 5px; color: #716d66; font-family: Georgia, serif; font-size: 1.3rem; }
 .signature-panel-empty p { color: var(--ink-soft); font-size: .88rem; }
 
@@ -781,6 +800,16 @@ ui <- fluidPage(
     tags$script(HTML(
       "Shiny.addCustomMessageHandler('scroll-to-compare', function(_) {
          document.getElementById('compare').scrollIntoView({behavior: 'smooth'});
+       });
+       document.addEventListener('click', function(event) {
+         var button = event.target.closest('.documentation-link');
+         if (!button) return;
+         Shiny.setInputValue('help_request', {
+           version_id: Number(button.dataset.versionId),
+           package: button.dataset.package,
+           name: button.dataset.name,
+           nonce: Math.random()
+         }, {priority: 'event'});
        });"
     ))
   ),
@@ -927,8 +956,7 @@ ui <- fluidPage(
         "Data and source: ",
         a(href = "https://github.com/hughjonesd/rcheology", "rcheology dataset"),
         "."
-      ),
-      span("Documentation: ", a(href = "https://github.com/hughjonesd/r-help", "r-help"), ".")
+      )
     )
   )
 )
@@ -985,6 +1013,53 @@ server <- function(input, output, session) {
       choices = choices,
       selected = target
     )
+  })
+
+  observeEvent(input$help_request, {
+    request <- input$help_request
+    req(request$version_id, request$package, request$name)
+    matches <- app_help[
+      app_help$version_id == request$version_id &
+        app_help$package == request$package &
+        app_help$name == request$name,
+      , drop = FALSE
+    ]
+    req(nrow(matches) > 0)
+    help <- unserialize(memDecompress(
+      help_store[[matches$help[1]]],
+      type = "gzip"
+    ))
+
+    help_html <- help$html
+    if (is.na(help_html)) {
+      html_file <- tempfile(fileext = ".html")
+      tools::Rd2HTML(
+        help$rd,
+        out = html_file,
+        package = request$package,
+        no_links = TRUE
+      )
+      help_html <- paste(
+        readLines(html_file, warn = FALSE, encoding = "UTF-8"),
+        collapse = "\n"
+      )
+      help_html <- sub(
+        "(?is).*?<main>(.*)</main>.*",
+        "\\1",
+        help_html,
+        perl = TRUE
+      )
+      unlink(html_file)
+    }
+
+    version <- app_versions[request$version_id, ]
+    showModal(modalDialog(
+      title = paste0(request$package, "::", request$name, " — ", version$label),
+      div(class = "help-documentation", HTML(help_html)),
+      easyClose = TRUE,
+      size = "l",
+      footer = modalButton("Close")
+    ))
   })
 
   output$comparison_panels <- renderUI({

@@ -20,7 +20,13 @@ description[version_line] <- paste("Version:", daily_version)
 writeLines(description, "DESCRIPTION")
 
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
-write.csv(rcheology, file.path(output_dir, "rcheology-daily.csv"),
+write.csv(rcheology,
+  file.path(output_dir, "rcheology-daily.csv"),
   row.names = FALSE, na = "")
 saveRDS(rcheology, file.path(output_dir, "rcheology-daily.rds"),
   compress = "xz", version = 2)
+file.copy(
+  "inst/rcheology-help.rds",
+  file.path(output_dir, "rcheology-daily-help.rds"),
+  overwrite = TRUE
+)

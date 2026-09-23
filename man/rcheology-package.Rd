@@ -5,7 +5,7 @@
 \alias{rcheology-package}
 \title{Data on base packages from current and previous versions of R}
 \description{
-rcheology is a data package providing two data frames:
+rcheology is a data package providing data on R objects and their help:
 }
 \details{
 \itemize{
@@ -13,6 +13,7 @@ rcheology is a data package providing two data frames:
 \item \link{Rversions} lists R versions and their release dates. NB: For a more complete
 and "canonical" solution, see the
 \href{https://cran.r-project.org/package=rversions}{rversions} package.
+\item \code{\link[=version_help]{version_help()}} retrieves the help stored with each function record.
 }
 
 The version of the rcheology package reflects the latest R version to be included in the data,
@@ -31,6 +32,12 @@ R versions are built using the
 
 Results are found from running \code{ls(all.names = TRUE)} on all installed
 packages. For more details, see \code{guest-list-objects.R}.
+
+Help is collected from the same installations. R 2.10.0 and later store
+parsed Rd in a compiled help database; \code{guest-list-help.R} stores those
+parsed objects directly. Earlier installations contain rendered HTML and
+text, which are retained as the authoritative display. Help is stored in
+the \code{help} column of the main \code{rcheology} data frame.
 
 The \code{daily} branch is rebuilt by GitHub Actions from the latest \code{r-next}
 and \code{r-devel} builds. These snapshots are marked in the \code{status} column

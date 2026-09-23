@@ -31,6 +31,7 @@ function setup_ctr {
   docker cp guest-list-objects.R $CONTAINER:/root/
   docker cp guest-functions.R $CONTAINER:/root/
   docker cp guest-run-r-versions.sh $CONTAINER:/root/
+  docker cp guest-list-help.R $CONTAINER:/root/
   
   echo "Starting $CONTAINER ... be patient"
   docker start $CONTAINER

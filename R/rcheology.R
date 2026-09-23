@@ -1,12 +1,13 @@
 
 #' Data on base packages from current and previous versions of R
 #' 
-#' rcheology is a data package providing two data frames: 
+#' rcheology is a data package providing data on R objects and their help:
 #' 
 #' * [rcheology] lists objects in versions of R from 0.50 onwards.
 #' * [Rversions] lists R versions and their release dates. NB: For a more complete 
 #'   and "canonical" solution, see the 
 #'   [rversions](https://cran.r-project.org/package=rversions) package.
+#' * [version_help()] retrieves the help stored with each function record.
 #' 
 #' The version of the rcheology package reflects the latest R version to be included in the data, 
 #' e.g. 3.5.1.x contains data up to and including R 3.5.1.
@@ -58,6 +59,8 @@
 #'   packages. `NA` for earlier versions of R (pre 1.6.0) when the priority 
 #'   concept did not exist.
 #' * `args`: the arguments of the function, or NA for non-functions
+#' * `help`: an integer key for the function's help page, or `NA` when no help
+#'   was recorded. Use [version_help()] to retrieve and render the page.
 #' 
 #' @name rcheology 
 NULL
@@ -75,9 +78,6 @@ NULL
 #' 
 #' @name Rversions 
 NULL
-
-
-
 #' Check if a core R function changed between R versions
 #'
 #' @param fn Character name of a function in a core R package.

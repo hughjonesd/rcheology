@@ -9,6 +9,13 @@ project.
 Results are found from running `ls(all.names = TRUE)` on all installed packages. 
 For more details, see `guest-list-objects.R`.
 
+Help is collected from the same installations. R 2.10.0 and later store
+parsed Rd in a compiled help database; `guest-list-help.R` reads those objects
+and discards their source-location metadata. Earlier installations contain
+rendered HTML and text, which are retained as the authoritative display. Each
+distinct help record is compressed in `inst/rcheology-help.rds`. The `help`
+column of the main `rcheology` data frame contains its integer key.
+
 The `daily` branch is rebuilt by GitHub Actions from the latest `r-next` and
 `r-devel` builds. These snapshots are marked in the `status` column and are not
 included in the CRAN package.

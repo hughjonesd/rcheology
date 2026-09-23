@@ -27,5 +27,7 @@ versions of rcheology, this column was called \code{generic}.
 packages. \code{NA} for earlier versions of R (pre 1.6.0) when the priority
 concept did not exist.
 \item \code{args}: the arguments of the function, or NA for non-functions
+\item \code{help}: an integer key for the function's help page, or \code{NA} when no help
+was recorded. Use \code{\link[=version_help]{version_help()}} to retrieve and render the page.
 }
 }

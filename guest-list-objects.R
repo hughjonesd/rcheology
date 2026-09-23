@@ -93,4 +93,8 @@ write.table(pkgData,
         qmethod   = "double",
         col.names = T
       )
+
+if (myGetEnv("RCHEOLOGY_HELP_OUTPUT_FILE") != "") {
+  source("guest-list-help.R")
+}
 q("no")

@@ -1,5 +1,10 @@
 # rcheology (development version)
 
+* Versioned function help is now stored in the package. `version_help()` returns
+  it as modern Rd, plain text, or HTML, and the Shiny app opens it locally
+  instead of linking to the separate `r-help` site.
+* R 0.62, 0.62.1, and 0.62.2 remain absent because there is no matching
+  function data for those releases.
 * On the `daily` GitHub branch, we now record functions in current `r-next`
   and `r-devel`. A new `status` column distinguishes released R versions from
   the `r-next` and `r-devel` data. You can download this via the GitHub

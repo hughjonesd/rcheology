@@ -6,4 +6,5 @@ app/rsconnect/**
 .DS_Store
 opt-R-volumes/**
 docker-data/error*
+docker-data/help-R-*
 .positai

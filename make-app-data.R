@@ -1,6 +1,10 @@
 library(dplyr)
 
-load("data/rcheology.rda")
+function_data <- Sys.getenv(
+  "RCHEOLOGY_FUNCTION_DATA",
+  unset = "data/rcheology.rda"
+)
+load(function_data)
 load("data/Rversions.rda")
 
 status_levels <- c("released", "r-patched", "r-next", "r-devel")
@@ -34,6 +38,10 @@ rcheology <- rcheology |>
       grepl("Generic", class)
   ) |>
   filter(callable)
+
+app_help <- rcheology |>
+  filter(! is.na(help)) |>
+  select(package, name, version_id, help)
 
 rch_history <- rcheology |>
   group_by(
@@ -70,7 +78,13 @@ save(
   app_versions,
   function_catalog,
   rch_history,
+  app_help,
   file = file.path("app", "rcheology-app-data.RData"),
   compress = "xz",
   version = 2
+)
+file.copy(
+  "inst/rcheology-help.rds",
+  file.path("app", "rcheology-help.rds"),
+  overwrite = TRUE
 )
