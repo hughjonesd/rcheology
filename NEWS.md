@@ -2,7 +2,7 @@
 
 * `version_help()` opens historical function help hosted on the rcheology
   GitHub Pages site.
-* The Shiny app displays the same historical help pages without storing help
+* The Shiny app links to the same historical help pages without storing help
   text in the package or app data.
 * On the `daily` GitHub branch, we now record functions in current `r-next`
   and `r-devel`. A new `status` column distinguishes released R versions from

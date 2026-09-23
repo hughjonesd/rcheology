@@ -10,6 +10,6 @@ test_that("version_help constructs released help URLs", {
 
 test_that("version_help validates function and package choices", {
   expect_error(version_help("not-a-function", "3.6.3"), "Couldn't find")
-  expect_error(version_help("coef", "3.6.3"), "Multiple packages")
+  expect_error(version_help("coef", "3.6.3"), "stats, stats4")
   expect_error(version_help("lm", "99.0.0"), "not available")
 })

@@ -1,24 +1,9 @@
 name: Historical R help
 
 on:
+  schedule:
+    - cron: "17 5 * * *"
   workflow_dispatch:
-  push:
-    branches: [master]
-    paths:
-      - .github/workflows/help-pages.yaml
-      - guest-html-help.R
-      - guest-list-objects.R
-      - guest-run-r-versions.sh
-      - host-functions.sh
-      - host-run-on-evercran.sh
-  pull_request:
-    paths:
-      - .github/workflows/help-pages.yaml
-      - guest-html-help.R
-      - guest-list-objects.R
-      - guest-run-r-versions.sh
-      - host-functions.sh
-      - host-run-on-evercran.sh
 
 permissions:
   contents: read
@@ -30,90 +15,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  versions:
-    runs-on: ubuntu-latest
-    outputs:
-      images: ${{ steps.images.outputs.images }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - id: images
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            images='["2.x", "4.6.1"]'
-          else
-            images=$(awk '/^run_image / { print $2 }' host-run-on-evercran.sh |
-              jq -R . | jq -sc .)
-          fi
-          echo "images=$images" >> "$GITHUB_OUTPUT"
-
-  render:
-    needs: versions
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        image: ${{ fromJSON(needs.versions.outputs.images) }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Render help from ${{ matrix.image }}
-        run: |
-          source host-functions.sh
-          run_image "${{ matrix.image }}" --html-help
-
-      - name: Report size
-        run: du -sh help-site
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: help-${{ matrix.image }}
-          path: help-site
-          retention-days: 1
-
-  assemble:
-    needs: render
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: release
-
-      - uses: actions/download-artifact@v4
-        with:
-          pattern: help-*
-          path: site/help
-          merge-multiple: true
-
-      - name: Build indexes
-        run: |
-          Rscript guest-html-help.R --build-indexes site/help
-          cp site/help/index.html site/index.html
-          touch site/.nojekyll
-
-      - name: Check representative pages
-        run: |
-          test -s site/help/2.9.2/stats/lm.html
-          test -s site/help/2.10.0/stats/lm.html
-          test -s site/help/4.6.1/stats/lm.html
-          grep -q 'data-name="lm"' site/help/4.6.1/index.html
-
-      - uses: actions/configure-pages@v5
-        if: github.event_name != 'pull_request'
-      - uses: actions/upload-pages-artifact@v4
-        if: github.event_name != 'pull_request'
-        with:
-          path: site
-
-  deploy:
-    if: github.event_name != 'pull_request'
-    needs: assemble
+  build:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+
+      - name: Build historical help
+        run: |
+          ./host-run-on-evercran.sh --html-help
+          Rscript host-html-help.R
+
+      - name: Prepare Pages site
+        run: |
+          mkdir site
+          mv help-site site/help
+          printf '%s\n' \
+            '<!doctype html><meta http-equiv="refresh" content="0; url=help/">' \
+            '<a href="help/">Historical R help</a>' > site/index.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
       - id: deployment
         uses: actions/deploy-pages@v4

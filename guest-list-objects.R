@@ -35,6 +35,10 @@ baseLibDir <- paste(RHome, "/library", sep = "")
 # baseLibDir <- paste("/opt/R/", shortRversion, "/lib/R/library", sep = "")
 ip <- system(paste("ls", baseLibDir), intern = T)
 
+# Only compatible R versions receive this flag from guest-run-r-versions.sh.
+htmlHelp <- exists("commandArgs") && "--html-help" %in% commandArgs()
+if (htmlHelp) source("guest-html-help.R")
+
 hasPriorities <- exists("installed.packages") && 
   "priority" %in% names(formals(installed.packages))
 if (hasPriorities) {
@@ -53,6 +57,7 @@ if (hasPriorities) {
 for (pkg in ip) {
   if (pkg ==  "Rprofile" || pkg == "LibIndex" || pkg == "translations" || 
       pkg == "R.css" || pkg == "index.html") next
+  if (htmlHelp) renderHtmlHelp(pkg)
   # as.numeric catches versions e.g. 0.7 in pre
   loadedOK <- if (rv$major < 1 && as.numeric(rv$minor) < 14) {
     TRUE # let's hope
@@ -94,7 +99,4 @@ write.table(pkgData,
         col.names = T
       )
 
-if (exists("commandArgs") && "--html-help" %in% commandArgs()) {
-  source("guest-html-help.R")
-}
 q("no")

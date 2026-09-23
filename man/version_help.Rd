@@ -4,13 +4,12 @@
 \alias{version_help}
 \title{Open a function's help page from an earlier R version}
 \usage{
-version_help(fn, build = NULL, package = NULL)
+version_help(fn, version, package = NULL)
 }
 \arguments{
 \item{fn}{Character name of a function.}
 
-\item{build}{Released R version. Defaults to the latest released version in
-the installed data.}
+\item{version}{Released R version.}
 
 \item{package}{Package name. Required when the function occurs in more than
 one package in the requested version.}

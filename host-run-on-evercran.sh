@@ -7,70 +7,12 @@
 
 source host-functions.sh
 
+# GitHub Actions passes --html-help; the usual local run remains data-only.
+HTML_HELP=$1
+
 # cleanup
 rm docker-data/*
 
-# run_image pre
-run_image 0.x
-run_image 1.x
-run_image 2.x
- 
-run_image 3.0.0
-run_image 3.0.1
-run_image 3.0.2
-run_image 3.0.3
-run_image 3.1.0
-run_image 3.1.1
-run_image 3.1.2
-run_image 3.1.3
-run_image 3.2.0
-run_image 3.2.1
-run_image 3.2.2
-run_image 3.2.3
-run_image 3.2.4
-run_image 3.2.5
-run_image 3.3.0
-run_image 3.3.1
-run_image 3.3.2
-run_image 3.3.3
-run_image 3.4.0
-run_image 3.4.1
-run_image 3.4.2
-run_image 3.4.3
-run_image 3.4.4
-run_image 3.5.0
-run_image 3.5.1
-run_image 3.5.2
-run_image 3.5.3
-run_image 3.6.0
-run_image 3.6.1
-run_image 3.6.2
-run_image 3.6.3
-run_image 4.0.0
-run_image 4.0.1
-run_image 4.0.2
-run_image 4.0.3
-run_image 4.0.4
-run_image 4.0.5
-run_image 4.1.0
-run_image 4.1.1
-run_image 4.1.2
-run_image 4.1.3
-run_image 4.2.0
-run_image 4.2.1
-run_image 4.2.2
-run_image 4.2.3
-run_image 4.3.0
-run_image 4.3.1
-run_image 4.3.2
-run_image 4.3.3
-run_image 4.4.0
-run_image 4.4.1
-run_image 4.4.2
-run_image 4.4.3
-run_image 4.5.0
-run_image 4.5.1
-run_image 4.5.2
-run_image 4.5.3
-run_image 4.6.0
-run_image 4.6.1
+while read -r IMAGE; do
+  run_image "$IMAGE" "$HTML_HELP"
+done < evercran-images.txt

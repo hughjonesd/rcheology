@@ -215,8 +215,6 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
             href = help_url,
             target = "_blank",
             rel = "noopener noreferrer",
-            `data-help-url` = help_url,
-            `data-help-title` = paste0(row$package, "::", row$name),
             "Open documentation ", span("↗", `aria-hidden` = "true")
           )
         }
@@ -501,7 +499,6 @@ a:hover { color: var(--teal); }
 .argument-added { color: #155c36; background: #dcefe4; }
 .documentation-link { font-size: .8rem; font-weight: 750; text-decoration: none; }
 .documentation-unavailable { color: var(--ink-soft); font-size: .8rem; }
-.help-frame { width: 100%; height: 70vh; border: 0; }
 .empty-mark { margin: 35px 0 5px; color: #716d66; font-family: Georgia, serif; font-size: 1.3rem; }
 .signature-panel-empty p { color: var(--ink-soft); font-size: .88rem; }
 
@@ -792,16 +789,6 @@ ui <- fluidPage(
     tags$script(HTML(
       "Shiny.addCustomMessageHandler('scroll-to-compare', function(_) {
          document.getElementById('compare').scrollIntoView({behavior: 'smooth'});
-       });
-       document.addEventListener('click', function(event) {
-         var link = event.target.closest('.documentation-link');
-         if (!link) return;
-         event.preventDefault();
-         Shiny.setInputValue('help_request', {
-           url: link.dataset.helpUrl,
-           title: link.dataset.helpTitle,
-           nonce: Math.random()
-         }, {priority: 'event'});
        });"
     ))
   ),
@@ -962,30 +949,6 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  observeEvent(input$help_request, {
-    request <- input$help_request
-    req(request$url, request$title)
-    showModal(modalDialog(
-      title = request$title,
-      tags$iframe(
-        class = "help-frame",
-        src = request$url,
-        title = paste("Help for", request$title)
-      ),
-      easyClose = TRUE,
-      size = "l",
-      footer = tagList(
-        a(
-          href = request$url,
-          target = "_blank",
-          rel = "noopener noreferrer",
-          "Open in a new tab"
-        ),
-        modalButton("Close")
-      )
-    ))
-  })
-
   observeEvent(input$swap_versions, {
     baseline <- input$baseline_version
     updateSelectInput(session, "baseline_version", selected = input$target_version)

@@ -22,8 +22,8 @@ function setup_ctr {
   esac
   
   docker image pull ghcr.io/r-hub/evercran/$IMAGE
-  docker stop $CONTAINER 2>/dev/null || true
-  docker rm $CONTAINER 2>/dev/null || true
+  # A fresh Actions runner has no old container to remove.
+  docker rm -f $CONTAINER 2>/dev/null || true
   
   docker create --name $CONTAINER $PLATFORM \
     -i -t "ghcr.io/r-hub/evercran/$IMAGE" 
