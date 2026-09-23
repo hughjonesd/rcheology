@@ -826,7 +826,7 @@ ui <- fluidPage(
       h1("Compare R functions"),
       p(
         "Compare a function's recorded arguments and availability between two R versions. ",
-        "Function implementations are not compared. For more control, download the ",
+        "For more control, download the ",
         a(
           href = "https://github.com/hughjonesd/rcheology",
           target = "_blank",
@@ -892,9 +892,7 @@ ui <- fluidPage(
             class = "search-help",
             HTML(
               paste(
-                "Type a function name, for example <code>lm</code>.",
-                "Version lists show where the selected package and function were recorded."
-              )
+                "Try <code>lm</code> or <code>stats::lm</code>."              )
             )
           )
         ),
@@ -1039,14 +1037,6 @@ server <- function(input, output, session) {
       tags$summary("Interface history"),
       div(
         class = "history-content",
-        p(
-          class = "history-help",
-          paste(
-            "Distinct recorded signatures and metadata states across R versions.",
-            "Arguments added or changed since the previous state are highlighted in green;",
-            "deleted arguments are crossed out in red."
-          )
-        ),
         div(
           class = "timeline",
           lapply(seq_len(nrow(history)), function(i) {

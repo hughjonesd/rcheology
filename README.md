@@ -58,6 +58,13 @@ R versions are built using the
 Results are found from running `ls(all.names = TRUE)` on all installed
 packages. For more details, see `guest-list-objects.R`.
 
+Help is collected from the same installations. R 2.10.0 and later store
+parsed Rd in a compiled help database; `guest-list-help.R` extracts that
+Rd without reparsing it in a different R version. Earlier installations
+contain rendered HTML and text, which are retained as the authoritative
+display and converted to minimal modern Rd for use from the package.
+Pages are deduplicated before they are stored.
+
 The `daily` branch is rebuilt by GitHub Actions from the latest `r-next`
 and `r-devel` builds. These snapshots are marked in the `status` column
 and are not included in the CRAN package.
@@ -74,6 +81,7 @@ The `Rversions` data frame lists versions of R and release dates.
 
 - Install and start docker.
 - Run `host-run-on-evercran.sh`.
+- Run `host-run-help-on-evercran.sh` to collect versioned help.
 
 ## The data
 
@@ -103,6 +111,37 @@ rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0
 #> 423590   (x, centers, iter.max = 10, nstart = 1, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 #> 423596 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
 #> 423621 (x, centers, iter.max = 10L, nstart = 1L, algorithm = c("Hartigan-Wong",     "Lloyd", "Forgy", "MacQueen"), trace = FALSE)
+```
+
+Retrieve a help page as modern Rd, plain text, or HTML:
+
+``` r
+old_mean_help <- fun_help("mean", "1.9.1", package = "base", format = "text")
+cat(substr(old_mean_help, 1, 500))
+#> mean                   package:base                    R Documentation
+#> 
+#> mean
+#> 
+#> Description:
+#> 
+#>      mean                  package:base                  R Documentation
+#>      
+#>      Arithmetic Mean
+#>      
+#>      Description:
+#>      
+#>           Generic function for the (trimmed) arithmetic mean.
+#>      
+#>      Usage:
+#>      
+#>           mean(x, ...)
+#>      
+#>           ## Default S3 method:
+#>           mean(x, trim = 0, na.rm = FALSE, ...)
+#>      
+#>      Arguments:
+#>      
+#>             x: An R object.  Currently there are method
 ```
 
 Latest changes:
@@ -171,7 +210,7 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
 #> (`stat_count()`).
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" />
 
 An alternative view:
 
@@ -189,4 +228,4 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
 #> (`stat_count()`).
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" height="1000px" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" alt="" width="100%" height="1000px" />
