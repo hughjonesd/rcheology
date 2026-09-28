@@ -11,8 +11,8 @@ Depends:
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.0
