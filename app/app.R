@@ -876,11 +876,11 @@ ui <- fluidPage(
               labelField = "label",
               searchField = c("name", "label"),
               sortField = list(
+                list(field = "$score", direction = "desc"),
                 list(field = "name", direction = "asc"),
                 list(field = "current", direction = "desc"),
                 list(field = "last_id", direction = "desc"),
-                list(field = "package", direction = "asc"),
-                list(field = "$score", direction = "desc")
+                list(field = "package", direction = "asc")
               ),
               render = I(
                 "{
@@ -900,7 +900,8 @@ ui <- fluidPage(
                    var qualified = query.indexOf('::') !== -1;
                    return function(item) {
                      var text = String(qualified ? item.label : item.name).toLowerCase();
-                     if (text === query) return 2;
+                     if (text === query) return 3;
+                     if (text.indexOf(query) === 0) return 2;
                      return text.indexOf(query) === -1 ? 0 : 1;
                    };
                  }"
