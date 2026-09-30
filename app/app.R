@@ -184,15 +184,30 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
     h2(class = "version-heading", paste0(label, ": ", version$label)),
     lapply(seq_len(nrow(rows)), function(i) {
       row <- rows[i, ]
-      help_version <- app_versions$Rversion[version_id]
-      help_version <- sub("(1\\.[0-4])\\.0", "\\1", help_version)
-      help_version <- sub("(0\\.\\d+)\\.0", "\\1", help_version)
-      help_url <- sprintf(
-        "https://hughjonesd.github.io/r-help/%s/%s/%s.html",
-        help_version,
-        row$package,
-        utils::URLencode(row$name, reserved = TRUE)
-      )
+      if (version$status == "released") {
+        help_url <- sprintf(
+          paste0(
+            "https://hughjonesd.github.io/r-help/%s/00index.html",
+            "?package=%s&name=%s"
+          ),
+          utils::URLencode(version$Rversion, reserved = TRUE),
+          utils::URLencode(row$package, reserved = TRUE),
+          utils::URLencode(row$name, reserved = TRUE)
+        )
+        help_label <- "Open documentation "
+      } else {
+        manual_version <- if (version$status == "r-devel") {
+          "R-devel"
+        } else {
+          "R-patched"
+        }
+        help_url <- sprintf(
+          "https://stat.ethz.ch/R-manual/%s/library/%s/html/00Index.html",
+          manual_version,
+          utils::URLencode(row$package, reserved = TRUE)
+        )
+        help_label <- paste0("Open ", manual_version, " documentation ")
+      }
       other_index <- which(other_rows$package == row$package)
       if (length(other_index) == 0 && nrow(rows) == 1 && nrow(other_rows) == 1) {
         other_index <- 1L
@@ -222,7 +237,7 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
           href = help_url,
           target = "_blank",
           rel = "noopener noreferrer",
-          "Open documentation ", span("↗", `aria-hidden` = "true")
+          help_label, span("↗", `aria-hidden` = "true")
         )
       )
     })
