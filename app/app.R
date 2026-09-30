@@ -47,12 +47,11 @@ function_choices <- rch_history |>
     value = paste0(package, "::", name),
     label = value,
     name,
-    name_length = nchar(name),
     package,
     current,
     last_id
   ) |>
-  arrange(nchar(name), name, desc(current), desc(last_id), package)
+  arrange(name, desc(current), desc(last_id), package)
 
 visible_function_names <- function_choices |>
   distinct(name) |>
@@ -167,7 +166,8 @@ signature_html <- function(row, other_args = NA_character_, difference_class = N
   ))
 }
 
-signature_panel <- function(rows, other_rows, version_id, label, difference_class) {
+signature_panel <- function(rows, other_rows, version_id, label, difference_class,
+                            include_removed = FALSE) {
   version <- app_versions[version_id, ]
 
   if (nrow(rows) == 0) {
@@ -218,7 +218,12 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
       } else {
         NA_character_
       }
-      signature <- signature_html(row, other_args, difference_class)
+      signature <- signature_html(
+        row,
+        other_args,
+        difference_class,
+        include_removed
+      )
 
       div(
         class = "implementation",
@@ -871,7 +876,6 @@ ui <- fluidPage(
               labelField = "label",
               searchField = c("name", "label"),
               sortField = list(
-                list(field = "name_length", direction = "asc"),
                 list(field = "name", direction = "asc"),
                 list(field = "current", direction = "desc"),
                 list(field = "last_id", direction = "desc"),
@@ -1030,14 +1034,15 @@ server <- function(input, output, session) {
           target_rows,
           baseline_id,
           "Baseline",
-          "argument-removed"
+          NULL
         ),
         signature_panel(
           target_rows,
           baseline_rows,
           target_id,
           "Comparison",
-          "argument-added"
+          "argument-added",
+          include_removed = TRUE
         )
       )
     )
