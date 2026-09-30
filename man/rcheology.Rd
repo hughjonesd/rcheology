@@ -11,8 +11,10 @@ of R from 0.50 onwards. Variables are:
 \item \code{name}: name of the object
 \item \code{Rversion}: version of R as major.minor.patch
 \item \code{status}: one of \code{"released"}, \code{"r-next"}, or \code{"r-devel"}. The CRAN
-package contains released versions only; daily GitHub builds also contain
-the latest \code{r-next} and \code{r-devel} snapshots.
+package contains released versions only; the \code{daily} branch on GitHub
+also contain the latest \code{r-next} and \code{r-devel} snapshots. Note that
+on the \code{daily} branch, \code{r-next} will typically have the same \code{Rversion} as
+the latest release.
 \item \code{type}: Result of calling \code{\link[=typeof]{typeof()}} on the object
 \item \code{class}: \code{\link[=class]{class()}} of the object, separated by slashes if there are multiple classes.
 \item \code{exported}: \code{TRUE} if the object name was found in \code{\link[=getNamespaceExports]{getNamespaceExports()}}. True for

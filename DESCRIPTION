@@ -1,5 +1,5 @@
 Package: rcheology
-Version: 4.6.1.0.20260929
+Version: 4.6.1.0.20260930
 Title: Data on Base and Recommended Packages for Current and Previous Versions of R
 Description: Provides a dataset of functions in all base and recommended packages of R versions 0.50 onwards.
 Authors@R: person("David", "Hugh-Jones", , "davidhughjones@gmail.com", c("aut", "cre"))
@@ -11,8 +11,8 @@ Depends:
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.0

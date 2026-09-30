@@ -7,3 +7,4 @@ app/rsconnect/**
 opt-R-volumes/**
 docker-data/error*
 .positai
+inst/rcheology-help.rds

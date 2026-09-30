@@ -42,8 +42,10 @@
 #' * `name`: name of the object
 #' * `Rversion`: version of R as major.minor.patch
 #' * `status`: one of `"released"`, `"r-next"`, or `"r-devel"`. The CRAN
-#'   package contains released versions only; daily GitHub builds also contain
-#'   the latest `r-next` and `r-devel` snapshots.
+#'   package contains released versions only; the `daily` branch on GitHub 
+#'   also contain the latest `r-next` and `r-devel` snapshots. Note that
+#'   on the `daily` branch, `r-next` will typically have the same `Rversion` as 
+#'   the latest release.
 #' * `type`: Result of calling [typeof()] on the object
 #' * `class`: [class()] of the object, separated by slashes if there are multiple classes.
 #' * `exported`: `TRUE` if the object name was found in [getNamespaceExports()]. True for 

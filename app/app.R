@@ -47,12 +47,11 @@ function_choices <- rch_history |>
     value = paste0(package, "::", name),
     label = value,
     name,
-    name_length = nchar(name),
     package,
     current,
     last_id
   ) |>
-  arrange(nchar(name), name, desc(current), desc(last_id), package)
+  arrange(name, desc(current), desc(last_id), package)
 
 visible_function_names <- function_choices |>
   distinct(name) |>
@@ -167,7 +166,8 @@ signature_html <- function(row, other_args = NA_character_, difference_class = N
   ))
 }
 
-signature_panel <- function(rows, other_rows, version_id, label, difference_class) {
+signature_panel <- function(rows, other_rows, version_id, label, difference_class,
+                            include_removed = FALSE) {
   version <- app_versions[version_id, ]
 
   if (nrow(rows) == 0) {
@@ -184,15 +184,30 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
     h2(class = "version-heading", paste0(label, ": ", version$label)),
     lapply(seq_len(nrow(rows)), function(i) {
       row <- rows[i, ]
-      help_version <- app_versions$Rversion[version_id]
-      help_version <- sub("(1\\.[0-4])\\.0", "\\1", help_version)
-      help_version <- sub("(0\\.\\d+)\\.0", "\\1", help_version)
-      help_url <- sprintf(
-        "https://hughjonesd.github.io/r-help/%s/%s/%s.html",
-        help_version,
-        row$package,
-        utils::URLencode(row$name, reserved = TRUE)
-      )
+      if (version$status == "released") {
+        help_url <- sprintf(
+          paste0(
+            "https://hughjonesd.github.io/r-help/%s/00index.html",
+            "?package=%s&name=%s"
+          ),
+          utils::URLencode(version$Rversion, reserved = TRUE),
+          utils::URLencode(row$package, reserved = TRUE),
+          utils::URLencode(row$name, reserved = TRUE)
+        )
+        help_label <- "Open documentation "
+      } else {
+        manual_version <- if (version$status == "r-devel") {
+          "R-devel"
+        } else {
+          "R-patched"
+        }
+        help_url <- sprintf(
+          "https://stat.ethz.ch/R-manual/%s/library/%s/html/00Index.html",
+          manual_version,
+          utils::URLencode(row$package, reserved = TRUE)
+        )
+        help_label <- paste0("Open ", manual_version, " documentation ")
+      }
       other_index <- which(other_rows$package == row$package)
       if (length(other_index) == 0 && nrow(rows) == 1 && nrow(other_rows) == 1) {
         other_index <- 1L
@@ -203,7 +218,12 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
       } else {
         NA_character_
       }
-      signature <- signature_html(row, other_args, difference_class)
+      signature <- signature_html(
+        row,
+        other_args,
+        difference_class,
+        include_removed
+      )
 
       div(
         class = "implementation",
@@ -222,7 +242,7 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
           href = help_url,
           target = "_blank",
           rel = "noopener noreferrer",
-          "Open documentation ", span("↗", `aria-hidden` = "true")
+          help_label, span("↗", `aria-hidden` = "true")
         )
       )
     })
@@ -826,7 +846,7 @@ ui <- fluidPage(
       h1("Compare R functions"),
       p(
         "Compare a function's recorded arguments and availability between two R versions. ",
-        "Function implementations are not compared. For more control, download the ",
+        "For more control, download the ",
         a(
           href = "https://github.com/hughjonesd/rcheology",
           target = "_blank",
@@ -856,12 +876,11 @@ ui <- fluidPage(
               labelField = "label",
               searchField = c("name", "label"),
               sortField = list(
-                list(field = "name_length", direction = "asc"),
+                list(field = "$score", direction = "desc"),
                 list(field = "name", direction = "asc"),
                 list(field = "current", direction = "desc"),
                 list(field = "last_id", direction = "desc"),
-                list(field = "package", direction = "asc"),
-                list(field = "$score", direction = "desc")
+                list(field = "package", direction = "asc")
               ),
               render = I(
                 "{
@@ -881,7 +900,8 @@ ui <- fluidPage(
                    var qualified = query.indexOf('::') !== -1;
                    return function(item) {
                      var text = String(qualified ? item.label : item.name).toLowerCase();
-                     if (text === query) return 2;
+                     if (text === query) return 3;
+                     if (text.indexOf(query) === 0) return 2;
                      return text.indexOf(query) === -1 ? 0 : 1;
                    };
                  }"
@@ -892,9 +912,7 @@ ui <- fluidPage(
             class = "search-help",
             HTML(
               paste(
-                "Type a function name, for example <code>lm</code>.",
-                "Version lists show where the selected package and function were recorded."
-              )
+                "Try <code>lm</code> or <code>stats::lm</code>."              )
             )
           )
         ),
@@ -1017,14 +1035,15 @@ server <- function(input, output, session) {
           target_rows,
           baseline_id,
           "Baseline",
-          "argument-removed"
+          NULL
         ),
         signature_panel(
           target_rows,
           baseline_rows,
           target_id,
           "Comparison",
-          "argument-added"
+          "argument-added",
+          include_removed = TRUE
         )
       )
     )
@@ -1039,14 +1058,6 @@ server <- function(input, output, session) {
       tags$summary("Interface history"),
       div(
         class = "history-content",
-        p(
-          class = "history-help",
-          paste(
-            "Distinct recorded signatures and metadata states across R versions.",
-            "Arguments added or changed since the previous state are highlighted in green;",
-            "deleted arguments are crossed out in red."
-          )
-        ),
         div(
           class = "timeline",
           lapply(seq_len(nrow(history)), function(i) {
