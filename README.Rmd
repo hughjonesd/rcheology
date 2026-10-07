@@ -30,6 +30,9 @@ The latest R version covered is `r r_latest`.
 
 You can view the data online in a [Shiny app](https://hughjonesd.shinyapps.io/rcheology/).
 
+Historical documentation for these R versions is available from the
+[r-help archive](https://hughjonesd.github.io/r-help/).
+
 ## Installing
 
 From [r-universe](https://r-universe.dev):
@@ -70,7 +73,7 @@ from the [daily GitHub release](https://github.com/hughjonesd/rcheology/releases
 
 
 ```{r}
-library(rcheology)
+suppressPackageStartupMessages(library(rcheology))
 data("rcheology")
 
 rcheology[rcheology$name == "kmeans" & rcheology$Rversion %in% c("1.0.1", "1.9.0", "2.1.0", "3.0.2", "3.2.0", "4.0.2"), ]
