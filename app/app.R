@@ -201,11 +201,24 @@ signature_panel <- function(rows, other_rows, version_id, label, difference_clas
         } else {
           "R-patched"
         }
-        help_url <- sprintf(
-          "https://stat.ethz.ch/R-manual/%s/library/%s/html/00Index.html",
-          manual_version,
-          utils::URLencode(row$package, reserved = TRUE)
-        )
+        if (row$priority == "base") {
+          alias <- gsub("%", "+",
+            utils::URLencode(row$name, reserved = TRUE), fixed = TRUE
+          )
+          help_url <- sprintf(
+            paste0(
+              "https://cran.r-project.org/doc/manuals/%s/packages/%s/",
+              "refman/%s.html#topic+%s"
+            ),
+            tolower(manual_version), row$package, row$package, alias
+          )
+        } else {
+          help_url <- sprintf(
+            "https://stat.ethz.ch/R-manual/%s/library/%s/html/00Index.html",
+            manual_version,
+            utils::URLencode(row$package, reserved = TRUE)
+          )
+        }
         help_label <- paste0("Open ", manual_version, " documentation ")
       }
       other_index <- which(other_rows$package == row$package)
