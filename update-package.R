@@ -1,8 +1,8 @@
 
 ## UPDATE PROCEDURE
 
-# Daily snapshots are handled separately by GitHub Actions and do not change
-# this release procedure.
+# GitHub Actions builds and deploys the app with r-next and r-devel snapshots.
+# After pushing the release, let the daily workflow run or trigger it manually.
 
 # 1. Start docker
 # 2. Run a bash shell 
@@ -35,9 +35,6 @@ print(table(rcheology::rcheology$Rversion))
 devtools::build_readme()
 file.remove("README.html")
 
-# Prepare app data locally. Deployment waits for the final review below.
-source("make-app-data.R")
-
 devtools::check()
 
 cat("
@@ -47,10 +44,9 @@ cat("
 ")
 
 # Run separately after the final review:
-# rsconnect::deployApp("app", forceUpdate = TRUE, appName = "rcheology")
 # system("git add docker-data/*.csv")
-# system("git add app/rcheology-app-data.RData")
 # system(sprintf("git commit -a -m 'Updates for R %s'", r_version))
 # system("git push")
 # usethis::use_github_release()
 # Verify the GitHub release and the package version on r-universe.
+# Verify the next Daily R snapshots workflow deploys the updated app.
