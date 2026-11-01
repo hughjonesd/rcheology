@@ -1,13 +1,13 @@
 
 ## UPDATE PROCEDURE
 
-# Daily snapshots are handled separately by GitHub Actions and do not change
-# this release procedure.
+# GitHub Actions builds and deploys the app with r-next and r-devel snapshots.
+# After pushing the release, let the daily workflow run or trigger it manually.
 
 # 1. Start docker
 # 2. Run a bash shell 
 #   - bash matters because of allowing spaces in variables
-# 3. Start Xquartz (or windows equivalent) and run 'xhost +' in a separate terminal
+# 3. For old R versions only, start Xquartz (or windows equivalent).
 # 4. Update host-run-on-evercran.sh to include "run_image x.y.z", if necessary
 # 5. In the bash shell, either:
 #   - run ./host-run-on-evercran.sh to regenerate data for all R versions;
@@ -15,49 +15,43 @@
 # 6. edit 'version' below. 
 #   - Usually this should be the latest R version, with an extra zero.
 # 7. run this script in a fresh R session.
-#   - Note that the script is interactive
+# 8. Review NEWS.md and the generated files before publishing.
 
-version <- "4.6.1.0"
+version <- "4.6.2.0"
 
 r_version <- sub("\\.\\d+$", "", version)
 
 source("write-package-data.R")
+stopifnot(
+  all(rcheology$status == "released"),
+  r_version %in% rcheology$Rversion,
+  r_version %in% Rversions$Rversion
+)
+desc::desc_set_version(version)
 devtools::install()
 # check new data
 print(table(rcheology::rcheology$Rversion))
 
 devtools::build_readme()
 file.remove("README.html")
-system(sprintf("sed -e 's/Version:.*/Version: %s/' -i '' DESCRIPTION", version))
 
-# update shinyapps app
-source("make-app-data.R")
-rsconnect::deployApp("app", forceUpdate = TRUE, appName = "rcheology")
-
-system("git add docker-data/*.csv")
-system("git add app/rcheology-app-data.RData")
-system(sprintf("git commit -a --no-verify -m 'Updates for R %s'", r_version))
-system("git push")
-
-# run checks:
 devtools::check()
-devtools::check_win_devel()
-devtools::check_win_release()
-devtools::check_mac_release()
 
-# rhc <- rhub::check_for_cran()
-rdc <- revdepcheck::revdep_check()
+cat(sprintf("
+# STOP: review NEWS.md, README.md, the data changes, and check results.
+# Then run some or all of:
+  git add docker-data/*.csv
+  git commit -a -m 'Updates for R %s'
+  git push
+# and from R:
+  usethis::use_github_release()
+# Verify the GitHub release and the package version on r-universe.
+", r_version))
 
-cat("
-# Now wait for checks. Also check it's passed appveyor.
-# Check CRAN for previous check failures to fix:
-# https://cran.r-project.org/web/checks/check_results_rcheology.html
-
-# update cran-comments.md and NEWS.md appropriately, commit and push
-# then 
-devtools::release()
-
-
-# after acceptance, run ./post-acceptance.R
-
-")
+# Run separately after the final review:
+# system("git add docker-data/*.csv")
+# system(sprintf("git commit -a -m 'Updates for R %s'", r_version))
+# system("git push")
+# usethis::use_github_release()
+# Verify the GitHub release and the package version on r-universe.
+# Verify the next Daily R snapshots workflow deploys the updated app.
