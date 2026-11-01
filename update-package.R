@@ -39,9 +39,13 @@ devtools::check()
 
 cat(sprintf("
 # STOP: review NEWS.md, README.md, the data changes, and check results.
-# Then run
+# Then run some or all of:
   git add docker-data/*.csv
   git commit -a -m 'Updates for R %s'
+  git push
+# and from R:
+  usethis::use_github_release()
+# Verify the GitHub release and the package version on r-universe.
 ", r_version))
 
 # Run separately after the final review:
