@@ -3,13 +3,11 @@
 
 # rcheology
 
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/hughjonesd/rcheology?branch=master&svg=true)](https://ci.appveyor.com/project/hughjonesd/rcheology)
-![runiverse-package
-badge](https://hughjonesd.r-universe.dev/badges/rcheology) [![CRAN
-status](https://www.r-pkg.org/badges/version/rcheology)](https://cran.r-project.org/package=rcheology)
-[![CRAN
-downloads](https://cranlogs.r-pkg.org/badges/rcheology)](https://cran.r-project.org/package=rcheology)
+<figure>
+<img src="https://hughjonesd.r-universe.dev/badges/rcheology"
+alt="runiverse-package badge" />
+<figcaption aria-hidden="true">runiverse-package badge</figcaption>
+</figure>
 
 A data package which lists every command in base R packages since R
 version 0.50.
@@ -31,11 +29,8 @@ install.packages('rcheology', repos = c('https://hughjonesd.r-universe.dev',
                     'https://cloud.r-project.org'))
 ```
 
-From CRAN:
-
-``` r
-install.packages('rcheology')
-```
+Note that **new rcheology versions are no longer published on CRAN**.
+The last version available on CRAN is 4.6.1.0, corresponding to R 4.6.1.
 
 ### Daily R snapshots
 
@@ -75,8 +70,10 @@ The `Rversions` data frame lists versions of R and release dates.
 
 ## Do it yourself
 
+- Clone this repository.
 - Install and start docker.
 - Run `host-run-on-evercran.sh`.
+- For more details see `update-package.R`
 
 ## The data
 
@@ -126,8 +123,8 @@ r_introduced <- anti_join(r_latest_obj, r_penult_obj, by = c("package", "name"))
 r_introduced
 #> # A tibble: 1 × 11
 #>   package name  Rversion status   priority type  exported hidden class S4generic
-#>   <chr>   <chr> <chr>    <chr>    <chr>    <chr> <lgl>    <lgl>  <chr> <lgl>
-#> 1 spatial topo  4.6.2    released recomme… list  FALSE    FALSE  data… FALSE
+#>   <chr>   <chr> <chr>    <chr>    <chr>    <chr> <lgl>    <lgl>  <chr> <lgl>    
+#> 1 spatial topo  4.6.2    released recomme… list  FALSE    FALSE  data… FALSE    
 #> # ℹ 1 more variable: args <chr>
 ```
 
@@ -175,7 +172,7 @@ ggplot(rch_dates, aes(date, group = package, fill = package), colour = NA) +
 #> (`stat_count()`).
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" alt="" width="100%" />
 
 An alternative view:
 
@@ -193,4 +190,4 @@ ggplot(rch_dates, aes(date, fill = "orange")) +
 #> (`stat_count()`).
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" alt="" width="100%" height="1000px" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" alt="" width="100%" height="1000px" />
