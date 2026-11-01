@@ -37,11 +37,12 @@ file.remove("README.html")
 
 devtools::check()
 
-cat("
+cat(sprintf("
 # STOP: review NEWS.md, README.md, the data changes, and check results.
-# Nothing has been published. After approving the release, run the commands below.
-
-")
+# Then run
+  git add docker-data/*.csv
+  git commit -a -m 'Updates for R %s'
+", r_version))
 
 # Run separately after the final review:
 # system("git add docker-data/*.csv")
