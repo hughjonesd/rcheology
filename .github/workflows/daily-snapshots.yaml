@@ -99,24 +99,57 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: gh release upload daily-release --clobber daily-dist/*
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-data
+          path: app/rcheology-app-data.RData
+          retention-days: 1
+
+  deploy:
+    name: Deploy app to Connect Cloud
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          # Match the working Connect Cloud runtime, independently of R release.
+          r-version: '4.6.1'
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::rsconnect
+            any::shiny
+            any::bslib
+            any::DT
+            any::dplyr
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: app-data
+          path: app
+
       - name: Deploy app
         shell: Rscript {0}
         env:
-          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
-          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+          CONNECT_CLOUD_CLIENT_ID: ${{ secrets.CONNECT_CLOUD_CLIENT_ID }}
+          CONNECT_CLOUD_CLIENT_SECRET: ${{ secrets.CONNECT_CLOUD_CLIENT_SECRET }}
           RENV_CONFIG_REPOS_OVERRIDE: CRAN=https://cloud.r-project.org
         run: |
           options(rsconnect.packrat = TRUE)
-          rsconnect::setAccountInfo(
-            name = "hughjonesd",
-            token = Sys.getenv("SHINYAPPS_TOKEN"),
-            secret = Sys.getenv("SHINYAPPS_SECRET")
+          rsconnect::connectCloudClientCredentials(
+            clientId = Sys.getenv("CONNECT_CLOUD_CLIENT_ID"),
+            clientSecret = Sys.getenv("CONNECT_CLOUD_CLIENT_SECRET"),
+            accountName = "hughjonesd"
           )
           rsconnect::deployApp(
             "app",
             appFiles = c("app.R", "rcheology-app-data.RData"),
-            appName = "rcheology",
+            appId = "01a1a703-dd79-d72a-b895-55649380249f",
             account = "hughjonesd",
+            server = "connect.posit.cloud",
             packageRepositoryResolutionR = "lockfile",
             forceUpdate = TRUE
           )
