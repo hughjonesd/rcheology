@@ -26,7 +26,7 @@ A data package which lists every command in base R packages since R version `r m
 
 The latest R version covered is `r r_latest`.
 
-You can view the data online in a [Shiny app](https://hughjonesd.shinyapps.io/rcheology/).
+You can view the data online in a [Shiny app](https://hughjonesd-rcheology.share.connect.posit.cloud/).
 
 Historical documentation for these R versions is available from the
 [r-help archive](https://hughjonesd.github.io/r-help/).

@@ -8,7 +8,7 @@
   branch directly, or as a GitHub release ("daily-release"). Stable releases
   don't have this data, but do have the `status` column, which is
   always `"released"`.
-* The shinyapps.io app also now includes `r-next` and `r-devel`.
+* The Shiny app also now includes `r-next` and `r-devel`.
 * `fun_changed()` accepts `"r-next"` and `"r-devel"` as version bounds
   when those snapshots are installed.
 

@@ -15,7 +15,7 @@ version 0.50.
 The latest R version covered is 4.6.2.
 
 You can view the data online in a [Shiny
-app](https://hughjonesd.shinyapps.io/rcheology/).
+app](https://hughjonesd-rcheology.share.connect.posit.cloud/).
 
 Historical documentation for these R versions is available from the
 [r-help archive](https://hughjonesd.github.io/r-help/).

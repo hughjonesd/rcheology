@@ -11,7 +11,7 @@
 #' The version of the rcheology package reflects the latest R version to be included in the data, 
 #' e.g. 3.5.1.x contains data up to and including R 3.5.1.
 #' 
-#' An online app for data exploration is available at <https://hughjonesd.shinyapps.io/rcheology/>.
+#' An online app for data exploration is available at <https://hughjonesd-rcheology.share.connect.posit.cloud/>.
 #' 
 #' @includeRmd data-where-from.Rmd
 #' 

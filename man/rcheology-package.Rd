@@ -18,7 +18,7 @@ and "canonical" solution, see the
 The version of the rcheology package reflects the latest R version to be included in the data,
 e.g. 3.5.1.x contains data up to and including R 3.5.1.
 
-An online app for data exploration is available at \url{https://hughjonesd.shinyapps.io/rcheology/}.
+An online app for data exploration is available at \url{https://hughjonesd-rcheology.share.connect.posit.cloud/}.
 
 \if{html}{\out{
 <!-- this is .Rmd so it can be easily included by README.Rmd -->
