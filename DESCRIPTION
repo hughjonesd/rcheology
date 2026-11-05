@@ -1,6 +1,6 @@
 Package: rcheology
-Version: 4.6.2.0.20261104
-Title: Data on Base and Recommended Packages for Current and Previous Versions of R
+Version: 4.6.2.0.20261105
+Title: Historical Dataset of Base R Functions Across R Versions
 Description: Provides a dataset of functions in all base and recommended packages of R versions 0.50 onwards.
 Authors@R: person("David", "Hugh-Jones", , "davidhughjones@gmail.com", c("aut", "cre"))
 License: CC0
