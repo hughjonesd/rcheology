@@ -866,6 +866,14 @@ ui <- fluidPage(
           rel = "noopener noreferrer",
           "rcheology package."
         )
+      ),
+      p(
+        "Your name here! To sponsor this app, ",
+        a(
+          href = "mailto:davidhughjones@gmail.com",
+          "get in touch"
+        ),
+        "."
       )
     ),
     div(
